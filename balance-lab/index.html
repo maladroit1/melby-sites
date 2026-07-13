@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balance Lab — Solve Equations by Keeping It Fair</title>
+<style>
+  :root {
+    --jeop-blue: #060CE9;
+    --jeop-gold: #C8A24B;
+    --jeop-yellow: #FFCC33;
+    --jeop-green: #2ea44f;
+    --jeop-red: #d64545;
+    --crate-purple: #534AB7;
+    --crate-light: #AFA9EC;
+    --panel-bg: rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: linear-gradient(180deg, #050944, #0A1A5B);
+    min-height: 100vh; color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .screen { display: none; min-height: 100vh; flex-direction: column; align-items: center; padding: 24px 16px; }
+  .screen.active { display: flex; }
+  .logo {
+    font-family: 'Times New Roman', serif; font-weight: 900;
+    font-size: clamp(40px, 9vw, 84px); color: var(--jeop-yellow);
+    text-shadow: 5px 5px 0 #000; letter-spacing: 3px; text-align: center;
+  }
+  .logo-sub {
+    font-family: 'Times New Roman', serif; letter-spacing: 6px;
+    font-size: clamp(16px, 3vw, 26px); color: #fff; text-align: center; margin-top: 2px;
+  }
+  .topic-line { text-align: center; color: #cdd3f0; font-size: 15px; margin: 14px 0 22px; line-height: 1.5; }
+  .card {
+    background: var(--panel-bg); border: 2px solid var(--jeop-gold); border-radius: 14px;
+    padding: 22px; width: 100%; max-width: 560px;
+  }
+  .big-btn {
+    display: block; width: 100%; margin-top: 18px; padding: 14px;
+    background: var(--jeop-gold); color: #000; border: none; border-radius: 10px;
+    font-size: 20px; font-weight: bold; letter-spacing: 2px; cursor: pointer;
+    box-shadow: 0 4px 0 #8a6d2a;
+  }
+  .big-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #8a6d2a; }
+  label { display: block; color: var(--jeop-yellow); font-weight: bold; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  input[type=text] {
+    width: 100%; padding: 12px; font-size: 18px; border-radius: 8px;
+    border: 2px solid var(--jeop-gold); background: #000; color: #fff; font-family: inherit; margin-bottom: 14px;
+  }
+  .checkbox-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 14px; }
+
+  /* Level map */
+  .map-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 16px; }
+  .lvl-cell {
+    aspect-ratio: 1; border-radius: 10px; border: 2px solid var(--jeop-gold);
+    background: #0D2380; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Times New Roman', serif; font-weight: 900; font-size: 22px; color: var(--jeop-yellow);
+    cursor: pointer;
+  }
+  .lvl-cell.locked { opacity: 0.35; cursor: default; }
+  .lvl-cell .stars { font-size: 11px; letter-spacing: 1px; margin-top: 3px; color: var(--jeop-yellow); }
+  .stage-tag { grid-column: 1 / -1; font-size: 12px; color: #cdd3f0; letter-spacing: 1px; text-transform: uppercase; margin-top: 8px; }
+
+  /* Play screen */
+  .hud { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 640px; margin-bottom: 8px; }
+  .hud .who { font-weight: bold; color: var(--jeop-yellow); }
+  .hud button { background: transparent; border: 1px solid #888; color: #ddd; border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 13px; }
+  .lvl-title { font-family: 'Times New Roman', serif; font-size: clamp(20px, 4vw, 30px); font-weight: 900; color: var(--jeop-yellow); text-shadow: 3px 3px 0 #000; text-align: center; }
+  .lvl-story { color: #cdd3f0; font-size: 14px; text-align: center; margin: 4px 0 12px; min-height: 20px; }
+  .equation {
+    font-family: ui-monospace, Menlo, monospace; font-size: clamp(20px, 4.5vw, 30px);
+    background: rgba(0,0,0,0.45); border: 2px dashed var(--jeop-gold); border-radius: 10px;
+    padding: 8px 22px; margin-bottom: 16px; color: #fff;
+  }
+  .equation .hot { color: var(--jeop-yellow); }
+  #scale { transition: transform .25s; transform-origin: 50% 92%; width: 100%; max-width: 640px; }
+  .pans { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+  .pan {
+    flex: 1; min-height: 96px; display: flex; flex-wrap: wrap; gap: 7px;
+    align-items: flex-end; justify-content: center;
+    background: #0D2380; border: 2px solid var(--jeop-gold); border-radius: 12px; padding: 12px;
+  }
+  .beam { height: 9px; background: var(--jeop-gold); border-radius: 5px; margin-top: 10px; }
+  .post { width: 16px; height: 40px; background: var(--jeop-gold); margin: 0 auto; border-radius: 0 0 5px 5px; }
+  .crate {
+    width: 52px; height: 52px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: bold; font-family: ui-monospace, Menlo, monospace;
+    background: var(--crate-purple); color: #fff; border: 3px solid var(--crate-light); cursor: pointer;
+  }
+  .crate.open { background: var(--jeop-green); border-color: #9FE1CB; animation: pop .4s; }
+  .block {
+    width: 30px; height: 30px; border-radius: 7px; cursor: pointer;
+    background: #EF9F27; border: 2px solid #FAC775;
+  }
+  .block:hover { background: var(--jeop-yellow); }
+  @keyframes pop { 0%{transform:scale(0.5);} 70%{transform:scale(1.15);} 100%{transform:scale(1);} }
+  .msg { color: var(--jeop-yellow); font-size: 15px; min-height: 24px; margin-top: 14px; text-align: center; font-weight: bold; }
+  .hint { color: #cdd3f0; font-size: 13px; margin-top: 4px; text-align: center; min-height: 18px; }
+  .action-row { display: flex; gap: 10px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+  .action-row button {
+    border: none; border-radius: 9px; padding: 11px 18px; font-size: 15px; font-weight: bold; cursor: pointer;
+  }
+  .btn-share { background: var(--jeop-yellow); color: #26215C; }
+  .btn-next { background: var(--jeop-green); color: #fff; }
+  .btn-retry { background: #666; color: #fff; }
+  .btn-hint { background: transparent; color: #ddd; border: 1px solid #888 !important; }
+  .recap {
+    background: var(--panel-bg); border: 2px solid var(--jeop-green); border-radius: 12px;
+    padding: 12px 18px; margin-top: 14px; font-size: 14px; color: #dff5e8; max-width: 560px; text-align: center;
+    display: none;
+  }
+  .recap.show { display: block; animation: pop .3s; }
+  .mastery-panel { margin-top: 22px; width: 100%; max-width: 560px; background: var(--panel-bg); border: 1px dashed var(--jeop-gold); border-radius: 12px; padding: 14px 18px; }
+  .mastery-panel h3 { color: var(--jeop-yellow); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; text-align: center; margin-bottom: 8px; }
+  .mastery-stats { color: #aab; font-size: 12px; text-align: center; }
+  .over-title { font-family: 'Times New Roman', serif; font-size: clamp(30px, 7vw, 62px); font-weight: 900; color: var(--jeop-yellow); text-shadow: 5px 5px 0 #000; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- =========== START SCREEN =========== -->
+<div class="screen active" id="scr-start">
+  <div class="logo">Balance Lab</div>
+  <div class="logo-sub">KEEP IT FAIR. FREE THE CRATE.</div>
+  <div class="topic-line">
+    Every scale is a true equation. Trade the same amount off both sides<br>
+    until the mystery crate stands alone — that's algebra.
+  </div>
+  <div class="card">
+    <label for="pname">Scientist's name</label>
+    <input type="text" id="pname" maxlength="14" value="">
+    <div class="checkbox-row">
+      <input type="checkbox" id="sound-on" checked>
+      <label for="sound-on" style="margin:0; text-transform:none; letter-spacing:0; color:#fff; font-weight:normal; font-size:14px;">Sound effects</label>
+    </div>
+    <button class="big-btn" id="btn-tomap">Enter the lab</button>
+  </div>
+  <div class="mastery-panel">
+    <h3>Your lab record</h3>
+    <div class="mastery-stats" id="start-stats">No experiments yet — go run some!</div>
+  </div>
+</div>
+
+<!-- =========== LEVEL MAP =========== -->
+<div class="screen" id="scr-map">
+  <div class="logo" style="font-size:clamp(28px,5vw,48px);">Balance Lab</div>
+  <div class="topic-line" id="map-greet">Pick an experiment.</div>
+  <div class="card">
+    <div class="map-grid" id="map-grid"></div>
+  </div>
+  <div class="mastery-panel">
+    <h3>Skills learned here feed Math Jeopardy too</h3>
+    <div class="mastery-stats" id="map-stats"></div>
+  </div>
+</div>
+
+<!-- =========== PLAY SCREEN =========== -->
+<div class="screen" id="scr-play">
+  <div class="hud">
+    <span class="who" id="hud-name">Player</span>
+    <span id="hud-lvl" style="color:#cdd3f0; font-size:14px;"></span>
+    <button id="btn-map">Level map</button>
+  </div>
+  <div class="lvl-title" id="lvl-title"></div>
+  <div class="lvl-story" id="lvl-story"></div>
+  <div class="equation" id="equation"></div>
+  <div id="scale">
+    <div class="pans">
+      <div class="pan" id="panL" aria-label="left pan"></div>
+      <div class="pan" id="panR" aria-label="right pan"></div>
+    </div>
+    <div class="beam"></div>
+    <div class="post"></div>
+  </div>
+  <div class="msg" id="msg"></div>
+  <div class="hint" id="hint"></div>
+  <div class="action-row">
+    <button class="btn-share" id="btn-share" style="display:none;">Share equally</button>
+    <button class="btn-next" id="btn-next" style="display:none;">Next experiment</button>
+    <button class="btn-hint" id="btn-hint">Hint</button>
+    <button class="btn-retry" id="btn-retry">Restart</button>
+  </div>
+  <div class="recap" id="recap"></div>
+</div>
+
+<!-- =========== ALL DONE =========== -->
+<div class="screen" id="scr-over">
+  <div class="over-title">Lab Complete!</div>
+  <div class="topic-line" id="over-line"></div>
+  <div class="card" style="text-align:center;">
+    <div id="over-stats" style="font-size:15px; line-height:1.7;"></div>
+    <button class="big-btn" id="btn-again">Back to the level map</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   LEVELS — ladder follows CC 6.EE: join (x+a=b) → share (ax=b)
+   → named x → two-step → x on both sides.
+   Every trade keeps the equation TRUE — that's the whole lesson.
+   ============================================================ */
+const LEVELS = [
+  { a:1, b:2,  r:5,  rc:0, named:false, skill:'bl-onestep-add',  stage:'Mystery crates',
+    story:'A crate and 2 gold bars balance 5 gold bars. Trade fairly!' },
+  { a:1, b:4,  r:9,  rc:0, named:false, skill:'bl-onestep-add',  stage:'Mystery crates',
+    story:'Same trick, bigger pile.' },
+  { a:1, b:3,  r:10, rc:0, named:false, skill:'bl-onestep-add',  stage:'Mystery crates',
+    story:'Free the crate in 3 trades.' },
+  { a:2, b:0,  r:6,  rc:0, named:false, skill:'bl-onestep-mult', stage:'Sharing',
+    story:'TWO identical crates. If they balance 6 bars, each crate holds...?' },
+  { a:3, b:0,  r:12, rc:0, named:false, skill:'bl-onestep-mult', stage:'Sharing',
+    story:'Three crates, twelve bars. Share fairly.' },
+  { a:2, b:0,  r:14, rc:0, named:false, skill:'bl-onestep-mult', stage:'Sharing',
+    story:'Two crates again — big haul this time.' },
+  { a:1, b:5,  r:11, rc:0, named:true,  skill:'bl-onestep-add',  stage:'The crate gets a name',
+    story:'Scientists call the mystery crate x. Same game, fancy name.' },
+  { a:4, b:0,  r:20, rc:0, named:true,  skill:'bl-onestep-mult', stage:'The crate gets a name',
+    story:'4x = 20. You already know what to do.' },
+  { a:1, b:7,  r:13, rc:0, named:true,  skill:'bl-onestep-add',  stage:'The crate gets a name',
+    story:'x + 7 = 13. Trade until x is alone.' },
+  { a:2, b:1,  r:9,  rc:0, named:true,  skill:'bl-twostep',      stage:'Two-step',
+    story:'Two moves now: trade the bars away FIRST, then share.' },
+  { a:3, b:2,  r:14, rc:0, named:true,  skill:'bl-twostep',      stage:'Two-step',
+    story:'3x + 2 = 14. Undo the +2, then share by 3.' },
+  { a:2, b:5,  r:17, rc:0, named:true,  skill:'bl-twostep',      stage:'Two-step',
+    story:'2x + 5 = 17. You have got this.' },
+  { a:2, b:1,  r:5,  rc:1, named:true,  skill:'bl-bothsides',    stage:'Crates on BOTH sides',
+    story:'A crate on each side?! Crates trade fair too — tap one.' },
+  { a:3, b:2,  r:10, rc:1, named:true,  skill:'bl-bothsides',    stage:'Crates on BOTH sides',
+    story:'3x + 2 = x + 10. Trade crates, trade bars, then share.' },
+  { a:3, b:4,  r:9,  rc:2, named:true,  skill:'bl-bothsides',    stage:'Crates on BOTH sides',
+    story:'The final experiment. Every move you know, in one puzzle.' },
+];
+/* level shape: left = a crates + b blocks ; right = rc crates + r blocks.
+   x value = (r - b) / (a - rc). All levels chosen so it's a whole number. */
+
+/* ============================================================
+   ADAPTIVE LEARNING SPINE — same schema + key as Math Jeopardy
+   ============================================================ */
+const PROGRESS_KEY = 'mmg_progress_v1';
+function loadProgress() {
+  try { const raw = localStorage.getItem(PROGRESS_KEY); return raw ? JSON.parse(raw) : {}; }
+  catch(e) { return {}; }
+}
+function saveProgress(p) { try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(p)); } catch(e) {} }
+function recordResult(itemId, correct) {
+  const p = loadProgress();
+  const r = p[itemId] || { level:0, seen:0, correct:0, streak:0, lastSeen:0 };
+  r.seen += 1; r.lastSeen = Date.now();
+  if (correct) {
+    r.correct += 1; r.streak = (r.streak || 0) + 1;
+    if (r.streak >= 3) r.level = 4;
+    else if (r.streak === 2) r.level = Math.max(r.level, 3);
+    else r.level = Math.max(r.level, 2);
+  } else { r.streak = 0; r.level = 1; }
+  p[itemId] = r; saveProgress(p);
+}
+
+/* Balance-Lab-local progress: unlocked level + stars */
+const LAB_KEY = 'mmg_balancelab_v1';
+function loadLab() {
+  try { const raw = localStorage.getItem(LAB_KEY); return raw ? JSON.parse(raw) : { unlocked:1, stars:{} }; }
+  catch(e) { return { unlocked:1, stars:{} }; }
+}
+function saveLab(l) { try { localStorage.setItem(LAB_KEY, JSON.stringify(l)); } catch(e) {} }
+
+/* ============================================================
+   AUDIO (same tone kit as the Jeopardy games)
+   ============================================================ */
+let audioCtx = null, soundOn = true;
+function getAudio() {
+  if (!audioCtx) { try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} }
+  return audioCtx;
+}
+function playTone(freq, duration, type='sine', volume=0.3, delay=0) {
+  if (!soundOn) return;
+  const ctx = getAudio(); if (!ctx) return;
+  const now = ctx.currentTime + delay;
+  const osc = ctx.createOscillator(); const gain = ctx.createGain();
+  osc.type = type; osc.frequency.value = freq;
+  gain.gain.setValueAtTime(volume, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+  osc.connect(gain); gain.connect(ctx.destination);
+  osc.start(now); osc.stop(now + duration);
+}
+function playTrade()   { playTone(660,0.08,'sine',0.18); }
+function playBad()     { playTone(180,0.3,'sawtooth',0.25); }
+function playShare()   { playTone(523,0.1,'sine',0.25); playTone(659,0.12,'sine',0.25,0.09); }
+function playWin()     { [523,659,784,1047].forEach((f,i)=>playTone(f,0.14,'sine',0.3,i*0.11)); }
+function playFanfare() { [523,659,784,659,784,1047].forEach((f,i)=>playTone(f,0.16,'sine',0.32,i*0.13)); }
+
+/* ============================================================
+   STATE + RENDER
+   ============================================================ */
+const $ = id => document.getElementById(id);
+let lab = loadLab();
+let cur = null;   // {idx, a, b, r, rc, named, mistakes, hintsUsed, solved}
+let playerName = 'Player';
+
+function show(scr) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  $(scr).classList.add('active');
+}
+function sym() { return cur.named ? 'x' : '□'; }
+function sideStr(crates, blocks) {
+  const parts = [];
+  if (crates === 1) parts.push(sym());
+  else if (crates > 1) parts.push(crates + sym());
+  if (blocks > 0 || parts.length === 0) parts.push(String(blocks));
+  return parts.join(' + ');
+}
+function renderEquation() {
+  $('equation').innerHTML = '<span class="hot">' + sideStr(cur.a, cur.b) + '</span> = ' + sideStr(cur.rc, cur.r);
+}
+function crateEl(open, val) {
+  const d = document.createElement('div');
+  d.className = 'crate' + (open ? ' open' : '');
+  d.textContent = open ? val : (cur.named ? 'x' : '?');
+  d.onclick = () => tradeCrate();
+  d.setAttribute('role','button'); d.setAttribute('aria-label','crate');
+  return d;
+}
+function blockEl() {
+  const d = document.createElement('div');
+  d.className = 'block';
+  d.onclick = () => tradeBlock();
+  d.setAttribute('role','button'); d.setAttribute('aria-label','trade one gold bar from both sides');
+  return d;
+}
+function renderPans(open) {
+  const xVal = xValue();
+  $('panL').replaceChildren();
+  $('panR').replaceChildren();
+  for (let i=0;i<cur.a;i++)  $('panL').appendChild(crateEl(open, xVal));
+  for (let i=0;i<cur.b;i++)  $('panL').appendChild(blockEl());
+  for (let i=0;i<cur.rc;i++) $('panR').appendChild(crateEl(open, xVal));
+  for (let i=0;i<cur.r;i++)  $('panR').appendChild(blockEl());
+}
+function xValue() {
+  const L = LEVELS[cur.idx];
+  return (L.r - L.b) / (L.a - L.rc);
+}
+function tilt(deg) {
+  const s = $('scale');
+  s.style.transform = 'rotate(' + deg + 'deg)';
+  setTimeout(()=>{ s.style.transform=''; }, 260);
+}
+function wiggle(text) {
+  cur.mistakes++;
+  playBad();
+  const s = $('scale');
+  s.style.transform='rotate(2deg)';
+  setTimeout(()=>{ s.style.transform='rotate(-2deg)'; },120);
+  setTimeout(()=>{ s.style.transform=''; },240);
+  $('msg').textContent = text;
+}
+
+/* ============================================================
+   MOVES — every legal move keeps the equation true
+   ============================================================ */
+function tradeBlock() {
+  if (cur.solved) return;
+  if (cur.b < 1 || cur.r < 1) { wiggle("Not fair! Both sides must give up a bar — one side has none."); return; }
+  cur.b--; cur.r--;
+  playTrade(); tilt(-1.2);
+  afterMove('Fair trade! One bar off each side.');
+}
+function tradeCrate() {
+  if (cur.solved) return;
+  if (cur.rc < 1) {
+    if (cur.a === 1 && cur.b === 0) return;
+    wiggle(cur.a > 1 ? 'The right side has no crate to trade. Try the gold bars — or share.' : 'Trade the gold bars away first!');
+    return;
+  }
+  if (cur.a < 1) { wiggle('No crate on the left to trade!'); return; }
+  cur.a--; cur.rc--;
+  playTrade(); tilt(1.2);
+  afterMove('Crate for crate — still perfectly fair!');
+}
+function shareEqually() {
+  if (cur.solved) return;
+  if (cur.b > 0 || cur.rc > 0) { wiggle('Clear the extras first — share only when it\'s just crates vs. bars.'); return; }
+  if (cur.a < 2) return;
+  if (cur.r % cur.a !== 0) { wiggle('Those don\'t split evenly — something\'s off. Restart?'); return; }
+  cur.r = cur.r / cur.a; cur.a = 1;
+  playShare();
+  afterMove('Shared equally — each crate gets the same.');
+}
+function afterMove(okMsg) {
+  if (cur.a === 1 && cur.b === 0 && cur.rc === 0) { win(); return; }
+  renderPans(false); renderEquation(); updateButtons();
+  $('msg').textContent = okMsg;
+  $('hint').textContent = '';
+}
+function updateButtons() {
+  $('btn-share').style.display = (cur.a > 1 && cur.b === 0 && cur.rc === 0) ? 'inline-block' : 'none';
+  $('btn-next').style.display = 'none';
+}
+function hint() {
+  cur.hintsUsed++;
+  let h;
+  if (cur.rc > 0) h = 'A crate sits on BOTH sides — tap a crate to trade one off each side.';
+  else if (cur.b > 0) h = 'Tap a gold bar — it takes one from BOTH sides. The crate never trades away its own bars unfairly.';
+  else if (cur.a > 1) h = 'Only crates left! Hit "Share equally" to split the bars between them.';
+  else h = 'You are one step away.';
+  $('hint').textContent = h;
+}
+
+/* ============================================================
+   WIN / RECAP
+   ============================================================ */
+function starCount() {
+  if (cur.mistakes === 0 && cur.hintsUsed === 0) return 3;
+  if (cur.mistakes <= 2) return 2;
+  return 1;
+}
+function recapText() {
+  const L = LEVELS[cur.idx];
+  const steps = [];
+  if (L.rc > 0) steps.push('traded ' + L.rc + ' crate' + (L.rc>1?'s':'') + ' off both sides');
+  if (L.b > 0) steps.push('took away ' + L.b + ' from both sides');
+  if (L.a - L.rc > 1) steps.push('shared by ' + (L.a - L.rc));
+  const eq = sideStr(L.a, L.b) + ' = ' + sideStr(L.rc, L.r);
+  return 'You ' + steps.join(', then ') + ' — that\'s how you solve <b>' + eq + '</b>. ' +
+         (cur.named ? 'x' : 'The crate') + ' = <b>' + xValue() + '</b>.';
+}
+function win() {
+  cur.solved = true;
+  renderPans(true); renderEquation();
+  const stars = starCount();
+  playWin();
+  $('msg').textContent = 'The crate held ' + xValue() + '!  ' + '★'.repeat(stars) + '☆'.repeat(3-stars);
+  $('hint').textContent = '';
+  const rec = $('recap'); rec.innerHTML = recapText(); rec.classList.add('show');
+  $('btn-share').style.display = 'none';
+  $('btn-next').style.display = 'inline-block';
+  $('btn-next').textContent = cur.idx < LEVELS.length - 1 ? 'Next experiment' : 'Finish the lab!';
+  // record to the shared math spine: clean solve = correct, sloppy = practice
+  recordResult(LEVELS[cur.idx].skill, cur.mistakes === 0);
+  // lab progress
+  lab.stars[cur.idx] = Math.max(lab.stars[cur.idx] || 0, stars);
+  lab.unlocked = Math.max(lab.unlocked, Math.min(cur.idx + 2, LEVELS.length));
+  saveLab(lab);
+}
+
+/* ============================================================
+   SCREENS
+   ============================================================ */
+function startLevel(idx) {
+  const L = LEVELS[idx];
+  cur = { idx, a:L.a, b:L.b, r:L.r, rc:L.rc, named:L.named, mistakes:0, hintsUsed:0, solved:false };
+  $('hud-name').textContent = playerName;
+  $('hud-lvl').textContent = 'Experiment ' + (idx+1) + ' of ' + LEVELS.length;
+  $('lvl-title').textContent = L.stage;
+  $('lvl-story').textContent = L.story;
+  $('recap').classList.remove('show');
+  $('msg').textContent = L.rc > 0 ? 'Crates AND bars can trade — as long as it\'s fair.' :
+    (L.a > 1 && L.b === 0 ? 'Only crates on the left — how do they share?' : 'Tap a gold bar to trade one off BOTH sides.');
+  $('hint').textContent = '';
+  renderPans(false); renderEquation(); updateButtons();
+  show('scr-play');
+}
+function renderMap() {
+  const grid = $('map-grid');
+  grid.replaceChildren();
+  let lastStage = '';
+  LEVELS.forEach((L, i) => {
+    if (L.stage !== lastStage) {
+      lastStage = L.stage;
+      const t = document.createElement('div');
+      t.className = 'stage-tag'; t.textContent = L.stage;
+      grid.appendChild(t);
+    }
+    const c = document.createElement('div');
+    const locked = (i + 1) > lab.unlocked;
+    c.className = 'lvl-cell' + (locked ? ' locked' : '');
+    const s = lab.stars[i] || 0;
+    c.innerHTML = (i+1) + '<span class="stars">' + (s ? '★'.repeat(s) : (locked ? '🔒' : '&nbsp;')) + '</span>';
+    if (!locked) c.onclick = () => startLevel(i);
+    grid.appendChild(c);
+  });
+  const done = Object.keys(lab.stars).length;
+  const total3 = Object.values(lab.stars).filter(v=>v===3).length;
+  $('map-stats').textContent = done ? done + '/' + LEVELS.length + ' experiments done · ' + total3 + ' perfect (★★★)' : 'Nothing run yet — start with Experiment 1.';
+  $('map-greet').textContent = done ? 'Welcome back, ' + playerName + '. Pick an experiment.' : 'Pick an experiment, ' + playerName + '.';
+  if (done === LEVELS.length) { showOver(); return; }
+  show('scr-map');
+}
+function showOver() {
+  playFanfare();
+  const total3 = Object.values(lab.stars).filter(v=>v===3).length;
+  $('over-line').textContent = playerName + ', you can officially solve equations. That was ALGEBRA.';
+  $('over-stats').innerHTML = 'All ' + LEVELS.length + ' experiments complete.<br>' + total3 + ' perfect ★★★ solves.<br><br>Everything you practiced here feeds your Math Jeopardy mastery too.';
+  show('scr-over');
+}
+function startStats() {
+  const done = Object.keys(lab.stars).length;
+  if (done) $('start-stats').textContent = done + '/' + LEVELS.length + ' experiments complete — the lab remembers.';
+}
+
+/* wiring */
+$('btn-tomap').onclick = () => {
+  playerName = ($('pname').value.trim() || 'Player');
+  soundOn = $('sound-on').checked;
+  getAudio();
+  renderMap();
+};
+$('btn-map').onclick = renderMap;
+$('btn-retry').onclick = () => startLevel(cur.idx);
+$('btn-next').onclick = () => {
+  if (cur.idx < LEVELS.length - 1) startLevel(cur.idx + 1);
+  else showOver();
+};
+$('btn-share').onclick = shareEqually;
+$('btn-hint').onclick = hint;
+$('btn-again').onclick = renderMap;
+startStats();
+</script>
+</body>
+</html>

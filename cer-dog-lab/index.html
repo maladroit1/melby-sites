@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CER Dog Lab 🐕</title>
+<style>
+  :root{
+    --claim:#2563eb; --claim-bg:#dbeafe;
+    --evidence:#15803d; --evidence-bg:#dcfce7;
+    --reason:#7c3aed; --reason-bg:#ede9fe;
+    --basenji:#0f766e;  /* rainforest teal */
+    --azawakh:#b45309;  /* desert amber */
+    --sand:#fdf8f1; --card:#ffffff; --ink:#1f2430; --muted:#6b7280;
+    --line:#e7e2d8; --ok:#16a34a; --shadow:0 2px 10px rgba(60,40,10,.07);
+    --radius:16px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --sand:#181613; --card:#242019; --ink:#f2ede3; --muted:#a89f8d;
+      --line:#39332a; --claim-bg:#1e335c; --evidence-bg:#173a24; --reason-bg:#2c2350;
+      --shadow:0 2px 12px rgba(0,0,0,.4);}
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--sand); color:var(--ink); line-height:1.55; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 18px 80px;}
+
+  header.hero{padding:30px 18px 18px; text-align:center;}
+  header.hero h1{font-size:clamp(28px,5vw,40px); margin:.1em 0; letter-spacing:-.5px;}
+  header.hero p{color:var(--muted); margin:.2em auto; max-width:640px; font-size:1.02rem;}
+  .dogs{font-size:2.2rem; letter-spacing:6px;}
+
+  nav.steps{position:sticky; top:0; z-index:20; background:var(--sand);
+    display:flex; gap:8px; flex-wrap:wrap; justify-content:center; padding:12px 0 14px; border-bottom:1px solid var(--line);}
+  nav.steps button{border:1px solid var(--line); background:var(--card); color:var(--ink);
+    padding:9px 14px; border-radius:999px; cursor:pointer; font-size:.92rem; font-weight:600;
+    display:flex; align-items:center; gap:7px; transition:.15s;}
+  nav.steps button .n{background:var(--line); color:var(--ink); width:22px;height:22px;border-radius:50%;
+    display:grid;place-items:center;font-size:.78rem;}
+  nav.steps button.active{background:var(--ink); color:var(--sand); border-color:var(--ink);}
+  nav.steps button.active .n{background:var(--sand); color:var(--ink);}
+  nav.steps button.done .n{background:var(--ok); color:#fff;}
+
+  section.panel{display:none; animation:fade .25s ease;}
+  section.panel.show{display:block;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 22px; box-shadow:var(--shadow); margin:16px 0;}
+  h2.title{font-size:1.5rem; margin:22px 0 4px;}
+  .lead{color:var(--muted); margin:0 0 6px;}
+
+  .cer-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px;}
+  .cer-card{border-radius:14px; padding:16px; border:2px solid;}
+  .cer-card h3{margin:0 0 6px; display:flex; align-items:center; gap:8px; font-size:1.15rem;}
+  .cer-card .pill{font-size:.72rem; padding:2px 9px; border-radius:999px; color:#fff; font-weight:700; text-transform:uppercase; letter-spacing:.04em;}
+  .cer-card .eg{font-size:.9rem; color:var(--muted); margin-top:8px; border-top:1px dashed var(--line); padding-top:8px;}
+  .c-claim{border-color:var(--claim); background:var(--claim-bg);}
+  .c-ev{border-color:var(--evidence); background:var(--evidence-bg);}
+  .c-re{border-color:var(--reason); background:var(--reason-bg);}
+  .b-claim{background:var(--claim)} .b-ev{background:var(--evidence)} .b-re{background:var(--reason)}
+
+  /* mini games */
+  .q-row{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
+    padding:12px 14px; border:1px solid var(--line); border-radius:12px; margin:10px 0; background:var(--card);}
+  .q-row .txt{flex:1 1 240px; font-size:1rem;}
+  .q-row .btns{display:flex; gap:8px; flex-wrap:wrap;}
+  .btn{border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer;
+    padding:8px 13px; border-radius:10px; font-weight:600; font-size:.9rem; transition:.12s;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.claim{border-color:var(--claim); color:var(--claim);}
+  .btn.evidence{border-color:var(--evidence); color:var(--evidence);}
+  .btn.reason{border-color:var(--reason); color:var(--reason);}
+  .q-row.correct{background:var(--evidence-bg); border-color:var(--evidence);}
+  .q-row.correct .btns{display:none;}
+  .q-row .tag{display:none; font-weight:700; font-size:.85rem;}
+  .q-row.correct .tag{display:inline-flex; gap:6px; align-items:center;}
+  .fb{font-size:.86rem; color:var(--muted); margin-top:4px; width:100%;}
+  .shake{animation:shake .3s;}
+  @keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+  .scorebar{font-weight:700; margin:6px 0 0;}
+
+  /* thesis picker */
+  .thesis-opt{display:block; border:2px solid var(--line); border-radius:14px; padding:14px 16px; margin:10px 0; cursor:pointer; transition:.15s;}
+  .thesis-opt:hover{border-color:var(--ink);}
+  .thesis-opt.sel{border-color:var(--ink); background:var(--claim-bg);}
+  .thesis-opt .tag2{font-weight:800; color:var(--claim);}
+  .thesis-opt.sel .tag2{color:var(--ink);}
+  .rec{font-size:.72rem; background:var(--ok); color:#fff; padding:2px 8px; border-radius:999px; margin-left:6px;}
+
+  /* builder */
+  .builder{display:grid; grid-template-columns:1.15fr .85fr; gap:18px;}
+  @media(max-width:860px){ .builder{grid-template-columns:1fr;} }
+  .field{margin:12px 0;}
+  .field label{font-weight:700; font-size:.95rem; display:flex; align-items:center; gap:8px; margin-bottom:4px;}
+  .field .hint{color:var(--muted); font-weight:400; font-size:.82rem;}
+  textarea, input.txtf{width:100%; border:2px solid var(--line); border-radius:10px; padding:10px 12px;
+    font:inherit; background:var(--sand); color:var(--ink); resize:vertical;}
+  textarea:focus, input.txtf:focus{outline:none; border-color:var(--claim);}
+  textarea[data-kind="claim"]:focus{border-color:var(--claim)}
+  textarea[data-kind="evidence"]:focus{border-color:var(--evidence)}
+  textarea[data-kind="reason"]:focus{border-color:var(--reason)}
+  .dot{width:11px;height:11px;border-radius:50%; display:inline-block;}
+  .breedhead{display:flex; align-items:center; gap:10px; margin:20px 0 2px; padding:8px 12px; border-radius:12px; font-weight:800;}
+  .breedhead.basenji{background:rgba(15,118,110,.12); color:var(--basenji); border:1px solid var(--basenji);}
+  .breedhead.azawakh{background:rgba(180,83,9,.12); color:var(--azawakh); border:1px solid var(--azawakh);}
+
+  .chips{display:flex; gap:6px; flex-wrap:wrap; margin-top:6px;}
+  .chip{font-size:.78rem; padding:4px 10px; border-radius:999px; border:1px dashed var(--reason); color:var(--reason); background:var(--card); cursor:pointer;}
+  .chip:hover{background:var(--reason-bg);}
+
+  /* fact bank */
+  .factbank{position:sticky; top:70px; align-self:start;}
+  .fb-note{font-size:.82rem; color:var(--muted); margin:2px 0 10px;}
+  .fact{border:1px solid var(--line); border-radius:10px; padding:9px 11px; margin:7px 0; font-size:.9rem; cursor:pointer; background:var(--card); transition:.12s;}
+  .fact:hover{border-color:var(--evidence); transform:translateY(-1px);}
+  .fact .verify{display:block; font-size:.7rem; color:var(--azawakh); margin-top:3px; font-weight:700;}
+  .fb-group h4{margin:14px 0 2px; font-size:.95rem;}
+  .fb-group.basenji h4{color:var(--basenji)} .fb-group.azawakh h4{color:var(--azawakh)}
+
+  /* preview + check */
+  #essayPreview{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px 24px; box-shadow:var(--shadow);}
+  #essayPreview h3{margin:.2em 0;}
+  #essayPreview p{margin:.5em 0;}
+  .sp-claim{color:var(--claim); font-weight:600;}
+  .sp-ev{color:var(--evidence);}
+  .sp-re{color:var(--reason); font-weight:600;}
+  .ph{color:var(--muted); font-style:italic;}
+  .legend{display:flex; gap:14px; flex-wrap:wrap; font-size:.85rem; margin:6px 0 14px; color:var(--muted);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+
+  .checklist li{list-style:none; margin:8px 0; padding-left:30px; position:relative; color:var(--muted);}
+  .checklist li::before{content:"○"; position:absolute; left:0; font-size:1.1rem; color:var(--line);}
+  .checklist li.ok{color:var(--ink);}
+  .checklist li.ok::before{content:"✓"; color:var(--ok); font-weight:800;}
+  ul.checklist{padding:0; margin:6px 0;}
+  .ready{background:var(--evidence-bg); border:1px solid var(--evidence); color:var(--evidence);
+    padding:12px 16px; border-radius:12px; font-weight:700; margin-top:12px; display:none;}
+  .ready.show{display:block;}
+  .wc{font-size:.85rem; color:var(--muted);}
+
+  .toolbar{display:flex; gap:10px; flex-wrap:wrap; margin:16px 0;}
+  .btn.primary{background:var(--ink); color:var(--sand); border-color:var(--ink);}
+  .btn.warn{border-color:#dc2626; color:#dc2626;}
+  .navbtns{display:flex; justify-content:space-between; margin-top:18px;}
+  .save-ind{position:fixed; bottom:14px; right:14px; background:var(--ink); color:var(--sand);
+    padding:6px 12px; border-radius:999px; font-size:.8rem; opacity:0; transition:.3s; z-index:30;}
+  .save-ind.show{opacity:.92;}
+
+  details.grown{margin:18px 0; border:1px dashed var(--line); border-radius:12px; padding:6px 14px; background:var(--card);}
+  details.grown summary{cursor:pointer; font-weight:700; padding:6px 0;}
+  details.grown ul{margin:4px 0 10px;}
+
+  @media print{
+    body{background:#fff;}
+    nav.steps, header.hero, .factbank, .toolbar, .navbtns, .save-ind, details.grown, .legend, #checkCard{display:none !important;}
+    section.panel{display:block !important;}
+    .builder{display:none;}
+    #essayPreview{border:none; box-shadow:none; padding:0;}
+    .sp-claim,.sp-ev,.sp-re{color:#000 !important;}
+    .ph{display:none;}
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="dogs">🐕&nbsp;&nbsp;🐕‍🦺</div>
+  <h1>The CER Dog Lab</h1>
+  <p>Compare two amazing African dogs — the <b style="color:var(--basenji)">Basenji</b> and the <b style="color:var(--azawakh)">Azawakh</b> — and learn to write a <b>Claim → Evidence → Reasoning</b> essay. <br>This is <i>your</i> lab notebook: you type the ideas, and it helps you shape them.</p>
+</header>
+
+<nav class="steps" id="nav"></nav>
+
+<div class="wrap">
+
+  <!-- STEP 1: LEARN -->
+  <section class="panel show" data-step="0">
+    <h2 class="title">Step 1 — What is C.E.R.?</h2>
+    <p class="lead">Every good argument has three parts. Read the cards, then try the quick game.</p>
+    <div class="cer-grid">
+      <div class="cer-card c-claim">
+        <h3><span class="pill b-claim">Claim</span></h3>
+        <div>What you think is <b>true</b>. Someone could <i>argue</i> with it.</div>
+        <div class="eg">🐕 “The Basenji is built for the rainforest.”</div>
+      </div>
+      <div class="cer-card c-ev">
+        <h3><span class="pill b-ev">Evidence</span></h3>
+        <div>The <b>facts</b> that back up your claim. Nobody argues with a fact.</div>
+        <div class="eg">🐕 “The Basenji has a short coat and a curled tail.”</div>
+      </div>
+      <div class="cer-card c-re">
+        <h3><span class="pill b-re">Reasoning</span></h3>
+        <div>The <b>bridge</b>: it explains <i>why</i> the evidence proves the claim. Start it with <b>“because…”</b></div>
+        <div class="eg">🐕 “…<b>because</b> a short coat keeps a dog cool in a hot, wet forest.”</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">🎯 Quick game: Fact or Claim?</h3>
+      <p class="lead">A <b>fact</b> can be looked up. A <b>claim</b> is something you have to <i>prove</i>. Tap your answer.</p>
+      <div id="foc"></div>
+      <div class="scorebar" id="focScore"></div>
+    </div>
+    <div class="navbtns"><span></span><button class="btn primary" onclick="go(1)">Next: Practice sorting →</button></div>
+  </section>
+
+  <!-- STEP 2: SORT -->
+  <section class="panel" data-step="1">
+    <h2 class="title">Step 2 — The 3-Color Trick</h2>
+    <p class="lead">Writers <b>color-code</b> their sentences to make sure every part is there. Read each sentence and tap whether it's a <b style="color:var(--claim)">Claim</b>, <b style="color:var(--evidence)">Evidence</b>, or <b style="color:var(--reason)">Reasoning</b>.</p>
+    <div id="sort"></div>
+    <p class="scorebar" id="sortScore"></p>
+    <div class="navbtns"><button class="btn" onclick="go(0)">← Back</button><button class="btn primary" onclick="go(2)">Next: Pick your thesis →</button></div>
+  </section>
+
+  <!-- STEP 3: THESIS -->
+  <section class="panel" data-step="2">
+    <h2 class="title">Step 3 — Pick Your Big Idea (Thesis)</h2>
+    <p class="lead">A compare essay needs a <b>spine</b> — one main idea you're proving. Pick the angle you like best. (You can reword it later.)</p>
+
+    <label class="thesis-opt" data-thesis="Both breeds come from Africa, but the Basenji was shaped by the rainforest and the Azawakh by the desert — and you can see it in their bodies and their behavior.">
+      <span class="tag2">Angle A — Environment shaped them<span class="rec">easiest to prove</span></span>
+      <p style="margin:.4em 0 0">“Both come from Africa, but the Basenji was shaped by the <b>rainforest</b> and the Azawakh by the <b>desert</b> — you can see it in their bodies and behavior.”</p>
+    </label>
+
+    <label class="thesis-opt" data-thesis="Both the Basenji and the Azawakh are ancient African hunting dogs, but they hunt in completely different ways, which makes them good at different jobs.">
+      <span class="tag2">Angle B — Different jobs</span>
+      <p style="margin:.4em 0 0">“Both are ancient African hunting dogs, but they hunt in <b>different ways</b>, which makes them good at different jobs.”</p>
+    </label>
+
+    <label class="thesis-opt" data-thesis="If my family could own only one dog, the ______ would be the better fit for us because ______.">
+      <span class="tag2">Angle C — Which would you pick?</span>
+      <p style="margin:.4em 0 0">“If my family could own only one, the ______ would be the better fit because ______.”</p>
+    </label>
+
+    <div class="navbtns"><button class="btn" onclick="go(1)">← Back</button><button class="btn primary" onclick="go(3)">Next: Build your essay →</button></div>
+  </section>
+
+  <!-- STEP 4: BUILD -->
+  <section class="panel" data-step="3">
+    <h2 class="title">Step 4 — Build It</h2>
+    <p class="lead">Fill in each box in your own words. Watch your essay appear on the right — <b style="color:var(--claim)">claims turn blue</b>, <b style="color:var(--evidence)">evidence green</b>, <b style="color:var(--reason)">reasoning purple</b>. Click a fact to drop it into whichever Evidence box you tapped last.</p>
+    <div class="builder">
+      <div>
+        <div class="field">
+          <label>🪝 Hook <span class="hint">— one fun fact to grab the reader</span></label>
+          <input class="txtf" data-save id="hook" placeholder="One of these dogs almost never barks…">
+        </div>
+        <div class="field">
+          <label>🌍 Background <span class="hint">— where are they from?</span></label>
+          <textarea data-save id="background" rows="2" placeholder="Both dogs come from Africa, but from very different places…"></textarea>
+        </div>
+        <div class="field">
+          <label><span class="dot" style="background:var(--claim)"></span> Thesis (your big idea)</label>
+          <textarea data-save id="thesis" rows="2" placeholder="Pick an angle in Step 3, or write your own big idea here."></textarea>
+        </div>
+
+        <div class="breedhead basenji">🐕 Body Paragraph 1 — The Basenji</div>
+        <div class="field">
+          <label><span class="dot" style="background:var(--claim)"></span> Claim</label>
+          <textarea data-save data-kind="claim" id="b1_claim" rows="2" placeholder="The Basenji is built for…"></textarea>
+        </div>
+        <div class="field">
+          <label><span class="dot" style="background:var(--evidence)"></span> Evidence (2 facts)</label>
+          <textarea data-save data-kind="evidence" data-ev id="b1_ev" rows="2" placeholder="Fact 1… and fact 2…"></textarea>
+        </div>
+        <div class="field">
+          <label><span class="dot" style="background:var(--reason)"></span> Reasoning</label>
+          <textarea data-save data-kind="reason" id="b1_reason" rows="2" placeholder="This shows… because…"></textarea>
+          <div class="chips" data-target="b1_reason">
+            <span class="chip">This shows</span><span class="chip">This matters because</span><span class="chip">which means</span>
+          </div>
+        </div>
+
+        <div class="breedhead azawakh">🐕‍🦺 Body Paragraph 2 — The Azawakh</div>
+        <div class="field">
+          <label><span class="dot" style="background:var(--claim)"></span> Claim</label>
+          <textarea data-save data-kind="claim" id="b2_claim" rows="2" placeholder="The Azawakh is built for…"></textarea>
+        </div>
+        <div class="field">
+          <label><span class="dot" style="background:var(--evidence)"></span> Evidence (2 facts)</label>
+          <textarea data-save data-kind="evidence" data-ev id="b2_ev" rows="2" placeholder="Fact 1… and fact 2…"></textarea>
+        </div>
+        <div class="field">
+          <label><span class="dot" style="background:var(--reason)"></span> Reasoning</label>
+          <textarea data-save data-kind="reason" id="b2_reason" rows="2" placeholder="This shows… because…"></textarea>
+          <div class="chips" data-target="b2_reason">
+            <span class="chip">This shows</span><span class="chip">This matters because</span><span class="chip">which means</span>
+          </div>
+        </div>
+
+        <div class="breedhead" style="background:var(--claim-bg); color:var(--ink); border:1px solid var(--claim)">🏁 Conclusion</div>
+        <div class="field">
+          <label>Restate your big idea (new words)</label>
+          <textarea data-save id="c_restate" rows="2" placeholder="Say your thesis again, but in a fresh way."></textarea>
+        </div>
+        <div class="field">
+          <label>The “so what?” <span class="hint">— what do these dogs teach us?</span></label>
+          <textarea data-save id="c_big" rows="2" placeholder="What do these two dogs show about how animals fit the place they come from?"></textarea>
+        </div>
+      </div>
+
+      <aside class="factbank">
+        <div class="card" style="margin-top:0">
+          <h3 style="margin-top:0">🔎 Fact Bank</h3>
+          <p class="fb-note">Tap an <b>Evidence</b> box, then click a fact to add it. Always double-check facts — that's a real researcher's job!</p>
+          <div class="fb-group basenji">
+            <h4>🐕 Basenji</h4>
+            <div class="fact">comes from the rainforests of Central Africa (the Congo region)<span class="verify">✓ verify</span></div>
+            <div class="fact">almost never barks — it makes a yodel sound called a “baroo”<span class="verify">✓ verify</span></div>
+            <div class="fact">small (about 16–17 inches tall) with a short coat and a tightly curled tail<span class="verify">✓ verify</span></div>
+            <div class="fact">very clean — it grooms itself like a cat and has almost no doggy smell<span class="verify">✓ verify</span></div>
+            <div class="fact">an ancient breed shown in art from long-ago Egypt<span class="verify">✓ verify</span></div>
+          </div>
+          <div class="fb-group azawakh">
+            <h4>🐕‍🦺 Azawakh</h4>
+            <div class="fact">comes from the Sahel, a dry region of West Africa (Mali, Niger, Burkina Faso)<span class="verify">✓ verify</span></div>
+            <div class="fact">raised by nomadic people like the Tuareg as a hunter and a guard dog<span class="verify">✓ verify</span></div>
+            <div class="fact">a sighthound — very tall and lean (about 24–29 inches) with long legs<span class="verify">✓ verify</span></div>
+            <div class="fact">has a thin coat and can run very fast across open land<span class="verify">✓ verify</span></div>
+            <div class="fact">so lean you can often see its muscles and bones under the skin<span class="verify">✓ verify</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="navbtns"><button class="btn" onclick="go(2)">← Back</button><button class="btn primary" onclick="go(4)">Next: Check &amp; finish →</button></div>
+  </section>
+
+  <!-- STEP 5: CHECK -->
+  <section class="panel" data-step="4">
+    <h2 class="title">Step 5 — Check &amp; Finish</h2>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--claim)"></span> Claim</span>
+      <span><span class="dot" style="background:var(--evidence)"></span> Evidence</span>
+      <span><span class="dot" style="background:var(--reason)"></span> Reasoning</span>
+    </div>
+
+    <div class="card" id="checkCard">
+      <h3 style="margin-top:0">✅ Self-check</h3>
+      <ul class="checklist" id="checklist"></ul>
+      <div class="wc" id="wordcount"></div>
+      <div class="ready" id="ready">🎉 Every part is here — you're ready to turn it in! Read it out loud once to catch anything bumpy.</div>
+    </div>
+
+    <h3>📄 Your essay so far</h3>
+    <p class="lead">This is your writing, color-coded. Missing a color in a paragraph? Go back and add it.</p>
+    <div id="essayPreview"></div>
+
+    <div class="toolbar">
+      <button class="btn primary" onclick="window.print()">🖨️ Print</button>
+      <button class="btn" onclick="copyEssay()">📋 Copy my essay</button>
+      <button class="btn" onclick="downloadEssay()">💾 Download</button>
+      <button class="btn warn" onclick="resetAll()">↺ Start over</button>
+    </div>
+
+    <details class="grown">
+      <summary>👋 For grown-ups (coaching tips)</summary>
+      <ul>
+        <li><b>Praise the “because,” not the fact.</b> Finding a fact is easy; the reasoning bridge is the real skill.</li>
+        <li><b>Have her say the reasoning out loud</b> before typing it. Talking it out beats staring at the page.</li>
+        <li><b>Use the colors as a checklist:</b> a body paragraph with no purple has no reasoning yet.</li>
+        <li><b>The “✓ verify” tags are on purpose</b> — checking a fact before using it is part of the assignment.</li>
+      </ul>
+    </details>
+
+    <div class="navbtns"><button class="btn" onclick="go(3)">← Back to building</button><span></span></div>
+  </section>
+
+</div>
+
+<div class="save-ind" id="saveInd">Saved ✓</div>
+
+<script>
+const STEPS=["Learn","Sort","Thesis","Build","Check"];
+const KEY="mela_cerdoglab_v1";
+
+/* ---------- nav ---------- */
+const nav=document.getElementById("nav");
+STEPS.forEach((s,i)=>{
+  const b=document.createElement("button");
+  b.innerHTML=`<span class="n">${i+1}</span>${s}`;
+  b.onclick=()=>go(i);
+  nav.appendChild(b);
+});
+function go(i){
+  document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("show",+p.dataset.step===i));
+  [...nav.children].forEach((b,bi)=>b.classList.toggle("active",bi===i));
+  if(i===4){build();check();}
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* ---------- Step 1: Fact or Claim ---------- */
+const focData=[
+  {t:"The Basenji comes from Central Africa.", claim:false, why:"You can look this up — it's a fact."},
+  {t:"The Basenji is the better dog for a hot forest.", claim:true, why:"You'd have to prove this — it's a claim."},
+  {t:"The Azawakh is very tall and thin.", claim:false, why:"Measurable and lookup-able — a fact."},
+  {t:"The Azawakh is the coolest desert dog ever.", claim:true, why:"Someone could disagree — that makes it a claim."},
+];
+let focRight=0;
+const focBox=document.getElementById("foc");
+focData.forEach((q,i)=>{
+  const row=document.createElement("div"); row.className="q-row";
+  row.innerHTML=`<div class="txt">${q.t}</div>
+    <div class="btns"><button class="btn claim">Claim</button><button class="btn evidence">Fact</button></div>
+    <span class="tag" style="color:var(--evidence)">✓ ${q.why}</span>`;
+  const [claimBtn,factBtn]=row.querySelectorAll("button");
+  const answer=(isClaim)=>{
+    if(isClaim===q.claim){row.classList.add("correct"); focRight++; updFoc();}
+    else{row.classList.add("shake"); setTimeout(()=>row.classList.remove("shake"),300);}
+  };
+  claimBtn.onclick=()=>answer(true); factBtn.onclick=()=>answer(false);
+  focBox.appendChild(row);
+});
+function updFoc(){document.getElementById("focScore").textContent=
+  focRight===focData.length?`⭐ ${focRight}/${focData.length} — you've got it!`:`${focRight}/${focData.length} correct`;}
+
+/* ---------- Step 2: Sorting ---------- */
+const sortData=[
+  {t:"A husky is better suited to cold weather than a chihuahua.", ans:"claim", why:"It's an arguable point — a claim."},
+  {t:"Huskies have a thick double coat.", ans:"evidence", why:"A checkable fact — evidence."},
+  {t:"This matters because a thick coat traps heat, so the husky stays warm where a chihuahua would get cold.", ans:"reason", why:"It explains WHY — reasoning."},
+  {t:"The Basenji comes from the rainforests of Central Africa.", ans:"evidence", why:"A fact you can look up — evidence."},
+  {t:"The Azawakh is the better desert dog.", ans:"claim", why:"Something to prove — a claim."},
+  {t:"This shows the Azawakh's thin coat helps it stay cool because it lets body heat escape.", ans:"reason", why:"A because-bridge — reasoning."},
+];
+let sortRight=0;
+const sortBox=document.getElementById("sort");
+sortData.forEach(q=>{
+  const row=document.createElement("div"); row.className="q-row";
+  row.innerHTML=`<div class="txt">${q.t}</div>
+    <div class="btns">
+      <button class="btn claim" data-a="claim">Claim</button>
+      <button class="btn evidence" data-a="evidence">Evidence</button>
+      <button class="btn reason" data-a="reason">Reasoning</button>
+    </div>
+    <span class="tag" style="color:var(--evidence)">✓ ${q.why}</span>`;
+  row.querySelectorAll("button").forEach(btn=>btn.onclick=()=>{
+    if(btn.dataset.a===q.ans){row.classList.add("correct"); sortRight++; updSort();}
+    else{row.classList.add("shake"); setTimeout(()=>row.classList.remove("shake"),300);}
+  });
+  sortBox.appendChild(row);
+});
+function updSort(){document.getElementById("sortScore").textContent=
+  sortRight===sortData.length?`⭐ ${sortRight}/${sortData.length} — sorted like a pro!`:`${sortRight}/${sortData.length} sorted`;}
+
+/* ---------- Step 3: Thesis ---------- */
+document.querySelectorAll(".thesis-opt").forEach(opt=>{
+  opt.onclick=()=>{
+    document.querySelectorAll(".thesis-opt").forEach(o=>o.classList.remove("sel"));
+    opt.classList.add("sel");
+    const th=document.getElementById("thesis");
+    if(!th.value.trim() || confirm("Put this big idea into your Thesis box? (This replaces what's there.)")){
+      th.value=opt.dataset.thesis; save();
+    }
+  };
+});
+
+/* ---------- Step 4: Builder ---------- */
+let lastEv=null;
+document.querySelectorAll("textarea[data-ev]").forEach(t=>t.addEventListener("focus",()=>lastEv=t));
+document.querySelectorAll("[data-save]").forEach(el=>el.addEventListener("input",()=>{save();}));
+
+// sentence-starter chips
+document.querySelectorAll(".chips").forEach(box=>{
+  const target=document.getElementById(box.dataset.target);
+  box.querySelectorAll(".chip").forEach(chip=>chip.onclick=()=>{
+    const add=(target.value.trim()?" ":"")+chip.textContent+" ";
+    target.value+=add; target.focus(); save();
+  });
+});
+
+// fact bank -> last evidence box
+document.querySelectorAll(".fact").forEach(f=>f.onclick=()=>{
+  if(!lastEv){toast("Tap an Evidence box first ☝️"); return;}
+  const raw=f.childNodes[0].textContent.trim();
+  const txt=raw.charAt(0).toUpperCase()+raw.slice(1);
+  lastEv.value += (lastEv.value.trim()? " " : "") + txt + ".";
+  lastEv.focus(); save();
+});
+
+/* ---------- persistence ---------- */
+function save(){
+  const data={};
+  document.querySelectorAll("[data-save]").forEach(el=>data[el.id]=el.value);
+  localStorage.setItem(KEY,JSON.stringify(data));
+  const s=document.getElementById("saveInd"); s.classList.add("show");
+  clearTimeout(save._t); save._t=setTimeout(()=>s.classList.remove("show"),900);
+  build(); check();
+}
+function load(){
+  try{const d=JSON.parse(localStorage.getItem(KEY)||"{}");
+    Object.entries(d).forEach(([k,v])=>{const el=document.getElementById(k); if(el)el.value=v;});
+  }catch(e){}
+}
+
+/* ---------- preview ---------- */
+const val=id=>(document.getElementById(id).value||"").trim();
+function span(cls,txt,ph){return txt?`<span class="${cls}">${esc(txt)}</span>`:`<span class="ph">(${ph})</span>`;}
+function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+function build(){
+  const el=document.getElementById("essayPreview");
+  el.innerHTML=`
+    <h3>Basenji vs. Azawakh</h3>
+    <p>${val('hook')?esc(val('hook'))+" ":'<span class="ph">(add a hook) </span>'}${val('background')?esc(val('background'))+" ":'<span class="ph">(add background) </span>'}${span("sp-claim",val('thesis'),"add your thesis")}</p>
+    <p><b style="color:var(--basenji)">The Basenji.</b> ${span("sp-claim",val('b1_claim'),"claim")} ${span("sp-ev",val('b1_ev'),"evidence")} ${span("sp-re",val('b1_reason'),"reasoning")}</p>
+    <p><b style="color:var(--azawakh)">The Azawakh.</b> ${span("sp-claim",val('b2_claim'),"claim")} ${span("sp-ev",val('b2_ev'),"evidence")} ${span("sp-re",val('b2_reason'),"reasoning")}</p>
+    <p>${span("sp-claim",val('c_restate'),"restate your big idea")} ${val('c_big')?esc(val('c_big')):'<span class="ph">(add your “so what?”)</span>'}</p>`;
+}
+
+/* ---------- checklist ---------- */
+const bridge=/\b(because|shows|means|so that|matters|so\b)/i;
+function check(){
+  const items=[
+    ["A hook to grab the reader", !!val('hook')],
+    ["A clear big idea (thesis)", val('thesis').length>15],
+    ["Basenji: a claim", !!val('b1_claim')],
+    ["Basenji: evidence (facts)", val('b1_ev').length>10],
+    ["Basenji: reasoning with a “because” bridge", bridge.test(val('b1_reason'))],
+    ["Azawakh: a claim", !!val('b2_claim')],
+    ["Azawakh: evidence (facts)", val('b2_ev').length>10],
+    ["Azawakh: reasoning with a “because” bridge", bridge.test(val('b2_reason'))],
+    ["A conclusion that restates + says “so what”", !!val('c_restate') && !!val('c_big')],
+  ];
+  const ul=document.getElementById("checklist"); ul.innerHTML="";
+  let done=0;
+  items.forEach(([label,ok])=>{
+    const li=document.createElement("li"); li.textContent=label; if(ok){li.classList.add("ok"); done++;}
+    ul.appendChild(li);
+  });
+  document.getElementById("ready").classList.toggle("show",done===items.length);
+  const words=plainEssay().split(/\s+/).filter(Boolean).length;
+  document.getElementById("wordcount").textContent=`Word count: ${words}  •  ${done}/${items.length} parts complete`;
+}
+
+/* ---------- export ---------- */
+function plainEssay(){
+  const p=[];
+  p.push([val('hook'),val('background'),val('thesis')].filter(Boolean).join(" "));
+  p.push([val('b1_claim'),val('b1_ev'),val('b1_reason')].filter(Boolean).join(" "));
+  p.push([val('b2_claim'),val('b2_ev'),val('b2_reason')].filter(Boolean).join(" "));
+  p.push([val('c_restate'),val('c_big')].filter(Boolean).join(" "));
+  return "Basenji vs. Azawakh\n\n"+p.filter(Boolean).join("\n\n");
+}
+function copyEssay(){navigator.clipboard.writeText(plainEssay()).then(()=>toast("Copied! 📋"),()=>toast("Couldn't copy — try Download"));}
+function downloadEssay(){
+  const blob=new Blob([plainEssay()],{type:"text/plain"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+  a.download="Basenji-vs-Azawakh-essay.txt"; a.click(); URL.revokeObjectURL(a.href);
+}
+function resetAll(){if(confirm("Erase everything and start fresh?")){localStorage.removeItem(KEY);
+  document.querySelectorAll("[data-save]").forEach(el=>el.value=""); build(); check();}}
+function toast(msg){const s=document.getElementById("saveInd"); s.textContent=msg; s.classList.add("show");
+  clearTimeout(toast._t); toast._t=setTimeout(()=>{s.classList.remove("show"); s.textContent="Saved ✓";},1400);}
+
+/* ---------- init ---------- */
+load(); build(); check(); updFoc(); updSort();
+</script>
+</body>
+</html>

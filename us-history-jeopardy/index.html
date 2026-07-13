@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US History Jeopardy — Westward, Innovations &amp; Reforms</title>
+<style>
+  :root {
+    --jeop-blue: #060CE9;
+    --jeop-dark: #0A1A5B;
+    --jeop-gold: #D69F4C;
+    --jeop-yellow: #FFCC00;
+    --jeop-white: #FFFFFF;
+    --jeop-green: #2BA84A;
+    --jeop-red: #C73438;
+    --panel-bg: #00138c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(180deg, #050944, #0A1A5B);
+    color: var(--jeop-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+    user-select: none;
+  }
+  button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+
+  /* Start Screen */
+  #start-screen {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 20px; text-align: center;
+  }
+  .logo {
+    font-family: 'Times New Roman', serif; font-weight: 900;
+    font-size: clamp(32px, 7vw, 80px); letter-spacing: 2px;
+    color: var(--jeop-yellow);
+    text-shadow: 3px 3px 0 #000, 6px 6px 12px rgba(0,0,0,0.6);
+    line-height: 1; margin-bottom: 4px;
+  }
+  .logo-sub {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(14px, 2.5vw, 24px); letter-spacing: 4px;
+    color: #fff; margin-bottom: 30px; text-transform: uppercase;
+  }
+  .topic-line {
+    font-size: 14px; color: #aab; max-width: 540px;
+    margin-bottom: 24px; line-height: 1.5;
+  }
+  .start-form {
+    background: rgba(0,0,0,0.35);
+    border: 2px solid var(--jeop-gold);
+    border-radius: 16px;
+    padding: 26px 36px;
+    max-width: 500px; width: 100%;
+  }
+  .start-form label {
+    display: block; text-align: left; font-weight: bold;
+    margin: 12px 0 6px;
+    font-size: 13px; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--jeop-yellow);
+  }
+  .start-form input[type="text"], .start-form input[type="number"] {
+    width: 100%; padding: 11px 14px; font-size: 17px;
+    border: 2px solid var(--jeop-gold); border-radius: 8px;
+    background: #000; color: #fff; font-family: inherit;
+  }
+  .settings-row { display: flex; gap: 12px; align-items: center; margin-top: 4px; }
+  .checkbox-row {
+    display: flex; align-items: center; gap: 8px;
+    margin: 8px 0; font-size: 14px;
+  }
+  .checkbox-row input { transform: scale(1.3); accent-color: var(--jeop-gold); }
+  .big-btn {
+    background: var(--jeop-gold); color: #000;
+    font-weight: 900; font-size: 20px;
+    padding: 13px 36px; border-radius: 10px;
+    margin-top: 20px; letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: transform .12s, box-shadow .12s;
+    box-shadow: 0 4px 0 #8a6a2c;
+  }
+  .big-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 0 #8a6a2c; }
+  .big-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #8a6a2c; }
+  .small-btn {
+    background: #fff; color: #000; font-weight: bold;
+    padding: 8px 14px; border-radius: 6px; font-size: 13px;
+  }
+  .small-btn:hover { background: var(--jeop-yellow); }
+  .small-btn.danger { background: var(--jeop-red); color: #fff; }
+
+  /* Mastery panel */
+  .mastery-panel {
+    margin-top: 18px; padding: 14px;
+    background: rgba(0,0,0,0.35); border: 1px dashed var(--jeop-gold);
+    border-radius: 10px; max-width: 500px; width: 100%;
+    font-size: 13px;
+  }
+  .mastery-panel h3 {
+    color: var(--jeop-yellow); margin-bottom: 8px;
+    font-size: 14px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .mastery-bar {
+    height: 14px; background: rgba(0,0,0,0.5);
+    border-radius: 99px; overflow: hidden; margin: 6px 0;
+    border: 1px solid var(--jeop-gold);
+  }
+  .mastery-bar > div {
+    height: 100%;
+    background: linear-gradient(90deg, var(--jeop-red), var(--jeop-yellow), var(--jeop-green));
+    transition: width .4s ease;
+  }
+  .mastery-stats { color: #aab; font-size: 12px; }
+  .reset-btn {
+    background: transparent; border: 1px solid #888;
+    color: #888; padding: 4px 10px; border-radius: 6px;
+    font-size: 11px; margin-top: 6px;
+  }
+  .reset-btn:hover { color: var(--jeop-red); border-color: var(--jeop-red); }
+
+  /* Game Screen */
+  #game-screen { display: none; min-height: 100vh; flex-direction: column; }
+  #game-screen.active { display: flex; }
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 18px; background: rgba(0,0,0,0.4);
+    border-bottom: 2px solid var(--jeop-gold);
+    flex-wrap: wrap; gap: 10px;
+  }
+  .round-title {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(16px, 2.6vw, 26px); font-weight: 900;
+    color: var(--jeop-yellow); letter-spacing: 2px; text-transform: uppercase;
+  }
+  .players { display: flex; gap: 12px; }
+  .player-card {
+    background: var(--panel-bg);
+    border: 2px solid var(--jeop-gold);
+    border-radius: 10px; padding: 6px 14px;
+    min-width: 130px; text-align: center;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .player-card.active-player {
+    box-shadow: 0 0 0 3px var(--jeop-yellow), 0 0 20px var(--jeop-yellow);
+    transform: translateY(-2px);
+  }
+  .player-name {
+    font-size: 13px; font-weight: bold; letter-spacing: 1px;
+    text-transform: uppercase; color: #fff;
+  }
+  .player-score {
+    font-family: 'Times New Roman', serif; font-weight: 900;
+    font-size: 22px; color: var(--jeop-yellow);
+  }
+  .player-score.negative { color: #ff5d62; }
+  .score-adjust { display: flex; gap: 4px; justify-content: center; margin-top: 4px; }
+  .score-adjust button {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid var(--jeop-gold);
+    color: #fff; padding: 2px 8px; font-size: 10px;
+    border-radius: 4px; cursor: pointer;
+  }
+
+  /* Board */
+  .board-wrap {
+    flex: 1; padding: 16px;
+    display: flex; justify-content: center; align-items: flex-start;
+  }
+  .board {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 6px; width: 100%; max-width: 1200px;
+  }
+  .board .header {
+    background: var(--panel-bg);
+    border: 2px solid var(--jeop-gold);
+    aspect-ratio: 5/2;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 6px;
+    font-family: 'Times New Roman', serif; font-weight: 900;
+    font-size: clamp(12px, 1.4vw, 20px); letter-spacing: 1px;
+    text-transform: uppercase; color: #fff;
+    text-shadow: 2px 2px 0 #000; border-radius: 6px;
+  }
+  .board .cell {
+    background: var(--panel-bg);
+    border: 2px solid var(--jeop-gold);
+    aspect-ratio: 5/3;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Times New Roman', serif; font-weight: 900;
+    font-size: clamp(22px, 3.2vw, 44px);
+    color: var(--jeop-gold); text-shadow: 2px 2px 0 #000;
+    border-radius: 6px; cursor: pointer;
+    transition: background .1s, transform .08s;
+    position: relative;
+  }
+  .board .cell:hover { background: #001cb0; }
+  .board .cell:active { transform: scale(.98); }
+  .board .cell.used {
+    background: #050944; color: transparent; cursor: default;
+    border-color: #222;
+  }
+  .board .cell.used:hover { background: #050944; }
+  /* Mastery dot in corner */
+  .board .cell .dot {
+    position: absolute; top: 4px; right: 4px;
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .dot.lvl-0 { background: #888; }
+  .dot.lvl-1 { background: var(--jeop-red); box-shadow: 0 0 6px var(--jeop-red); }
+  .dot.lvl-2 { background: orange; }
+  .dot.lvl-3 { background: var(--jeop-yellow); }
+  .dot.lvl-4 { background: var(--jeop-green); box-shadow: 0 0 6px var(--jeop-green); }
+
+  /* Clue Overlay */
+  .overlay {
+    position: fixed; inset: 0; background: var(--jeop-blue);
+    z-index: 100; display: none; flex-direction: column;
+    padding: 20px; animation: zoomIn .25s ease-out;
+  }
+  .overlay.active { display: flex; }
+  @keyframes zoomIn {
+    from { transform: scale(.3); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .clue-header {
+    text-align: center; color: #fff;
+    font-family: 'Times New Roman', serif; font-weight: bold;
+    margin-bottom: 10px; text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .clue-header .cat { color: var(--jeop-yellow); font-size: clamp(15px, 2vw, 22px); }
+  .clue-header .val { font-size: clamp(18px, 2.3vw, 28px); }
+  .clue-body {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 18px; text-align: center;
+    max-width: 1100px; margin: 0 auto; width: 100%;
+  }
+  .clue-text {
+    font-family: 'Helvetica Neue', sans-serif; font-weight: bold;
+    font-size: clamp(20px, 3.2vw, 40px); line-height: 1.3;
+    color: #fff; text-shadow: 3px 3px 0 #000;
+    text-transform: uppercase; max-width: 90%; padding: 10px;
+  }
+  .clue-answer {
+    font-family: 'Times New Roman', serif; font-weight: 900;
+    font-size: clamp(24px, 3.6vw, 50px); color: var(--jeop-yellow);
+    padding: 14px 28px; background: rgba(0,0,0,0.35);
+    border-radius: 12px; border: 2px dashed var(--jeop-yellow);
+    display: none; animation: slideIn .3s ease-out;
+  }
+  .clue-answer.revealed { display: block; }
+  @keyframes slideIn {
+    from { transform: translateY(-10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .timer-bar {
+    height: 12px; width: min(800px, 90%);
+    background: rgba(0,0,0,0.4);
+    border: 2px solid #fff; border-radius: 999px;
+    overflow: hidden; position: relative;
+  }
+  .timer-bar .fill {
+    height: 100%; width: 100%;
+    background: linear-gradient(90deg, var(--jeop-green), var(--jeop-yellow), var(--jeop-red));
+    transition: width .1s linear;
+  }
+  .clue-footer {
+    padding: 12px; display: flex; flex-wrap: wrap;
+    gap: 10px; justify-content: center;
+  }
+  .clue-footer button {
+    font-size: clamp(13px, 1.4vw, 17px);
+    padding: 11px 18px; border-radius: 8px; font-weight: bold;
+  }
+  .btn-reveal { background: var(--jeop-yellow); color: #000; }
+  .btn-correct { background: var(--jeop-green); color: #fff; }
+  .btn-wrong { background: var(--jeop-red); color: #fff; }
+  .btn-skip { background: #666; color: #fff; }
+
+  /* Daily Double */
+  .dd-overlay {
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at center, #2a3fff, #050944);
+    display: none; flex-direction: column;
+    align-items: center; justify-content: center; z-index: 200;
+  }
+  .dd-overlay.active { display: flex; animation: zoomIn .3s ease-out; }
+  .dd-title {
+    font-family: 'Times New Roman', serif; font-weight: 900;
+    font-size: clamp(36px, 9vw, 100px);
+    color: var(--jeop-yellow); text-shadow: 6px 6px 0 #000;
+    letter-spacing: 4px; animation: pulse 1s infinite;
+    text-align: center;
+  }
+  @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);} }
+  .dd-wager {
+    background: rgba(0,0,0,0.4);
+    border: 2px solid var(--jeop-gold);
+    padding: 18px; margin-top: 26px;
+    border-radius: 12px; text-align: center; max-width: 380px;
+  }
+  .dd-wager label {
+    display: block; margin-bottom: 8px; font-weight: bold;
+    color: var(--jeop-yellow); text-transform: uppercase; letter-spacing: 1px;
+  }
+  .dd-wager input {
+    width: 100%; padding: 12px; font-size: 22px; text-align: center;
+    border: 2px solid var(--jeop-gold); border-radius: 6px;
+    background: #000; color: var(--jeop-yellow);
+    font-family: 'Times New Roman', serif; font-weight: 900;
+  }
+  .dd-wager .max-note { font-size: 12px; color: #ccc; margin-top: 6px; }
+
+  /* Final Jeopardy */
+  .fj-overlay {
+    position: fixed; inset: 0; background: var(--jeop-blue);
+    display: none; flex-direction: column; z-index: 150; padding: 20px;
+  }
+  .fj-overlay.active { display: flex; }
+  .fj-title {
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(26px, 4.5vw, 50px); font-weight: 900;
+    color: var(--jeop-yellow); text-shadow: 4px 4px 0 #000;
+    margin-bottom: 16px; letter-spacing: 3px; text-transform: uppercase;
+  }
+  .fj-body {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 18px;
+  }
+  .fj-cat {
+    font-size: clamp(20px, 2.7vw, 32px);
+    color: var(--jeop-yellow); font-weight: bold;
+    text-transform: uppercase; letter-spacing: 2px;
+  }
+  .fj-wagers {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 18px; width: 100%; max-width: 700px;
+  }
+  .fj-wager-card {
+    background: rgba(0,0,0,0.4);
+    border: 2px solid var(--jeop-gold);
+    padding: 14px; border-radius: 10px; text-align: center;
+  }
+  .fj-wager-card input {
+    width: 100%; padding: 10px; font-size: 18px;
+    text-align: center; background: #000; color: var(--jeop-yellow);
+    border: 2px solid var(--jeop-gold); border-radius: 6px;
+  }
+
+  /* Power-Up Review */
+  .pu-overlay {
+    position: fixed; inset: 0;
+    background: linear-gradient(180deg, #2a0444, #050944);
+    display: none; flex-direction: column;
+    z-index: 180; padding: 20px;
+  }
+  .pu-overlay.active { display: flex; animation: zoomIn .4s ease-out; }
+  .pu-title {
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(28px, 5vw, 56px); font-weight: 900;
+    color: var(--jeop-yellow); text-shadow: 4px 4px 0 #000;
+    margin-bottom: 8px; letter-spacing: 3px; text-transform: uppercase;
+  }
+  .pu-sub {
+    text-align: center; color: #fff; font-size: 14px;
+    max-width: 600px; margin: 0 auto 20px; line-height: 1.5;
+  }
+  .pu-progress {
+    text-align: center; color: var(--jeop-yellow); margin-bottom: 12px;
+    font-size: 15px; font-weight: bold;
+  }
+  .pu-clue-box {
+    background: rgba(0,0,0,0.35); border: 2px solid var(--jeop-gold);
+    border-radius: 12px; padding: 24px; max-width: 800px;
+    margin: 0 auto 18px; text-align: center;
+  }
+  .pu-cat-tag {
+    display: inline-block; background: var(--jeop-gold); color: #000;
+    padding: 4px 12px; border-radius: 99px; font-size: 12px;
+    font-weight: bold; letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pu-clue {
+    font-size: clamp(17px, 2.4vw, 24px);
+    line-height: 1.4; color: #fff; font-weight: bold;
+    margin-bottom: 16px;
+  }
+  .pu-answer {
+    font-family: 'Times New Roman', serif; font-weight: 900;
+    font-size: clamp(20px, 3vw, 32px); color: var(--jeop-yellow);
+    padding: 12px 20px; background: rgba(0,0,0,0.4);
+    border-radius: 10px; border: 2px dashed var(--jeop-yellow);
+    display: none; animation: slideIn .3s ease-out;
+  }
+  .pu-answer.revealed { display: block; }
+  .pu-streaks {
+    display: flex; gap: 6px; justify-content: center; margin-top: 12px;
+  }
+  .pu-streaks .pip {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: rgba(255,255,255,0.2); border: 2px solid var(--jeop-gold);
+  }
+  .pu-streaks .pip.filled { background: var(--jeop-green); }
+
+  /* Game Over */
+  .over-overlay {
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at center, #ffb300, #050944 70%);
+    display: none; flex-direction: column;
+    align-items: center; justify-content: center;
+    z-index: 300; padding: 20px;
+  }
+  .over-overlay.active { display: flex; animation: zoomIn .5s; }
+  .over-title {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(36px, 9vw, 90px); font-weight: 900;
+    color: var(--jeop-yellow); text-shadow: 4px 4px 0 #000;
+    margin-bottom: 24px; text-transform: uppercase;
+    letter-spacing: 3px; text-align: center;
+  }
+  .over-winner {
+    font-size: clamp(22px, 3.5vw, 38px);
+    color: #fff; margin-bottom: 18px; text-align: center;
+  }
+  .over-scores {
+    display: flex; gap: 26px; margin-bottom: 24px;
+    flex-wrap: wrap; justify-content: center;
+  }
+  .over-stats {
+    background: rgba(0,0,0,0.35); border: 1px dashed var(--jeop-gold);
+    padding: 14px; border-radius: 10px;
+    margin-bottom: 22px; max-width: 500px; text-align: center;
+    font-size: 14px; line-height: 1.6;
+  }
+  .over-stats h4 {
+    color: var(--jeop-yellow); margin-bottom: 6px;
+    text-transform: uppercase; letter-spacing: 1px; font-size: 13px;
+  }
+
+  .hidden { display: none !important; }
+
+  .mute-btn {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--jeop-gold);
+    color: var(--jeop-yellow);
+    padding: 6px 12px; border-radius: 20px; font-size: 13px;
+  }
+  .toast {
+    position: fixed; top: 20px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.85); color: var(--jeop-yellow);
+    padding: 12px 22px; border-radius: 8px;
+    font-size: 17px; font-weight: bold; z-index: 500;
+    opacity: 0; transition: opacity .3s;
+    border: 2px solid var(--jeop-gold);
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+
+  @media (max-width: 700px) {
+    .board .header { font-size: 11px; aspect-ratio: 5/3; }
+    .board .cell { font-size: 18px; }
+    .players { flex-direction: column; gap: 6px; }
+    .player-card { min-width: auto; padding: 5px 10px; }
+    .player-score { font-size: 18px; }
+    .fj-wagers { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =========== START SCREEN =========== -->
+<div id="start-screen">
+  <div class="logo">US History</div>
+  <div class="logo-sub">Jeopardy!</div>
+  <div class="topic-line">
+    Westward Expansion, Innovations &amp; Reforms<br>
+    <em>The Struggle for Equality — Packet Review</em>
+  </div>
+
+  <div class="start-form">
+    <label for="p1">Player 1 Name</label>
+    <input type="text" id="p1" maxlength="14" placeholder="Player 1" value="">
+
+    <label for="p2">Player 2 Name (or leave blank for solo)</label>
+    <input type="text" id="p2" maxlength="14" placeholder="(solo)" value="">
+
+    <label for="timer-seconds">Timer per question (seconds)</label>
+    <div class="settings-row">
+      <input type="number" id="timer-seconds" min="0" max="120" value="20" style="max-width:120px;">
+      <span style="font-size:12px; color:#ccc;">0 = no timer</span>
+    </div>
+
+    <div class="checkbox-row" style="margin-top:12px;">
+      <input type="checkbox" id="sound-on" checked>
+      <label for="sound-on" style="margin:0; text-transform:none; font-weight:normal; color:#fff; letter-spacing:0; font-size:14px;">Sound effects &amp; theme music</label>
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="double-round" checked>
+      <label for="double-round" style="margin:0; text-transform:none; font-weight:normal; color:#fff; letter-spacing:0; font-size:14px;">Play Double Jeopardy round</label>
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="final-round" checked>
+      <label for="final-round" style="margin:0; text-transform:none; font-weight:normal; color:#fff; letter-spacing:0; font-size:14px;">End with Final Jeopardy</label>
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="powerup-round" checked>
+      <label for="powerup-round" style="margin:0; text-transform:none; font-weight:normal; color:#fff; letter-spacing:0; font-size:14px;"><strong style="color:var(--jeop-yellow);">Power-Up Review</strong> after game (drills missed questions)</label>
+    </div>
+
+    <button class="big-btn" id="btn-start">Start Game</button>
+  </div>
+
+  <div class="mastery-panel" id="mastery-panel">
+    <h3>Your mastery so far</h3>
+    <div class="mastery-bar"><div id="mastery-fill" style="width:0%"></div></div>
+    <div class="mastery-stats" id="mastery-stats">No play history yet — go get some!</div>
+    <button class="reset-btn" id="btn-reset-progress">Reset Progress</button>
+  </div>
+
+  <div style="margin-top:20px; font-size:12px; color:#aab; max-width:540px; text-align:center; line-height:1.5;">
+    <strong>How adaptive learning works:</strong> Questions you miss come back more often.
+    Questions you nail 3 times in a row get retired. Each game adapts to what you need to practice most.
+  </div>
+</div>
+
+<!-- =========== GAME SCREEN =========== -->
+<div id="game-screen">
+  <div class="topbar">
+    <div class="round-title" id="round-title">Jeopardy!</div>
+    <div class="players" id="players"></div>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <button class="mute-btn" id="btn-mute">Sound: On</button>
+      <button class="small-btn" id="btn-quit">Quit</button>
+    </div>
+  </div>
+  <div class="board-wrap">
+    <div class="board" id="board"></div>
+  </div>
+</div>
+
+<!-- =========== CLUE OVERLAY =========== -->
+<div class="overlay" id="clue-overlay">
+  <div class="clue-header">
+    <div class="cat" id="clue-cat"></div>
+    <div class="val" id="clue-val"></div>
+  </div>
+  <div class="clue-body">
+    <div class="clue-text" id="clue-text"></div>
+    <div class="timer-bar"><div class="fill" id="timer-fill"></div></div>
+    <div class="clue-answer" id="clue-answer"></div>
+  </div>
+  <div class="clue-footer" id="clue-footer"></div>
+</div>
+
+<!-- =========== DAILY DOUBLE OVERLAY =========== -->
+<div class="dd-overlay" id="dd-overlay">
+  <div class="dd-title">DAILY<br>DOUBLE!</div>
+  <div class="dd-wager">
+    <label id="dd-who">Make your wager:</label>
+    <input type="number" id="dd-wager-input" min="5" value="500">
+    <div class="max-note" id="dd-max-note"></div>
+    <button class="big-btn" id="btn-dd-confirm" style="margin-top:12px;">Confirm Wager</button>
+  </div>
+</div>
+
+<!-- =========== FINAL JEOPARDY OVERLAY =========== -->
+<div class="fj-overlay" id="fj-overlay">
+  <div class="fj-title">Final Jeopardy!</div>
+  <div class="fj-body" id="fj-body">
+    <div id="fj-stage-wager">
+      <div class="fj-cat">Category: <span id="fj-cat"></span></div>
+      <div style="color:#fff; text-align:center; margin:14px 0;">Each player, enter your secret wager.<br>Max = your current score (min 0).</div>
+      <div class="fj-wagers" id="fj-wagers"></div>
+      <div style="text-align:center; margin-top:16px;">
+        <button class="big-btn" id="btn-fj-reveal-clue">Reveal Clue</button>
+      </div>
+    </div>
+    <div id="fj-stage-clue" class="hidden" style="text-align:center; width:100%;">
+      <div class="clue-text" id="fj-text" style="margin:18px 0;"></div>
+      <div class="timer-bar"><div class="fill" id="fj-timer-fill"></div></div>
+      <div id="fj-answer" class="clue-answer" style="margin:18px auto;"></div>
+      <div class="clue-footer" id="fj-footer"></div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== POWER-UP REVIEW OVERLAY =========== -->
+<div class="pu-overlay" id="pu-overlay">
+  <div class="pu-title">Power-Up Review</div>
+  <div class="pu-sub">
+    Drilling questions you missed — get each right <strong>twice in a row</strong> to retire it.
+    <br>Don't worry, no points here. This is just practice!
+  </div>
+  <div class="pu-progress" id="pu-progress"></div>
+  <div class="pu-clue-box">
+    <div class="pu-cat-tag" id="pu-cat"></div>
+    <div class="pu-clue" id="pu-clue"></div>
+    <div class="pu-answer" id="pu-answer"></div>
+    <div class="pu-streaks" id="pu-streaks"></div>
+  </div>
+  <div class="clue-footer" id="pu-footer"></div>
+</div>
+
+<!-- =========== GAME OVER OVERLAY =========== -->
+<div class="over-overlay" id="over-overlay">
+  <div class="over-title" id="over-title">Game Over!</div>
+  <div class="over-winner" id="over-winner"></div>
+  <div class="over-scores" id="over-scores"></div>
+  <div class="over-stats" id="over-stats"></div>
+  <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+    <button class="big-btn" id="btn-play-again">Play Again</button>
+    <button class="big-btn" id="btn-new-game" style="background:#fff;">Main Menu</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   CONTENT BANK — US History Packet 1: Westward, Innovations, Reforms
+   ============================================================ */
+const ITEMS = [
+  // ========== JACKSON ERA ==========
+  { id:'j-monroe-doc', cat:'jackson', diff:1,
+    clue:"This 1823 policy by President James Monroe warned European nations to stay out of the Western Hemisphere.",
+    answer:"What is the Monroe Doctrine?", short:"Monroe Doctrine",
+    fact:"1823 policy warning Europe to stay out of the Americas" },
+  { id:'j-peoples-pres', cat:'jackson', diff:1,
+    clue:"Andrew Jackson's nickname — earned because he appealed to common Americans, not just the wealthy elite.",
+    answer:"Who is 'The People's President'?", short:"The People's President",
+    fact:"Andrew Jackson's nickname — appealed to common Americans" },
+  { id:'j-jackson', cat:'jackson', diff:2,
+    clue:"He was elected president in 1828, partly because more common men had recently gained the right to vote.",
+    answer:"Who is Andrew Jackson?", short:"Andrew Jackson",
+    fact:"7th President; elected 1828; called 'The People's President'" },
+  { id:'j-removal-act', cat:'jackson', diff:2,
+    clue:"Signed in 1830, this law forced Native American tribes east of the Mississippi River to move west.",
+    answer:"What is the Indian Removal Act?", short:"Indian Removal Act",
+    fact:"1830 law forcing Native Americans to move west of the Mississippi" },
+  { id:'j-trail', cat:'jackson', diff:3,
+    clue:"This forced 1838 march of the Cherokee from Georgia to Oklahoma killed thousands from cold, hunger, and disease.",
+    answer:"What was the Trail of Tears?", short:"Trail of Tears",
+    fact:"1838 forced Cherokee march to Oklahoma — thousands died" },
+  { id:'j-five-tribes', cat:'jackson', diff:3,
+    clue:"Five tribes forced from the Southeast under Indian Removal: Cherokee, Chickasaw, Choctaw, Creek, and this one.",
+    answer:"What is the Seminole?", short:"Seminole",
+    fact:"The 5th of the Five Civilized Tribes removed from the Southeast" },
+  { id:'j-supreme-court', cat:'jackson', diff:4,
+    clue:"Andrew Jackson defied this branch when it ruled in favor of the Cherokee Nation in Worcester v. Georgia.",
+    answer:"What is the Supreme Court?", short:"Supreme Court",
+    fact:"Ruled for Cherokee in Worcester v. Georgia — Jackson ignored it" },
+  { id:'j-democracy', cat:'jackson', diff:5,
+    clue:"This term describes the political philosophy of the era — power to the common man, distrust of the wealthy elite.",
+    answer:"What is Jacksonian Democracy?", short:"Jacksonian Democracy",
+    fact:"Era's philosophy: power to the common man" },
+
+  // ========== INDUSTRIAL REVOLUTION ==========
+  { id:'i-indrev', cat:'industry', diff:1,
+    clue:"This shift, beginning in the 1700s, changed making goods from being done by hand at home to being done by machines in factories.",
+    answer:"What is the Industrial Revolution?", short:"Industrial Revolution",
+    fact:"Shift from making goods by hand to making them in factories" },
+  { id:'i-whitney', cat:'industry', diff:1,
+    clue:"He invented the cotton gin in 1793, a machine that quickly separated cotton fibers from their seeds.",
+    answer:"Who is Eli Whitney?", short:"Eli Whitney",
+    fact:"Invented the cotton gin in 1793" },
+  { id:'i-cottongin', cat:'industry', diff:2,
+    clue:"This machine, invented by Eli Whitney, made cotton far more profitable but also expanded the demand for enslaved labor.",
+    answer:"What is the cotton gin?", short:"Cotton gin",
+    fact:"Whitney's 1793 machine — separated cotton fibers from seeds" },
+  { id:'i-slater', cat:'industry', diff:2,
+    clue:"He brought British textile-mill secrets to America from memory and built the first successful U.S. cotton mill in the 1790s.",
+    answer:"Who is Samuel Slater?", short:"Samuel Slater",
+    fact:"Built first successful US cotton mill (1790s)" },
+  { id:'i-factories', cat:'industry', diff:3,
+    clue:"The Industrial Revolution moved making goods out of homes and into these new buildings powered by water and steam.",
+    answer:"What are factories?", short:"Factories",
+    fact:"New buildings where the Industrial Revolution made goods" },
+  { id:'i-immigrants', cat:'industry', diff:3,
+    clue:"Many of these came from Ireland and Germany in the early 1800s to work in American factories and on canals and railroads.",
+    answer:"Who are immigrants?", short:"Immigrants",
+    fact:"Came from Ireland & Germany to work in US factories" },
+  { id:'i-lowell', cat:'industry', diff:4,
+    clue:"He started the textile mill system in Massachusetts that hired young women known as 'mill girls'.",
+    answer:"Who is Francis Cabot Lowell?", short:"Francis Cabot Lowell",
+    fact:"Built textile mills in Massachusetts; hired 'mill girls'" },
+  { id:'i-cities', cat:'industry', diff:4,
+    clue:"Factories caused these to grow rapidly as workers and immigrants moved in for jobs — often crowded and unsanitary.",
+    answer:"What are cities?", short:"Cities",
+    fact:"Grew quickly as factories drew workers (urbanization)" },
+  { id:'i-britain', cat:'industry', diff:5,
+    clue:"The Industrial Revolution started in this country before spreading to America in the 1790s.",
+    answer:"What is Great Britain?", short:"Great Britain",
+    fact:"Where the Industrial Revolution started" },
+
+  // ========== TRANSPORTATION ==========
+  { id:'t-natroad', cat:'transport', diff:1,
+    clue:"The first major federally funded highway, this paved road stretched west from Maryland into the frontier.",
+    answer:"What is the National Road?", short:"National Road",
+    fact:"First major federally funded highway — Maryland west to frontier" },
+  { id:'t-steamboat', cat:'transport', diff:1,
+    clue:"Robert Fulton's invention let boats travel upriver against the current using power instead of wind.",
+    answer:"What is the steamboat?", short:"Steamboat",
+    fact:"Fulton's invention — boats powered by steam, not wind" },
+  { id:'t-erie', cat:'transport', diff:2,
+    clue:"Completed in 1825, this New York waterway connected the Great Lakes to the Atlantic Ocean via the Hudson River.",
+    answer:"What is the Erie Canal?", short:"Erie Canal",
+    fact:"1825 NY waterway — connected Great Lakes to the Atlantic" },
+  { id:'t-fulton', cat:'transport', diff:2,
+    clue:"He invented the steamboat in the early 1800s, revolutionizing river travel.",
+    answer:"Who is Robert Fulton?", short:"Robert Fulton",
+    fact:"Invented the steamboat in early 1800s" },
+  { id:'t-railroads', cat:'transport', diff:3,
+    clue:"By the mid-1800s, these became the dominant form of long-distance transportation in the U.S.",
+    answer:"What are railroads?", short:"Railroads",
+    fact:"Dominant US transportation by mid-1800s" },
+  { id:'t-vanderbilt', cat:'transport', diff:3,
+    clue:"This wealthy businessman made a fortune in shipping and railroads; his name still graces a famous Tennessee university.",
+    answer:"Who is Cornelius Vanderbilt?", short:"Cornelius Vanderbilt",
+    fact:"Shipping & railroad tycoon" },
+  { id:'t-cooper', cat:'transport', diff:4,
+    clue:"He built the 'Tom Thumb', the first American steam locomotive, and was a major industrialist and reformer.",
+    answer:"Who is Peter Cooper?", short:"Peter Cooper",
+    fact:"Built 'Tom Thumb,' first US steam locomotive" },
+  { id:'t-frontier', cat:'transport', diff:5,
+    clue:"Improved roads, canals, and railroads helped connect this part of America to the rest of the country.",
+    answer:"What is the Western frontier?", short:"Western frontier",
+    fact:"What better transportation connected to the rest of the US" },
+
+  // ========== REFORM MOVEMENTS ==========
+  { id:'r-2gawakening', cat:'reform', diff:1,
+    clue:"This religious revival in the early 1800s inspired Americans to fight for many social reforms, including ending slavery.",
+    answer:"What is the Second Great Awakening?", short:"Second Great Awakening",
+    fact:"Early-1800s religious revival that sparked social reform" },
+  { id:'r-abolition', cat:'reform', diff:1,
+    clue:"This movement aimed to end slavery in the United States.",
+    answer:"What is abolitionism?", short:"Abolitionism",
+    fact:"The movement to end slavery" },
+  { id:'r-senecafalls', cat:'reform', diff:2,
+    clue:"This 1848 convention in upstate New York is where the women's rights movement officially began.",
+    answer:"What is the Seneca Falls Convention?", short:"Seneca Falls Convention",
+    fact:"1848 — first women's rights convention" },
+  { id:'r-stanton', cat:'reform', diff:2,
+    clue:"She co-organized Seneca Falls and wrote the 'Declaration of Sentiments'.",
+    answer:"Who is Elizabeth Cady Stanton?", short:"Elizabeth Cady Stanton",
+    fact:"Wrote Declaration of Sentiments; led Seneca Falls" },
+  { id:'r-mott', cat:'reform', diff:3,
+    clue:"This Quaker abolitionist co-organized the Seneca Falls Convention with Stanton.",
+    answer:"Who is Lucretia Mott?", short:"Lucretia Mott",
+    fact:"Quaker; co-organized Seneca Falls with Stanton" },
+  { id:'r-sentiments', cat:'reform', diff:3,
+    clue:"Document signed at Seneca Falls calling for women's equal rights, modeled on the Declaration of Independence.",
+    answer:"What is the Declaration of Sentiments?", short:"Declaration of Sentiments",
+    fact:"1848 document calling for women's equal rights" },
+  { id:'r-mann', cat:'reform', diff:4,
+    clue:"He's known as the 'Father of American Public Education' for his push for free, taxpayer-funded schools.",
+    answer:"Who is Horace Mann?", short:"Horace Mann",
+    fact:"'Father of American Public Education'" },
+  { id:'r-dix', cat:'reform', diff:4,
+    clue:"This reformer fought for humane treatment of the mentally ill and prisoners.",
+    answer:"Who is Dorothea Dix?", short:"Dorothea Dix",
+    fact:"Fought for humane treatment of mentally ill & prisoners" },
+  { id:'r-anthony', cat:'reform', diff:5,
+    clue:"Women's rights leader who led the suffrage movement; her face appears on a U.S. dollar coin.",
+    answer:"Who is Susan B. Anthony?", short:"Susan B. Anthony",
+    fact:"Suffrage leader; on a US dollar coin" },
+
+  // ========== FAMOUS FACES ==========
+  { id:'f-douglass', cat:'faces', diff:1,
+    clue:"Escaped slavery, became a powerful speaker and writer, and the most famous abolitionist of his era.",
+    answer:"Who is Frederick Douglass?", short:"Frederick Douglass",
+    fact:"Escaped slavery; most famous abolitionist of his era" },
+  { id:'f-truth', cat:'faces', diff:1,
+    clue:"Formerly enslaved woman who gave the famous 'Ain't I a Woman?' speech for women's rights and abolition.",
+    answer:"Who is Sojourner Truth?", short:"Sojourner Truth",
+    fact:"Gave 'Ain't I a Woman?' speech" },
+  { id:'f-garrison', cat:'faces', diff:2,
+    clue:"He published the abolitionist newspaper 'The Liberator' starting in 1831.",
+    answer:"Who is William Lloyd Garrison?", short:"William Lloyd Garrison",
+    fact:"Published 'The Liberator' newspaper" },
+  { id:'f-lincoln', cat:'faces', diff:2,
+    clue:"16th president — led the Union through the Civil War and pushed for the 13th Amendment to abolish slavery.",
+    answer:"Who is Abraham Lincoln?", short:"Abraham Lincoln",
+    fact:"16th president; led Union; pushed for 13th Amendment" },
+  { id:'f-walker', cat:'faces', diff:3,
+    clue:"Black abolitionist who wrote 'Appeal to the Colored Citizens of the World' in 1829, calling for resistance to slavery.",
+    answer:"Who is David Walker?", short:"David Walker",
+    fact:"Wrote 'Appeal to the Colored Citizens of the World'" },
+  { id:'f-tubman', cat:'faces', diff:3,
+    clue:"Escaped from slavery and made dangerous trips back south to lead other enslaved people to freedom — called 'Moses' by them.",
+    answer:"Who is Harriet Tubman?", short:"Harriet Tubman",
+    fact:"Led enslaved people to freedom — called 'Moses'" },
+  { id:'f-brown', cat:'faces', diff:4,
+    clue:"He led an armed raid on Harpers Ferry in 1859 hoping to spark an uprising against slavery.",
+    answer:"Who is John Brown?", short:"John Brown",
+    fact:"Led the 1859 raid on Harpers Ferry" },
+  { id:'f-monroe', cat:'faces', diff:5,
+    clue:"5th president of the U.S. — namesake of the doctrine warning Europe to stay out of the Americas.",
+    answer:"Who is James Monroe?", short:"James Monroe",
+    fact:"5th president; the Monroe Doctrine bears his name" },
+];
+
+const CATEGORIES = ['jackson', 'industry', 'transport', 'reform', 'faces'];
+const CATEGORY_LABELS = {
+  jackson:   'Jackson Era',
+  industry:  'Industrial Revolution',
+  transport: 'Going Places',
+  reform:    'Reform Movements',
+  faces:     'Famous Faces'
+};
+
+const ROUND1_VALUES = [200, 400, 600, 800, 1000];
+const ROUND2_VALUES = [400, 800, 1200, 1600, 2000];
+
+/* ============================================================
+   ADAPTIVE LEARNING ENGINE  (localStorage-backed)
+   ============================================================ */
+const PROGRESS_KEY = 'mhg_progress_v1';   // History Games — shared with Memory Match
+
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(PROGRESS_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch(e) { return {}; }
+}
+function saveProgress(p) {
+  try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(p)); } catch(e) {}
+}
+function recordResult(itemId, correct) {
+  const p = loadProgress();
+  const r = p[itemId] || { level:0, seen:0, correct:0, streak:0, lastSeen:0 };
+  r.seen += 1;
+  r.lastSeen = Date.now();
+  if (correct) {
+    r.correct += 1;
+    r.streak = (r.streak || 0) + 1;
+    // level up logic
+    if (r.streak >= 3) r.level = 4;
+    else if (r.streak === 2) r.level = Math.max(r.level, 3);
+    else r.level = Math.max(r.level, 2);
+  } else {
+    r.streak = 0;
+    r.level = 1;   // missed -> heavy practice
+  }
+  p[itemId] = r;
+  saveProgress(p);
+  return r;
+}
+function getMastery(itemId) {
+  const p = loadProgress();
+  return p[itemId] ? p[itemId].level : 0;
+}
+function masterySummary() {
+  const p = loadProgress();
+  let mastered = 0, learning = 0, missed = 0, seen = 0;
+  ITEMS.forEach(it => {
+    const r = p[it.id];
+    if (!r) return;
+    seen++;
+    if (r.level >= 4) mastered++;
+    else if (r.level === 1) missed++;
+    else learning++;
+  });
+  return { mastered, learning, missed, seen, total: ITEMS.length };
+}
+function levelWeight(level) {
+  // higher weight => more likely to be picked
+  switch(level) {
+    case 0: return 5;   // never seen — high priority
+    case 1: return 9;   // missed — highest priority
+    case 2: return 4;
+    case 3: return 2;
+    case 4: return 1;   // mastered — still appears occasionally
+    default: return 3;
+  }
+}
+function weightedPick(pool, excludeIds) {
+  // Pool = array of items. Returns one item, weighted by mastery level.
+  const eligible = pool.filter(it => !excludeIds.has(it.id));
+  if (!eligible.length) return null;
+  const weights = eligible.map(it => levelWeight(getMastery(it.id)));
+  const total = weights.reduce((a,b) => a+b, 0);
+  let r = Math.random() * total;
+  for (let i = 0; i < eligible.length; i++) {
+    r -= weights[i];
+    if (r <= 0) return eligible[i];
+  }
+  return eligible[eligible.length - 1];
+}
+
+/* ============================================================
+   GAME STATE
+   ============================================================ */
+let state = {
+  players: [],
+  activePlayer: 0,
+  round: 1,
+  board: [],            // [col][row] of items with .value attached
+  selectedCell: null,
+  timerSecs: 20,
+  soundOn: true,
+  doubleRound: true,
+  finalRound: true,
+  powerupRound: true,
+  dailyDoubles: [],
+  currentWager: 0,
+  isDailyDouble: false,
+  timer: null,
+  finalQ: null,
+  finalWagers: [0,0],
+  finalAnswers: [null,null],
+  usedItemIds: new Set(),
+  // Tracking for end-of-game stats
+  sessionResults: [],   // [{itemId, correct, by:playerIdx}]
+  missedThisGame: [],   // ids missed (for power-up review)
+  // Power-up
+  pu: null
+};
+
+/* ============================================================
+   AUDIO
+   ============================================================ */
+let audioCtx = null;
+function getAudio() {
+  if (!audioCtx) {
+    try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+    catch(e) {}
+  }
+  return audioCtx;
+}
+function playTone(freq, duration, type='sine', volume=0.3, delay=0) {
+  if (!state.soundOn) return;
+  const ctx = getAudio();
+  if (!ctx) return;
+  const now = ctx.currentTime + delay;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(freq, now);
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(volume, now + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+  osc.connect(gain); gain.connect(ctx.destination);
+  osc.start(now); osc.stop(now + duration + 0.05);
+}
+const THEME_NOTES = [
+  {f:523, d:0.25},{f:659, d:0.25},{f:523, d:0.25},{f:392, d:0.25},
+  {f:523, d:0.25},{f:659, d:0.25},{f:523, d:0.5},
+  {f:523, d:0.25},{f:659, d:0.25},{f:784, d:0.25},{f:659, d:0.25},
+  {f:523, d:0.25},{f:440, d:0.25},{f:392, d:0.5},
+];
+function playTheme() {
+  if (!state.soundOn) return;
+  let t = 0;
+  THEME_NOTES.forEach(n => { playTone(n.f, n.d * 0.9, 'triangle', 0.15, t); t += n.d; });
+}
+function playDing()    { playTone(880,0.15,'sine',0.3); playTone(1320,0.2,'sine',0.2,0.08); }
+function playBuzzer()  { playTone(180,0.4,'sawtooth',0.3); playTone(140,0.4,'sawtooth',0.3,0.05); }
+function playTimeUp()  { playTone(440,0.15,'square',0.2); playTone(330,0.15,'square',0.2,0.15); playTone(220,0.3,'square',0.25,0.3); }
+function playSelect()  { playTone(660,0.08,'sine',0.15); }
+function playFanfare() {
+  const notes = [{f:523,d:0.12},{f:659,d:0.12},{f:784,d:0.12},
+                 {f:1047,d:0.25},{f:784,d:0.12},{f:1047,d:0.4}];
+  let t = 0;
+  notes.forEach(n => { playTone(n.f, n.d, 'triangle', 0.25, t); t += n.d; });
+}
+
+/* ============================================================
+   UI HELPERS
+   ============================================================ */
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, m =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function toast(msg, dur=2000) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(el._timer);
+  el._timer = setTimeout(() => el.classList.remove('show'), dur);
+}
+function show(id) { document.getElementById(id).classList.add('active'); }
+function hide(id) { document.getElementById(id).classList.remove('active'); }
+
+/* ============================================================
+   START SCREEN
+   ============================================================ */
+function renderMasteryPanel() {
+  const s = masterySummary();
+  const fill = s.total > 0 ? Math.round((s.mastered / s.total) * 100) : 0;
+  document.getElementById('mastery-fill').style.width = fill + '%';
+  const stats = document.getElementById('mastery-stats');
+  if (s.seen === 0) {
+    stats.textContent = 'No play history yet — go get some!';
+  } else {
+    stats.innerHTML =
+      `<strong style="color:var(--jeop-green);">${s.mastered}</strong> mastered · ` +
+      `<strong style="color:orange;">${s.learning}</strong> learning · ` +
+      `<strong style="color:var(--jeop-red);">${s.missed}</strong> need work · ` +
+      `<span style="color:#888;">${s.total - s.seen}</span> not yet seen`;
+  }
+}
+
+document.getElementById('btn-reset-progress').onclick = () => {
+  if (confirm('Reset all your mastery progress? You can\'t undo this.')) {
+    localStorage.removeItem(PROGRESS_KEY);
+    renderMasteryPanel();
+    toast('Progress reset.');
+  }
+};
+
+document.getElementById('btn-start').onclick = () => {
+  const p1 = (document.getElementById('p1').value || 'Player 1').trim();
+  const p2 = (document.getElementById('p2').value || '').trim();
+  state.players = [{ name: p1, score: 0 }];
+  if (p2) state.players.push({ name: p2, score: 0 });
+  state.activePlayer = 0;
+  state.timerSecs = +document.getElementById('timer-seconds').value || 0;
+  state.soundOn = document.getElementById('sound-on').checked;
+  state.doubleRound = document.getElementById('double-round').checked;
+  state.finalRound = document.getElementById('final-round').checked;
+  state.powerupRound = document.getElementById('powerup-round').checked;
+  state.round = 1;
+  state.usedItemIds = new Set();
+  state.sessionResults = [];
+  state.missedThisGame = [];
+  state.finalAnswers = [null, null];
+  startRound();
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('game-screen').classList.add('active');
+  if (state.soundOn) setTimeout(playTheme, 200);
+};
+
+renderMasteryPanel();
+
+/* ============================================================
+   ROUND / BOARD BUILDING
+   ============================================================ */
+function pickQuestionsForCategory(cat, valueArr) {
+  const pool = ITEMS.filter(it => it.cat === cat);
+  // Group by difficulty
+  const byDiff = [[],[],[],[],[]];
+  pool.forEach(it => byDiff[Math.min(4, Math.max(0, it.diff - 1))].push(it));
+  const result = [];
+  for (let i = 0; i < 5; i++) {
+    let bucket = byDiff[i];
+    let pick = weightedPick(bucket, state.usedItemIds);
+    // fallback: walk neighboring difficulty buckets if empty
+    if (!pick) {
+      for (let off = 1; off < 5 && !pick; off++) {
+        if (byDiff[i+off]) pick = weightedPick(byDiff[i+off], state.usedItemIds);
+        if (!pick && byDiff[i-off]) pick = weightedPick(byDiff[i-off], state.usedItemIds);
+      }
+    }
+    // last resort: any item in category, ignoring used
+    if (!pick) {
+      pick = pool[Math.floor(Math.random() * pool.length)];
+    }
+    state.usedItemIds.add(pick.id);
+    result.push({ ...pick, value: valueArr[i], used: false });
+  }
+  return result;
+}
+function buildBoard() {
+  const values = state.round === 1 ? ROUND1_VALUES : ROUND2_VALUES;
+  state.board = CATEGORIES.map(cat => pickQuestionsForCategory(cat, values));
+  // Place Daily Doubles: 1 in round 1, 2 in round 2
+  const ddCount = state.round === 1 ? 1 : 2;
+  const dds = new Set();
+  while (dds.size < ddCount) {
+    const col = Math.floor(Math.random() * 5);
+    const row = Math.floor(Math.random() * 4) + 1; // skip easiest row
+    dds.add(col + '-' + row);
+  }
+  state.dailyDoubles = [...dds].map(s => {
+    const [col,row] = s.split('-').map(Number);
+    return { col, row };
+  });
+}
+function startRound() {
+  buildBoard();
+  renderPlayers();
+  renderBoard();
+}
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+function renderPlayers() {
+  const wrap = document.getElementById('players');
+  wrap.innerHTML = '';
+  state.players.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'player-card' + (state.activePlayer === i ? ' active-player' : '');
+    card.innerHTML = `
+      <div class="player-name">${escapeHtml(p.name)}</div>
+      <div class="player-score ${p.score < 0 ? 'negative' : ''}">$${p.score.toLocaleString()}</div>
+      <div class="score-adjust">
+        <button data-adj="-100" data-p="${i}">-100</button>
+        <button data-adj="+100" data-p="${i}">+100</button>
+        <button data-setactive="${i}">Pick</button>
+      </div>`;
+    wrap.appendChild(card);
+  });
+  wrap.querySelectorAll('button[data-adj]').forEach(btn => {
+    btn.onclick = e => {
+      e.stopPropagation();
+      const pi = +btn.dataset.p, adj = +btn.dataset.adj;
+      state.players[pi].score += adj;
+      renderPlayers();
+    };
+  });
+  wrap.querySelectorAll('button[data-setactive]').forEach(btn => {
+    btn.onclick = e => {
+      e.stopPropagation();
+      state.activePlayer = +btn.dataset.setactive;
+      renderPlayers();
+    };
+  });
+}
+function renderBoard() {
+  const board = document.getElementById('board');
+  board.innerHTML = '';
+  CATEGORIES.forEach(cat => {
+    const h = document.createElement('div');
+    h.className = 'header';
+    h.textContent = CATEGORY_LABELS[cat];
+    board.appendChild(h);
+  });
+  for (let row = 0; row < 5; row++) {
+    for (let col = 0; col < 5; col++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      const q = state.board[col][row];
+      cell.textContent = '$' + q.value;
+      // Mastery dot
+      const lvl = getMastery(q.id);
+      const dot = document.createElement('div');
+      dot.className = 'dot lvl-' + lvl;
+      cell.appendChild(dot);
+      if (q.used) cell.classList.add('used');
+      else cell.onclick = () => selectCell(col, row);
+      board.appendChild(cell);
+    }
+  }
+  document.getElementById('round-title').textContent =
+    state.round === 1 ? 'Jeopardy!' :
+    state.round === 2 ? 'Double Jeopardy!' : 'Final Jeopardy!';
+}
+
+/* ============================================================
+   CLUE FLOW
+   ============================================================ */
+function selectCell(col, row) {
+  const q = state.board[col][row];
+  if (q.used) return;
+  playSelect();
+  state.selectedCell = { col, row };
+  const isDD = state.dailyDoubles.some(dd => dd.col === col && dd.row === row);
+  state.isDailyDouble = isDD;
+  if (isDD) openDailyDouble(q);
+  else openClue(q, q.value);
+}
+
+function openDailyDouble(q) {
+  show('dd-overlay');
+  playFanfare();
+  const player = state.players[state.activePlayer];
+  document.getElementById('dd-who').textContent = `${player.name}, make your wager:`;
+  const max = Math.max(player.score, 1000);
+  const input = document.getElementById('dd-wager-input');
+  input.max = max;
+  input.value = Math.min(500, max);
+  document.getElementById('dd-max-note').textContent =
+    `Bet from $5 up to $${max.toLocaleString()}`;
+  document.getElementById('btn-dd-confirm').onclick = () => {
+    let w = parseInt(input.value, 10);
+    if (isNaN(w) || w < 5) w = 5;
+    if (w > max) w = max;
+    state.currentWager = w;
+    hide('dd-overlay');
+    openClue(q, w);
+  };
+}
+
+function openClue(q, value) {
+  show('clue-overlay');
+  document.getElementById('clue-cat').textContent = CATEGORY_LABELS[q.cat];
+  document.getElementById('clue-val').textContent =
+    state.isDailyDouble ? `Daily Double — $${value.toLocaleString()}` : `$${value.toLocaleString()}`;
+  document.getElementById('clue-text').textContent = q.clue;
+  const ans = document.getElementById('clue-answer');
+  ans.textContent = q.answer;
+  ans.classList.remove('revealed');
+  renderClueFooter(false);
+  startTimer(state.timerSecs, document.getElementById('timer-fill'), () => {
+    playTimeUp();
+    revealAnswer();
+    toast('Time!');
+  });
+}
+function renderClueFooter(revealed) {
+  const f = document.getElementById('clue-footer');
+  const isSolo = state.players.length === 1;
+  if (!revealed) {
+    f.innerHTML = `<button class="btn-reveal" id="btn-reveal">Reveal Answer</button>
+                   <button class="btn-skip" id="btn-skip">Skip</button>`;
+    document.getElementById('btn-reveal').onclick = revealAnswer;
+    document.getElementById('btn-skip').onclick = () => closeClue(null);
+  } else {
+    let html = '';
+    if (isSolo) {
+      html = `<button class="btn-correct" data-result="correct">I got it right</button>
+              <button class="btn-wrong" data-result="wrong">I got it wrong</button>`;
+    } else {
+      state.players.forEach((p, i) => {
+        html += `<button class="btn-correct" data-result="correct" data-p="${i}">${escapeHtml(p.name)} right</button>`;
+      });
+      state.players.forEach((p, i) => {
+        html += `<button class="btn-wrong" data-result="wrong" data-p="${i}">${escapeHtml(p.name)} wrong</button>`;
+      });
+      html += `<button class="btn-skip" data-result="none">No one</button>`;
+    }
+    f.innerHTML = html;
+    f.querySelectorAll('button').forEach(b => {
+      b.onclick = () => {
+        const r = b.dataset.result;
+        const pi = b.dataset.p !== undefined ? +b.dataset.p : state.activePlayer;
+        scoreAndClose(r, pi);
+      };
+    });
+  }
+}
+function revealAnswer() {
+  stopTimer();
+  document.getElementById('clue-answer').classList.add('revealed');
+  renderClueFooter(true);
+}
+function scoreAndClose(result, playerIdx) {
+  const q = state.board[state.selectedCell.col][state.selectedCell.row];
+  const value = state.isDailyDouble ? state.currentWager : q.value;
+  if (result === 'correct') {
+    state.players[playerIdx].score += value;
+    state.activePlayer = playerIdx;   // gets to pick next
+    recordResult(q.id, true);
+    state.sessionResults.push({ itemId: q.id, correct: true, by: playerIdx });
+    playDing();
+  } else if (result === 'wrong') {
+    state.players[playerIdx].score -= value;
+    recordResult(q.id, false);
+    state.sessionResults.push({ itemId: q.id, correct: false, by: playerIdx });
+    if (!state.missedThisGame.includes(q.id)) state.missedThisGame.push(q.id);
+    playBuzzer();
+  } else {
+    // skipped or no one — no score change, still record as 'wrong' for adaptive
+    recordResult(q.id, false);
+    state.sessionResults.push({ itemId: q.id, correct: false, by: -1 });
+    if (!state.missedThisGame.includes(q.id)) state.missedThisGame.push(q.id);
+  }
+  closeClue(result);
+}
+function closeClue(/*result*/) {
+  hide('clue-overlay');
+  const { col, row } = state.selectedCell;
+  state.board[col][row].used = true;
+  renderPlayers();
+  renderBoard();
+  // Check if round complete
+  const allUsed = state.board.every(c => c.every(q => q.used));
+  if (allUsed) endRound();
+}
+
+function endRound() {
+  if (state.round === 1 && state.doubleRound) {
+    state.round = 2;
+    setTimeout(() => {
+      toast('Double Jeopardy!', 2200);
+      startRound();
+    }, 600);
+  } else if ((state.round === 1 || state.round === 2) && state.finalRound) {
+    setTimeout(openFinalJeopardy, 600);
+  } else {
+    setTimeout(maybePowerUpThenEnd, 600);
+  }
+}
+
+/* ============================================================
+   TIMER
+   ============================================================ */
+function startTimer(secs, barEl, onExpire) {
+  stopTimer();
+  if (!secs || secs <= 0) { barEl.style.width = '100%'; return; }
+  const start = Date.now();
+  barEl.style.width = '100%';
+  state.timer = setInterval(() => {
+    const elapsed = (Date.now() - start) / 1000;
+    const pct = Math.max(0, 100 - (elapsed / secs) * 100);
+    barEl.style.width = pct + '%';
+    if (elapsed >= secs) {
+      stopTimer();
+      onExpire && onExpire();
+    }
+  }, 100);
+}
+function stopTimer() {
+  if (state.timer) { clearInterval(state.timer); state.timer = null; }
+}
+
+/* ============================================================
+   FINAL JEOPARDY
+   ============================================================ */
+function openFinalJeopardy() {
+  const cat = CATEGORIES[Math.floor(Math.random() * CATEGORIES.length)];
+  const pool = ITEMS.filter(it => it.cat === cat && it.diff >= 4 && !state.usedItemIds.has(it.id));
+  const fallback = ITEMS.filter(it => it.cat === cat && !state.usedItemIds.has(it.id));
+  const pickPool = pool.length ? pool : (fallback.length ? fallback : ITEMS.filter(it => it.cat === cat));
+  state.finalQ = pickPool[Math.floor(Math.random() * pickPool.length)];
+  show('fj-overlay');
+  document.getElementById('fj-cat').textContent = CATEGORY_LABELS[state.finalQ.cat];
+  // Build wager UI
+  const wrap = document.getElementById('fj-wagers');
+  wrap.innerHTML = '';
+  state.finalWagers = state.players.map(() => 0);
+  state.players.forEach((p, i) => {
+    const max = Math.max(p.score, 0);
+    const card = document.createElement('div');
+    card.className = 'fj-wager-card';
+    card.innerHTML = `
+      <div style="color:#fff; font-weight:bold; margin-bottom:6px;">${escapeHtml(p.name)}</div>
+      <div style="font-size:14px; color:#aab; margin-bottom:8px;">Score: $${p.score.toLocaleString()}</div>
+      <input type="number" min="0" max="${max}" value="0" data-pi="${i}">
+      <div style="font-size:12px; color:#aab; margin-top:6px;">Max: $${max.toLocaleString()}</div>`;
+    wrap.appendChild(card);
+  });
+  document.getElementById('fj-stage-wager').classList.remove('hidden');
+  document.getElementById('fj-stage-clue').classList.add('hidden');
+
+  document.getElementById('btn-fj-reveal-clue').onclick = () => {
+    wrap.querySelectorAll('input').forEach(inp => {
+      const pi = +inp.dataset.pi;
+      let w = parseInt(inp.value, 10);
+      const max = Math.max(state.players[pi].score, 0);
+      if (isNaN(w) || w < 0) w = 0;
+      if (w > max) w = max;
+      state.finalWagers[pi] = w;
+    });
+    document.getElementById('fj-stage-wager').classList.add('hidden');
+    document.getElementById('fj-stage-clue').classList.remove('hidden');
+    document.getElementById('fj-text').textContent = state.finalQ.clue;
+    const ans = document.getElementById('fj-answer');
+    ans.textContent = state.finalQ.answer;
+    ans.classList.remove('revealed');
+    renderFJFooter(false);
+    startTimer(30, document.getElementById('fj-timer-fill'), () => {
+      playTimeUp();
+      revealFJAnswer();
+    });
+    if (state.soundOn) playTheme();
+  };
+}
+function renderFJFooter(revealed) {
+  const f = document.getElementById('fj-footer');
+  if (!revealed) {
+    f.innerHTML = `<button class="btn-reveal" id="btn-fj-reveal">Reveal Answer</button>`;
+    document.getElementById('btn-fj-reveal').onclick = revealFJAnswer;
+  } else {
+    let html = '';
+    state.players.forEach((p, i) => {
+      html += `<button class="btn-correct" data-pi="${i}" data-r="correct">${escapeHtml(p.name)} right</button>`;
+      html += `<button class="btn-wrong" data-pi="${i}" data-r="wrong">${escapeHtml(p.name)} wrong</button>`;
+    });
+    html += `<button class="btn-reveal" id="btn-fj-finish">Finish</button>`;
+    f.innerHTML = html;
+    f.querySelectorAll('button[data-r]').forEach(b => {
+      b.onclick = () => {
+        const pi = +b.dataset.pi;
+        const correct = b.dataset.r === 'correct';
+        if (state.finalAnswers[pi] !== null) return; // already recorded
+        state.finalAnswers[pi] = correct;
+        if (correct) state.players[pi].score += state.finalWagers[pi];
+        else state.players[pi].score -= state.finalWagers[pi];
+        recordResult(state.finalQ.id, correct);
+        state.sessionResults.push({ itemId: state.finalQ.id, correct, by: pi });
+        if (!correct && !state.missedThisGame.includes(state.finalQ.id))
+          state.missedThisGame.push(state.finalQ.id);
+        b.style.opacity = 0.4;
+        b.disabled = true;
+      };
+    });
+    document.getElementById('btn-fj-finish').onclick = () => {
+      hide('fj-overlay');
+      maybePowerUpThenEnd();
+    };
+  }
+}
+function revealFJAnswer() {
+  stopTimer();
+  document.getElementById('fj-answer').classList.add('revealed');
+  renderFJFooter(true);
+}
+
+/* ============================================================
+   POWER-UP REVIEW ROUND
+   ============================================================ */
+function maybePowerUpThenEnd() {
+  if (state.powerupRound && state.missedThisGame.length > 0) {
+    startPowerUp();
+  } else {
+    showGameOver();
+  }
+}
+function startPowerUp() {
+  // queue: each missed item needs 2 correct in a row to retire
+  const queue = state.missedThisGame.map(id => ({
+    id,
+    streak: 0,
+    needed: 2
+  }));
+  state.pu = { queue, totalToReview: queue.length, completed: 0 };
+  show('pu-overlay');
+  nextPowerUp();
+}
+function nextPowerUp() {
+  const pu = state.pu;
+  if (!pu || pu.queue.length === 0) {
+    hide('pu-overlay');
+    showGameOver();
+    return;
+  }
+  const cur = pu.queue[0];
+  const item = ITEMS.find(it => it.id === cur.id);
+  document.getElementById('pu-cat').textContent = CATEGORY_LABELS[item.cat];
+  document.getElementById('pu-clue').textContent = item.clue;
+  const ans = document.getElementById('pu-answer');
+  ans.textContent = item.answer;
+  ans.classList.remove('revealed');
+  document.getElementById('pu-progress').textContent =
+    `Reviewing ${pu.completed + 1} of ${pu.totalToReview}  ·  Queue: ${pu.queue.length}`;
+  // streak pips
+  const sw = document.getElementById('pu-streaks');
+  sw.innerHTML = '';
+  for (let i = 0; i < cur.needed; i++) {
+    const pip = document.createElement('div');
+    pip.className = 'pip' + (i < cur.streak ? ' filled' : '');
+    sw.appendChild(pip);
+  }
+  // footer
+  const f = document.getElementById('pu-footer');
+  f.innerHTML = `<button class="btn-reveal" id="btn-pu-reveal">Reveal Answer</button>
+                 <button class="btn-skip" id="btn-pu-quit">End Review</button>`;
+  document.getElementById('btn-pu-reveal').onclick = () => {
+    ans.classList.add('revealed');
+    f.innerHTML = `<button class="btn-correct" id="btn-pu-right">Got it right</button>
+                   <button class="btn-wrong" id="btn-pu-wrong">Got it wrong</button>
+                   <button class="btn-skip" id="btn-pu-quit2">End Review</button>`;
+    document.getElementById('btn-pu-right').onclick = () => puResult(true);
+    document.getElementById('btn-pu-wrong').onclick = () => puResult(false);
+    document.getElementById('btn-pu-quit2').onclick = endPowerUp;
+  };
+  document.getElementById('btn-pu-quit').onclick = endPowerUp;
+}
+function puResult(correct) {
+  const pu = state.pu;
+  const cur = pu.queue[0];
+  const item = ITEMS.find(it => it.id === cur.id);
+  recordResult(item.id, correct);
+  if (correct) {
+    cur.streak += 1;
+    playDing();
+    if (cur.streak >= cur.needed) {
+      pu.queue.shift();
+      pu.completed++;
+      toast('Retired! ✓');
+    } else {
+      // Move to back so we don't drill same one back-to-back if more than 1 in queue
+      if (pu.queue.length > 1) {
+        const popped = pu.queue.shift();
+        pu.queue.push(popped);
+      }
+    }
+  } else {
+    cur.streak = 0;     // reset streak
+    playBuzzer();
+    // Move to back so we cycle through other items first
+    if (pu.queue.length > 1) {
+      const popped = pu.queue.shift();
+      pu.queue.push(popped);
+    }
+  }
+  setTimeout(nextPowerUp, 350);
+}
+function endPowerUp() {
+  hide('pu-overlay');
+  showGameOver();
+}
+
+/* ============================================================
+   GAME OVER
+   ============================================================ */
+function showGameOver() {
+  show('over-overlay');
+  // Determine winner
+  const sorted = [...state.players].sort((a,b) => b.score - a.score);
+  if (state.players.length === 1) {
+    document.getElementById('over-title').textContent = 'Game Over!';
+    document.getElementById('over-winner').textContent =
+      `${sorted[0].name} finished with $${sorted[0].score.toLocaleString()}`;
+  } else {
+    if (sorted[0].score === sorted[1].score) {
+      document.getElementById('over-title').textContent = 'It\'s a Tie!';
+      document.getElementById('over-winner').textContent =
+        `${sorted.map(p=>p.name).join(' and ')} both finished with $${sorted[0].score.toLocaleString()}`;
+    } else {
+      document.getElementById('over-title').textContent = 'Winner!';
+      document.getElementById('over-winner').textContent =
+        `${sorted[0].name} wins with $${sorted[0].score.toLocaleString()}!`;
+    }
+  }
+  // Scores
+  const sc = document.getElementById('over-scores');
+  sc.innerHTML = '';
+  state.players.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'player-card';
+    card.style.minWidth = '160px';
+    card.innerHTML = `<div class="player-name">${escapeHtml(p.name)}</div>
+                      <div class="player-score ${p.score < 0 ? 'negative' : ''}">$${p.score.toLocaleString()}</div>`;
+    sc.appendChild(card);
+  });
+  // Stats: this session correct / total + global mastery
+  const correct = state.sessionResults.filter(r => r.correct).length;
+  const total = state.sessionResults.length;
+  const ms = masterySummary();
+  document.getElementById('over-stats').innerHTML = `
+    <h4>This game</h4>
+    Got <strong>${correct}</strong> of <strong>${total}</strong> right
+    ${state.missedThisGame.length ? `· Reviewed <strong>${state.missedThisGame.length}</strong> tough one${state.missedThisGame.length===1?'':'s'}` : ''}
+    <h4 style="margin-top:10px;">Overall mastery</h4>
+    <strong style="color:var(--jeop-green);">${ms.mastered}</strong> mastered ·
+    <strong style="color:orange;">${ms.learning}</strong> learning ·
+    <strong style="color:var(--jeop-red);">${ms.missed}</strong> need work ·
+    <span style="color:#888;">${ms.total - ms.seen}</span> not yet seen
+  `;
+  if (state.soundOn) playFanfare();
+}
+
+document.getElementById('btn-play-again').onclick = () => {
+  hide('over-overlay');
+  state.players.forEach(p => p.score = 0);
+  state.activePlayer = 0;
+  state.round = 1;
+  state.usedItemIds = new Set();
+  state.sessionResults = [];
+  state.missedThisGame = [];
+  state.finalAnswers = [null, null];
+  startRound();
+};
+document.getElementById('btn-new-game').onclick = () => {
+  hide('over-overlay');
+  document.getElementById('game-screen').classList.remove('active');
+  document.getElementById('start-screen').style.display = 'flex';
+  renderMasteryPanel();
+};
+document.getElementById('btn-quit').onclick = () => {
+  if (!confirm('Quit this game and return to the main menu? (progress is saved)')) return;
+  document.getElementById('game-screen').classList.remove('active');
+  document.getElementById('start-screen').style.display = 'flex';
+  renderMasteryPanel();
+};
+document.getElementById('btn-mute').onclick = () => {
+  state.soundOn = !state.soundOn;
+  document.getElementById('btn-mute').textContent = 'Sound: ' + (state.soundOn ? 'On' : 'Off');
+};
+</script>
+</body>
+</html>
