@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Backpack Shortlist</title>
+<style>
+  :root{
+    --bg:#f6f4ef; --card:#ffffff; --ink:#26221c; --sub:#6f675c;
+    --accent:#c2571f; --good:#2e7d4f; --ok:#b98a00; --line:#e8e2d8;
+    --pick:#c2571f;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); padding-bottom:80px}
+  header{padding:28px 20px 10px; max-width:640px; margin:0 auto}
+  h1{font-size:1.7rem; margin:0 0 6px; letter-spacing:-.02em}
+  .sub{color:var(--sub); font-size:.95rem; line-height:1.45; margin:0}
+  .musts{max-width:640px; margin:14px auto 4px; padding:0 20px; display:flex; gap:8px; flex-wrap:wrap}
+  .must{background:var(--ink); color:#fff; border-radius:999px; padding:7px 14px; font-size:.8rem; font-weight:600}
+  .hint{max-width:640px; margin:10px auto 0; padding:0 20px; color:var(--sub); font-size:.82rem}
+  main{max-width:640px; margin:14px auto 0; padding:0 14px; display:flex; flex-direction:column; gap:14px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.05); transition:box-shadow .2s, border-color .2s}
+  .card.picked{border-color:var(--pick); box-shadow:0 0 0 2px var(--pick), 0 4px 14px rgba(194,87,31,.18)}
+  .card-top{display:flex; gap:14px; padding:14px; align-items:center; cursor:pointer}
+  .thumb{width:108px; height:108px; flex:0 0 108px; border-radius:14px; background:#fff; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; overflow:hidden}
+  .thumb img{width:100%; height:100%; object-fit:contain}
+  .head h2{font-size:1.05rem; margin:0 0 2px; line-height:1.25}
+  .brand{font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--sub); font-weight:700}
+  .price{font-weight:700; color:var(--accent); font-size:.95rem; margin-top:4px}
+  .badge{display:inline-block; font-size:.68rem; font-weight:700; padding:3px 9px; border-radius:999px; margin-top:6px}
+  .b-top{background:#eaf3ec; color:var(--good)}
+  .b-fun{background:#fdeee2; color:var(--accent)}
+  .b-warn{background:#fbf3d9; color:var(--ok)}
+  .stats{display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid var(--line)}
+  .stat{padding:10px 6px; text-align:center; border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none}
+  .stat .v{font-weight:700; font-size:.92rem}
+  .stat .k{font-size:.66rem; text-transform:uppercase; letter-spacing:.06em; color:var(--sub); margin-top:2px}
+  .fit-yes{color:var(--good)} .fit-snug{color:var(--ok)}
+  .details{display:none; padding:0 16px 14px; border-top:1px dashed var(--line)}
+  .card.open .details{display:block}
+  .details p{font-size:.9rem; line-height:1.5; color:#3d382f; margin:12px 0}
+  .row{display:flex; gap:10px; padding:0 14px 14px}
+  .btn{flex:1; text-align:center; padding:12px; border-radius:12px; font-weight:700; font-size:.9rem; text-decoration:none; border:none; cursor:pointer; font-family:inherit}
+  .shop{background:var(--ink); color:#fff}
+  .pickbtn{background:#fff; color:var(--ink); border:1.5px solid var(--line)}
+  .card.picked .pickbtn{background:var(--pick); color:#fff; border-color:var(--pick)}
+  .expander{width:100%; background:none; border:none; color:var(--sub); font-size:.78rem; padding:8px 0 12px; cursor:pointer; font-family:inherit}
+  footer{max-width:640px; margin:26px auto 0; padding:0 20px; color:var(--sub); font-size:.78rem; line-height:1.5}
+  .tally{position:fixed; bottom:0; left:0; right:0; background:var(--ink); color:#fff; padding:13px 18px; font-size:.9rem; text-align:center; display:none}
+  .tally.show{display:block}
+  .tally b{color:#f9c9a8}
+</style>
+</head>
+<body>
+<header>
+  <h1>The Backpack Shortlist 🎒</h1>
+  <p class="sub">Six finalists for the big 7th-grade upgrade. Researched against real reviews — every one protects the laptop; they differ on binder room, comfort, and cool factor.</p>
+</header>
+<div class="musts">
+  <span class="must">✓ 14&Prime; MacBook Pro</span>
+  <span class="must">✓ Large 3-ring binder</span>
+  <span class="must">✓ Survives middle school</span>
+</div>
+<p class="hint">Tap a card for the full scouting report · tap ♥ to mark favorites</p>
+<main id="cards"></main>
+<footer>
+  <p>Fit notes: the MacBook Pro 14&Prime; fits any sleeve rated 15&Prime;+. The large binder is the real constraint — bags marked <b>Roomy</b> take it easily; <b>Snug</b> means it fits but the bag runs full. Prices are list at time of research (Jul 2026) — most go on sale for back-to-school.</p>
+</footer>
+<div class="tally" id="tally"></div>
+<script>
+const BAGS = [
+  {id:'state', img:'img/state.png', brand:'STATE Bags · NYC', name:'Kane Kids Large — Metallic Pink/Silver', price:'$118', badge:['b-top','Best on-paper fit'],
+   cap:'XL', laptop:'16″ sleeve', binder:['Roomy','fit-yes'],
+   blurb:'The only bag that literally lists her exact load in the spec: a 16″ laptop plus up to TWO 3″ binders. Padded sleeve, great internal organization, and the metallic finishes feel like a gift, not a school supply. Also in gold + tie-dye patchwork.',
+   url:'https://statebags.com/products/kane-kids-large-pink-silver'},
+  {id:'cotopaxi', img:'img/cotopaxi.png', brand:'Cotopaxi · Del Día', name:'Chiquillo 26L Backpack', price:'$90', badge:['b-fun','One-of-a-kind'],
+   cap:'26L', laptop:'Padded sleeve', binder:['Roomy','fit-yes'],
+   blurb:'Sewn from repurposed remnant fabric — no two bags on earth match, so she owns the only one at school. Panel-loader opens wide (binder slides in flat), padded laptop sleeve, and Cotopaxi guarantees it for 61 years. The "nobody else has this" pick.',
+   url:'https://www.cotopaxi.com/products/chiquillo-26l-backpack-del-dia'},
+  {id:'borealis', img:'img/borealis.png', brand:'The North Face', name:'Borealis 28L', price:'$115', badge:['b-top','Comfort king'],
+   cap:'28L', laptop:'15″ sleeve', binder:['Roomy','fit-yes'],
+   blurb:'The heavy-load workhorse: biggest capacity here, FlexVent back panel certified by the American Chiropractic Association, lifetime warranty. If the daily haul is binder + books + laptop + lunch, this carries it most comfortably. Tons of colorways.',
+   url:'https://www.thenorthface.com/en-us/p/bags-and-gear-c211701/borealis-backpack-pNF0A52SE'},
+  {id:'lulu', img:'img/lulu.webp', brand:'lululemon', name:'New Crew Backpack 22L', price:'$98', badge:['b-fun','Peer-status pick'],
+   cap:'22L', laptop:'15″ pocket', binder:['Snug','fit-snug'],
+   blurb:'The status brand of the middle-school hallway right now. Dedicated laptop pocket, water-bottle pocket, clean look. One large binder fits, but the bag runs full on heavy days — style points over cargo room.',
+   url:'https://shop.lululemon.com/p/bags/New-Crew-Backpack-22L-Updated/_/prod20002103'},
+  {id:'calpak', img:'img/calpak.jpg', brand:'CALPAK', name:'Kaya Laptop Backpack — 17″', price:'$120', badge:['b-fun','Trend / quilted'],
+   cap:'Large', laptop:'17″ sleeve', binder:['Fits','fit-yes'],
+   blurb:'The puffy quilted look that’s everywhere right now, in soft grown-up colorways she won’t outgrow. Real padded laptop compartment; the 17″ size takes the binder where the 15″ would be tight. Skews teen/college — she grows into it.',
+   url:'https://www.calpaktravel.com/products/kaya-17-inch-laptop-backpack/black'},
+  {id:'kanken', img:'img/kanken.jpg', brand:'Fjällräven', name:'Kånken Laptop 15″', price:'$115', badge:['b-warn','Style wildcard'],
+   cap:'18L', laptop:'15″ sleeve', binder:['Tight','fit-snug'],
+   blurb:'The icon, ~20 colors, built like a tank, and the laptop version adds padded straps + a real sleeve. Honest caveat: at 18L a large binder makes it a daily squeeze. Pick this only if the look wins her heart over everything else.',
+   url:'https://www.fjallraven.com/us/en-us/bags-gear/kanken/kanken-bags/kanken-laptop-152/'},
+];
+const KEY='bp-picks';
+const picks = new Set(JSON.parse(localStorage.getItem(KEY)||'[]'));
+const main = document.getElementById('cards');
+BAGS.forEach(b=>{
+  const el=document.createElement('div');
+  el.className='card'+(picks.has(b.id)?' picked':'');
+  el.id='c-'+b.id;
+  el.innerHTML=`
+    <div class="card-top" onclick="toggle('${b.id}')">
+      <div class="thumb"><img src="${b.img}" alt="${b.name}" loading="lazy"></div>
+      <div class="head">
+        <div class="brand">${b.brand}</div>
+        <h2>${b.name}</h2>
+        <div class="price">${b.price}</div>
+        <span class="badge ${b.badge[0]}">${b.badge[1]}</span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v">${b.cap}</div><div class="k">Capacity</div></div>
+      <div class="stat"><div class="v fit-yes">${b.laptop}</div><div class="k">Laptop</div></div>
+      <div class="stat"><div class="v ${b.binder[1]}">${b.binder[0]}</div><div class="k">Big binder</div></div>
+    </div>
+    <div class="details"><p>${b.blurb}</p></div>
+    <div class="row">
+      <button class="btn pickbtn" onclick="pick('${b.id}')">${picks.has(b.id)?'♥ Favorite':'♡ Favorite'}</button>
+      <a class="btn shop" href="${b.url}" target="_blank" rel="noopener">See it ↗</a>
+    </div>
+    <button class="expander" onclick="toggle('${b.id}')">▾ scouting report</button>`;
+  main.appendChild(el);
+});
+function toggle(id){document.getElementById('c-'+id).classList.toggle('open')}
+function pick(id){
+  const el=document.getElementById('c-'+id);
+  picks.has(id)?picks.delete(id):picks.add(id);
+  el.classList.toggle('picked');
+  el.querySelector('.pickbtn').textContent=(picks.has(id)?'♥ Favorite':'♡ Favorite');
+  localStorage.setItem(KEY,JSON.stringify([...picks]));
+  tally();
+}
+function tally(){
+  const t=document.getElementById('tally');
+  if(picks.size){
+    const names=BAGS.filter(b=>picks.has(b.id)).map(b=>b.brand.split(' ·')[0]).join(' · ');
+    t.innerHTML=`Your shortlist: <b>${names}</b>`;
+    t.classList.add('show');
+  } else t.classList.remove('show');
+}
+tally();
+</script>
+</body>
+</html>
