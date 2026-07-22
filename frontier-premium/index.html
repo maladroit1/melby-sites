@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The frontier premium — July 2026</title>
+<style>
+:root{
+  --surface-0:#f9f9f7; --surface-1:#fcfcfb; --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10); --border-2:rgba(11,11,11,.28);
+  --good-bg:#eaf6ea; --good-tx:#006300; --warn-bg:#fdf3dc; --warn-tx:#6b4a00;
+  --accent:#2a78d6;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --surface-0:#0d0d0d; --surface-1:#1a1a19; --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10); --border-2:rgba(255,255,255,.30);
+    --good-bg:#12300f; --good-tx:#6fce6f; --warn-bg:#3a2c08; --warn-tx:#f0c25e;
+    --accent:#3987e5;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--surface-0);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+.wrap{max-width:780px;margin:0 auto;padding:20px 16px 60px}
+header{padding:26px 0 8px}
+h1{font-size:clamp(24px,5vw,34px);font-weight:500;line-height:1.15;letter-spacing:-.01em}
+.dek{color:var(--ink-2);margin-top:10px;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-size:12px;color:var(--ink-2);border:1px solid var(--border);border-radius:999px;padding:4px 10px;background:var(--surface-1)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:22px 0 6px}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.tile b{display:block;font-size:clamp(20px,4vw,26px);font-weight:500}
+.tile span{font-size:12.5px;color:var(--ink-2)}
+section{margin-top:46px}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h2{font-size:clamp(19px,4vw,23px);font-weight:500;margin:4px 0 6px}
+.verdict{display:inline-block;font-size:12.5px;font-weight:500;border-radius:999px;padding:3px 10px;margin:2px 0 10px}
+.v-bull{background:var(--good-bg);color:var(--good-tx)}
+.v-mixed{background:var(--warn-bg);color:var(--warn-tx)}
+.lede{color:var(--ink-2);max-width:62ch;font-size:14.5px;margin-bottom:14px}
+.card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:16px}
+.ctl{display:flex;align-items:center;gap:10px;margin:8px 0}
+.ctl label{font-size:13px;color:var(--ink-2);min-width:128px}
+.ctl output{font-size:13px;font-weight:500;min-width:44px;text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{flex:1;accent-color:var(--accent);height:28px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pill{font:inherit;font-size:12.5px;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:none;color:var(--ink);cursor:pointer;min-height:36px}
+.pill.on{border-color:var(--border-2);font-weight:500}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--ink-2);margin:10px 0 4px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:inherit}
+.read{font-size:12px;color:var(--muted);min-height:17px;margin-top:4px;font-variant-numeric:tabular-nums}
+.big{font-size:clamp(26px,6vw,40px);font-weight:500;font-variant-numeric:tabular-nums}
+.note{font-size:12.5px;color:var(--muted);margin-top:10px;max-width:64ch}
+.badge{font-size:11px;font-weight:500;border-radius:999px;padding:2px 8px;vertical-align:2px}
+.b-ver{background:var(--good-bg);color:var(--good-tx)}
+.b-unv{background:var(--warn-bg);color:var(--warn-tx)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:12px}
+.cards .card p{font-size:13.5px;color:var(--ink-2);margin-top:6px}
+.cards .card b{font-weight:500}
+details{margin-top:10px;font-size:13px}
+summary{cursor:pointer;color:var(--muted);font-size:12.5px}
+table{border-collapse:collapse;width:100%;margin-top:8px;font-size:12.5px;font-variant-numeric:tabular-nums}
+td,th{text-align:left;padding:5px 8px;border-bottom:1px solid var(--border)}
+th{color:var(--ink-2);font-weight:500}
+.stack li{margin:10px 0 10px 20px;color:var(--ink-2)}
+.stack li b{color:var(--ink);font-weight:500}
+footer{margin-top:56px;border-top:1px solid var(--border);padding-top:18px;font-size:13px;color:var(--ink-2)}
+footer a{color:var(--accent);text-decoration:none;overflow-wrap:anywhere}
+.srcs{font-size:12px;line-height:1.9;margin-top:8px}
+@media (max-width:430px){.ctl label{min-width:104px;font-size:12.5px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="kicker">Frontier economics · snapshot 2026-07-22</p>
+  <h1>The frontier premium</h1>
+  <p class="dek">Kimi K3 landed five weeks after Claude Fable 5 and calls itself nearly as good. Does the frontier-lab business survive that? Six scenarios, every claim below adversarially verified unless badged otherwise.</p>
+  <div class="meta">
+    <span class="chip">107-agent research run</span>
+    <span class="chip">25 sources fetched</span>
+    <span class="chip">20 claims confirmed 3-0</span>
+    <span class="chip">5 claims killed</span>
+  </div>
+  <div class="tiles">
+    <div class="tile"><b>5–7 wks</b><span>calendar gap to the fast-follower — but one full model generation in capability</span></div>
+    <div class="tile"><b>$9B → $47B</b><span>Anthropic annualized run-rate, Dec 2025 → May 2026, ~80–85% enterprise</span></div>
+    <div class="tile"><b>70–75%</b><span>of that revenue is still raw token API — the product pivot is directional, not done</span></div>
+  </div>
+</header>
+
+<section id="m0">
+  <p class="kicker">The brief</p>
+  <h2>The verdict in one paragraph</h2>
+  <p class="lede" style="max-width:68ch">On verified mid-2026 data, the frontier-lab business case holds over a 12–24 month horizon — because "near-parity" only half-holds, and the half that fails is where the money lives. Kimi K3 matches the <em>previous</em> frontier generation, not the current one, so the fast-follow gap is five weeks on a calendar and one full model generation in capability. Inside that rolling window, enterprises buy at extraordinary scale: Anthropic's run-rate went $9B → $47B in about five months while turning a first operating profit.</p>
+  <p class="lede" style="max-width:68ch">Three quieter findings carry the argument. The leading fast-follower priced itself <em>at</em> Sonnet rates — a 5–6× hike over its own predecessor — instead of collapsing the token floor. Frontier-scale open weights physically re-centralize inference: 1.4TB of K3 fits no single prosumer box, so "open" no longer means "self-hostable" at the top. And the bear case is real but concentrated — it lands on consumer-heavy, capex-heavy labs, not on frontier status itself. Every claim on this page went through 3-voter adversarial verification; the handful that are only extracted, not verified, are badged.</p>
+</section>
+
+<section id="m1">
+  <p class="kicker">S1 · depreciating lead</p>
+  <h2>The lead is a window that keeps reopening</h2>
+  <span class="verdict v-bull">Verdict: monetizes, emphatically</span>
+  <p class="lede">Fable 5 shipped June 9 (and lost 19 days of its window to an export-control suspension). K3's API landed July 16; weights promised July 27. Drag the sliders: even a fast follower leaves the incumbent alone at the top for a big slice of every cycle — and enterprise contracts don't churn per release.</p>
+  <div class="card">
+    <div class="ctl"><label>Release cadence</label><input type="range" id="m1-cad" min="3" max="9" step="1" value="5"><output id="m1-cad-o">5 mo</output></div>
+    <div class="ctl"><label>Weeks to open parity</label><input type="range" id="m1-lag" min="2" max="16" step="1" value="7"><output id="m1-lag-o">7 wk</output></div>
+    <div class="legend"><span><i id="m1-sw1"></i>frontier alone at the top</span><span><i style="background:var(--axis)"></i>open peer exists</span></div>
+    <div id="m1-chart"></div>
+    <p style="margin-top:12px"><span class="big" id="m1-pct">32%</span><span style="font-size:13px;color:var(--ink-2)"> of the calendar, the newest frontier model has no open-weight peer</span></p>
+    <p class="note">The other side of the coin: during the 2026 window it did hold the lead, Anthropic's run-rate went $9B → $47B in about five months, >$1M/yr customers doubled to 1,000+ in ~3 months, and Q2 projected $10.9B with a first-ever $559M quarterly operating profit. The window is short; the buying inside it is not.</p>
+  </div>
+  <details><summary>Data table</summary><table><tr><th>Event</th><th>Date</th></tr><tr><td>Fable 5 release (AA index 60)</td><td>2026-06-09</td></tr><tr><td>Fable 5 export-control suspension</td><td>Jun 12 – Jul 1 (~19 days)</td></tr><tr><td>Kimi K3 API launch (AA 57)</td><td>2026-07-16</td></tr><tr><td>K3 open weights promised</td><td>2026-07-27</td></tr></table></details>
+</section>
+
+<section id="m2">
+  <p class="kicker">S3 · parity audit</p>
+  <h2>"Nearly as competent" means one generation behind</h2>
+  <span class="verdict v-mixed">Verdict: the premise half-holds</span>
+  <p class="lede">On the independent Artificial Analysis Intelligence Index, K3 lands at 57 — level with the <em>previous</em> frontier generation, three points under the current one. The off-benchmark half (long-horizon agentic reliability) is still open: the weights weren't public at research time, and Moonshot's own benchmark tables drew cherry-picking criticism.</p>
+  <div class="card">
+    <div id="m2-chart"></div>
+    <p class="note">K3 did take one real scalp: #1 on the blind frontend-coding arena, beating Fable 5 in 76% of those matchups — narrow wins are real, the overall index gap is too. Coding benchmarks broadly have documented contamination problems (unverified extraction), which is why the index above is the conservative yardstick.</p>
+  </div>
+  <details><summary>Data table</summary><table><tr><th>Model</th><th>AA Intelligence Index</th><th>Generation</th></tr><tr><td>Claude Fable 5</td><td>60</td><td>current frontier</td></tr><tr><td>GPT-5.6 Sol</td><td>58–59</td><td>current frontier</td></tr><tr><td>Kimi K3 (open-weight)</td><td>57</td><td>fast-follower</td></tr><tr><td>Claude Opus 4.8</td><td>≈56</td><td>previous frontier</td></tr></table></details>
+</section>
+
+<section id="m3">
+  <p class="kicker">S3/S5 · the memory wall</p>
+  <h2>Open weights you can't lift</h2>
+  <span class="verdict v-mixed">Verdict: self-hosting is real — one generation back</span>
+  <p class="lede">The quiet structural finding: frontier-scale open weights re-centralize inference. K3 is 2.8T parameters — about 1.4TB at its native 4-bit — and Moonshot's own serving guidance is 64+ accelerator supernodes. No single prosumer box holds it, even at hypothetical 1.58-bit. Last-gen 1T-class models are a different story.</p>
+  <div class="card">
+    <div id="m3-chart"></div>
+    <p class="note">Verified anchors: a ~$39.6K 4-node Mac Studio M3 Ultra cluster (1.5TB unified) runs 1T-param Kimi K2 Thinking at ~25 tok/s (independently replicated at 28.3); a 2×512GB ~$19.8K pair runs it at 5–15 tok/s. "No verified local or CPU-offload configuration exists" for K3 as of July 17.</p>
+  </div>
+  <details><summary>Data table</summary><table><tr><th>Model / limit</th><th>Footprint</th></tr><tr><td>Kimi K2 Thinking (1T, INT4)</td><td>≈0.5–0.6TB — fits a 2-box pair</td></tr><tr><td>Kimi K3 at hypothetical 1.58-bit</td><td>≈0.55TB — still over one 512GB box</td></tr><tr><td>Kimi K3 (2.8T, MXFP4)</td><td>≈1.4TB — cluster-scale only</td></tr><tr><td>Single Mac Studio ceiling</td><td>512GB</td></tr><tr><td>4-node cluster ceiling</td><td>1.5TB</td></tr></table></details>
+</section>
+
+<section id="m4">
+  <p class="kicker">S5 · rent vs buy</p>
+  <h2>The rent-vs-buy machine</h2>
+  <span class="verdict v-mixed">Verdict: two-tier reality — volume and hassle decide</span>
+  <p class="lede">Cumulative cost of buying tokens vs owning the box, 36 months. Local capex steps at every hardware refresh; capacity is a hard ceiling (25 tok/s ≈ 65 Mtok/month flat out), so volume above it buys you another cluster, not just more watts. Section 179 lets the year-1 write-off soften the step.</p>
+  <div class="card">
+    <div class="ctl"><label>Volume (Mtok/mo)</label><input type="range" id="m4-vol" min="1" max="200" step="1" value="20"><output id="m4-vol-o">20</output></div>
+    <div class="ctl"><label>Utilization</label><input type="range" id="m4-util" min="10" max="90" step="5" value="40"><output id="m4-util-o">40%</output></div>
+    <div class="ctl"><label>Hardware refresh</label><input type="range" id="m4-churn" min="12" max="36" step="6" value="24"><output id="m4-churn-o">24 mo</output></div>
+    <div class="ctl"><label>Ops hassle ($/mo)</label><input type="range" id="m4-ops" min="0" max="1500" step="50" value="300"><output id="m4-ops-o">$300</output></div>
+    <div class="ctl"><label>Marginal tax rate</label><input type="range" id="m4-tax" min="0" max="45" step="1" value="35"><output id="m4-tax-o">35%</output></div>
+    <div class="ctl"><label style="min-width:0">Section 179 year-1 expensing</label><input type="checkbox" id="m4-179" checked style="width:18px;height:18px;accent-color:var(--accent)"></div>
+    <div class="pills" id="m4-rates"></div>
+    <div class="pills" id="m4-hw"></div>
+    <div class="legend" id="m4-legend"></div>
+    <div id="m4-chart"></div>
+    <p class="read" id="m4-read"></p>
+    <div class="tiles" style="margin:12px 0 0">
+      <div class="tile"><b id="m4-verdict" style="font-size:19px"></b><span>verdict</span></div>
+      <div class="tile"><b id="m4-cl"></b><span>clusters needed at this volume</span></div>
+      <div class="tile"><b id="m4-cap"></b><span>capex after tax shield</span></div>
+      <div class="tile"><b id="m4-eff"></b><span>local vs API $/Mtok, amortized</span></div>
+    </div>
+    <p class="note">The apples-to-oranges caveat is the finding: the local column serves last-generation open weights; the API column sells the current generation. Third-party TCO work (unverified) puts the enterprise crossover near 500M–1B tok/month — GPU-fleet territory, not this chart's hardware.</p>
+  </div>
+</section>
+
+<section id="m5">
+  <p class="kicker">S1/S4 · the pricing tell</p>
+  <h2>The fast-follower raised prices</h2>
+  <span class="verdict v-bull">Verdict: cuts against the token-collapse narrative</span>
+  <p class="lede">If open weights were commoditizing intelligence, the leading follower should be racing to the floor. Instead K3 priced at exact Sonnet-tier parity — $3 in / $15 out — a 5–6× hike over its own predecessor. It undercuts flagships; it does not collapse the floor. The floor already exists, one capability tier down.</p>
+  <div class="card">
+    <div class="legend"><span><i id="m5-sw1"></i>input $/Mtok</span><span><i id="m5-sw2"></i>output $/Mtok</span></div>
+    <div id="m5-chart"></div>
+  </div>
+  <details><summary>Data table</summary><table><tr><th>Model</th><th>Input $/Mtok</th><th>Output $/Mtok</th></tr><tr><td>Kimi K2 (2025 launch)</td><td>0.60</td><td>2.50</td></tr><tr><td>Kimi K3 (Jul 2026)</td><td>3.00</td><td>15.00</td></tr><tr><td>Claude Sonnet tier</td><td>3.00</td><td>15.00</td></tr><tr><td>Opus 4.8</td><td>5.00</td><td>25.00</td></tr><tr><td>Fable 5</td><td>10.00</td><td>50.00</td></tr><tr><td>DeepSeek V4 Flash (floor)</td><td>0.14</td><td>0.28</td></tr></table></details>
+</section>
+
+<section id="m6">
+  <p class="kicker">S4 · the bear case</p>
+  <h2>The bear case is real — and concentrated</h2>
+  <span class="verdict v-mixed">Verdict: revenue mix decides who bleeds</span>
+  <p class="lede">The squeeze exists, but it isn't landing on "frontier labs" uniformly. Consumer-heavy OpenAI (~95% of users pay nothing) projects deepening losses through the decade's end; enterprise-heavy Anthropic just printed an operating profit. Same frontier, opposite unit economics.</p>
+  <div class="card">
+    <div id="m6-chart"></div>
+    <div class="tiles" style="margin:14px 0 0">
+      <div class="tile"><b>+$559M</b><span>Anthropic quarterly operating profit, 2026 (ex-stock-comp, self-reported)</span></div>
+      <div class="tile"><b>$207B</b><span>HSBC-estimated OpenAI funding shortfall</span></div>
+      <div class="tile"><b>$410B→$725B</b><span>Big-Tech AI capex 2025 → 2026 guidance <span class="badge b-unv">extracted, unverified</span></span></div>
+    </div>
+    <p class="note">OpenAI figures are projections of a private company (WSJ-reviewed documents, The Information, CNBC): $14B loss for 2026; $74B loss on $121B compute in 2028; no profitability before 2029–30; infra commitments cut $1.4T → ~$600B (a re-raise to $750B was reported the week of this snapshot, unverified).</p>
+  </div>
+  <details><summary>Data table</summary><table><tr><th>Item</th><th>$B</th></tr><tr><td>OpenAI projected loss, 2026</td><td>−14</td></tr><tr><td>OpenAI projected loss, 2028</td><td>−74</td></tr><tr><td>OpenAI projected compute spend, 2028</td><td>121</td></tr><tr><td>Anthropic quarterly operating profit, 2026</td><td>+0.559</td></tr></table></details>
+</section>
+
+<section id="m7">
+  <p class="kicker">S2/S6 · the absorption play</p>
+  <h2>Eat the ecosystem, politely</h2>
+  <span class="verdict v-mixed">Verdict: one verified case — and it's enormous</span>
+  <p class="lede">The Amazon question — do labs watch what works on their platform, then take it first-party at scale? The verified answer is the harness layer: the lab's own agentic coding product went from launch to multi-billion run-rate inside a year. Broader sherlocking stories exist but didn't survive verification.</p>
+  <div class="cards">
+    <div class="card"><span class="badge b-ver">verified 3-0</span><p><b>Claude Code</b> — $1B annualized within 6 months of mid-2025 launch; >$2.5B by Feb 2026; business subscriptions 4× and weekly actives 2× since Jan 1. The harness drives the token spend — partly definitional, wholly first-party.</p></div>
+    <div class="card"><span class="badge b-unv">extracted, unverified</span><p><b>200+ wrapper startups</b> reportedly absorbed into OpenAI's products within a single year — the Amazon-Basics pattern at the app layer.</p></div>
+    <div class="card"><span class="badge b-unv">extracted, unverified</span><p><b>Cursor / Anysphere</b> reportedly acquired for ~$60B in Q2 2026 — value pooling at the harness layer, whoever owns it.</p></div>
+  </div>
+  <p class="note" style="margin-top:12px">Counterweight, verified: 70–75% of Anthropic revenue is still pay-per-token API plus 15–20% reserved capacity. The product company is emerging inside a token vendor — direction confirmed, destination not yet reached.</p>
+</section>
+
+<section id="m7b">
+  <p class="kicker">The written brief</p>
+  <h2>Six scenarios, six verdicts</h2>
+  <ol class="stack">
+    <li><b>S1 — Depreciating lead: monetizes, emphatically.</b> $9B→$47B annualized run-rate in ~5 months during a ~6-week lead window; >$1M/yr customers doubled to 1,000+ in a quarter; 8 of the Fortune 10. All self-reported run-rates, unaudited — but multi-sourced and consistent.</li>
+    <li><b>S2 — Value-shift to product: directional, not accomplished.</b> Claude Code $0→$2.5B+ run-rate in ~8 months, business subscriptions 4× since January. Yet 70–75% of revenue is still pay-per-token API plus 15–20% reserved capacity. The product company is emerging inside a token vendor.</li>
+    <li><b>S3 — Parity audit: the premise half-holds.</b> K3 at 57 on the independent index sits with the previous generation (Opus 4.8 ≈56), under the current one (Fable 5 = 60). Narrow wins are real — #1 on blind frontend coding, beating Fable 5 in 76% of those matchups. Off-benchmark long-horizon reliability is unresolved: the weights weren't public at research time.</li>
+    <li><b>S4 — Bear case: real, and concentrated by revenue mix.</b> OpenAI (~95% of users free) projects −$14B in 2026 and −$74B on $121B of compute in 2028, no profit before 2029–30, with an HSBC-estimated $207B funding gap. Enterprise-heavy Anthropic printed a $559M quarterly operating profit in the same period. The squeeze picks its victims by unit economics, not by frontier status.</li>
+    <li><b>S5 — Going local: a two-tier reality.</b> Last-gen 1T-class open MoEs genuinely run on ~$20–40K of Mac hardware at usable speeds — verified and independently replicated. The current open-weight frontier does not: ~1.4TB of weights, supernode serving guidance. Enterprises are drifting private (public cloud as primary AI-inference environment fell 56%→41% in a year, vendor survey), but the prosumer crossover only arrives with high volume, high utilization, or privacy requirements — the machine above lets you find your own line.</li>
+    <li><b>S6 — The Amazon play: one verified case, and it's enormous.</b> The lab's own coding harness went launch → $1B in six months → $2.5B+. Broader sherlocking stories (200+ wrappers absorbed; a ~$60B harness acquisition) surfaced repeatedly but never survived verification — treat them as color, not evidence.</li>
+  </ol>
+  <div class="card" style="margin-top:14px">
+    <p style="font-size:14px;font-weight:500;margin-bottom:8px">What died in verification</p>
+    <p class="note" style="margin-top:0">Five claims were killed by the refuter panels, and the kills are part of the picture: "K3 is proprietary, not open-weight" (a stale status snapshot — the release was staged, weights promised July 27); "Moonshot concedes non-parity, its only win is one arena" (overdrawn — the narrow wins are real); a "43% of enterprises repatriating AI" sub-claim from the same survey whose headline figure survived; and two pricing/vendor-claim framings that overstated their sources. A research pass that can't kill its own claims isn't verification.</p>
+  </div>
+  <div class="card" style="margin-top:10px">
+    <p style="font-size:14px;font-weight:500;margin-bottom:8px">The open questions that decide the next 24 months</p>
+    <p class="note" style="margin-top:0">1 — Does K3's parity survive independent off-benchmark testing once the weights drop (and do the distillation allegations change the picture)? 2 — What is the utilization-adjusted cost-to-serve of a 2.8T MoE on real supernodes versus frontier API pricing at enterprise volume? 3 — Is the fast-follow gap shrinking across generations, or stable? One cycle is not a trend, and sources point both ways. 4 — Does the projected $10.9B Q2 land, and does a 70–75% token-API mix hold margin now that an open-weight competitor priced at exact Sonnet parity?</p>
+  </div>
+</section>
+
+<section id="m8">
+  <p class="kicker">The takeaway</p>
+  <h2>If you run frontier subscription + local seats</h2>
+  <p class="lede">For an operator paying for a frontier plan while running open-weight models on their own hardware, the verified structure says the split is correct — and says what each leg is for.</p>
+  <ol class="stack">
+    <li><b>Current-generation capability is API-or-subscription only.</b> The open-weight frontier physically re-centralized: K3-class needs supernodes. If the work needs this generation, you buy it — like the 1,000+ enterprises paying >$1M/yr do.</li>
+    <li><b>Local hardware's job is the trailing edge — and that's a real job.</b> 1T-class last-gen MoEs run on a $19.8K pair at usable speeds. Batch work, background agents, always-on seats: local.</li>
+    <li><b>The cheap-open-API arbitrage narrowed.</b> K3 priced at Sonnet parity: switching to hosted open weights at that tier saves roughly nothing. Real savings live a capability tier down, at the DeepSeek-class floor.</li>
+    <li><b>Privacy is orthogonal to price and still favors local.</b> Own-hardware open weights remain the only zero-third-party-exposure path; nothing in the economics changed that.</li>
+  </ol>
+  <p class="note">Watch items for the next 12–24 months: whether K3's parity survives independent off-benchmark testing after the weights drop; whether the fast-follow gap trends shorter across the <em>next</em> cycle (one cycle is not a trend); whether Anthropic's projected $10.9B Q2 lands; whether K3-class ever gets a sub-512GB quant.</p>
+</section>
+
+<footer>
+  <p><b style="font-weight:500">Method.</b> Deep-research harness, 2026-07-22: question decomposed into 5 angles → parallel web search → 25 sources fetched → 120 falsifiable claims extracted → top 25 adversarially verified by independent 3-voter panels (2/3 refutations kill) → 20 confirmed, 5 killed. Killed claims included "K3 is proprietary" (staged release, weights promised Jul 27) and two overdrawn parity framings — the refutations are part of the picture.</p>
+  <p style="margin-top:8px"><b style="font-weight:500">Caveats.</b> All lab revenue figures are self-reported annualized run-rates from fundraise contexts — unaudited, no GAAP. Revenue mixes are third-party estimates (±10pts). K3 numbers are launch-week and API-measured; independent replication pending weights. Items badged "extracted, unverified" were found in sources but never reached the verification panel.</p>
+  <p class="srcs" style="margin-top:10px">Key sources: <a href="https://artificialanalysis.ai/models/kimi-k3">Artificial Analysis — Kimi K3</a> · <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Fable 5</a> · <a href="https://platform.kimi.ai/docs/pricing/chat-k3">Moonshot — K3 pricing</a> · <a href="https://creativestrategies.com/research/running-a-1t-parameter-model-on-a-40k-mac-studio-cluster/">Creative Strategies — $40K cluster</a> · <a href="https://venturebeat.com/technology/anthropic-says-it-hit-a-30-billion-revenue-run-rate-after-crazy-80x-growth">VentureBeat — $30B run-rate</a> · <a href="https://www.forbes.com/sites/paulocarvao/2026/05/21/anthropic-openai-enterprise-ai-profitability/">Forbes — enterprise profitability</a> · <a href="https://sacra.com/c/anthropic/">Sacra — Anthropic</a> · <a href="https://news.broadcom.com/cloud/private-cloud-outlook-2026-enterprise-ai">Broadcom — private cloud 2026</a> · <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/moonshot-releases-2-8-trillion-parameter-kimi-k3">Tom's Hardware — K3</a> · <a href="https://www.cnbc.com/2026/02/20/openai-resets-spend-expectations-targets-around-600-billion-by-2030.html">CNBC — OpenAI spend</a></p>
+</footer>
+
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const mq=matchMedia('(prefers-color-scheme: dark)');
+function pal(){const d=mq.matches;return{blue:d?'#3987e5':'#2a78d6',green:'#008300',red:d?'#e66767':'#e34948',grid:d?'#2c2c2a':'#e1e0d9',axis:d?'#383835':'#c3c2b7',surf:d?'#1a1a19':'#fcfcfb',gray:'#898781'}}
+function fmt$(v){return v>=1e6?'$'+(v/1e6).toFixed(2)+'M':v>=1e3?'$'+Math.round(v/1e3)+'K':'$'+Math.round(v)}
+function sv(w,h,inner,label){return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+label+'">'+inner+'</svg>'}
+
+function m1(){
+const c=pal(),cad=+$('m1-cad').value,lag=+$('m1-lag').value;
+$('m1-cad-o').textContent=cad+' mo';$('m1-lag-o').textContent=lag+' wk';
+$('m1-sw1').style.background=c.blue;
+const leadM=Math.min(cad,lag*7/30.44),pct=Math.round(leadM/cad*100);
+$('m1-pct').textContent=pct+'%';
+const W=680,H=90,L=8,R=8,T=14,B=20,span=24,pw=(W-L-R)/span;
+let g='';
+for(let s=0;s<span/cad;s++){
+const x0=L+s*cad*pw,lw=Math.min(leadM,cad)*pw,tw=Math.min(cad,span-s*cad)*pw;
+if(tw<=0)break;
+g+='<rect x="'+x0.toFixed(1)+'" y="'+T+'" width="'+Math.min(lw,tw).toFixed(1)+'" height="'+(H-T-B)+'" rx="4" fill="'+c.blue+'"/>';
+if(tw>lw)g+='<rect x="'+(x0+lw+2).toFixed(1)+'" y="'+T+'" width="'+Math.max(0,tw-lw-2).toFixed(1)+'" height="'+(H-T-B)+'" rx="4" fill="'+c.axis+'"/>';
+g+='<text x="'+(x0+2).toFixed(1)+'" y="'+(H-6)+'" font-size="10.5" fill="'+c.gray+'">gen '+(s+1)+'</text>';
+}
+g+='<text x="'+(W-R)+'" y="'+(H-6)+'" text-anchor="end" font-size="10.5" fill="'+c.gray+'">24 months</text>';
+$('m1-chart').innerHTML=sv(W,H,g,'Timeline of repeating frontier-lead windows across model generations');
+}
+
+function m2(){
+const c=pal();
+const rows=[{n:'Claude Fable 5',v:60,cl:c.blue,gen:'current'},{n:'GPT-5.6 Sol',v:58.5,cl:c.blue,gen:'current'},{n:'Kimi K3',v:57,cl:c.green,gen:'follower'},{n:'Opus 4.8',v:56,cl:c.gray,gen:'previous'}];
+const W=680,H=170,L=118,R=46,T=10,rh=38;
+const x=v=>L+(v-54)/(61-54)*(W-L-R);
+let g='';
+[55,57,59,61].forEach(t=>{g+='<line x1="'+x(t)+'" x2="'+x(t)+'" y1="'+T+'" y2="'+(H-24)+'" stroke="'+c.grid+'" stroke-width="1"/><text x="'+x(t)+'" y="'+(H-8)+'" text-anchor="middle" font-size="11" fill="'+c.gray+'">'+t+'</text>'});
+rows.forEach((r,i)=>{const y=T+14+i*rh;
+g+='<text x="'+(L-10)+'" y="'+(y+4)+'" text-anchor="end" font-size="12.5" fill="var(--ink)">'+r.n+'</text>';
+g+='<line x1="'+x(54.2)+'" x2="'+x(r.v)+'" y1="'+y+'" y2="'+y+'" stroke="'+c.grid+'" stroke-width="2"/>';
+g+='<circle cx="'+x(r.v)+'" cy="'+y+'" r="7" fill="'+r.cl+'" stroke="'+c.surf+'" stroke-width="2"/>';
+g+='<text x="'+(x(r.v)+14)+'" y="'+(y+4)+'" font-size="12" font-weight="500" fill="var(--ink)">'+r.v+'</text>';});
+g+='<line x1="'+x(56)+'" x2="'+x(56)+'" y1="'+T+'" y2="'+(H-24)+'" stroke="'+c.gray+'" stroke-width="1" stroke-dasharray="3 4"/><text x="'+(x(56)-6)+'" y="'+(T+8)+'" text-anchor="end" font-size="10.5" fill="'+c.gray+'">previous frontier</text>';
+$('m2-chart').innerHTML=sv(W,H,g,'Dot plot of Artificial Analysis Intelligence Index scores, Fable 5 at 60 down to Opus 4.8 at 56');
+}
+
+function m3(){
+const c=pal();
+const rows=[{n:'K2 Thinking · 1T · INT4',v:.55,cl:c.green,lab:'≈0.55TB'},{n:'K3 at 1.58-bit (hypothetical)',v:.553,cl:c.gray,lab:'≈0.55TB'},{n:'K3 · 2.8T · MXFP4',v:1.4,cl:c.blue,lab:'≈1.4TB'}];
+const W=680,H=180,L=8,R=70,T=12,rh=44,bx=236;
+const x=v=>bx+v/1.6*(W-bx-R);
+let g='';
+rows.forEach((r,i)=>{const y=T+i*rh;
+g+='<text x="'+L+'" y="'+(y+15)+'" font-size="12" fill="var(--ink)">'+r.n+'</text>';
+g+='<rect x="'+bx+'" y="'+(y+2)+'" width="'+(x(r.v)-bx).toFixed(1)+'" height="20" rx="4" fill="'+r.cl+'"/>';
+g+='<text x="'+(x(r.v)+8)+'" y="'+(y+16)+'" font-size="11.5" font-weight="500" fill="var(--ink)">'+r.lab+'</text>';});
+const t1=x(.512),t2=x(1.5);
+g+='<line x1="'+t1+'" x2="'+t1+'" y1="'+T+'" y2="'+(H-34)+'" stroke="'+c.red+'" stroke-width="1" stroke-dasharray="4 4"/><text x="'+t1+'" y="'+(H-20)+'" text-anchor="middle" font-size="10.5" fill="'+c.red+'">512GB — one box</text>';
+g+='<line x1="'+t2+'" x2="'+t2+'" y1="'+T+'" y2="'+(H-34)+'" stroke="'+c.gray+'" stroke-width="1" stroke-dasharray="4 4"/><text x="'+t2+'" y="'+(H-6)+'" text-anchor="middle" font-size="10.5" fill="'+c.gray+'">1.5TB — $40K cluster</text>';
+$('m3-chart').innerHTML=sv(W,H,g,'Bar chart of model memory footprints against single-machine and cluster memory ceilings');
+}
+
+const RATES=[{n:'Fable 5 · $20',r:20},{n:'Opus 4.8 · $10',r:10},{n:'K3 / Sonnet · $6',r:6},{n:'DeepSeek floor · $0.18',r:.18}];
+const HW=[{n:'2× M3 Ultra · $19.8K · ~10 tok/s',cost:19800,tps:10,w:300},{n:'4× cluster · $39.6K · ~25 tok/s',cost:39600,tps:25,w:450}];
+let rateI=2,hwI=1;
+function pills(el,arr,sel,fn){el.innerHTML='';arr.forEach((a,i)=>{const b=document.createElement('button');b.className='pill'+(i===sel?' on':'');b.textContent=a.n;b.onclick=()=>{fn(i);m4()};el.appendChild(b)})}
+function m4(){
+const c=pal();
+const vol=+$('m4-vol').value,util=+$('m4-util').value,churn=+$('m4-churn').value,ops=+$('m4-ops').value,tax=+$('m4-tax').value,s179=$('m4-179').checked;
+$('m4-vol-o').textContent=vol;$('m4-util-o').textContent=util+'%';$('m4-churn-o').textContent=churn+' mo';$('m4-ops-o').textContent='$'+ops;$('m4-tax-o').textContent=tax+'%';
+pills($('m4-rates'),RATES,rateI,i=>rateI=i);pills($('m4-hw'),HW,hwI,i=>hwI=i);
+const rate=RATES[rateI].r,hw=HW[hwI];
+const capMo=hw.tps*2.592*(util/100);
+const cl=Math.max(1,Math.ceil(vol/capMo));
+const capex=hw.cost*cl*(s179?1-tax/100:1);
+const run=Math.round(hw.w*cl*.72*.15)+ops;
+const api=[],loc=[];let cross=0;
+for(let m=1;m<=36;m++){api.push(vol*rate*m);loc.push(capex*(1+Math.floor((m-1)/churn))+run*m);if(!cross&&loc[m-1]<=api[m-1])cross=m}
+$('m4-legend').innerHTML='<span><i style="background:'+c.blue+'"></i>API — '+RATES[rateI].n.split(' · ')[0]+' blended</span><span><i style="background:'+c.green+'"></i>local — '+cl+'× hardware, last-gen weights</span>';
+const W=680,H=240,L=54,R=12,T=12,B=24,ymax=Math.max(api[35],loc[35]);
+const X=m=>L+(m-1)/35*(W-L-R),Y=v=>T+(1-v/ymax)*(H-T-B);
+let g='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+(H-B)+'" y2="'+(H-B)+'" stroke="'+c.axis+'" stroke-width="1"/>';
+for(let i=1;i<=3;i++){const yv=ymax*i/4;g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(yv).toFixed(1)+'" y2="'+Y(yv).toFixed(1)+'" stroke="'+c.grid+'" stroke-width="1"/><text x="'+(L-6)+'" y="'+(Y(yv)+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="'+c.gray+'">'+fmt$(yv)+'</text>'}
+const pth=a=>a.map((v,i)=>(i?'L':'M')+X(i+1).toFixed(1)+' '+Y(v).toFixed(1)).join(' ');
+g+='<path d="'+pth(api)+'" fill="none" stroke="'+c.blue+'" stroke-width="2" stroke-linejoin="round"/><path d="'+pth(loc)+'" fill="none" stroke="'+c.green+'" stroke-width="2" stroke-linejoin="round"/>';
+if(cross)g+='<circle cx="'+X(cross).toFixed(1)+'" cy="'+Y(loc[cross-1]).toFixed(1)+'" r="5.5" fill="'+c.green+'" stroke="'+c.surf+'" stroke-width="2"/><text x="'+X(cross).toFixed(1)+'" y="'+(Y(loc[cross-1])-10).toFixed(1)+'" text-anchor="middle" font-size="11" font-weight="500" fill="var(--ink)">mo '+cross+'</text>';
+g+='<text x="'+L+'" y="'+(H-7)+'" font-size="11" fill="'+c.gray+'">month 1</text><text x="'+(W-R)+'" y="'+(H-7)+'" text-anchor="end" font-size="11" fill="'+c.gray+'">36</text><line id="m4-ch" y1="'+T+'" y2="'+(H-B)+'" stroke="var(--border-2)" stroke-width="1" visibility="hidden"/>';
+$('m4-chart').innerHTML=sv(W,H,g,'Cumulative cost, API line versus stepped local hardware line, 36 months');
+const svg=$('m4-chart').firstChild;
+const mv=e=>{const r=svg.getBoundingClientRect();const px=(e.touches?e.touches[0].clientX:e.clientX);const mx=(px-r.left)/r.width*W;const m=Math.min(36,Math.max(1,Math.round((mx-L)/(W-L-R)*35+1)));const ch=$('m4-ch');ch.setAttribute('x1',X(m));ch.setAttribute('x2',X(m));ch.setAttribute('visibility','visible');$('m4-read').textContent='Month '+m+' — API '+fmt$(api[m-1])+' · local '+fmt$(loc[m-1])};
+svg.addEventListener('mousemove',mv);svg.addEventListener('touchmove',mv,{passive:true});
+svg.addEventListener('mouseleave',()=>{$('m4-ch').setAttribute('visibility','hidden');$('m4-read').textContent=''});
+$('m4-verdict').textContent=cross?'Local wins at month '+cross:'API cheaper all 36 months';
+$('m4-cl').textContent=cl+'×';
+$('m4-cap').textContent=fmt$(capex);
+$('m4-eff').textContent='$'+((capex*Math.ceil(36/churn)/36+run)/vol).toFixed(2)+' vs $'+rate;
+}
+
+function m5(){
+const c=pal();
+$('m5-sw1').style.background=c.blue;$('m5-sw2').style.background=c.green;
+const rows=[{n:'K2 (2025)',i:.6,o:2.5},{n:'K3 (2026)',i:3,o:15},{n:'Sonnet tier',i:3,o:15},{n:'Opus 4.8',i:5,o:25},{n:'Fable 5',i:10,o:50},{n:'DeepSeek floor',i:.14,o:.28}];
+const W=680,H=250,L=110,R=118,T=8,rh=40;
+const x=v=>L+Math.sqrt(v/50)*(W-L-R);
+let g='';
+rows.forEach((r,idx)=>{const y=T+idx*rh;
+g+='<text x="'+(L-8)+'" y="'+(y+18)+'" text-anchor="end" font-size="12" fill="var(--ink)">'+r.n+'</text>';
+g+='<rect x="'+L+'" y="'+(y+2)+'" width="'+Math.max(2,x(r.i)-L).toFixed(1)+'" height="11" rx="3" fill="'+c.blue+'"/>';
+g+='<rect x="'+L+'" y="'+(y+16)+'" width="'+Math.max(2,x(r.o)-L).toFixed(1)+'" height="11" rx="3" fill="'+c.green+'"/>';
+g+='<text x="'+(Math.max(x(r.i),x(r.o))+8)+'" y="'+(y+22)+'" font-size="11" fill="var(--ink-2, '+c.gray+')">$'+r.i+' / $'+r.o+'</text>';});
+g+='<text x="'+L+'" y="'+(H-2)+'" font-size="10.5" fill="'+c.gray+'">square-root scale — the floor and the flagship differ 180×</text>';
+$('m5-chart').innerHTML=sv(W,H,g,'Paired bars of input and output token prices from the DeepSeek floor to Fable 5');
+}
+
+function m6(){
+const c=pal();
+const rows=[{n:'2026 projected',v:-14},{n:'2028 projected',v:-74}];
+const W=680,H=190,L=110,R=60,T=26,rh=52;
+const x=v=>L+Math.abs(v)/80*(W-L-R);
+let g='<text x="'+L+'" y="14" font-size="12" fill="var(--ink-2, '+c.gray+')">OpenAI projected annual losses ($B)</text>';
+rows.forEach((r,i)=>{const y=T+14+i*rh;
+g+='<text x="'+(L-8)+'" y="'+(y+16)+'" text-anchor="end" font-size="12" fill="var(--ink)">'+r.n+'</text>';
+g+='<rect x="'+L+'" y="'+y+'" width="'+(x(r.v)-L).toFixed(1)+'" height="24" rx="4" fill="'+c.red+'"/>';
+g+='<text x="'+(x(r.v)+8)+'" y="'+(y+16)+'" font-size="12.5" font-weight="500" fill="var(--ink)">−$'+Math.abs(r.v)+'B</text>';});
+g+='<line x1="'+L+'" x2="'+L+'" y1="'+(T+6)+'" y2="'+(H-14)+'" stroke="'+c.axis+'" stroke-width="1"/>';
+$('m6-chart').innerHTML=sv(W,H,g,'Bars of OpenAI projected losses, 14 billion dollars in 2026 and 74 billion in 2028');
+}
+
+function all(){m1();m2();m3();m4();m5();m6()}
+['m1-cad','m1-lag'].forEach(id=>$(id).oninput=m1);
+['m4-vol','m4-util','m4-churn','m4-ops','m4-tax'].forEach(id=>$(id).oninput=m4);
+$('m4-179').onchange=m4;
+mq.addEventListener('change',all);
+all();
+</script>
+</body>
+</html>
