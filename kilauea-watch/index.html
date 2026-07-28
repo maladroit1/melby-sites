@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kīlauea Watch</title>
+<style>
+  :root{
+    --bg:#12100e; --card:#1e1a17; --ink:#f2ece4; --dim:#a89e92;
+    --lava:#ff5a2a; --amber:#ffb02e; --line:#332c26;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:16px;max-width:640px;margin:0 auto}
+  header{padding:8px 0 16px}
+  h1{font-size:1.6rem;letter-spacing:.02em}
+  h1 span{color:var(--lava)}
+  .sub{color:var(--dim);font-size:.85rem;margin-top:4px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0}
+  .badge-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .badge{display:inline-block;padding:6px 14px;border-radius:999px;font-weight:700;font-size:.95rem;letter-spacing:.04em}
+  .badge.yellow{background:#3d3000;color:var(--amber);border:1px solid var(--amber)}
+  .badge.orange{background:#3d1c00;color:#ff9040;border:1px solid #ff9040}
+  .badge.red{background:#400a00;color:#ff5040;border:1px solid #ff5040}
+  .badge.green{background:#0c3316;color:#5ad07a;border:1px solid #5ad07a}
+  .state{font-size:1.15rem;font-weight:600;margin-top:10px}
+  .k{color:var(--dim);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+  .row{margin:14px 0 0}
+  .forecast{border-left:4px solid var(--lava);padding-left:12px}
+  ul{padding-left:20px}
+  li{margin:6px 0}
+  a{color:var(--amber)}
+  footer{color:var(--dim);font-size:.78rem;padding:16px 4px 32px;text-align:center}
+  .stamp{color:var(--dim);font-size:.82rem;margin-top:8px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Kīlauea <span>Watch</span></h1>
+  <div class="sub">USGS Hawaiian Volcano Observatory status · auto-refreshes every 6 hours</div>
+</header>
+
+<script id="data" type="application/json">
+{
+  "updated_local": "Tue Jul 28, 2026 · 8:25 AM MDT",
+  "hvo_update": "Mon Jul 27, 2026 · 9:05 AM HST",
+  "alert_level": "ADVISORY",
+  "color_code": "YELLOW",
+  "state": "Eruption PAUSED — between fountain episodes",
+  "forecast": "Episode 52 lava fountains likely July 29 – August 2 (inflation-based HVO models)",
+  "last_episode": "Episode 51 · July 15 — fountains ~950 ft from the north vent, plume to ~18,000 ft",
+  "now": "Degassing at both vents with nighttime glow; summit re-inflating. No activity on the East or Southwest Rift Zones.",
+  "hazards": [
+    "SO₂ output 1,000–5,000 tonnes/day → vog downwind (Kona side worst)",
+    "Tephra — eye and respiratory irritation near the summit",
+    "Hot, unstable ground on the Halemaʻumaʻu crater floor"
+  ],
+  "context": "All eruptive activity is confined to the summit crater inside the closed area of Hawaiʻi Volcanoes National Park — visible from park overlooks, not threatening populated areas."
+}
+</script>
+
+<div id="app"></div>
+
+<div class="card">
+  <div class="k">Live sources</div>
+  <ul>
+    <li><a href="https://www.usgs.gov/volcanoes/kilauea/volcano-updates">HVO official updates</a></li>
+    <li><a href="https://www.usgs.gov/volcanoes/kilauea/webcams">Summit webcams (live)</a></li>
+    <li><a href="https://vog.ivhhn.org/">Vog forecast &amp; dashboard</a></li>
+  </ul>
+</div>
+
+<footer id="stamp"></footer>
+
+<script>
+  const d = JSON.parse(document.getElementById('data').textContent);
+  const cls = {GREEN:'green',YELLOW:'yellow',ORANGE:'orange',RED:'red'}[d.color_code] || 'yellow';
+  document.getElementById('app').innerHTML = `
+    <div class="card">
+      <div class="badge-row">
+        <span class="badge ${cls}">${d.alert_level} / ${d.color_code}</span>
+      </div>
+      <div class="state">${d.state}</div>
+      <div class="stamp">HVO update: ${d.hvo_update}</div>
+    </div>
+    <div class="card forecast">
+      <div class="k">What's next</div>
+      <div class="state">${d.forecast}</div>
+    </div>
+    <div class="card">
+      <div class="row"><div class="k">Right now</div>${d.now}</div>
+      <div class="row"><div class="k">Last episode</div>${d.last_episode}</div>
+      <div class="row"><div class="k">Good to know</div>${d.context}</div>
+    </div>
+    <div class="card">
+      <div class="k">Hazards</div>
+      <ul>${d.hazards.map(h=>`<li>${h}</li>`).join('')}</ul>
+    </div>`;
+  document.getElementById('stamp').textContent =
+    `Page data refreshed ${d.updated_local} · Source: USGS Hawaiian Volcano Observatory`;
+</script>
+</body>
+</html>
