@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Futurism — Collapsing the Superposition</title>
+<style>
+  :root{
+    --ink:#1f2530; --slate:#5a6472; --hint:#8a93a0; --line:#e6e2d8;
+    --bg:#fbfaf7; --card:#ffffff; --bronze:#9a5b13; --bronze-bg:#f7eedd;
+    --teal:#0f6e56; --teal-bg:#e3f3ee; --blue:#185fa5; --blue-bg:#e8f1fb;
+    --rust:#a23b1e; --rust-bg:#f7e9e3; --violet:#5b3a8a; --violet-bg:#efe8f7;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:940px; margin:0 auto; padding:40px 24px 64px;}
+  .eyebrow{font-size:12px; letter-spacing:.13em; text-transform:uppercase; color:var(--bronze); font-weight:600;}
+  h1{font-family:Georgia,"Times New Roman",serif; font-weight:600; font-size:36px; line-height:1.15; margin:8px 0 12px;}
+  .sub{font-size:17px; color:var(--slate); margin:0 0 14px; max-width:46em;}
+  .byline{font-size:13px; color:var(--hint); border-top:1px solid var(--line); padding-top:14px; margin-top:18px;}
+  h2{font-family:Georgia,serif; font-size:24px; font-weight:600; margin:0 0 6px;}
+  .lead{font-size:15px; color:var(--slate); margin:0 0 18px; max-width:46em;}
+  p{max-width:46em;} section{margin-top:48px;}
+
+  /* superposition scenario grid */
+  .axis-label{font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--hint); font-weight:600; margin:22px 0 8px;}
+  .scen{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+  @media(max-width:680px){ .scen{grid-template-columns:1fr;} h1{font-size:28px;} }
+  .s{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:15px 17px; position:relative; overflow:hidden;}
+  .s::before{content:""; position:absolute; inset:0; opacity:.045; background:currentColor;}
+  .s .name{font-weight:600; font-size:15.5px; display:flex; align-items:center; gap:8px;}
+  .s .dot{width:9px; height:9px; border-radius:50%; background:currentColor; flex:none;}
+  .s .d{font-size:13px; color:var(--slate); margin-top:6px;}
+  .s .w{font-size:11.5px; color:var(--hint); margin-top:9px; font-variant-numeric:tabular-nums;}
+  .s.neg{color:var(--rust);} .s.base{color:var(--slate);} .s.pos{color:var(--teal);}
+  .s.slow{color:var(--blue);} .s.steady{color:var(--slate);} .s.fast{color:var(--bronze);}
+  .s.sing{color:var(--violet);} .s.bubble{color:var(--rust);}
+  .s .name, .s .d, .s .w{position:relative;}
+
+  .quantum{background:linear-gradient(135deg,#efe8f7,#e8f1fb); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin-top:8px;}
+  .quantum p{margin:0; font-size:15px; color:#3a3550; max-width:none;}
+  .quantum b{color:var(--violet);}
+
+  .briefs{margin-top:14px;}
+  .brief{display:block; text-decoration:none; color:inherit; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin-bottom:12px; transition:border-color .15s;}
+  .brief:hover{border-color:var(--bronze);}
+  .brief .n{font-size:12px; color:var(--bronze); font-weight:600; letter-spacing:.06em; text-transform:uppercase;}
+  .brief .t{font-size:17px; font-weight:600; margin:3px 0 4px; color:var(--ink);}
+  .brief .m{font-size:13.5px; color:var(--slate);}
+  .brief .arrow{float:right; color:var(--hint); font-size:20px; line-height:1;}
+  .pending{background:var(--card); border:1px dashed var(--line); border-radius:12px; padding:14px 18px; font-size:13.5px; color:var(--hint);}
+
+  .note{background:var(--blue-bg); border-radius:12px; padding:14px 18px; font-size:13.5px; color:var(--ink); margin-top:16px; max-width:46em;}
+  footer{margin-top:52px; border-top:1px solid var(--line); padding-top:16px; font-size:12px; color:var(--hint);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">A running research series</div>
+    <h1>AI Futurism: collapsing the superposition</h1>
+    <p class="sub">Right now every future is live at once &mdash; boom and bubble, fast take-off and long plateau, abundance and drift. This series scrapes serious voices into dated, falsifiable briefs. Each brief is a <em>measurement</em>. Enough measurements, and the probability mass starts to collapse toward one worldview.</p>
+    <div class="byline">Predictive-worldview thread &middot; briefs added as sources are mined &middot; last updated 2026-07-31.</div>
+  </header>
+
+  <section>
+    <h2>The superposition</h2>
+    <p class="lead">Eight scenarios, three axes, all held at once until the evidence forces a collapse. No probabilities are assigned yet &mdash; that's the honest state of the field, and the point of doing this.</p>
+
+    <div class="axis-label">Axis 1 &middot; Outcome for humans</div>
+    <div class="scen">
+      <div class="s neg"><div class="name"><span class="dot"></span>Negative case</div><div class="d">Concentration, novel bio/cyber weapons, control regimes leak, human agency erodes ("drift"). Downside dominates.</div><div class="w">weight: unmeasured</div></div>
+      <div class="s base"><div class="name"><span class="dot"></span>Base case</div><div class="d">Uneven, messy adoption. Big winners and losers, real disruption, no clean utopia or apocalypse. Muddling through.</div><div class="w">weight: unmeasured</div></div>
+      <div class="s pos"><div class="name"><span class="dot"></span>Positive case</div><div class="d">Abundance thesis: AI scientists compound discovery across physics, bio, materials; net human uplift. Star&nbsp;Trek, not Wall-E.</div><div class="w">weight: unmeasured</div></div>
+    </div>
+
+    <div class="axis-label">Axis 2 &middot; Rate of change</div>
+    <div class="scen">
+      <div class="s slow"><div class="name"><span class="dot"></span>Slow down</div><div class="d">Scaling hits walls (data, power, chips, regulation). Progress decelerates; timelines stretch by years.</div><div class="w">watch: scaling-law breaks, capex pullback</div></div>
+      <div class="s steady"><div class="name"><span class="dot"></span>Steady state</div><div class="d">Roughly linear improvement. Diffusion-limited, not capability-limited. The economy absorbs it over decades.</div><div class="w">watch: adoption ≈ capability curve</div></div>
+      <div class="s fast"><div class="name"><span class="dot"></span>Speed up</div><div class="d">Recursive self-improvement + self-scaffolding compound. Capability outruns institutions. Take-off.</div><div class="w">watch: self-generated objectives, agent chaining</div></div>
+    </div>
+
+    <div class="axis-label">Axis 3 &middot; The endpoints</div>
+    <div class="scen">
+      <div class="s sing"><div class="name"><span class="dot"></span>Singularity</div><div class="d">Superintelligence arrives; the curve goes vertical; prediction beyond the horizon becomes meaningless.</div><div class="w">Schmidt: within ~10 yr</div></div>
+      <div class="s bubble"><div class="name"><span class="dot"></span>AI bubble</div><div class="d">Capital and expectations outrun delivered value; a correction resets the field before the frontier claims land.</div><div class="w">watch: revenue vs. capex gap, hype/ship ratio</div></div>
+    </div>
+
+    <div class="quantum" style="margin-top:20px;">
+      <p>These states aren't mutually exclusive &mdash; that's what makes now a <b>quantum nightmare</b>. You can be in "speed up + bubble" (capability real, valuations insane) or "slow down + positive" (gentle, benign diffusion) simultaneously. The series exists to <b>measure which superpositions survive contact with evidence</b> and which decohere.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The briefs</h2>
+    <p class="lead">Each is a self-contained research doc ending in a falsifiable prediction ledger. Revisited quarterly &mdash; what confirms on schedule raises that voice's weight; what slips marks their systematic overconfidence.</p>
+    <div class="briefs">
+      <a class="brief" href="schmidt-timeline/">
+        <span class="arrow">&rarr;</span>
+        <div class="n">Brief 001 &middot; 2026-07-31</div>
+        <div class="t">The Schmidt Timeline: superintelligence within a decade</div>
+        <div class="m">Eric Schmidt &mdash; AI mathematicians ~1yr, programmers 1&ndash;2yr, savants ~5yr, superintelligence ~10yr; tripwires, China/open-source, "drift not Terminator." 7-claim prediction ledger.</div>
+      </a>
+      <div class="pending">Brief 002 &mdash; next source in the queue. Send a video, podcast, or paper.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How the model gets built</h2>
+    <p class="lead">This is not punditry &mdash; it's a scorecard method.</p>
+    <div class="note">
+      <b>1. Mine a source</b> → clean transcript. &nbsp;<b>2. Extract</b> its dated, checkable claims into a brief + prediction ledger. &nbsp;<b>3. Score quarterly</b> — confirm / slip / refute. &nbsp;<b>4. Synthesize</b> — once several briefs exist, roll their ledgers up and let the scenario weights above start to move. The delta between predicted and observed <em>is</em> the predictive signal. Synthesis of the cross-source mental model begins once the thread has enough measurements to collapse.
+    </div>
+  </section>
+
+  <footer>
+    AI-Futurism &middot; a running series of source briefs feeding a predictive worldview &middot; scenarios held in superposition until evidence collapses them.
+  </footer>
+
+</div>
+</body>
+</html>

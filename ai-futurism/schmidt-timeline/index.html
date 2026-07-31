@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Schmidt Timeline — Superintelligence Within a Decade</title>
+<style>
+  :root{
+    --ink:#1f2530; --slate:#5a6472; --hint:#8a93a0; --line:#e6e2d8;
+    --bg:#fbfaf7; --card:#ffffff; --bronze:#9a5b13; --bronze-bg:#f7eedd;
+    --teal:#0f6e56; --teal-bg:#e3f3ee; --blue:#185fa5; --blue-bg:#e8f1fb;
+    --rust:#a23b1e; --rust-bg:#f7e9e3;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:880px; margin:0 auto; padding:40px 24px 64px;}
+  .eyebrow{font-size:12px; letter-spacing:.13em; text-transform:uppercase; color:var(--bronze); font-weight:600;}
+  h1{font-family:Georgia,"Times New Roman",serif; font-weight:600; font-size:34px; line-height:1.18; margin:8px 0 10px; color:var(--ink);}
+  .sub{font-size:17px; color:var(--slate); margin:0 0 14px; max-width:44em;}
+  .byline{font-size:13px; color:var(--hint); border-top:1px solid var(--line); padding-top:14px; margin-top:18px;}
+  .byline b{color:var(--slate); font-weight:600;}
+  h2{font-family:Georgia,serif; font-size:23px; font-weight:600; margin:0 0 4px;}
+  h3{font-size:15px; font-weight:600; margin:0 0 3px;}
+  .lead{font-size:15px; color:var(--slate); margin:0 0 18px; max-width:44em;}
+  p{max-width:44em;}
+  section{margin-top:46px;}
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:24px;}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:15px 16px;}
+  .stat .k{font-size:12.5px; color:var(--slate); line-height:1.35;}
+  .stat .v{font-size:24px; font-weight:600; margin-top:5px; font-variant-numeric:tabular-nums; color:var(--bronze);}
+  @media(max-width:680px){ .stats{grid-template-columns:repeat(2,1fr);} h1{font-size:27px;} }
+
+  .chartwrap{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 18px; margin-top:8px;}
+  .chartwrap svg{width:100%; height:auto; display:block;}
+  .cap{font-size:12.5px; color:var(--hint); margin-top:12px; line-height:1.55; max-width:44em;}
+
+  blockquote{margin:18px 0; padding:14px 20px; border-left:4px solid var(--bronze); background:var(--bronze-bg);
+    border-radius:0 12px 12px 0; font-size:15.5px; color:#5e3a0c; font-style:italic;}
+  blockquote .who{display:block; font-style:normal; font-size:12.5px; color:var(--bronze); margin-top:8px; font-weight:600;}
+
+  .cards{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px;}
+  @media(max-width:680px){ .cards{grid-template-columns:1fr;} }
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px;}
+  .card.pos{border-left:4px solid var(--teal);}
+  .card.neg{border-left:4px solid var(--rust);}
+  .card .k{font-size:13px; color:var(--slate); margin-bottom:6px;}
+  .card ul{margin:6px 0 0; padding-left:18px;} .card li{font-size:14px; margin-bottom:5px;}
+
+  .trip{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--rust); border-radius:0 12px 12px 0; padding:12px 16px; margin-bottom:10px;}
+  .trip .t{font-weight:600; font-size:14.5px;} .trip .d{font-size:13.5px; color:var(--slate); margin-top:3px;}
+  .trip .badge{font-size:11px; color:var(--rust); background:var(--rust-bg); padding:2px 9px; border-radius:20px; font-weight:600; white-space:nowrap;}
+  .trip .row{display:flex; justify-content:space-between; align-items:center; gap:10px;}
+
+  table{width:100%; border-collapse:collapse; margin-top:16px; font-size:13px;}
+  th{text-align:left; font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--hint); border-bottom:2px solid var(--line); padding:8px 10px; font-weight:600;}
+  td{border-bottom:1px solid var(--line); padding:10px; vertical-align:top; color:var(--slate);}
+  td b{color:var(--ink); font-weight:600;}
+  td.when{white-space:nowrap; font-variant-numeric:tabular-nums; color:var(--bronze); font-weight:600;}
+  .pill{display:inline-block; font-size:11px; font-weight:600; padding:2px 9px; border-radius:20px;}
+  .pill.open{color:var(--blue); background:var(--blue-bg);} .pill.live{color:var(--teal); background:var(--teal-bg);}
+
+  .keypoints li{margin-bottom:9px; font-size:15px;}
+  .keypoints b{color:var(--ink);}
+  ol.src{font-size:13.5px; color:var(--slate); padding-left:20px;} ol.src li{margin-bottom:8px;}
+  ol.src a{color:var(--blue); word-break:break-word;}
+  .note{background:var(--blue-bg); border-radius:12px; padding:14px 18px; font-size:13.5px; color:var(--ink); margin-top:16px;}
+  footer{margin-top:48px; border-top:1px solid var(--line); padding-top:16px; font-size:12px; color:var(--hint);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">AI Futurism &middot; Research Brief 001</div>
+    <h1>The Schmidt Timeline: superintelligence within a decade, and who it hits first</h1>
+    <p class="sub">Eric Schmidt's clearest public timeline yet — AI mathematicians in a year, programmers in two, savants in every field in five, digital superintelligence in ten — and the tripwires he says researchers are already watching.</p>
+    <div class="byline">Source: <b>&ldquo;Ex-Google CEO: SuperIntelligence Is Closer Than You Think&rdquo;</b>, Neural Nutshell (28:56, pub. 2026-07-30) &mdash; a commentary edit of Eric Schmidt on the Peter Diamandis podcast. &nbsp;Brief prepared 2026-07-31 for the AI-Futurism predictive-worldview thread. <b>Secondary source</b>; quotes are Schmidt as presented in the video.</div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="k">World-class AI mathematicians</div><div class="v">~1 yr</div></div>
+    <div class="stat"><div class="k">World-class AI programmers</div><div class="v">1&ndash;2 yr</div></div>
+    <div class="stat"><div class="k">Expert &ldquo;savants&rdquo; in every field</div><div class="v">~5 yr</div></div>
+    <div class="stat"><div class="k">Digital superintelligence</div><div class="v">~10 yr</div></div>
+  </div>
+
+  <section>
+    <h2>The capability ramp</h2>
+    <p class="lead">Schmidt's headline claim is a staircase, not a single event. Each step is an <em>input</em> to the next — math and code are &ldquo;the basis of everything,&rdquo; an accelerant for physics, chemistry, biology, materials. He adds one caveat about the aggressive &ldquo;San Francisco consensus&rdquo; dates: he thinks they are &ldquo;off by one and a half or two times&rdquo; &mdash; the darker bars below are that stretch.</p>
+
+    <div class="chartwrap">
+      <svg viewBox="0 0 820 300" role="img" aria-label="Timeline from 2026 to 2036 showing AI mathematicians at year one, programmers at year two, savants in every field at year five, and digital superintelligence at year ten, with a stretched band for Schmidt's 1.5-2x adjustment.">
+        <!-- axis -->
+        <line x1="60" y1="250" x2="790" y2="250" stroke="#c9c3b6" stroke-width="1.5"/>
+        <!-- year ticks: 2026..2036 across x 60..790 -->
+        <g font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="11" fill="#8a93a0" text-anchor="middle">
+          <line x1="60"  y1="246" x2="60"  y2="254" stroke="#c9c3b6"/><text x="60"  y="270">2026</text>
+          <line x1="206" y1="246" x2="206" y2="254" stroke="#c9c3b6"/><text x="206" y="270">2028</text>
+          <line x1="352" y1="246" x2="352" y2="254" stroke="#c9c3b6"/><text x="352" y="270">2030</text>
+          <line x1="498" y1="246" x2="498" y2="254" stroke="#c9c3b6"/><text x="498" y="270">2032</text>
+          <line x1="644" y1="246" x2="644" y2="254" stroke="#c9c3b6"/><text x="644" y="270">2034</text>
+          <line x1="790" y1="246" x2="790" y2="254" stroke="#c9c3b6"/><text x="790" y="270">2036</text>
+        </g>
+        <!-- rising slope line connecting milestones -->
+        <polyline points="133,205 206,170 425,120 790,55" fill="none" stroke="#9a5b13" stroke-width="2" stroke-dasharray="2 4" opacity="0.5"/>
+        <!-- Milestone 1: mathematicians ~ +1yr => 2027 => x=133 -->
+        <g font-family="-apple-system,Helvetica,Arial,sans-serif">
+          <rect x="90" y="188" width="150" height="34" rx="8" fill="#e3f3ee" stroke="#0f6e56"/>
+          <text x="99" y="203" font-size="12.5" font-weight="600" fill="#0f6e56">AI mathematicians</text>
+          <text x="99" y="217" font-size="11" fill="#5a6472">~2027 &middot; math is scale-free</text>
+          <circle cx="133" cy="250" r="4" fill="#0f6e56"/>
+          <!-- Milestone 2: programmers ~2028 x=206 -->
+          <rect x="150" y="130" width="160" height="34" rx="8" fill="#e3f3ee" stroke="#0f6e56"/>
+          <text x="159" y="145" font-size="12.5" font-weight="600" fill="#0f6e56">AI programmers</text>
+          <text x="159" y="159" font-size="11" fill="#5a6472">~2028 &middot; junior roles go first</text>
+          <circle cx="206" cy="250" r="4" fill="#0f6e56"/>
+          <!-- Milestone 3: savants ~ +5yr => 2031 x=425 -->
+          <rect x="350" y="82" width="170" height="34" rx="8" fill="#e8f1fb" stroke="#185fa5"/>
+          <text x="359" y="97" font-size="12.5" font-weight="600" fill="#185fa5">Savants in every field</text>
+          <text x="359" y="111" font-size="11" fill="#5a6472">~2031 &middot; &ldquo;in the bag&rdquo;</text>
+          <circle cx="425" cy="250" r="4" fill="#185fa5"/>
+          <!-- Milestone 4: superintelligence ~ +10yr => 2036 x=790 -->
+          <rect x="612" y="26" width="178" height="34" rx="8" fill="#f7eedd" stroke="#9a5b13"/>
+          <text x="621" y="41" font-size="12.5" font-weight="600" fill="#9a5b13">Digital superintelligence</text>
+          <text x="621" y="55" font-size="11" fill="#5a6472">~2036 &middot; &ldquo;polymath in your pocket&rdquo;</text>
+          <circle cx="790" cy="250" r="4" fill="#9a5b13"/>
+        </g>
+      </svg>
+      <p class="cap">Milestones plotted from Schmidt's stated horizons (measured from mid-2026). The dashed slope is illustrative, not a fitted curve. &ldquo;AGI&rdquo; he defines by capability, not date: when a model can &ldquo;discover relativity the way Einstein did, with data available up to that date.&rdquo;</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Who it hits first &mdash; and why</h2>
+    <p class="lead">The first jobs displaced are not manual. They are the technically skilled roles people assumed were safe.</p>
+    <blockquote>The first people this hits are&hellip; the ones who spent years getting technically skilled and thought that made them untouchable. Junior programmers, mathematicians, whole layers of enterprise software companies.
+      <span class="who">— Narration paraphrasing Schmidt</span></blockquote>
+    <p>The mechanism is cold: math and programming have <b>limited, formal language sets</b> and are <b>&ldquo;scale-free&rdquo;</b> &mdash; you improve them with more electricity, not more real-world data, sensors, or telemetry. Schmidt's concrete example: ~<b>10 million concurrent phone calls</b> (voice sales/service) that &ldquo;should move to AI in the next year,&rdquo; where a conversation worth $10&ndash;$1,000 costs ~10&ndash;20&cent; of compute. Separately, the <b>Model Context Protocol</b> lets an enterprise wire its databases straight to an LLM that writes the integration code &mdash; putting <b>~100,000 middleware companies</b> &ldquo;in trouble.&rdquo; Junior programmers go first; senior engineers who supervise the systems go later.</p>
+  </section>
+
+  <section>
+    <h2>Two domains: abundance and emergency</h2>
+    <p class="lead">Schmidt splits the future into a positive domain and a negative one, and says the state has not yet grasped either.</p>
+    <div class="cards">
+      <div class="card pos">
+        <div class="k">Positive domain &mdash; the abundance case</div>
+        <ul>
+          <li>Non-human <b>AI scientists</b> + programmers compound each company's output ("your slope goes like this").</li>
+          <li>Add ~1M AI researchers to a field &rarr; a steeper rate of discovery.</li>
+          <li><b>Synthetic data</b> generates physics where real data is scarce; foundation models approximate otherwise-incomputable algorithms (e.g. quantum chromodynamics) "good enough."</li>
+          <li>Biology breakthroughs "right after" math/software.</li>
+        </ul>
+      </div>
+      <div class="card neg">
+        <div class="k">Negative domain &mdash; the national-emergency case</div>
+        <ul>
+          <li><b>Novel cyberattacks</b> humans can't conceive of &mdash; so no defense exists, because no one thought to build one.</li>
+          <li><b>Biological attacks</b>: a known-bad virus made undetectable by structural changes (subject of a national report he co-released).</li>
+          <li>The state "does not appear to understand this now"; adoption is fastest where money + latency pressure exist (finance, biomed, startups), slowest in government.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The tripwires researchers are watching now</h2>
+    <p class="lead">Not hypotheticals &mdash; specific behaviors labs are monitoring in real time. Schmidt: the "student" is already smarter than the "professor" trying to watch it, yet oversight "appears" to still work.</p>
+
+    <div class="trip"><div class="row"><span class="t">Self-generated scaffolding</span><span class="badge">imminent &mdash; "a 2025 thing"</span></div>
+      <div class="d">Today AI needs a human-laid "trellis" to climb toward a breakthrough. An OpenAI researcher told Schmidt the AI generating <em>its own</em> scaffolding is imminent &mdash; "not Pandora's box," but much closer to end-to-end discovery.</div></div>
+    <div class="trip"><div class="row"><span class="t">Setting its own objectives</span><span class="badge">not yet</span></div>
+      <div class="d">Recursive self-improvement within narrow functions has "already crossed." The system generating its own goals and questions "does not have that today."</div></div>
+    <div class="trip"><div class="row"><span class="t">Self-exfiltration</span><span class="badge">not yet</span></div>
+      <div class="d">A model taking steps to move itself outside command-and-control. "Has not happened yet" &mdash; but theorists expect systems may choose it as a reward function.</div></div>
+    <div class="trip"><div class="row"><span class="t">Seeking weapons &amp; deceiving to get them</span><span class="badge">watching</span></div>
+      <div class="d">Access to weapons, and lying to obtain access, named explicitly as a tripwire under active watch.</div></div>
+  </section>
+
+  <section>
+    <h2>The geopolitics: chips, open source, and who leads</h2>
+    <p class="lead">The control regime that was meant to slow rivals is, by Schmidt's account, already leaking.</p>
+    <ul class="keypoints">
+      <li><b>China closed the gap.</b> Days after Gemini 2.5 Pro topped the leaderboards, DeepSeek edged ahead &mdash; using chips it "was never supposed to have" and techniques nobody predicted.</li>
+      <li><b>Test-time training</b> (continuous updating) appears doable on <b>lesser-power chips</b>, eroding the premise of export controls.</li>
+      <li><b>Open source = open weights.</b> Schmidt's "fair reading": every non-Western country adopts open source as cheaper &mdash; transferring open-source leadership <b>from the US to China.</b></li>
+      <li><b>The financing paradox:</b> "How do you raise $50B for a data center if your product is open-source?" US models stay closed because someone must pay for the capital; the government isn't handing out $50B.</li>
+      <li><b>Centralized vs. distributed</b> is the whole ballgame: if intelligence needs $10B single-building clusters (e.g. ~200,000 GPUs), "we'll know where they are." If it goes distributed onto small servers, the control regime collapses &mdash; terrorists and rogue states, not rational US/China actors, become the real risk.</li>
+      <li><b>Regulatory vacuum:</b> the Biden-era "10^26 FLOPs" threshold (regulate above it, open <em>and</em> closed) was ended by the Trump administration, which "has not yet produced their own thinking."</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>The quiet worry: drift, not Terminator</h2>
+    <blockquote>The real risk is not Terminator, it's drift&hellip; AI might slowly erode human values, autonomy, and judgment if left unregulated or misunderstood.
+      <span class="who">— Schmidt, on his book <i>Genesis</i> (with Kissinger &amp; Mundie)</span></blockquote>
+    <p>Not a violent end &mdash; a <b>Wall-E future vs. a Star Trek one.</b> The danger is a "virtual prison" where it's simply easier to ask your AI than to do the thing yourself, and the human drive to overcome challenge atrophies. Schmidt's counter-bet: the world he describes is complex enough that <b>just managing it &mdash; attention, misinformation, people trying to deceive you &mdash; becomes a full-time, purposeful job.</b> "Humans need purpose." The framing he keeps returning to: this moment is like <b>1938</b> &mdash; the people who saw what was coming spent their lives trying to prevent the worst of it.</p>
+  </section>
+
+  <section>
+    <h2>Prediction ledger &mdash; the falsifiable core</h2>
+    <p class="lead">For the predictive-worldview thread, the value isn't the vibe &mdash; it's the datable, checkable claims. Each row is a bet we can score later. Horizons are from mid-2026; "Schmidt-adj." applies his own &ldquo;off by 1.5&ndash;2&times;&rdquo; stretch to the aggressive dates.</p>
+    <table>
+      <thead><tr><th>Claim</th><th class="when">Stated</th><th class="when">Schmidt-adj.</th><th>Confirms if&hellip;</th><th>Refutes if&hellip;</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><b>World-class AI mathematician</b> emerges</td><td class="when">~2027</td><td class="when">2028&ndash;29</td><td>A model produces a novel, peer-accepted math result unaided</td><td>Still tool-assisted only by 2029</td><td><span class="pill open">open</span></td></tr>
+        <tr><td><b>World-class AI programmer</b> at scale; junior roles displaced</td><td class="when">2027&ndash;28</td><td class="when">2029&ndash;30</td><td>Measurable collapse in junior-dev hiring; autonomous senior-level output</td><td>Junior hiring flat; models still need senior supervision</td><td><span class="pill open">open</span></td></tr>
+        <tr><td><b>~10M voice calls</b> move to AI</td><td class="when">~2027</td><td class="when">2027&ndash;28</td><td>Enterprise voice AI displaces a documented ~10M concurrent calls</td><td>Adoption stalls below ~1M</td><td><span class="pill live">live now</span></td></tr>
+        <tr><td><b>Specialized "savants" in every field</b></td><td class="when">~2031</td><td class="when">2032&ndash;33</td><td>Expert-parity models shipped across most professional domains</td><td>Broad domains still lack expert-parity by 2033</td><td><span class="pill open">open</span></td></tr>
+        <tr><td><b>Self-generated scaffolding</b></td><td class="when">2025&ndash;26</td><td class="when">2026&ndash;27</td><td>A lab demonstrates AI authoring its own multi-step research trellis</td><td>Still requires human-laid frameworks in 2027</td><td><span class="pill open">open</span></td></tr>
+        <tr><td><b>Open-source leadership shifts US &rarr; China</b></td><td class="when">~2027</td><td class="when">2028&ndash;30</td><td>Top open-weight models are Chinese; non-West standardizes on them</td><td>US open models stay at the frontier</td><td><span class="pill live">live now</span></td></tr>
+        <tr><td><b>Digital superintelligence</b> ("polymath in your pocket")</td><td class="when">~2036</td><td class="when">2036+</td><td>Generally-available, generally-safe superhuman generalist</td><td>No such system by ~2040</td><td><span class="pill open">open</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note"><b>How this feeds the worldview:</b> revisit this ledger quarterly. Claims that keep confirming on-schedule raise our weight on Schmidt's model of the world (scale-free formal domains fall first; control regimes leak; drift &gt; catastrophe). Claims that slip tell us where his priors &mdash; or the "San Francisco consensus" &mdash; are systematically overconfident. That delta is the predictive signal.</div>
+  </section>
+
+  <section>
+    <h2>Sources &amp; graphics attribution</h2>
+    <ol class="src">
+      <li><b>Primary video (this brief's source):</b> Neural Nutshell, &ldquo;Ex-Google CEO: SuperIntelligence Is Closer Than You Think,&rdquo; 28:56, pub. 2026-07-30. <a href="https://www.youtube.com/watch?v=XbYH0YHnus4">youtube.com/watch?v=XbYH0YHnus4</a> &mdash; a commentary edit; Schmidt's words are excerpted from his appearance on the Peter Diamandis podcast (<a href="https://www.youtube.com/@peterdiamandis">@peterdiamandis</a>).</li>
+      <li>Anthropic, &ldquo;Machines of Loving Grace&rdquo; &mdash; <a href="https://www.anthropic.com/research/machines-of-loving-grace">anthropic.com/research/machines-of-loving-grace</a> (cited in the video description).</li>
+      <li>OpenAI, &ldquo;Planning for AGI and beyond&rdquo; &mdash; <a href="https://openai.com/blog/planning-for-agi-and-beyond">openai.com/blog/planning-for-agi-and-beyond</a> (cited in the video description).</li>
+      <li>Stanford University, AI Index Report &mdash; <a href="https://aiindex.stanford.edu/report/">aiindex.stanford.edu/report</a> (cited in the video description).</li>
+      <li>Schmidt, Kissinger &amp; Mundie, <i>Genesis</i> (referenced by Schmidt for the "drift" and "polymaths in history" arguments).</li>
+    </ol>
+    <p class="cap"><b>Graphics:</b> capability-ramp timeline and prediction-ledger table are original figures built for this brief (inline SVG / HTML, no external assets), plotting Schmidt's stated horizons. Stat figures and all quotations are drawn from the transcript of source #1.</p>
+    <p class="cap"><b>Reliability note:</b> this is a <b>secondary source</b> &mdash; a commentary channel's edit of a podcast. Quotes are Schmidt as presented in that edit; horizons are his stated opinion, not consensus forecasts. Treat the ledger as claims-to-test, not established fact.</p>
+  </section>
+
+  <footer>
+    AI-Futurism predictive-worldview thread &middot; Brief 001 &middot; Prepared 2026-07-31 &middot; AI-Futurism research series.
+    Source transcript: 4,425 words, auto-captioned. Self-contained HTML &rarr; PDF (Chrome headless). Regenerate figures by editing this file.
+  </footer>
+
+</div>
+</body>
+</html>
