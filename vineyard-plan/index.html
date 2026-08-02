@@ -1,0 +1,313 @@
+<title>The Vineyard Plan — Where Things Actually Stand</title>
+
+<style>
+  :root{
+    --paper:#F7F5F0; --ink:#241F1A; --ink-2:#5A5049; --rule:#DCD5C9;
+    --card:#FFFFFF; --card-edge:#E6DFD2;
+    --wood:#6B4A2E; --cane:#C08A4A;
+    --sun:#D9A21B;        /* light / sun */
+    --shade:#3E5C6B;      /* shade */
+    --good:#2F6B4F;       /* what you gain */
+    --cost:#C42B1C;       /* what it costs */
+    --shadow:0 1px 0 rgba(36,31,26,.05), 0 6px 18px -12px rgba(36,31,26,.28);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#17140F;--ink:#F2EDE4;--ink-2:#B3A896;--rule:#3A332A;
+      --card:#201B15;--card-edge:#332B22;--wood:#A97B50;--cane:#E0A863;
+      --sun:#F0C04A;--shade:#7FA6B8;--good:#69B98F;--cost:#FF6A57;
+      --shadow:0 6px 20px -14px #000;}
+  }
+  :root[data-theme="dark"]{--paper:#17140F;--ink:#F2EDE4;--ink-2:#B3A896;--rule:#3A332A;
+      --card:#201B15;--card-edge:#332B22;--wood:#A97B50;--cane:#E0A863;
+      --sun:#F0C04A;--shade:#7FA6B8;--good:#69B98F;--cost:#FF6A57;
+      --shadow:0 6px 20px -14px #000;}
+  :root[data-theme="light"]{--paper:#F7F5F0;--ink:#241F1A;--ink-2:#5A5049;--rule:#DCD5C9;
+      --card:#FFFFFF;--card-edge:#E6DFD2;--wood:#6B4A2E;--cane:#C08A4A;
+      --sun:#D9A21B;--shade:#3E5C6B;--good:#2F6B4F;--cost:#C42B1C;
+      --shadow:0 1px 0 rgba(36,31,26,.05), 0 6px 18px -12px rgba(36,31,26,.28);}
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+       font-size:17px;line-height:1.6;-webkit-text-size-adjust:100%}
+  .wrap{max-width:44rem;margin:0 auto;padding:1.25rem 1.1rem 4rem}
+  p,li{max-width:38rem}
+  header.mast{padding:.5rem 0 1.4rem;border-bottom:3px double var(--rule);margin-bottom:2rem}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;
+           text-transform:uppercase;color:var(--ink-2)}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,7vw,2.9rem);
+     line-height:1.05;margin:.35rem 0 .5rem;text-wrap:balance;letter-spacing:-.01em}
+  .standfirst{font-family:var(--serif);font-size:1.1rem;color:var(--ink-2);margin:0}
+  h2{font-family:var(--serif);font-size:clamp(1.3rem,4.4vw,1.7rem);line-height:1.15;
+     margin:0 0 .6rem;text-wrap:balance}
+  section{margin:0 0 2.6rem}
+
+  /* priority stack */
+  .prio{display:flex;flex-direction:column;gap:.5rem;margin:1rem 0}
+  .prio div{display:flex;align-items:center;gap:.8rem;padding:.85rem 1rem;
+            border-radius:3px;border:1px solid var(--card-edge);background:var(--card)}
+  .prio .rank{font-family:var(--mono);font-weight:700;font-size:1.1rem;
+              width:1.6rem;text-align:center;flex:0 0 auto}
+  .prio .p1{border-left:5px solid var(--good)}
+  .prio .p2{border-left:5px solid var(--cane)}
+  .prio .p3{border-left:5px solid var(--ink-2);opacity:.82}
+  .prio b{font-size:1.02rem}
+  .prio small{display:block;color:var(--ink-2);font-size:.85rem;line-height:1.35}
+
+  figure{margin:1.1rem 0}
+  .plate{background:var(--card);border:1px solid var(--card-edge);border-radius:3px;
+         padding:1rem .75rem .6rem;box-shadow:var(--shadow);overflow-x:auto}
+  .plate svg{display:block;width:100%;height:auto;min-width:19rem}
+  figcaption{font-size:.88rem;color:var(--ink-2);margin-top:.6rem;padding:0 .25rem;
+             font-family:var(--serif)}
+  svg text{font-family:var(--sans);fill:var(--ink)}
+  .lbl{font-size:11.5px;font-weight:600}
+  .lblsm{font-size:10px;fill:var(--ink-2)}
+
+  /* give / cost columns */
+  .ledger{display:grid;grid-template-columns:1fr;gap:.8rem;margin:1.1rem 0}
+  @media(min-width:34rem){.ledger{grid-template-columns:1fr 1fr}}
+  .col{background:var(--card);border:1px solid var(--card-edge);border-radius:3px;padding:.9rem 1rem}
+  .col.g{border-top:4px solid var(--good)}
+  .col.c{border-top:4px solid var(--cost)}
+  .col h3{margin:.1rem 0 .5rem;font-size:.95rem;font-family:var(--sans)}
+  .col ul{margin:0;padding-left:1.1rem}
+  .col li{margin:.4rem 0;font-size:.95rem}
+
+  table{border-collapse:collapse;width:100%;min-width:20rem;font-size:.95rem}
+  .tblwrap{overflow-x:auto;margin:1.1rem 0}
+  th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
+  thead th{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;
+           color:var(--ink-2);border-bottom:2px solid var(--ink)}
+  td.was{color:var(--ink-2)}
+  td.now{font-weight:600}
+
+  .call{border-left:3px solid var(--ink);background:var(--card);border-radius:0 3px 3px 0;
+        padding:.85rem 1rem;margin:1.1rem 0}
+  .call.q{border-left-color:var(--sun)}
+  .call.fix{border-left-color:var(--cost)}
+  .call p{margin:.35rem 0}.call p:first-child{margin-top:0}.call p:last-child{margin-bottom:0}
+  .ctag{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+        color:var(--ink-2);display:block;margin-bottom:.3rem}
+
+  ol.todo{counter-reset:t;list-style:none;padding:0;margin:1rem 0}
+  ol.todo>li{counter-increment:t;position:relative;padding:.75rem 0 .75rem 2.5rem;
+             border-bottom:1px solid var(--rule)}
+  ol.todo>li::before{content:counter(t);position:absolute;left:0;top:.78rem;
+     font-family:var(--mono);font-size:.72rem;font-weight:700;width:1.6rem;height:1.6rem;
+     border-radius:50%;background:var(--good);color:var(--paper);display:grid;place-items:center}
+  ul.parked{list-style:none;padding:0;margin:.8rem 0}
+  ul.parked li{padding:.5rem 0 .5rem 1.5rem;border-bottom:1px solid var(--rule);
+               position:relative;color:var(--ink-2)}
+  ul.parked li::before{content:"⏸";position:absolute;left:0;top:.5rem;font-size:.85rem}
+  b.good{color:var(--good)}b.cost{color:var(--cost)}b.sun{color:var(--sun)}b.shade{color:var(--shade)}
+  footer{border-top:3px double var(--rule);margin-top:1rem;padding-top:1.2rem;
+         font-size:.85rem;color:var(--ink-2)}
+  a{color:inherit;text-decoration-thickness:1px;text-underline-offset:2px}
+  a:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow">12 vines · Seyval Blanc · partial shade · USDA 6b/7a</div>
+  <h1>Where the vineyard actually stands</h1>
+  <p class="standfirst">Two independent research passes attacked the plan. One thing they
+  said was right, one thing changed when the shade came to light, and three things are worth
+  doing this year.</p>
+</header>
+
+<section>
+  <h2>The frame that settles everything</h2>
+  <p>Priorities, in order. Every decision below follows from this — and most of the earlier
+  worry dissolves once it's written down.</p>
+  <div class="prio">
+    <div class="p1"><span class="rank">1</span><span><b>Healthy, beautiful vines</b>
+      <small>The actual goal. This is a garden that makes wine, not a winery with a garden.</small></span></div>
+    <div class="p2"><span class="rank">2</span><span><b>Great wine — quality, not volume</b>
+      <small>Which happens to align perfectly with thinning the crop hard.</small></span></div>
+    <div class="p3"><span class="rank">3</span><span><b>Sparkling — a fun side experiment</b>
+      <small>Not a programme, not a deadline, not the measure of success.</small></span></div>
+  </div>
+  <div class="call">
+    <span class="ctag">Why this matters more than it sounds</span>
+    <p>The research verdict was <b>"the wrong instrument for a production project."</b>
+    True — and irrelevant, because <b>production was never the goal.</b> Written this way,
+    the vines stay, nothing gets replanted, and the pressure comes off.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The shade changes the diagnosis</h2>
+  <p>The case against this site was <b>too hot — the acid will collapse and the fruit will
+  sunburn.</b> Partial shade attacks that directly.</p>
+  <div class="ledger">
+    <div class="col g">
+      <h3>✓ What the shade gives you</h3>
+      <ul>
+        <li>Berry temperature down as much as <b>4&nbsp;°C</b></li>
+        <li><b>Holds acid</b> — around <b>+1&nbsp;g/L</b> retained</li>
+        <li>Sun burns off malic acid; shade <b>protects it</b></li>
+        <li><b>Sunburn risk drops</b> a lot</li>
+        <li>Makes this site behave more like a <b>cool climate</b> — which is exactly where
+        Seyval belongs</li>
+      </ul>
+    </div>
+    <div class="col c">
+      <h3>✗ What it costs you</h3>
+      <ul>
+        <li>Grapes want <b>6–8+ hours</b> direct sun; heavy ripening wants 10–12</li>
+        <li><b>Less sugar</b> — ripening is slower</li>
+        <li><b>Powdery mildew runs 49–75% worse</b> in shade — sun and heat suppress it</li>
+        <li>Shaded buds are <b>less fruitful next year</b> — the loss compounds</li>
+        <li>Harvest pushed <b>later</b>, toward frost</li>
+      </ul>
+    </div>
+  </div>
+  <div class="call fix">
+    <span class="ctag">The honest headline</span>
+    <p><b class="good">Good news: the "wrong climate" objection is much weaker than it
+    looked.</b> Acid retention is precisely what this grape needs, and shade delivers it.</p>
+    <p><b class="cost">But the problem flips.</b> It is no longer <i>heat and acid loss</i> —
+    it is <b>light and ripening</b>. Which probably also explains this year's 6&nbsp;Brix
+    better than crop load alone does.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The gap you're actually closing</h2>
+  <figure>
+    <div class="plate">
+      <svg viewBox="0 0 620 150" role="img" aria-label="Sugar scale showing this year's reading at 6 Brix, veraison at 12 to 14, and the dry white target at 19 to 21">
+        <line x1="40" y1="86" x2="580" y2="86" stroke="var(--rule)" stroke-width="10" stroke-linecap="round"/>
+        <!-- filled portion to 6 -->
+        <line x1="40" y1="86" x2="150" y2="86" stroke="var(--cost)" stroke-width="10" stroke-linecap="round"/>
+        <!-- ticks -->
+        <g stroke="var(--ink-2)" stroke-width="1">
+          <line x1="40" y1="98" x2="40" y2="108"/><line x1="150" y1="98" x2="150" y2="108"/>
+          <line x1="260" y1="98" x2="260" y2="108"/><line x1="480" y1="98" x2="480" y2="108"/>
+          <line x1="580" y1="98" x2="580" y2="108"/>
+        </g>
+        <text class="lblsm" x="34" y="122">0</text>
+        <text class="lblsm" x="144" y="122">6</text>
+        <text class="lblsm" x="252" y="122">12–14</text>
+        <text class="lblsm" x="470" y="122">19–21</text>
+        <text class="lblsm" x="572" y="122">24</text>
+        <text class="lblsm" x="30" y="140">°Brix (sugar)</text>
+        <!-- markers -->
+        <circle cx="150" cy="86" r="9" fill="var(--cost)"/>
+        <text class="lbl" x="112" y="66" fill="var(--cost)">YOU ARE HERE</text>
+        <text class="lblsm" x="122" y="52">1 Aug reading</text>
+        <line x1="260" y1="70" x2="260" y2="102" stroke="var(--sun)" stroke-width="3"/>
+        <text class="lbl" x="228" y="40" fill="var(--sun)">veraison</text>
+        <text class="lblsm" x="222" y="26">ripening starts</text>
+        <rect x="480" y="76" width="20" height="20" rx="3" fill="var(--good)"/>
+        <text class="lbl" x="424" y="66" fill="var(--good)">TARGET</text>
+        <text class="lblsm" x="424" y="52">dry white</text>
+      </svg>
+    </div>
+    <figcaption>Six Brix in August is a long way from a dry white. Sugar comes from light —
+    so light and crop load are the only two levers that matter this season.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>The one question that sharpens all of this</h2>
+  <figure>
+    <div class="plate">
+      <svg viewBox="0 0 620 230" role="img" aria-label="Comparison of afternoon shade, which is near ideal, against morning shade, which is the worst case">
+        <!-- AFTERNOON SHADE (good) -->
+        <text class="lbl" x="20" y="24" fill="var(--good)">AFTERNOON SHADE — near ideal</text>
+        <path d="M40 150 A110 110 0 0 1 260 150" fill="none" stroke="var(--rule)" stroke-width="2" stroke-dasharray="3 4"/>
+        <path d="M40 150 A110 110 0 0 1 150 40" fill="none" stroke="var(--sun)" stroke-width="7" stroke-linecap="round"/>
+        <path d="M150 40 A110 110 0 0 1 260 150" fill="none" stroke="var(--shade)" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="86" cy="82" r="11" fill="var(--sun)"/>
+        <line x1="40" y1="150" x2="260" y2="150" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <text class="lblsm" x="34" y="166">morning</text>
+        <text class="lblsm" x="222" y="166">evening</text>
+        <text class="lblsm" x="22" y="188">✓ full morning light for photosynthesis</text>
+        <text class="lblsm" x="22" y="202">✓ dew dries early → less mildew</text>
+        <text class="lblsm" x="22" y="216">✓ peak afternoon heat blocked → acid kept</text>
+
+        <line x1="310" y1="14" x2="310" y2="222" stroke="var(--rule)" stroke-width="1"/>
+
+        <!-- MORNING SHADE (bad) -->
+        <text class="lbl" x="332" y="24" fill="var(--cost)">MORNING SHADE — worst case</text>
+        <path d="M352 150 A110 110 0 0 1 572 150" fill="none" stroke="var(--rule)" stroke-width="2" stroke-dasharray="3 4"/>
+        <path d="M352 150 A110 110 0 0 1 462 40" fill="none" stroke="var(--shade)" stroke-width="7" stroke-linecap="round"/>
+        <path d="M462 40 A110 110 0 0 1 572 150" fill="none" stroke="var(--sun)" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="536" cy="84" r="11" fill="var(--sun)"/>
+        <line x1="352" y1="150" x2="572" y2="150" stroke="var(--ink-2)" stroke-width="1.5"/>
+        <text class="lblsm" x="346" y="166">morning</text>
+        <text class="lblsm" x="534" y="166">evening</text>
+        <text class="lblsm" x="334" y="188">✗ dew sits for hours → mildew and rot</text>
+        <text class="lblsm" x="334" y="202">✗ loses the best photosynthetic light</text>
+        <text class="lblsm" x="334" y="216">✗ still bakes in the afternoon</text>
+      </svg>
+    </div>
+    <figcaption>Same amount of shade, opposite outcomes. Which half of the day is shaded
+    matters as much as how much.</figcaption>
+  </figure>
+  <div class="call q">
+    <span class="ctag">Worth measuring once, properly</span>
+    <p><b>How many hours of direct sun do the vines get, and is the shade morning or
+    afternoon?</b> Stand at the row and note when sun reaches it and when it leaves — one
+    day in July answers it for good.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What changed in the advice</h2>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>Earlier advice</th><th>Corrected</th></tr></thead>
+      <tbody>
+        <tr><td class="was">Rebuild the trellis over 3 years, starting now</td>
+            <td class="now">Right system, wrong urgency. Learn to prune on the wire you have first.</td></tr>
+        <tr><td class="was">Sparkling is the goal</td>
+            <td class="now">A side experiment. It was never stress-tested against this climate.</td></tr>
+        <tr><td class="was">The dry climate protects you from mildew</td>
+            <td class="now">Overstated — shade cancels much of it. A real spray programme is needed.</td></tr>
+        <tr><td class="was">6 Brix is because the vines are over-cropped</td>
+            <td class="now">Partly. Shade is likely the bigger cause.</td></tr>
+        <tr><td class="was">Manage for heat: protect fruit, pick early</td>
+            <td class="now">Manage for light: expose leaves, cut crop harder, expect a later pick.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>This year — three things</h2>
+  <ol class="todo">
+    <li><b>Confirm what the grape actually is.</b> Everything is built on a name from memory.
+    The free test is at ripeness: skin should <b>cling</b> and taste <b>neutral</b>. If it
+    slips off or smells like grape soda, the plan changes.</li>
+    <li><b>Fix the weak side and thin hard.</b> Check the drip on the weak row first — a whole
+    side running weak is a system, not bad luck. Then cut the crop to what the leaves can
+    actually ripen.</li>
+    <li><b>Make one small batch of still wine and judge it honestly.</b> Pick early to test
+    whether the acid holds. If it's thin or flat, that's your answer — and it cost one season
+    instead of three.</li>
+  </ol>
+  <h2 style="margin-top:2rem">Parked, not cancelled</h2>
+  <ul class="parked">
+    <li>The multi-year trellis conversion</li>
+    <li>Traditional-method sparkling</li>
+    <li>Planting more vines</li>
+    <li>Replacing anything</li>
+  </ul>
+  <p style="margin-top:1rem">Each becomes answerable after the grape is confirmed and one
+  measured season is in the notebook.</p>
+</section>
+
+<footer>
+  <p>Drawn up 2 August 2026 from two independent adversarial research passes that reached the
+  same verdict — scale the ambition, confirm the vine, master crop load — reassessed after
+  partial shade came to light. Figures on shade, acid, mildew and sunlight requirements come
+  from published viticulture research; verify any single number before acting on it.</p>
+</footer>
+
+</div>
