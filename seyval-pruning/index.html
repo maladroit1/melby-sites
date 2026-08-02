@@ -1,0 +1,467 @@
+<title>Pruning Seyval Blanc — A Beginner's Field Guide</title>
+
+<style>
+  :root{
+    --paper:#F7F5F0; --ink:#241F1A; --ink-2:#5A5049; --rule:#DCD5C9;
+    --card:#FFFFFF; --card-edge:#E6DFD2;
+    --wood:#6B4A2E;      /* OLD wood */
+    --cane:#C08A4A;      /* 1-YEAR cane */
+    --cut:#C42B1C;       /* cut here */
+    --keep:#2F6B4F;      /* keep */
+    --warn:#8A5A00;
+    --shadow:0 1px 0 rgba(36,31,26,.05), 0 6px 18px -12px rgba(36,31,26,.28);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#17140F; --ink:#F2EDE4; --ink-2:#B3A896; --rule:#3A332A;
+      --card:#201B15; --card-edge:#332B22;
+      --wood:#A97B50; --cane:#E0A863; --cut:#FF6A57; --keep:#69B98F; --warn:#D9A23F;
+      --shadow:0 6px 20px -14px #000;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#17140F; --ink:#F2EDE4; --ink-2:#B3A896; --rule:#3A332A;
+    --card:#201B15; --card-edge:#332B22;
+    --wood:#A97B50; --cane:#E0A863; --cut:#FF6A57; --keep:#69B98F; --warn:#D9A23F;
+    --shadow:0 6px 20px -14px #000;
+  }
+  :root[data-theme="light"]{
+    --paper:#F7F5F0; --ink:#241F1A; --ink-2:#5A5049; --rule:#DCD5C9;
+    --card:#FFFFFF; --card-edge:#E6DFD2;
+    --wood:#6B4A2E; --cane:#C08A4A; --cut:#C42B1C; --keep:#2F6B4F; --warn:#8A5A00;
+    --shadow:0 1px 0 rgba(36,31,26,.05), 0 6px 18px -12px rgba(36,31,26,.28);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font-family:var(--sans);font-size:17px;line-height:1.6;
+       -webkit-text-size-adjust:100%}
+  .wrap{max-width:44rem;margin:0 auto;padding:1.25rem 1.1rem 4rem}
+  p,li{max-width:38rem}
+
+  /* masthead */
+  header.mast{padding:.5rem 0 1.5rem;border-bottom:3px double var(--rule);margin-bottom:2rem}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;
+           text-transform:uppercase;color:var(--ink-2)}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,7.5vw,3rem);
+     line-height:1.05;margin:.35rem 0 .5rem;text-wrap:balance;letter-spacing:-.01em}
+  .standfirst{font-family:var(--serif);font-size:1.12rem;color:var(--ink-2);margin:0}
+
+  h2{font-family:var(--serif);font-size:clamp(1.35rem,4.5vw,1.75rem);line-height:1.15;
+     margin:0 0 .25rem;text-wrap:balance}
+  h3{font-family:var(--sans);font-size:1rem;letter-spacing:.01em;margin:1.5rem 0 .4rem}
+
+  /* numbered sections — the order is real: this is the order you work in */
+  section{margin:0 0 2.75rem}
+  .shead{display:flex;gap:.85rem;align-items:baseline;margin-bottom:.9rem}
+  .num{flex:0 0 auto;font-family:var(--mono);font-size:.78rem;font-weight:700;
+       color:var(--paper);background:var(--ink);border-radius:2px;
+       padding:.28rem .5rem;letter-spacing:.06em;transform:translateY(-.15rem)}
+
+  figure{margin:1.1rem 0;padding:0}
+  .plate{background:var(--card);border:1px solid var(--card-edge);border-radius:3px;
+         padding:1rem .75rem .6rem;box-shadow:var(--shadow);overflow-x:auto}
+  .plate svg{display:block;width:100%;height:auto;min-width:19rem}
+  figcaption{font-size:.88rem;color:var(--ink-2);margin-top:.6rem;padding:0 .25rem;
+             font-family:var(--serif)}
+
+  /* svg text */
+  svg text{font-family:var(--sans);fill:var(--ink)}
+  .lbl{font-size:11px;font-weight:600}
+  .lblsm{font-size:10px;fill:var(--ink-2)}
+  .lblcut{font-size:11px;font-weight:700;fill:var(--cut)}
+  .lblkeep{font-size:11px;font-weight:700;fill:var(--keep)}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin:1rem 0 0;
+          font-family:var(--mono);font-size:.74rem;letter-spacing:.03em}
+  .legend span{display:inline-flex;align-items:center;gap:.4rem}
+  .sw{width:1.4rem;height:.4rem;border-radius:1px;display:inline-block}
+
+  /* callouts */
+  .call{border-left:3px solid var(--ink);background:var(--card);
+        border-radius:0 3px 3px 0;padding:.85rem 1rem;margin:1.1rem 0}
+  .call.cut{border-left-color:var(--cut)}
+  .call.keep{border-left-color:var(--keep)}
+  .call.warn{border-left-color:var(--warn)}
+  .call p{margin:.35rem 0}
+  .call p:first-child{margin-top:0}
+  .call p:last-child{margin-bottom:0}
+  .ctag{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+        text-transform:uppercase;color:var(--ink-2);display:block;margin-bottom:.3rem}
+
+  /* the bud-count table — a lookup, not a formula */
+  .tblwrap{overflow-x:auto;margin:1.1rem 0}
+  table{border-collapse:collapse;width:100%;min-width:20rem;font-variant-numeric:tabular-nums}
+  caption{text-align:left;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+          text-transform:uppercase;color:var(--ink-2);padding-bottom:.5rem}
+  th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--rule)}
+  thead th{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
+           text-transform:uppercase;color:var(--ink-2);border-bottom:2px solid var(--ink)}
+  td.big{font-family:var(--mono);font-size:1.15rem;font-weight:700;color:var(--keep)}
+  td.mono{font-family:var(--mono)}
+  tr.hl td{background:color-mix(in srgb,var(--keep) 8%,transparent)}
+
+  /* checklist */
+  ol.steps{counter-reset:s;list-style:none;padding:0;margin:1rem 0}
+  ol.steps>li{counter-increment:s;position:relative;padding:.7rem 0 .7rem 2.4rem;
+              border-bottom:1px solid var(--rule)}
+  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:.72rem;
+     font-family:var(--mono);font-size:.72rem;font-weight:700;
+     width:1.55rem;height:1.55rem;border-radius:50%;
+     border:1.5px solid var(--ink);display:grid;place-items:center}
+  ul.plain{padding-left:1.1rem}
+  ul.plain li{margin:.35rem 0}
+
+  .never li{margin:.45rem 0}
+  .never strong{color:var(--cut)}
+
+  b.cane{color:var(--cane)}
+  b.wood{color:var(--wood)}
+  b.cut{color:var(--cut)}
+  b.keep{color:var(--keep)}
+
+  footer{border-top:3px double var(--rule);margin-top:1rem;padding-top:1.2rem;
+         font-size:.85rem;color:var(--ink-2)}
+  footer p{max-width:38rem}
+  a{color:inherit;text-decoration-thickness:1px;text-underline-offset:2px}
+  a:focus-visible,li:focus-visible{outline:2px solid var(--cut);outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow">Seyval Blanc · 12-vine home vineyard · Dormant season</div>
+  <h1>Pruning, one cut at a time</h1>
+  <p class="standfirst">Twelve vines, third leaf, USDA&nbsp;6b/7a. Read this standing at the vine. Nothing
+  here needs to be remembered — look it up every time.</p>
+</header>
+
+<section>
+  <div class="shead"><span class="num">GOAL</span>
+    <div><h2>What you are building</h2></div></div>
+  <p><b>One trunk, straight up to the high wire. Two arms along it. Short stubs on the
+  arms.</b> That's the whole shape. It takes about three winters to build, and you already
+  have the trunk.</p>
+  <div class="call">
+    <span class="ctag">The colour code, used in every drawing below</span>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--wood)"></i> old wood — permanent</span>
+      <span><i class="sw" style="background:var(--cane)"></i> last year's cane — this fruits</span>
+      <span><i class="sw" style="background:var(--cut)"></i> cut here</span>
+      <span><i class="sw" style="background:var(--keep)"></i> keep</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">01</span>
+    <div><h2>Learn four things by sight</h2></div></div>
+  <p>You cannot prune what you cannot name. Before cutting anything, find these four on a
+  real vine. This is the slow part, and it is worth being slow at.</p>
+
+  <figure>
+    <div class="plate">
+      <svg viewBox="0 0 620 340" role="img" aria-label="Vine anatomy: trunk, old cordon, one-year-old cane, bud, and sucker">
+        <!-- ground -->
+        <line x1="20" y1="300" x2="600" y2="300" stroke="var(--rule)" stroke-width="2"/>
+        <text class="lblsm" x="20" y="316">mulch line</text>
+        <!-- wires -->
+        <line x1="60" y1="90" x2="600" y2="90" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="1 5"/>
+        <text class="lblsm" x="536" y="82">high wire</text>
+        <!-- trunk -->
+        <path d="M300 300 L300 90" stroke="var(--wood)" stroke-width="13" stroke-linecap="round"/>
+        <!-- cordon arms -->
+        <path d="M300 92 L150 90" stroke="var(--wood)" stroke-width="10" stroke-linecap="round"/>
+        <path d="M300 92 L470 90" stroke="var(--wood)" stroke-width="10" stroke-linecap="round"/>
+        <!-- 1yr canes hanging down -->
+        <g stroke="var(--cane)" stroke-width="5" fill="none" stroke-linecap="round">
+          <path d="M190 92 C186 140 196 175 188 215"/>
+          <path d="M240 92 C246 145 236 180 244 220"/>
+          <path d="M360 92 C356 140 366 172 358 210"/>
+          <path d="M420 92 C426 148 416 182 424 224"/>
+        </g>
+        <!-- buds on one cane -->
+        <g fill="var(--ink)">
+          <circle cx="243" cy="128" r="4.4"/><circle cx="238" cy="158" r="4.4"/>
+          <circle cx="241" cy="188" r="4.4"/>
+        </g>
+        <!-- sucker at base -->
+        <path d="M300 292 C270 280 258 250 262 224" stroke="var(--cane)" stroke-width="4"
+              fill="none" stroke-linecap="round" stroke-dasharray="7 5"/>
+        <!-- labels -->
+        <text class="lbl" x="308" y="248">TRUNK</text>
+        <text class="lblsm" x="308" y="264">thick, dark, permanent</text>
+        <text class="lbl" x="96" y="70">ARM (cordon)</text>
+        <text class="lblsm" x="96" y="55">old wood, permanent</text>
+        <text class="lbl" x="452" y="252">LAST YEAR'S CANE</text>
+        <text class="lblsm" x="452" y="268">smooth, tan, bendy</text>
+        <text class="lblsm" x="452" y="282">— this is what fruits</text>
+        <text class="lbl" x="150" y="150">BUDS</text>
+        <text class="lblsm" x="150" y="166">little bumps</text>
+        <text class="lblsm" x="150" y="180">one shoot each</text>
+        <text class="lbl" x="140" y="238">SUCKER</text>
+        <text class="lblsm" x="140" y="254">from the base —</text>
+        <text class="lblsm" x="140" y="268">always rub off</text>
+        <line x1="176" y1="146" x2="232" y2="132" stroke="var(--ink-2)" stroke-width="1"/>
+        <line x1="196" y1="234" x2="252" y2="236" stroke="var(--ink-2)" stroke-width="1"/>
+      </svg>
+    </div>
+    <figcaption>The finished shape you're working toward — and the five parts you must be
+    able to point at.</figcaption>
+  </figure>
+
+  <div class="call keep">
+    <span class="ctag">How to tell old wood from last year's cane</span>
+    <p><b class="cane">Last year's cane</b> is smooth, tan, thin enough to bend in your
+    hand, and has buds spaced along it. <b class="wood">Older wood</b> is darker, rougher,
+    shaggy or peeling, and stiff.</p>
+    <p><b>Only last year's cane carries fruit.</b> If you remove all of it, you get no
+    grapes at all next year. That is the one mistake you cannot undo.</p>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">02</span>
+    <div><h2>What a correct cut looks like</h2></div></div>
+  <figure>
+    <div class="plate">
+      <svg viewBox="0 0 620 250" role="img" aria-label="Correct cut about a finger-width above a bud, versus cutting too close and leaving too long a stub">
+        <!-- RIGHT -->
+        <text class="lblkeep" x="30" y="28">RIGHT</text>
+        <path d="M60 200 L60 70" stroke="var(--cane)" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="60" cy="112" r="5.5" fill="var(--ink)"/>
+        <circle cx="60" cy="160" r="5.5" fill="var(--ink)"/>
+        <line x1="30" y1="78" x2="90" y2="70" stroke="var(--cut)" stroke-width="3"/>
+        <text class="lblsm" x="100" y="70">cut here</text>
+        <text class="lblsm" x="100" y="86">about a finger-width</text>
+        <text class="lblsm" x="100" y="100">above the top bud</text>
+        <text class="lblsm" x="100" y="118">← top bud</text>
+
+        <!-- WRONG 1 -->
+        <text class="lblcut" x="270" y="28">TOO CLOSE</text>
+        <path d="M300 200 L300 104" stroke="var(--cane)" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="300" cy="112" r="5.5" fill="var(--ink)"/>
+        <circle cx="300" cy="160" r="5.5" fill="var(--ink)"/>
+        <line x1="272" y1="106" x2="330" y2="100" stroke="var(--cut)" stroke-width="3"/>
+        <text class="lblsm" x="338" y="108">the bud dries out</text>
+        <text class="lblsm" x="338" y="124">and dies</text>
+
+        <!-- WRONG 2 -->
+        <text class="lblcut" x="270" y="168">TOO LONG</text>
+        <path d="M420 200 L420 60" stroke="var(--cane)" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="420" cy="150" r="5.5" fill="var(--ink)"/>
+        <line x1="392" y1="64" x2="450" y2="58" stroke="var(--cut)" stroke-width="3"/>
+        <text class="lblsm" x="458" y="66">dead stub rots</text>
+        <text class="lblsm" x="458" y="82">back into the arm</text>
+      </svg>
+    </div>
+    <figcaption>One finger-width above the top bud. That's the whole technique.</figcaption>
+  </figure>
+  <ul class="plain">
+    <li><b>Sharp bypass secateurs.</b> Blunt ones crush instead of cutting.</li>
+    <li><b>Late February into March</b> — after the worst cold, as close to bud break as
+    you can manage. Sap dripping from cuts is <b>harmless</b>.</li>
+    <li>Cut on a <b>dry day</b> if you can.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="shead"><span class="num">03</span>
+    <div><h2>Where you are now, and where you're going</h2></div></div>
+  <figure>
+    <div class="plate">
+      <svg viewBox="0 0 620 330" role="img" aria-label="Left: current vine with fruit on a low wire and an unused high wire. Right: target with the fruiting arms up on the high wire.">
+        <!-- NOW -->
+        <text class="lblcut" x="18" y="24">NOW — fruit low, shoots going UP</text>
+        <line x1="18" y1="300" x2="290" y2="300" stroke="var(--rule)" stroke-width="2"/>
+        <line x1="30" y1="70" x2="290" y2="70" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="1 5"/>
+        <text class="lblsm" x="196" y="63">high wire — unused</text>
+        <line x1="30" y1="215" x2="290" y2="215" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="1 5"/>
+        <text class="lblsm" x="222" y="209">low wire — fruiting now</text>
+        <path d="M150 300 L150 215" stroke="var(--wood)" stroke-width="11" stroke-linecap="round"/>
+        <path d="M150 216 L72 214" stroke="var(--wood)" stroke-width="8" stroke-linecap="round"/>
+        <path d="M150 216 L236 214" stroke="var(--wood)" stroke-width="8" stroke-linecap="round"/>
+        <g stroke="var(--cane)" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M96 216 C92 240 100 258 94 272"/>
+          <path d="M124 216 C130 242 122 258 128 274"/>
+          <path d="M186 216 C182 240 190 256 184 270"/>
+          <path d="M214 216 C220 244 212 258 218 274"/>
+          <path d="M150 214 C158 170 142 130 156 96"/>
+        </g>
+        <ellipse cx="94" cy="280" rx="7" ry="9" fill="var(--cane)" opacity=".55"/>
+        <ellipse cx="128" cy="282" rx="7" ry="9" fill="var(--cane)" opacity=".55"/>
+        <ellipse cx="184" cy="278" rx="7" ry="9" fill="var(--cane)" opacity=".55"/>
+        <text class="lblsm" x="18" y="322">clusters sit 12–24″ off the mulch</text>
+        <text class="lblsm" x="164" y="120">stray shoot</text>
+        <text class="lblsm" x="164" y="134">wandering up</text>
+
+        <!-- divider -->
+        <line x1="310" y1="16" x2="310" y2="314" stroke="var(--rule)" stroke-width="1"/>
+
+        <!-- TARGET -->
+        <text class="lblkeep" x="330" y="24">TARGET — high-wire cordon</text>
+        <line x1="330" y1="300" x2="602" y2="300" stroke="var(--rule)" stroke-width="2"/>
+        <line x1="342" y1="70" x2="602" y2="70" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="1 5"/>
+        <text class="lblsm" x="486" y="63">high wire — arms + all the fruit</text>
+        <path d="M466 300 L466 70" stroke="var(--wood)" stroke-width="11" stroke-linecap="round"/>
+        <path d="M466 72 L384 70" stroke="var(--wood)" stroke-width="8" stroke-linecap="round"/>
+        <path d="M466 72 L552 70" stroke="var(--wood)" stroke-width="8" stroke-linecap="round"/>
+        <g stroke="var(--cane)" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M400 72 C396 108 404 138 398 168"/>
+          <path d="M432 72 C438 110 430 140 436 172"/>
+          <path d="M500 72 C496 106 504 136 498 166"/>
+          <path d="M532 72 C538 112 530 142 536 174"/>
+        </g>
+        <ellipse cx="398" cy="178" rx="7" ry="9" fill="var(--cane)" opacity=".55"/>
+        <ellipse cx="436" cy="182" rx="7" ry="9" fill="var(--cane)" opacity=".55"/>
+        <ellipse cx="498" cy="176" rx="7" ry="9" fill="var(--cane)" opacity=".55"/>
+        <ellipse cx="536" cy="184" rx="7" ry="9" fill="var(--cane)" opacity=".55"/>
+        <line x1="342" y1="215" x2="602" y2="215" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="1 5"/>
+        <text class="lblsm" x="342" y="232">low wire → now just combs the shoots</text>
+        <line x1="352" y1="150" x2="352" y2="190" stroke="var(--keep)" stroke-width="2"/>
+        <text class="lblkeep" x="330" y="144">fruit band</text>
+        <text class="lblsm" x="330" y="322">shoots hang DOWN — fruit in one band under the wire</text>
+      </svg>
+    </div>
+    <figcaption>Your vines are half one system and half the other. Committing to the high
+    wire is what lifts the fruit out of the splash zone for good.</figcaption>
+  </figure>
+
+  <div class="call keep">
+    <span class="ctag">Where the fruit ends up — and what the lower wires are for</span>
+    <p><b>All the fruit sits in one band, just under the high wire</b> — about 4–5 ft off
+    the ground. Shoots grow off the arms and <b>hang downward</b>; clusters form near the
+    top of that hanging curtain. Nothing fruits on the middle or lower wires.</p>
+    <p><b class="keep">Don't remove the lower wires though.</b> They change jobs: you comb
+    the hanging shoots down through them to keep the curtain tidy and stop it thrashing in
+    wind. They become <b>shoot-management wires</b>, not fruiting wires.</p>
+    <p><b>Why not fruit on both:</b> two fruiting zones means double the crop, and the top
+    canopy shades the bottom fruit. On a vine that already over-crops and already can't get
+    past 6&nbsp;Brix, that's the exact trap you're climbing out of.</p>
+    <p><b class="warn">During the changeover you'll still have low fruit</b> — you don't
+    strip the old low arms until the new high arms are carrying. Expect low clusters through
+    2027 and probably 2028. That's the plan working, not a mistake.</p>
+  </div>
+
+  <div class="call cut">
+    <span class="ctag">The thing that would break your vines</span>
+    <p><b>Do not try to bend the thick low arms up to the high wire.</b> That wood will not
+    bend — it cracks, and you lose the vine.</p>
+    <p><b class="keep">Instead: grow new arms up at the high wire, and retire the low ones
+    gradually.</b> Both researchers flagged this independently.</p>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">04</span>
+    <div><h2>This winter, at each vine — four moves</h2></div></div>
+  <ol class="steps">
+    <li><b>Pick one trunk.</b> The straightest, healthiest stem, pencil-to-thumb thick,
+    that already reaches the high wire or could. <b class="cut">Cut the competing trunks
+    off at the ground.</b> If you're unsure about your pick, leave one thin backup and
+    remove it next winter.</li>
+    <li><b>Head it at the high wire.</b> One cut, just above the wire. That tells the vine
+    to send its two arms out along it.</li>
+    <li><b>Rub off every sucker</b> at the base and along the trunk. Do this with your
+    thumb, not shears, and keep doing it all summer.</li>
+    <li><b>Set the bud count</b> using the table below — then walk away. Fewer buds than
+    feels right is correct for this variety.</li>
+  </ol>
+  <p>Next summer you'll pick two shoots along the high wire and tie them down as the
+  permanent arms. The winter after that, you start cutting those arms back to short
+  stubs — and from then on, pruning is the same job every year.</p>
+</section>
+
+<section>
+  <div class="shead"><span class="num">05</span>
+    <div><h2>How many buds to leave</h2></div></div>
+  <p>Seyval carries far more fruit than it can ripen, so it gets pruned much harder than a
+  table grape. Don't do arithmetic in the cold — weigh, then read the row.</p>
+  <p><b>Rough-prune the vine first</b>, leaving more than you need. Then <b>weigh only the
+  tan one-year-old canes you cut off</b> — no trunk or arm wood. Kitchen or luggage scale.
+  Find your weight below, leave that many buds, and stop.</p>
+
+  <div class="tblwrap">
+  <table>
+    <caption>Weigh the prunings → leave this many buds</caption>
+    <thead>
+      <tr><th>Prunings removed</th><th>Buds to leave</th><th>How to spread them</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">0.5 lb</td><td class="big">5</td><td>2 stubs of 2–3 buds</td></tr>
+      <tr><td class="mono">1.0 lb</td><td class="big">5</td><td>2 stubs of 2–3 buds</td></tr>
+      <tr class="hl"><td class="mono">1.5 lb</td><td class="big">10</td><td>4 stubs of 2–3 buds</td></tr>
+      <tr><td class="mono">2.0 lb</td><td class="big">15</td><td>6 stubs of 2–3 buds</td></tr>
+      <tr><td class="mono">2.5 lb</td><td class="big">20</td><td>8 stubs of 2–3 buds</td></tr>
+      <tr><td class="mono">3.0 lb</td><td class="big">25</td><td>10 stubs of 2–3 buds</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="call">
+    <span class="ctag">Why this feels too severe</span>
+    <p>A Concord vine with <b>1.5 lb</b> of prunings would keep <b>35 buds</b>. Yours keeps
+    <b class="keep">10</b>. That gap is the single biggest reason generic grape advice will
+    ruin a Seyval.</p>
+  </div>
+
+  <div class="call warn">
+    <span class="ctag">Expect to thin again in summer — this is normal</span>
+    <p>Seyval fruits from buds the formula doesn't count, so even a correct winter prune
+    leaves too much crop. Removing more clusters in June and July is <b>part of the
+    job</b>, not evidence you pruned wrong.</p>
+  </div>
+
+  <p><b>Write it down.</b> Each vine: weight of prunings, buds left. That's the record that
+  makes next winter easier.</p>
+</section>
+
+<section>
+  <div class="shead"><span class="num">06</span>
+    <div><h2>The weak vines</h2></div></div>
+  <p>Some vines will be noticeably weaker than their neighbours. Beginners get these wrong
+  in both directions.</p>
+  <div class="call keep">
+    <span class="ctag">The rule</span>
+    <p><b>Lighter on fruit. Not lighter on buds.</b></p>
+    <p><b class="cut">Take every cluster off</b> — a weak vine carries <b>zero</b> grapes
+    this year. Tie a ribbon on it so you remember at bloom.</p>
+    <p><b class="keep">But leave 15–18 healthy buds</b> if there's decent wood. The vine
+    needs leaves to rebuild its roots.</p>
+    <p>If one is really feeble, treat it like a brand-new vine: cut back to a few strong
+    buds and grow the trunk again.</p>
+  </div>
+  <p>Both mistakes are common: leaving fruit because the vine "needs something", and
+  hard-pruning it because it looks small. Neither helps it.</p>
+</section>
+
+<section>
+  <div class="shead"><span class="num">07</span>
+    <div><h2>Never do these</h2></div></div>
+  <ul class="plain never">
+    <li><strong>Never cut the trunk</strong> you've chosen. You'd start over.</li>
+    <li><strong>Never remove all the tan cane.</strong> That is next year's entire crop.</li>
+    <li><strong>Never bend thick old arms upward.</strong> They crack.</li>
+    <li><strong>Never leave lots of buds on a young vine</strong> because it looks bare.
+    Bare is correct in March.</li>
+    <li><strong>Never prune right before a hard freeze.</strong> Wait it out.</li>
+  </ul>
+  <div class="call">
+    <p><b>If you're unsure about a cut, don't make it.</b> Take a photo, leave the cane, ask.
+    An uncut cane can always be cut next week. A cut one can't be put back.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Pruning reference for the dormant season · drawn up 2&nbsp;August&nbsp;2026.</p>
+  <p>Built from two independent research passes that reached the same conclusion —
+  high-wire bilateral cordon, spur pruned — drawing on NC State, Penn State, Purdue,
+  Iowa State and Tennessee extension material. Verify any single number before acting
+  on it. Written for a first-time pruner converting a half-finished trellis to high-wire cordon.</p>
+</footer>
+
+</div>
