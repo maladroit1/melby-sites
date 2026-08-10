@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#267c8b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>Back-to-School Runway</title>
+  <style>
+    :root {
+      --ink: #243042;
+      --muted: #687386;
+      --paper: #fffdf8;
+      --wash: #eef7f2;
+      --sky: #78c9d6;
+      --sky-dark: #247b8a;
+      --sun: #f5b94c;
+      --coral: #ef8c7a;
+      --violet: #8874c9;
+      --leaf: #72a979;
+      --line: #dfe5df;
+      --shadow: 0 18px 50px rgba(47, 65, 76, .12);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--wash); }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(245,185,76,.25), transparent 22rem),
+        radial-gradient(circle at 88% 4%, rgba(120,201,214,.28), transparent 24rem),
+        linear-gradient(180deg, #f7fbf7 0%, #edf5f0 100%);
+      font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", system-ui, -apple-system, sans-serif;
+    }
+
+    button { font: inherit; }
+    button:focus-visible, [tabindex]:focus-visible { outline: 4px solid rgba(36,123,138,.3); outline-offset: 3px; }
+
+    .shell { width: min(1180px, calc(100% - 28px)); margin: 0 auto; padding: 24px 0 56px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 48px; height: 48px; border-radius: 17px;
+      display: grid; place-items: center; font-size: 25px;
+      background: var(--paper); border: 1px solid rgba(36,48,66,.08); box-shadow: var(--shadow);
+    }
+    .brand h1 { margin: 0; font-size: clamp(20px, 4vw, 28px); letter-spacing: -.03em; }
+    .eyebrow { margin: 0 0 3px; color: var(--sky-dark); font-size: 12px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .utility { display: flex; gap: 9px; }
+    .icon-button, .soft-button, .primary-button, .choice-button {
+      border: 0; cursor: pointer; border-radius: 999px; font-weight: 800;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .icon-button:hover, .soft-button:hover, .primary-button:hover, .choice-button:hover { transform: translateY(-2px); }
+    .icon-button { min-width: 44px; min-height: 44px; padding: 0 14px; background: rgba(255,255,255,.78); color: var(--ink); border: 1px solid rgba(36,48,66,.09); }
+
+    .hero {
+      position: relative; overflow: hidden; display: grid; grid-template-columns: 1.35fr .65fr; gap: 28px;
+      padding: clamp(24px, 5vw, 46px); border-radius: 34px; color: white;
+      background: linear-gradient(135deg, #267c8b 0%, #3d8f91 52%, #6ca77d 100%); box-shadow: var(--shadow);
+    }
+    .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; background: rgba(255,255,255,.11); }
+    .hero::before { width: 230px; height: 230px; right: 23%; top: -160px; }
+    .hero::after { width: 150px; height: 150px; right: -40px; bottom: -74px; }
+    .hero-copy, .progress-card { position: relative; z-index: 1; }
+    .hero h2 { margin: 7px 0 10px; max-width: 650px; font-size: clamp(32px, 6vw, 60px); line-height: .98; letter-spacing: -.055em; }
+    .hero p { max-width: 620px; margin: 0; color: rgba(255,255,255,.88); font-size: clamp(16px, 2vw, 19px); line-height: 1.55; }
+    .hero-note { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 9px 13px; border-radius: 999px; background: rgba(255,255,255,.13); font-size: 13px; font-weight: 750; }
+
+    .progress-card { align-self: center; justify-self: end; width: min(260px, 100%); padding: 20px; text-align: center; border-radius: 26px; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.2); backdrop-filter: blur(8px); }
+    .progress-ring { --progress: 0deg; position: relative; width: 128px; height: 128px; margin: 0 auto 12px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--sun) var(--progress), rgba(255,255,255,.18) 0); }
+    .progress-ring::after { content: ""; width: 94px; height: 94px; border-radius: 50%; background: #377f87; }
+    .progress-number { position: absolute; z-index: 2; font-size: 28px; font-weight: 900; }
+    .progress-label { margin: 0; color: white; font-weight: 850; }
+    .progress-sub { margin: 4px 0 0; color: rgba(255,255,255,.74); font-size: 13px; }
+
+    .map-card, .section-card { margin-top: 22px; padding: 24px; border-radius: var(--radius); background: rgba(255,253,248,.88); border: 1px solid rgba(36,48,66,.07); box-shadow: 0 12px 34px rgba(47,65,76,.075); }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+    .section-head h2 { margin: 0; font-size: clamp(23px, 4vw, 31px); letter-spacing: -.035em; }
+    .section-head p { margin: 5px 0 0; color: var(--muted); line-height: 1.45; }
+
+    .journey { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+    .phase { position: relative; min-height: 98px; padding: 14px; border-radius: 18px; background: #f4f3ee; color: var(--muted); border: 1px solid transparent; }
+    .phase.active { background: #e6f5f1; color: var(--ink); border-color: rgba(36,123,138,.22); }
+    .phase.done { background: #fff4d9; color: var(--ink); }
+    .phase-num { display: grid; place-items: center; width: 27px; height: 27px; border-radius: 50%; margin-bottom: 8px; background: rgba(36,48,66,.08); font-weight: 900; font-size: 13px; }
+    .phase.active .phase-num { background: var(--sky-dark); color: white; }
+    .phase.done .phase-num { background: var(--sun); color: var(--ink); }
+    .phase strong { display: block; font-size: 13px; line-height: 1.2; }
+    .phase small { display: block; margin-top: 4px; font-size: 11px; line-height: 1.3; opacity: .8; }
+
+    .quest-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .quest {
+      --quest-color: var(--sky); position: relative; display: grid; grid-template-columns: auto 1fr auto;
+      gap: 14px; align-items: center; min-height: 118px; padding: 18px; border: 2px solid transparent; border-radius: 22px;
+      background: white; box-shadow: 0 7px 22px rgba(47,65,76,.07); cursor: pointer; text-align: left;
+      transition: transform .18s ease, border .18s ease, box-shadow .18s ease;
+    }
+    .quest:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--quest-color) 56%, white); box-shadow: 0 14px 28px rgba(47,65,76,.11); }
+    .quest.done { background: color-mix(in srgb, var(--quest-color) 10%, white); }
+    .quest-icon { width: 55px; height: 55px; display: grid; place-items: center; border-radius: 18px; background: color-mix(in srgb, var(--quest-color) 18%, white); font-size: 27px; }
+    .quest-copy strong { display: block; font-size: 17px; line-height: 1.22; }
+    .quest-copy span { display: block; margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.35; }
+    .quest-state { min-width: 62px; text-align: right; }
+    .time { display: inline-block; margin-bottom: 7px; padding: 5px 8px; border-radius: 999px; background: #f1f3f2; color: var(--muted); font-size: 11px; font-weight: 850; }
+    .check { width: 29px; height: 29px; margin-left: auto; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--line); color: transparent; font-weight: 900; }
+    .done .check { background: var(--quest-color); border-color: var(--quest-color); color: white; }
+
+    .badge-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .badge { border: 1px solid var(--line); background: white; color: var(--muted); padding: 10px 13px; border-radius: 999px; font-weight: 800; cursor: pointer; }
+    .badge.selected { color: var(--ink); background: #fff3d5; border-color: #f1c96f; box-shadow: inset 0 0 0 2px rgba(245,185,76,.2); }
+    .badge[disabled] { opacity: .45; cursor: not-allowed; }
+
+    .tutor-empty { color: var(--muted); line-height: 1.55; }
+    .tutor-list { display: grid; gap: 10px; padding: 0; list-style: none; }
+    .tutor-item { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 13px 15px; border-radius: 16px; background: #f5f2fa; }
+    .tutor-item span { color: var(--muted); font-size: 13px; }
+
+    .modal-shell { position: fixed; z-index: 20; inset: 0; display: none; align-items: center; justify-content: center; padding: 18px; background: rgba(25,36,48,.56); backdrop-filter: blur(8px); }
+    .modal-shell.open { display: flex; }
+    .modal { width: min(720px, 100%); max-height: min(780px, calc(100vh - 36px)); overflow: auto; padding: 27px; border-radius: 28px; background: var(--paper); box-shadow: 0 30px 80px rgba(20,31,44,.3); }
+    .modal-top { display: flex; align-items: start; justify-content: space-between; gap: 18px; }
+    .modal h2 { margin: 3px 0 8px; font-size: clamp(25px, 5vw, 38px); letter-spacing: -.04em; }
+    .close-button { width: 42px; height: 42px; flex: 0 0 auto; border: 0; border-radius: 50%; cursor: pointer; background: #edf0ed; font-size: 20px; }
+    .lesson-flow { display: grid; gap: 12px; margin: 22px 0; }
+    .lesson-step { padding: 17px; border-radius: 18px; background: white; border: 1px solid var(--line); }
+    .lesson-step b { display: block; margin-bottom: 6px; color: var(--sky-dark); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+    .lesson-step p { margin: 0; line-height: 1.55; }
+    .question-card { padding: 18px; border-radius: 20px; background: #eef7f2; border: 1px solid #cfe3d7; }
+    .question-card h3 { margin: 0 0 8px; font-size: 20px; }
+    .question-card p { margin: 7px 0; line-height: 1.55; }
+    .answer-box { margin-top: 12px; padding: 13px; border-radius: 14px; background: white; border: 1px dashed #9dbbaa; }
+    .file-tools { display: flex; flex-wrap: wrap; gap: 9px; }
+    .privacy-note { margin-top: 12px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .schedule-group { margin-top: 18px; }
+    .schedule-group h3 { margin: 0 0 9px; font-size: 16px; }
+    .schedule-row { display: grid; grid-template-columns: 86px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+    .schedule-row time { font-weight: 850; }
+    .schedule-row small { display: block; margin-top: 2px; color: var(--muted); }
+    .choices { display: flex; flex-wrap: wrap; gap: 9px; }
+    .primary-button { padding: 13px 18px; background: var(--sky-dark); color: white; }
+    .soft-button, .choice-button { padding: 12px 16px; background: #edf1ed; color: var(--ink); }
+    .choice-button[data-action="tutor"] { background: #f1eafb; color: #594594; }
+    .choice-button[data-action="done"] { background: #e4f1e6; color: #356e40; }
+    .start-panel { padding-top: 3px; }
+    .finish-panel { display: none; }
+    .modal.started .start-panel { display: none; }
+    .modal.started .finish-panel { display: block; }
+    .kind-label { display: inline-block; padding: 5px 9px; border-radius: 999px; background: #e8f4f3; color: var(--sky-dark); font-size: 12px; font-weight: 850; }
+    .tiny-note { color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+    .celebration { position: fixed; z-index: 30; left: 50%; bottom: 26px; transform: translate(-50%, 120px); padding: 13px 18px; border-radius: 999px; background: var(--ink); color: white; box-shadow: var(--shadow); font-weight: 850; transition: transform .3s ease; }
+    .celebration.show { transform: translate(-50%, 0); }
+    [hidden] { display: none !important; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 18px, 1180px); padding-top: 12px; }
+      .topbar { align-items: flex-start; }
+      .utility .label { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 27px 22px; }
+      .progress-card { justify-self: stretch; width: 100%; display: flex; align-items: center; gap: 18px; text-align: left; }
+      .progress-ring { width: 95px; height: 95px; margin: 0; flex: 0 0 auto; }
+      .progress-ring::after { width: 70px; height: 70px; }
+      .progress-number { font-size: 22px; }
+      .journey { grid-template-columns: 1fr; }
+      .phase { min-height: auto; display: grid; grid-template-columns: auto 1fr; column-gap: 10px; }
+      .phase-num { grid-row: 1 / 3; margin: 0; }
+      .phase small { margin-top: 2px; }
+      .quest-grid { grid-template-columns: 1fr; }
+      .quest { min-height: 104px; padding: 15px; }
+      .section-card, .map-card { padding: 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+
+    @media print {
+      body { background: white; }
+      .shell { width: 100%; padding: 0; }
+      .utility, .hero-note, .map-card, .badge-section, .tutor-actions, .modal-shell, .celebration { display: none !important; }
+      .hero { color: var(--ink); background: white; box-shadow: none; border: 2px solid var(--ink); padding: 18px; }
+      .hero p, .progress-sub { color: var(--muted); }
+      .progress-card { color: var(--ink); background: white; border-color: var(--line); }
+      .progress-ring { background: white; border: 8px solid var(--sun); }
+      .progress-ring::after { background: white; }
+      .section-card { margin-top: 12px; padding: 12px; box-shadow: none; border: 1px solid #aaa; }
+      .quest-grid { grid-template-columns: 1fr; gap: 7px; }
+      .quest { min-height: 72px; padding: 10px; box-shadow: none; border: 1px solid #bbb; break-inside: avoid; }
+      .quest-icon { width: 40px; height: 40px; border-radius: 12px; font-size: 20px; }
+      .tutor-item { border: 1px solid #bbb; background: white; }
+    }
+  </style>
+</head>
+<body>
+  <script type="application/json" id="runway-config">
+  {
+    "schema": 2,
+    "packId": "rising-sixth-foundations-v1",
+    "moduleId": "back-to-school-runway",
+    "date": "2026-08-10",
+    "schoolStart": "2026-09-02",
+    "theme": "Build the Launchpad",
+    "phase": 1,
+    "courses": ["PreAlgebra Readiness", "Humanities VI", "Humanities VI Lab", "Science VI", "Latin 1", "Computing VI", "Theater 6", "PE VI", "Class VI Strings"],
+    "schedule": [],
+    "quests": [
+      {
+        "id": "violin-technique",
+        "kind": "violin",
+        "title": "Tune the Instrument Panel",
+        "minutes": 10,
+        "sourceConfidence": "foundation",
+        "goal": "Begin with one calm Suzuki Volume 1 technique target.",
+        "lesson": "Use your own book. Slow enough to notice your bow, rhythm, tone, and left hand without trying to fix everything at once.",
+        "concepts": ["violin_bow", "violin_rhythm", "violin_tone", "violin_left_hand"]
+      },
+      {
+        "id": "math-launch",
+        "kind": "math",
+        "title": "Math Mission",
+        "minutes": 12,
+        "sourceConfidence": "foundation",
+        "goal": "Make rising-sixth-grade number skills feel familiar.",
+        "lesson": "Try one small problem at a time. Explain the move you chose; speed is never the goal.",
+        "concepts": ["math_fractions", "math_decimals", "math_order", "math_ratios", "math_fluency"]
+      },
+      {
+        "id": "humanities-launch",
+        "kind": "humanities",
+        "title": "Humanities Studio",
+        "minutes": 12,
+        "sourceConfidence": "foundation",
+        "goal": "Practice reading, writing, history, and evidence together.",
+        "lesson": "Evidence is a clue you can point to. A strong answer connects the clue to the idea instead of just copying it.",
+        "concepts": ["humanities_main_idea", "humanities_evidence", "humanities_inference", "humanities_revision", "humanities_timeline", "humanities_map", "humanities_cause", "humanities_source"]
+      },
+      {
+        "id": "science-launch",
+        "kind": "science",
+        "title": "Evidence Lab",
+        "minutes": 12,
+        "sourceConfidence": "foundation",
+        "goal": "Notice, measure, explain, and test ideas with evidence.",
+        "lesson": "An observation is noticed or measured. An inference explains it. A fair test changes one thing and measures what happens.",
+        "concepts": ["science_observation", "science_inference", "science_variables", "science_data", "science_models"]
+      },
+      {
+        "id": "latin-launch",
+        "kind": "latin",
+        "title": "Latin Codebreaker",
+        "minutes": 12,
+        "sourceConfidence": "foundation",
+        "goal": "Make the shape and roots of Latin feel recognizable.",
+        "lesson": "Latin roots are clues, not magic translations. Use the clue, test it against the whole word, and say when you are unsure.",
+        "concepts": ["latin_roots", "latin_endings", "latin_order", "latin_memory"]
+      },
+      {
+        "id": "computing-launch",
+        "kind": "computing",
+        "title": "Computing Lab",
+        "minutes": 10,
+        "sourceConfidence": "foundation",
+        "goal": "Practice breaking a problem into steps and checking a result.",
+        "lesson": "Computers follow exact steps. Decompose the problem, predict what should happen, test it, then debug one difference.",
+        "concepts": ["computing_sequence", "computing_logic", "computing_debug", "computing_data", "school_directions"]
+      },
+      {
+        "id": "violin-repertoire",
+        "kind": "violin",
+        "title": "Launch with Music",
+        "minutes": 10,
+        "sourceConfidence": "foundation",
+        "goal": "Finish by playing music from your own Suzuki Volume 1 book.",
+        "lesson": "Choose a piece you know or are learning. Play for the story first, isolate one small spot, then finish with a section you enjoy.",
+        "concepts": ["violin_repertoire"]
+      }
+    ]
+  }
+  </script>
+  <script type="application/json" id="embedded-class-pack">{}</script>
+
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">✦</div>
+        <div>
+          <p class="eyebrow">Back-to-School Runway</p>
+          <h1>Today's Launchpad</h1>
+        </div>
+      </div>
+      <div class="utility">
+        <button class="icon-button" id="print-day" type="button" aria-label="Print today's path">🖨️ <span class="label">Print</span></button>
+        <button class="icon-button" id="export-progress" type="button" aria-label="Export progress">⇩ <span class="label">Progress</span></button>
+        <button class="icon-button" id="reset-day" type="button" aria-label="Reset today's checkmarks">↺ <span class="label">Reset today</span></button>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow" style="color:#d7fbf8">Today's mission</p>
+        <h2 id="hero-title">Build the Launchpad</h2>
+        <p>Seven small quests. Choose the middle order. A check means you showed up—not that you had to be perfect.</p>
+        <span class="hero-note"><span aria-hidden="true">🗓️</span><span id="date-label">August 10</span> · <span id="days-label">23 days until school</span></span>
+      </div>
+      <div class="progress-card" aria-label="Today's path progress">
+        <div class="progress-ring" id="progress-ring"><span class="progress-number" id="progress-number">0/7</span></div>
+        <div>
+          <p class="progress-label">Path lights</p>
+          <p class="progress-sub">Every light means “I showed up.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="map-card" aria-labelledby="map-title">
+      <div class="section-head">
+        <div>
+          <h2 id="map-title">The runway map</h2>
+          <p>We are building familiarity, not racing through school.</p>
+        </div>
+      </div>
+      <div class="journey" id="journey"></div>
+    </section>
+
+    <section class="section-card" aria-labelledby="classes-title">
+      <div class="section-head">
+        <div>
+          <h2 id="classes-title">Class map</h2>
+          <p id="class-source">The current rising-sixth class set. Exact topics will replace foundations as courses publish them.</p>
+        </div>
+      </div>
+      <div class="badge-grid" id="course-list"></div>
+      <div id="schedule-list"></div>
+    </section>
+
+    <section class="section-card" aria-labelledby="quest-title">
+      <div class="section-head">
+        <div>
+          <h2 id="quest-title">Choose a quest</h2>
+          <p>Violin bookends the day. The five middle quests can go in any order.</p>
+        </div>
+        <span class="time" id="total-time">74 minutes total</span>
+      </div>
+      <div class="quest-grid" id="quest-grid"></div>
+    </section>
+
+    <section class="section-card" aria-labelledby="files-title">
+      <div class="section-head">
+        <div>
+          <h2 id="files-title">My class pack</h2>
+          <p>Bring in updated classes or move progress between devices.</p>
+        </div>
+      </div>
+      <div class="file-tools">
+        <button class="soft-button" id="import-pack" type="button">Import class pack</button>
+        <button class="soft-button" id="import-progress" type="button">Import progress</button>
+        <button class="soft-button" id="download-page" type="button">Save offline HTML</button>
+      </div>
+      <input id="pack-file" type="file" accept="application/json,.json" hidden>
+      <input id="progress-file" type="file" accept="application/json,.json" hidden>
+      <p class="privacy-note">Imports stay in this browser. Nothing is uploaded. Export a progress file to move it between phone, iPad, and laptop.</p>
+    </section>
+
+    <section class="section-card badge-section" aria-labelledby="badge-title">
+      <div class="section-head">
+        <div>
+          <h2 id="badge-title">Strategies I used</h2>
+          <p>These are tools—not points. Choose any that really happened today.</p>
+        </div>
+      </div>
+      <div class="badge-grid" id="badge-grid"></div>
+    </section>
+
+    <section class="section-card" aria-labelledby="tutor-title">
+      <div class="section-head">
+        <div>
+          <h2 id="tutor-title">Ask my tutor</h2>
+          <p>Questions can wait here calmly. You do not have to solve everything today.</p>
+        </div>
+        <button class="soft-button tutor-actions" id="print-tutor" type="button">Print tutor list</button>
+      </div>
+      <p class="tutor-empty" id="tutor-empty">Nothing is waiting right now. If a quest gets confusing, choose “ask my tutor.”</p>
+      <ul class="tutor-list" id="tutor-list"></ul>
+    </section>
+  </main>
+
+  <div class="modal-shell" id="modal-shell" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <article class="modal" id="modal">
+      <div class="modal-top">
+        <div>
+          <span class="kind-label" id="modal-kind">Quest</span>
+          <h2 id="modal-title">Quest title</h2>
+          <p class="tiny-note" id="modal-time">10 minutes · stop early whenever you need</p>
+        </div>
+        <button class="close-button" id="close-modal" type="button" aria-label="Close quest">×</button>
+      </div>
+      <div class="lesson-flow">
+        <div class="lesson-step"><b>Goal</b><p id="modal-goal"></p></div>
+        <div class="lesson-step"><b>Tiny lesson</b><p id="modal-lesson"></p></div>
+        <div class="lesson-step"><b>Play</b><p id="modal-play"></p></div>
+        <div class="lesson-step"><b>Close</b><p id="modal-close"></p></div>
+      </div>
+      <div class="start-panel">
+        <button class="primary-button" id="start-quest" type="button">Start this quest</button>
+        <p class="tiny-note">Starting is enough to earn a path light. You can stop, switch, or ask for help.</p>
+      </div>
+      <div class="finish-panel">
+        <div class="question-card">
+          <span class="kind-label" id="question-concept">Warm-up</span>
+          <h3 id="question-prompt">Your challenge will appear here.</h3>
+          <p class="tiny-note" id="question-source"></p>
+          <div class="answer-box" id="answer-box" hidden><strong>Look for</strong><p id="question-answer"></p></div>
+          <div class="choices" style="margin-top:12px">
+            <button class="soft-button" id="show-answer" type="button">Hint / answer</button>
+          </div>
+        </div>
+        <p><strong>How did that feel?</strong> No points—this only chooses what comes next.</p>
+        <div class="choices">
+          <button class="choice-button" data-action="got-it" type="button">Got it → next</button>
+          <button class="choice-button" data-action="learning" type="button">Still learning</button>
+          <button class="choice-button" data-action="different" type="button">Different one</button>
+          <button class="choice-button" data-action="tutor" type="button">Ask my tutor</button>
+          <button class="choice-button" data-action="done" type="button">Finish quest</button>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="celebration" id="celebration" role="status" aria-live="polite">Path light added ✦</div>
+
+  <script>
+  (function () {
+    "use strict";
+    var configNode = document.getElementById("runway-config");
+    var data;
+    try { data = JSON.parse(configNode.textContent); }
+    catch (error) { document.body.innerHTML = "<p>This runway day could not be opened safely.</p>"; return; }
+    try {
+      var embeddedPack=JSON.parse(document.getElementById("embedded-class-pack").textContent);
+      if (embeddedPack && embeddedPack.schema===2 && Array.isArray(embeddedPack.quests)) {
+        Object.keys(embeddedPack).forEach(function(name){data[name]=embeddedPack[name];});
+      }
+    } catch (error) {}
+    try {
+      var savedPack = JSON.parse(localStorage.getItem("runway_class_pack_v2") || "null");
+      if (savedPack && savedPack.schema === 2 && Array.isArray(savedPack.quests)) {
+        Object.keys(savedPack).forEach(function (name) { data[name] = savedPack[name]; });
+      }
+    } catch (error) {}
+    var nowLocal=new Date();
+    data.date=nowLocal.getFullYear()+"-"+String(nowLocal.getMonth()+1).padStart(2,"0")+"-"+String(nowLocal.getDate()).padStart(2,"0");
+
+    var phases = [
+      ["Find your rhythm", "Choose what feels good"],
+      ["Build foundations", "Make old skills familiar"],
+      ["Meet the subjects", "Preview what is known"],
+      ["Rehearse the day", "Practice starting and asking"],
+      ["Ready", "Taper and celebrate"]
+    ];
+    var kindStyle = {
+      "violin": ["🎻", "#8874c9", "Violin"],
+      "math": ["🧩", "#78c9d6", "Math"],
+      "humanities": ["📚", "#ef8c7a", "Humanities"],
+      "science": ["🔎", "#72a979", "Science"],
+      "latin": ["🏛️", "#f5b94c", "Latin"],
+      "computing": ["💻", "#6e9dbd", "Computing"],
+      "school-skill": ["🧭", "#6e9dbd", "School skill"],
+      "choice": ["✨", "#ef8c7a", "Choice"]
+    };
+    var strategies = [
+      ["started", "🚀 Started"],
+      ["asked", "🙋 Asked for help"],
+      ["caught", "🔍 Caught something"],
+      ["another", "🔁 Tried another way"],
+      ["explained", "💬 Explained it"],
+      ["returned", "🌱 Came back later"]
+    ];
+    var key = "bts_runway_v2_" + (data.packId || data.moduleId);
+    var state = loadState();
+    var activeQuest = null;
+    var activeItem = null;
+    var bank = buildBank();
+    var lastFocus = null;
+    var modalShell = document.getElementById("modal-shell");
+    var modal = document.getElementById("modal");
+
+    function blankState() { return { day: data.date, started: {}, done: {}, next: {}, tutor: {}, strategies: {}, concepts: {}, served: [] }; }
+    function loadState() {
+      try {
+        var parsed = JSON.parse(localStorage.getItem(key) || "null");
+        if (!parsed || !parsed.started || !parsed.done) return blankState();
+        parsed.concepts = parsed.concepts || {};
+        parsed.served = Array.isArray(parsed.served) ? parsed.served : [];
+        if (parsed.day !== data.date) {
+          parsed.day=data.date; parsed.started={}; parsed.done={}; parsed.next={}; parsed.tutor={}; parsed.strategies={};
+        }
+        parsed.next = parsed.next || {}; parsed.tutor = parsed.tutor || {}; parsed.strategies = parsed.strategies || {};
+        return parsed;
+      } catch (error) { return blankState(); }
+    }
+    function saveState() {
+      try { localStorage.setItem(key, JSON.stringify(state)); } catch (error) {}
+    }
+    function emit(action, quest, extra) {
+      var detail = {
+        schema: 1,
+        moduleId: data.moduleId,
+        date: data.date,
+        action: action,
+        questId: quest ? quest.id : null,
+        kind: quest ? quest.kind : null,
+        strategy: extra && extra.strategy ? extra.strategy : null,
+        conceptId: activeItem ? activeItem.concept : null,
+        itemId: activeItem ? activeItem.id : null,
+        ts: Date.now()
+      };
+      window.dispatchEvent(new CustomEvent("runway:event", { detail: detail }));
+      if (window.RunwayBridge && typeof window.RunwayBridge.onEvent === "function") {
+        try { window.RunwayBridge.onEvent(detail); } catch (error) {}
+      }
+    }
+    function esc(value) {
+      var node = document.createElement("span"); node.textContent = String(value); return node.innerHTML;
+    }
+    function item(id, concept, prompt, answer, source) {
+      return { id: id, concept: concept, prompt: prompt, answer: answer, source: source || "Rising-sixth-grade foundation; replace with a class-pack item when the course publishes topics." };
+    }
+    function buildBank() {
+      var out = [], i, n, d, k, a, b, c;
+      function add(id, concept, prompt, answer, source) { out.push(item(id, concept, prompt, answer, source)); }
+
+      for (i=1; i<=40; i++) {
+        n=(i%7)+1; d=n+(i%6)+2; k=(i%5)+2;
+        add("mf-"+i,"math_fractions",n+"/"+d+" = ?/"+(d*k),"Multiply top and bottom by "+k+": "+(n*k)+"/"+(d*k)+".");
+        a=((i*17)%180)+11; b=((i*13)%90)+3;
+        add("md-"+i,"math_decimals",(a/10).toFixed(1)+" + "+(b/10).toFixed(1)+" = ?","Line up the decimal places: "+((a+b)/10).toFixed(1)+".");
+        a=(i%8)+2; b=(i%7)+2; c=(i%6)+2;
+        add("mo-"+i,"math_order",a+" + "+b+" × "+c+" = ?","Multiply first: "+b+" × "+c+" = "+(b*c)+", then add "+a+". Answer: "+(a+b*c)+".");
+        a=(i%6)+1; b=(i%8)+2; k=(i%4)+2;
+        add("mr-"+i,"math_ratios","The ratio "+a+":"+b+" is equivalent to "+(a*k)+":?","Scale both parts by "+k+". Answer: "+(b*k)+".");
+        a=(i%12)+3; b=(i%9)+2;
+        add("mx-"+i,"math_fluency",a+" groups of "+b+" make how many?","Use a fact, an array, or break it apart. Answer: "+(a*b)+".");
+      }
+
+      var passages = [
+        ["A city planted trees along hot sidewalks. Five years later, summer surface temperatures were lower where the trees had matured.","Growing shade trees can cool city sidewalks."],
+        ["Nia tested three paper-airplane designs. The widest wings stayed in the air longest, even though they did not travel farthest.","Different designs can optimize different flight goals."],
+        ["The library added graphic novels requested by students. Checkouts rose, and many readers later tried books on the same topics.","Interest-based choices can lead readers into more books."],
+        ["A trail was closed after heavy rain. Rangers explained that footsteps on soaked soil could damage roots and cause erosion.","Temporary trail closures can protect the ecosystem."],
+        ["Omar rehearsed his speech in short sections, then connected them. By presentation day, he could recover easily if he forgot a line.","Practicing in chunks can make recall more flexible."],
+        ["Two accounts described the same parade. One focused on music and celebration; the other focused on blocked streets and noise.","Different perspectives can emphasize different parts of one event."],
+        ["The class garden produced fewer tomatoes in the shaded bed. The sunny bed had the same soil and received the same amount of water.","Light may have affected the tomato yield."],
+        ["A museum placed everyday tools beside paintings from the same period. Visitors said the tools helped them imagine ordinary life.","Artifacts can add context to art and history."],
+        ["Mara revised one paragraph by replacing vague words with exact verbs. The paragraph became shorter but easier to picture.","Precise language can make writing clearer."],
+        ["The creek looked clear, but a test found high nitrate levels. The class learned that appearance alone cannot show water quality.","Measurement can reveal evidence that observation misses."],
+        ["A town moved its market closer to the train station. More sellers came from neighboring communities, and the market expanded.","Transportation access can change trade."],
+        ["Eli read the directions twice but still felt stuck. After circling the action verbs, he discovered that only the first step was due today.","Marking key directions can make a task easier to start."]
+      ];
+      passages.forEach(function (p, x) {
+        add("hm-"+x,"humanities_main_idea",p[0]+"\n\nGive the passage a one-sentence main idea.",p[1]);
+        add("hmh-"+x,"humanities_main_idea",p[0]+"\n\nWrite a six-word headline that keeps the central idea.","A good headline keeps this idea: "+p[1]);
+        add("he-"+x,"humanities_evidence",p[0]+"\n\nWhich exact detail best supports the main idea? Explain the connection.","Choose a detail from the passage and say how it supports: "+p[1]);
+        add("hi-"+x,"humanities_inference",p[0]+"\n\nWhat is one reasonable inference? Name the evidence that makes it reasonable.","An inference must go beyond the text but stay anchored to a quoted or paraphrased detail.");
+        add("hs-"+x,"humanities_source",p[0]+"\n\nWhat source or measurement would make this claim more trustworthy?","Name evidence that could verify the claim: a record, measurement, artifact, eyewitness account, or comparison.");
+      });
+      var revision = ["The dog went quickly across the yard.","The experiment was good.","The crowd was very loud.","She said the answer in a nice way.","The building was old and interesting.","The storm made things bad.","He walked slowly because he was tired.","The map showed a lot of things.","The machine did not work right.","The character felt bad about the choice.","The river moved fast.","The speech was really powerful."];
+      revision.forEach(function (s, x) {
+        add("hr-"+x,"humanities_revision","Revise for a more precise verb or noun: “"+s+"”","Keep the meaning, remove vague words, and choose language a reader can picture.");
+        add("hc-"+x,"humanities_cause","Turn this into a cause-and-effect pair, adding only a reasonable effect: “"+s+"”","Use because, therefore, led to, or as a result—and label any part you invented as a hypothesis.");
+        add("ht-"+x,"humanities_timeline","Invent two events that could happen before and after this sentence, then put all three in order: “"+s+"”","Your order should be possible and should distinguish what the sentence states from what you invented.");
+        add("hmap-"+x,"humanities_map","Sketch a tiny map that could give geographic context to: “"+s+"”","Include a title, two labeled places, a direction marker, and one sentence about why location matters.");
+      });
+
+      var scienceContexts = ["ice cube","paper airplane","seedling","toy car","shadow","rubber band","cup of water","pendulum","flashlight","magnet","soil sample","paper towel"];
+      scienceContexts.forEach(function (thing, x) {
+        add("so-"+x,"science_observation","Study a "+thing+" for 30 seconds. Write three observations without explaining why.","Observations are directly noticed or measured; avoid because, probably, and I think.");
+        add("si-"+x,"science_inference","Make two different explanations for one observation about a "+thing+".","Both explanations should fit the same observation. Name new evidence that would separate them.");
+        add("sv-"+x,"science_variables","Design a fair test using a "+thing+". What changes, what is measured, and what stays the same?","Name one independent variable, one measured outcome, and at least two controls.");
+        add("sd-"+x,"science_data","Imagine five measurements from a "+thing+" test. What table headings and units would you use?","Headings name the variables; every measurement needs an appropriate unit.");
+        add("sm-"+x,"science_models","Draw a simple model of how a "+thing+" works. Mark one thing your model leaves out.","A useful model explains a feature and admits its limits; it is not required to look realistic.");
+      });
+
+      var roots = [["aqua","water"],["terra","earth"],["port","carry"],["scrib/script","write"],["spect","look"],["aud","hear"],["dict","say"],["vid/vis","see"],["manu","hand"],["ped","foot"],["rupt","break"],["duc/duct","lead"],["struct","build"],["bio","life"],["chrono","time"],["geo","earth"],["lum","light"],["phon","sound"],["voc","voice/call"],["mort","death"]];
+      roots.forEach(function (r, x) {
+        add("lr-"+x,"latin_roots","The root “"+r[0]+"” is a clue meaning “"+r[1]+".” Name or invent an English word that uses the clue.","Check the whole word—not just the root—and explain how “"+r[1]+"” fits.");
+        add("lm-"+x,"latin_memory","Cover the answer and retrieve the clue for “"+r[0]+".” Then use it in a tiny image or story.",r[0]+" → "+r[1]+". Retrieval plus an image is stronger than rereading alone.");
+        add("le-"+x,"latin_endings","Pattern hunt: write “"+r[0]+"” three times with three different endings. Circle only the part that stayed constant.","The goal is noticing stems and endings, not assigning grammar before the class teaches it.");
+        add("lo-"+x,"latin_order","Put these clue cards in two different orders: “"+r[0]+",” “action,” and “who.” What information would endings need to carry?","Latin can use endings to signal roles, so word order may be more flexible than English. Treat this as a preview, not a translation rule.");
+      });
+
+      var computeThings = ["packing a school bag","making toast","logging into a game","sorting books","choosing an outfit","finding a classroom","drawing a square","checking a weather forecast","sharing photos","watering a plant","setting an alarm","making a playlist"];
+      computeThings.forEach(function (thing, x) {
+        add("cq-"+x,"computing_sequence","Write exact steps for "+thing+". Ask: could a literal robot follow them?","Use numbered, testable steps. Look for an assumed step a robot would miss.");
+        add("cl-"+x,"computing_logic","Create an IF/THEN rule for "+thing+" and one ELSE case.","A condition should be testable: IF [condition], THEN [action], ELSE [other action].");
+        add("cd-"+x,"computing_debug","Imagine your instructions for "+thing+" produced the wrong result. Name the first fact you would check.","Debug one difference at a time: expected result, actual result, then the earliest step where they diverge.");
+        add("cdata-"+x,"computing_data","What three fields would a computer store about "+thing+"? Choose a useful type for each.","Examples of types: text, number, true/false, date, or list. Explain why each field helps.");
+        add("cdir-"+x,"school_directions","Turn “prepare for "+thing+"” into a two-minute first move and a clear done condition.","The first move should be visible and small; the done condition should let another person check it.");
+      });
+
+      var pieces = ["Twinkle, Twinkle, Little Star Variations","Lightly Row","Song of the Wind","Go Tell Aunt Rhody","O Come, Little Children","May Song","Long, Long Ago","Allegro","Perpetual Motion","Allegretto","Andantino","Etude","Minuet 1","Minuet 2","Minuet 3","The Happy Farmer","Gavotte"];
+      var focuses = ["steady rhythm","relaxed bow hold","clear string crossings","even tone","clean starts and stops","musical shape"];
+      pieces.forEach(function (piece, x) {
+        focuses.forEach(function (focus, y) {
+          add("vr-"+x+"-"+y,"violin_repertoire","From your own Suzuki Volume 1 book, choose “"+piece+"” if it is teacher-approved. Play a small section once for "+focus+", isolate one spot, then finish with music.","Stop on one controlled success. The book and teacher—not this app—supply notes, bowings, fingerings, and current piece order.","Suzuki Violin School, Volume 1 repertoire title; use the owned book.");
+        });
+      });
+      ["violin_bow","violin_rhythm","violin_tone","violin_left_hand"].forEach(function (concept, x) {
+        for (i=0; i<24; i++) {
+          var labels=["bow path and relaxed hand","steady pulse and subdivisions","open, even sound","balanced fingers and easy releases"];
+          add("vt-"+x+"-"+i,concept,"Choose a teacher-approved Suzuki Volume 1 passage. Spend three slow repetitions noticing "+labels[x]+"; change only one thing on each try.","Name what changed and keep the easiest successful version. Stop if tension or pain appears.","Technique prompt only; the owned book and teacher remain authoritative.");
+        }
+      });
+      if (Array.isArray(data.items)) data.items.forEach(function (extra) {
+        if (extra && extra.id && extra.concept && extra.prompt && extra.answer) out.push(extra);
+      });
+      return out;
+    }
+    function conceptStats(id) {
+      if (!state.concepts[id]) state.concepts[id] = { attempts: 0, got: 0, learning: 0, hints: 0, last: 0 };
+      return state.concepts[id];
+    }
+    function selectItem(quest) {
+      var concepts = quest.concepts || [], weighted = [], total = 0;
+      concepts.forEach(function (id) {
+        var s=conceptStats(id), need=(s.learning*1.6+s.hints*.5)/(s.attempts+1), stale=s.last ? Math.min(1,(Date.now()-s.last)/604800000) : 1;
+        var w=Math.min(4,1+need+stale*.5); total+=w; weighted.push([id,w]);
+      });
+      var r=Math.random()*total, chosen=concepts[0];
+      weighted.some(function (pair) { r-=pair[1]; if (r<=0) { chosen=pair[0]; return true; } return false; });
+      var served={}; state.served.forEach(function(id){served[id]=true;});
+      var pool=bank.filter(function (q) { return q.concept===chosen && !served[q.id]; });
+      if (!pool.length) {
+        var keep={}; state.served.slice(-8).forEach(function(id){keep[id]=true;});
+        state.served=state.served.filter(function(id){return keep[id] || !bank.some(function(q){return q.id===id && q.concept===chosen;});});
+        pool=bank.filter(function(q){return q.concept===chosen && !keep[q.id];});
+      }
+      if (!pool.length) pool=bank.filter(function(q){return q.concept===chosen;});
+      var picked=pool[Math.floor(Math.random()*pool.length)] || item("fallback-"+Date.now(),chosen,"Use the tiny lesson to invent one example.","Explain your example and one thing you would check.");
+      state.served.push(picked.id); if(state.served.length>800) state.served=state.served.slice(-800); saveState();
+      return picked;
+    }
+    function recordOutcome(kind) {
+      if (!activeItem) return;
+      var s=conceptStats(activeItem.concept); s.attempts+=1; s.last=Date.now();
+      if (kind==="got-it") s.got+=1;
+      if (kind==="learning") s.learning+=1;
+      saveState();
+    }
+    function presentNextItem() {
+      if (!activeQuest) return;
+      activeItem=selectItem(activeQuest);
+      document.getElementById("question-concept").textContent=activeItem.concept.replace(/_/g," ");
+      document.getElementById("question-prompt").textContent=activeItem.prompt;
+      document.getElementById("question-answer").textContent=activeItem.answer;
+      document.getElementById("question-source").textContent=activeItem.source || "Foundation warm-up";
+      document.getElementById("answer-box").hidden=true;
+    }
+    function niceDate(value) {
+      var parts = value.split("-");
+      var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+      return d.toLocaleDateString(undefined, { month: "long", day: "numeric" });
+    }
+    function dayDistance(from, to) {
+      var a = from.split("-").map(Number), b = to.split("-").map(Number);
+      var start = Date.UTC(a[0], a[1]-1, a[2]), end = Date.UTC(b[0], b[1]-1, b[2]);
+      return Math.max(0, Math.round((end-start)/86400000));
+    }
+    function renderHeader() {
+      document.getElementById("hero-title").textContent = data.theme;
+      document.getElementById("date-label").textContent = niceDate(data.date);
+      var days = dayDistance(data.date, data.schoolStart);
+      document.getElementById("days-label").textContent = days ? days + " days until school" : "launch day is here";
+    }
+    function renderJourney() {
+      var html = "";
+      phases.forEach(function (phase, index) {
+        var num = index + 1;
+        var cls = num < data.phase ? "done" : (num === data.phase ? "active" : "");
+        html += '<div class="phase '+cls+'"><span class="phase-num">'+(num < data.phase ? "✓" : num)+'</span><strong>'+esc(phase[0])+'</strong><small>'+esc(phase[1])+'</small></div>';
+      });
+      document.getElementById("journey").innerHTML = html;
+    }
+    function renderClasses() {
+      var courses=Array.isArray(data.courses)?data.courses:[];
+      document.getElementById("course-list").innerHTML=courses.map(function(course){
+        var title=typeof course==="string"?course:course.title;
+        var teacher=typeof course==="object"&&course.teacher?" · "+course.teacher:"";
+        return '<span class="badge selected">'+esc(title+teacher)+'</span>';
+      }).join("");
+      var groups=Array.isArray(data.schedule)?data.schedule:[];
+      document.getElementById("schedule-list").innerHTML=groups.map(function(group){
+        return '<div class="schedule-group"><h3>'+esc(group.label||"Schedule")+'</h3>'+((group.items||[]).map(function(row){
+          return '<div class="schedule-row"><time>'+esc(row.time||"")+'</time><div><strong>'+esc(row.course||"")+'</strong>'+(row.detail?'<small>'+esc(row.detail)+'</small>':"")+'</div></div>';
+        }).join(""))+'</div>';
+      }).join("");
+      if(groups.length) document.getElementById("class-source").textContent="Class and schedule details from the private school screenshots; Canvas topics are still awaiting publication.";
+    }
+    function renderQuests() {
+      var total = 0, html = "";
+      data.quests.forEach(function (quest) {
+        total += quest.minutes;
+        var style = kindStyle[quest.kind] || kindStyle.choice;
+        var done = !!state.started[quest.id];
+        html += '<button class="quest '+(done ? "done" : "")+'" style="--quest-color:'+style[1]+'" data-quest="'+esc(quest.id)+'" type="button">'+
+          '<span class="quest-icon" aria-hidden="true">'+style[0]+'</span><span class="quest-copy"><strong>'+esc(quest.title)+'</strong><span>'+esc(quest.goal)+'</span></span>'+
+          '<span class="quest-state"><span class="time">'+quest.minutes+' min</span><span class="check" aria-hidden="true">✓</span></span></button>';
+      });
+      document.getElementById("quest-grid").innerHTML = html;
+      document.getElementById("total-time").textContent = total + " minutes total";
+      Array.prototype.forEach.call(document.querySelectorAll("[data-quest]"), function (button) {
+        button.addEventListener("click", function () { openQuest(button.getAttribute("data-quest"), button); });
+      });
+      renderProgress();
+    }
+    function renderProgress() {
+      var count = data.quests.filter(function (quest) { return !!state.started[quest.id]; }).length;
+      var total = data.quests.length;
+      document.getElementById("progress-number").textContent = count + "/" + total;
+      document.getElementById("progress-ring").style.setProperty("--progress", ((count / total) * 360) + "deg");
+    }
+    function renderBadges() {
+      var hasStarted = Object.keys(state.started).length > 0;
+      var html = "";
+      strategies.forEach(function (strategy) {
+        html += '<button class="badge '+(state.strategies[strategy[0]] ? "selected" : "")+'" data-strategy="'+strategy[0]+'" type="button" '+(hasStarted ? "" : "disabled")+'>'+strategy[1]+'</button>';
+      });
+      document.getElementById("badge-grid").innerHTML = html;
+      Array.prototype.forEach.call(document.querySelectorAll("[data-strategy]"), function (button) {
+        button.addEventListener("click", function () {
+          var id = button.getAttribute("data-strategy");
+          state.strategies[id] = !state.strategies[id];
+          saveState(); emit("strategy_selected", null, { strategy: id }); renderBadges();
+        });
+      });
+    }
+    function renderTutor() {
+      var waiting = data.quests.filter(function (quest) { return !!state.tutor[quest.id]; });
+      document.getElementById("tutor-empty").hidden = waiting.length > 0;
+      document.getElementById("tutor-list").innerHTML = waiting.map(function (quest) {
+        var style = kindStyle[quest.kind] || kindStyle.choice;
+        return '<li class="tutor-item"><div><strong>'+style[0]+' '+esc(quest.title)+'</strong><br><span>I tried this quest and would like help choosing the next step.</span></div><button class="icon-button" type="button" data-clear-tutor="'+esc(quest.id)+'" aria-label="Remove '+esc(quest.title)+' from tutor list">✓</button></li>';
+      }).join("");
+      Array.prototype.forEach.call(document.querySelectorAll("[data-clear-tutor]"), function (button) {
+        button.addEventListener("click", function () { delete state.tutor[button.getAttribute("data-clear-tutor")]; saveState(); renderTutor(); });
+      });
+    }
+    function findQuest(id) {
+      for (var i=0; i<data.quests.length; i++) if (data.quests[i].id === id) return data.quests[i];
+      return null;
+    }
+    function openQuest(id, trigger) {
+      activeQuest = findQuest(id); if (!activeQuest) return;
+      lastFocus = trigger;
+      var style = kindStyle[activeQuest.kind] || kindStyle.choice;
+      document.getElementById("modal-kind").textContent = style[2];
+      document.getElementById("modal-title").textContent = activeQuest.title;
+      document.getElementById("modal-time").textContent = activeQuest.minutes + " minutes · stop early whenever you need";
+      document.getElementById("modal-goal").textContent = activeQuest.goal;
+      document.getElementById("modal-lesson").textContent = activeQuest.lesson;
+      document.getElementById("modal-play").textContent = "The app deals a no-repeat challenge. Choose got it, still learning, or different; that choice changes the next deal.";
+      document.getElementById("modal-close").textContent = "Finish whenever the time is up. Showing up earns the path light; accuracy and speed do not earn points.";
+      modal.classList.toggle("started", !!state.started[activeQuest.id]);
+      if (state.started[activeQuest.id]) presentNextItem();
+      modalShell.classList.add("open");
+      document.body.style.overflow = "hidden";
+      document.getElementById(state.started[activeQuest.id] ? "close-modal" : "start-quest").focus();
+    }
+    function closeQuest() {
+      modalShell.classList.remove("open"); document.body.style.overflow = ""; activeQuest = null; activeItem = null;
+      if (lastFocus) lastFocus.focus();
+    }
+    function showCelebration(message) {
+      var toast = document.getElementById("celebration"); toast.textContent = message; toast.classList.add("show");
+      window.setTimeout(function () { toast.classList.remove("show"); }, 1800);
+    }
+    function chooseNext(action) {
+      if (!activeQuest) return;
+      state.next[activeQuest.id] = action;
+      if (action === "got-it" || action === "learning") {
+        recordOutcome(action); emit("question_"+action,activeQuest); presentNextItem();
+        showCelebration(action === "got-it" ? "Nice—here comes a new one" : "Saved—this idea will come back more often");
+        return;
+      }
+      if (action === "different") { emit("question_different",activeQuest); presentNextItem(); showCelebration("Different challenge dealt"); return; }
+      if (action === "done") state.done[activeQuest.id] = true;
+      if (action === "tutor") state.tutor[activeQuest.id] = true;
+      saveState(); emit(action === "tutor" ? "tutor_requested" : "quest_" + action, activeQuest);
+      renderQuests(); renderBadges(); renderTutor();
+      showCelebration(action === "tutor" ? "Saved for your tutor—nothing else to solve now" : "Quest complete ✦");
+      closeQuest();
+    }
+
+    document.getElementById("start-quest").addEventListener("click", function () {
+      if (!activeQuest) return;
+      state.started[activeQuest.id] = true; saveState(); emit("quest_started", activeQuest);
+      modal.classList.add("started"); presentNextItem(); renderQuests(); renderBadges(); showCelebration("Path light added ✦");
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-action]"), function (button) {
+      button.addEventListener("click", function () { chooseNext(button.getAttribute("data-action")); });
+    });
+    document.getElementById("close-modal").addEventListener("click", closeQuest);
+    document.getElementById("show-answer").addEventListener("click", function () {
+      document.getElementById("answer-box").hidden=false;
+      if (activeItem) { var s=conceptStats(activeItem.concept); s.hints+=1; s.last=Date.now(); saveState(); emit("hint_opened",activeQuest); }
+    });
+    modalShell.addEventListener("click", function (event) { if (event.target === modalShell) closeQuest(); });
+    document.addEventListener("keydown", function (event) { if (event.key === "Escape" && modalShell.classList.contains("open")) closeQuest(); });
+    document.getElementById("print-day").addEventListener("click", function () { window.print(); });
+    document.getElementById("print-tutor").addEventListener("click", function () { window.print(); });
+    function downloadJSON(name,payload) {
+      var blob=new Blob([JSON.stringify(payload,null,2)+"\n"],{type:"application/json"});
+      var url=URL.createObjectURL(blob),a=document.createElement("a"); a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},1000);
+    }
+    function readJSONFile(file,done) {
+      if (!file || file.size>2000000) { window.alert("Choose a JSON file smaller than 2 MB."); return; }
+      var reader=new FileReader(); reader.onload=function(){try{done(JSON.parse(String(reader.result)));}catch(error){window.alert("That file is not valid JSON.");}};reader.readAsText(file);
+    }
+    document.getElementById("export-progress").addEventListener("click",function(){downloadJSON("runway-progress.json",{schema:2,packId:data.packId||data.moduleId,exportedAt:new Date().toISOString(),state:state});});
+    document.getElementById("import-pack").addEventListener("click",function(){document.getElementById("pack-file").click();});
+    document.getElementById("pack-file").addEventListener("change",function(){readJSONFile(this.files[0],function(pack){
+      if(!pack || pack.schema!==2 || !Array.isArray(pack.quests)){window.alert("This is not a Runway class pack.");return;}
+      try{localStorage.setItem("runway_class_pack_v2",JSON.stringify(pack));window.location.reload();}catch(error){window.alert("This browser could not save the class pack.");}
+    });});
+    document.getElementById("import-progress").addEventListener("click",function(){document.getElementById("progress-file").click();});
+    document.getElementById("progress-file").addEventListener("change",function(){readJSONFile(this.files[0],function(payload){
+      if(!payload || payload.schema!==2 || !payload.state || !payload.state.started){window.alert("This is not a Runway progress file.");return;}
+      state=payload.state;state.concepts=state.concepts||{};state.served=state.served||[];saveState();renderQuests();renderBadges();renderTutor();showCelebration("Progress imported");
+    });});
+    document.getElementById("download-page").addEventListener("click",function(){
+      var source="<!doctype html>\n"+document.documentElement.outerHTML;
+      var blob=new Blob([source],{type:"text/html"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="back-to-school-runway.html";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},1000);
+    });
+    document.getElementById("reset-day").addEventListener("click", function () {
+      if (!window.confirm("Clear today's checkmarks and choices? Nothing from another day will change.")) return;
+      var learned=state.concepts,served=state.served; state = blankState(); state.concepts=learned; state.served=served;
+      saveState(); renderQuests(); renderBadges(); renderTutor(); showCelebration("Today is clear. Fresh start.");
+    });
+
+    renderHeader(); renderJourney(); renderClasses(); renderQuests(); renderBadges(); renderTutor();
+    if ("serviceWorker" in navigator && /^https?:$/.test(window.location.protocol)) {
+      navigator.serviceWorker.register("./sw.js").catch(function(){});
+    }
+  })();
+  </script>
+</body>
+</html>

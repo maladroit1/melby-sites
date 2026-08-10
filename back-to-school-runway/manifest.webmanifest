@@ -1,0 +1,10 @@
+{
+  "name": "Back-to-School Runway",
+  "short_name": "Runway",
+  "description": "A gentle, adaptive sixth-grade warm-up path.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef7f2",
+  "theme_color": "#267c8b"
+}
