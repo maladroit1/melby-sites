@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Singularity — A Plain-Language Field Guide</title>
+<style>
+  :root{
+    --ink:#101418; --sub:#4a5560; --line:#e2e6ea; --bg:#f6f7f9;
+    --card:#ffffff; --accent:#2f6df6; --accent2:#7b3ff2; --warm:#f5843c;
+    --good:#1f9d64; --warn:#d9822b; --bad:#d64545;
+    --mono:"SF Mono",ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 18px}
+
+  /* PAGE */
+  .page{background:var(--card);margin:26px auto;border:1px solid var(--line);
+        border-radius:18px;overflow:hidden;box-shadow:0 1px 3px rgba(16,20,24,.05)}
+  .page-head{padding:26px 28px 20px;background:linear-gradient(135deg,#101827,#1f2b45);color:#fff}
+  .page-tag{font:600 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;opacity:.72}
+  .page-title{font-size:clamp(24px,5.5vw,34px);font-weight:800;letter-spacing:-.02em;margin-top:10px;line-height:1.1}
+  .page-sub{margin-top:10px;font-size:15px;opacity:.85;max-width:56ch}
+  .page-body{padding:22px 28px 30px}
+
+  h2{font-size:19px;font-weight:750;letter-spacing:-.01em;margin:26px 0 10px;display:flex;align-items:center;gap:10px}
+  h2:first-child{margin-top:4px}
+  h2 .n{flex:0 0 26px;height:26px;border-radius:8px;background:var(--accent);color:#fff;
+        font:700 13px/26px var(--mono);text-align:center}
+  p{color:var(--sub);font-size:15px;margin:8px 0}
+  p strong{color:var(--ink)}
+  .lead{font-size:16.5px;color:var(--ink)}
+
+  .grid{display:grid;gap:14px;margin:16px 0}
+  @media(min-width:560px){.grid.two{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:1fr 1fr 1fr}}
+
+  .card{border:1px solid var(--line);border-radius:14px;padding:16px 16px 15px;background:#fbfcfd}
+  .card h3{font-size:14px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .card p{font-size:13.5px;margin:4px 0}
+  .emoji{font-size:18px}
+
+  .bignum{font:800 40px/1 var(--sans);letter-spacing:-.03em;color:var(--accent)}
+  .bignum small{display:block;font:600 12px/1.3 var(--mono);letter-spacing:.05em;color:var(--sub);
+                text-transform:uppercase;margin-top:8px}
+
+  .pill{display:inline-block;font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+        padding:5px 9px;border-radius:20px;background:#eef2ff;color:var(--accent);margin:2px 4px 2px 0}
+
+  .quote{border-left:3px solid var(--accent2);background:#faf7ff;padding:12px 16px;border-radius:0 10px 10px 0;
+         margin:16px 0;font-size:14.5px;color:var(--ink)}
+  .quote cite{display:block;margin-top:6px;font-size:12.5px;font-style:normal;color:var(--sub);font-weight:600}
+
+  .flow{display:flex;flex-direction:column;gap:0;margin:16px 0}
+  .step{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .step:last-child{border-bottom:0}
+  .step .dot{flex:0 0 32px;height:32px;border-radius:9px;background:var(--accent2);color:#fff;
+             font:700 15px/32px var(--sans);text-align:center}
+  .step h4{font-size:14.5px;margin-bottom:2px}
+  .step p{margin:0;font-size:13.5px}
+
+  .scale{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:16px 0}
+  .scale .s{border-radius:12px;padding:13px 12px;color:#fff}
+  .scale .s h4{font-size:13px;margin-bottom:4px}
+  .scale .s p{color:rgba(255,255,255,.9);font-size:12px;margin:0}
+  .s.good{background:linear-gradient(160deg,#1f9d64,#157a4c)}
+  .s.mid{background:linear-gradient(160deg,#d9822b,#b96a1c)}
+  .s.risk{background:linear-gradient(160deg,#d64545,#a83232)}
+
+  .check{list-style:none;margin:12px 0}
+  .check li{position:relative;padding:8px 0 8px 30px;font-size:14px;border-bottom:1px solid var(--line)}
+  .check li:last-child{border-bottom:0}
+  .check li::before{content:"◻";position:absolute;left:2px;top:7px;color:var(--accent);font-size:16px}
+
+  .split{display:grid;gap:14px;margin:16px 0}
+  @media(min-width:560px){.split{grid-template-columns:1fr 1fr}}
+  .box{border-radius:12px;padding:15px 16px}
+  .box.for{background:#eefaf2;border:1px solid #cdeede}
+  .box.against{background:#fdf0ef;border:1px solid #f6d6d3}
+  .box h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;font:700 12px/1 var(--mono)}
+  .box.for h4{color:var(--good)} .box.against h4{color:var(--bad)}
+  .box ul{margin:0;padding-left:18px} .box li{font-size:13.5px;margin:5px 0;color:var(--sub)}
+
+  .foot{padding:16px 28px 24px;border-top:1px solid var(--line);font-size:12px;color:var(--sub)}
+  .foot b{color:var(--ink)}
+
+  .masthead{text-align:center;padding:38px 18px 8px}
+  .masthead .kicker{font:600 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+  .masthead h1{font-size:clamp(30px,7vw,46px);font-weight:850;letter-spacing:-.03em;margin:12px 0 8px;line-height:1.05}
+  .masthead p{max-width:52ch;margin:0 auto;font-size:15px}
+
+  @media print{
+    body{background:#fff}
+    .page{page-break-after:always;box-shadow:none;margin:0;border-radius:0;border:0}
+    .masthead{page-break-after:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="kicker">A Plain-Language Field Guide</div>
+    <h1>The Singularity</h1>
+    <p>What people mean when they say it — why the phrase is back in the news — and how a thoughtful, non-technical person can hold the idea without buying the hype.</p>
+  </div>
+
+  <!-- ============ PAGE 1 ============ -->
+  <section class="page">
+    <div class="page-head">
+      <div class="page-tag">Page 1 · The Idea</div>
+      <div class="page-title">What is "the singularity," actually?</div>
+      <div class="page-sub">Strip away the sci-fi. At its core it's one simple, almost boring mechanism — with wild consequences.</div>
+    </div>
+    <div class="page-body">
+
+      <h2><span class="n">1</span>The one-sentence version</h2>
+      <p class="lead">The <strong>singularity</strong> is a hypothesized point at which artificial intelligence becomes smart enough to <strong>improve itself</strong> — kicking off a self-feeding loop where progress gets faster and faster, until change outruns our ability to predict or control it.</p>
+      <p>The word is borrowed from math and physics, where a "singularity" is a point where the normal equations stop working — like the center of a black hole. The metaphor that matters is the <strong>event horizon</strong>: a line past which you genuinely cannot see what happens next. That "we can't see past it" quality <em>is</em> the whole idea, not a detail of it.</p>
+
+      <div class="quote">
+        "Within thirty years, we will have the technological means to create superhuman intelligence. Shortly after, the human era will be ended."
+        <cite>— Vernor Vinge, mathematician &amp; author, 1993 (the essay that popularized the term)</cite>
+      </div>
+
+      <h2><span class="n">2</span>The engine: a snowball, not a switch</h2>
+      <p>It is <strong>not</strong> "one day a computer wakes up and decides things." The real claim is about a <strong>curve</strong>. Picture compound interest, or the old chessboard story — one grain on the first square, doubling each square, until square 64 holds more rice than exists on Earth. Doubling feels slow, then absurd, very suddenly.</p>
+
+      <div class="flow">
+        <div class="step"><div class="dot">1</div><div><h4>AI gets good at a real task</h4><p>e.g. writing software, designing experiments, analyzing data.</p></div></div>
+        <div class="step"><div class="dot">2</div><div><h4>We point AI at the job of building AI</h4><p>It helps design the next, better version of itself.</p></div></div>
+        <div class="step"><div class="dot">3</div><div><h4>Each version builds a stronger one, faster</h4><p>The loop tightens. Humans do less of the work each cycle.</p></div></div>
+        <div class="step"><div class="dot">4</div><div><h4>The curve goes near-vertical</h4><p>Progress per month outpaces what used to take years. That knee in the curve is "the singularity."</p></div></div>
+      </div>
+
+      <h2><span class="n">3</span>Where the idea came from</h2>
+      <div class="grid three">
+        <div class="card"><h3><span class="emoji">🧮</span>1950s–60s</h3><p>Mathematician <strong>John von Neumann</strong> is first quoted using "singularity" for accelerating tech change.</p></div>
+        <div class="card"><h3><span class="emoji">📝</span>1993</h3><p><strong>Vernor Vinge</strong> formalizes it: superhuman intelligence as a point beyond which prediction fails.</p></div>
+        <div class="card"><h3><span class="emoji">📈</span>2005</h3><p>Inventor <strong>Ray Kurzweil</strong> — <em>The Singularity Is Near</em> — pins a headline date of <strong>~2045</strong>.</p></div>
+      </div>
+      <p style="margin-top:14px"><strong>Key myth to drop:</strong> the singularity is not about robots feeling emotions or "becoming conscious." It's about <strong>capability</strong> — what these systems can <em>do</em>, and how fast that grows — and about <strong>autonomy</strong>: how much they do without us in the loop.</p>
+
+    </div>
+    <div class="foot"><b>Takeaway:</b> One mechanism — self-improvement compounding on itself — and one consequence: a horizon we can't see past. Everything else is argument about <em>when</em> and <em>how fast</em>.</div>
+  </section>
+
+  <!-- ============ PAGE 2 ============ -->
+  <section class="page">
+    <div class="page-head">
+      <div class="page-tag">Page 2 · The "Why Now?"</div>
+      <div class="page-title">Why some people think late 2026 is the marker</div>
+      <div class="page-sub">Not a prophecy — a bet that historians will later circle this stretch as the moment the loop started closing.</div>
+    </div>
+    <div class="page-body">
+
+      <h2><span class="n">1</span>The signposts that changed the conversation</h2>
+      <div class="grid two">
+        <div class="card"><h3><span class="emoji">🛠️</span>AI stopped just talking</h3><p>Systems now <strong>use tools, write and run code, browse, and act as "agents"</strong> that carry out multi-step jobs — not just chat.</p></div>
+        <div class="card"><h3><span class="emoji">🔁</span>AI now helps build AI</h3><p>Researchers increasingly use AI to write the code, run the experiments, and speed up the research that produces the <strong>next</strong> AI. That's step 2 of the loop.</p></div>
+        <div class="card"><h3><span class="emoji">⚡</span>The jumps got shorter</h3><p>Capability leaps that used to take years now land in <strong>months</strong>. Shrinking gaps between generations are what an early exponential looks like.</p></div>
+        <div class="card"><h3><span class="emoji">🌍</span>Adoption went mainstream</h3><p>Hundreds of millions of people use these tools <strong>at work, weekly</strong>. Economic pull now funds the acceleration.</p></div>
+      </div>
+
+      <h2><span class="n">2</span>"Fast" vs "slow" takeoff — the real debate</h2>
+      <div class="split">
+        <div class="box for">
+          <h4>Slow / soft takeoff</h4>
+          <ul>
+            <li>Change unfolds over years; society adapts as it goes.</li>
+            <li>Many argue <strong>we may already be inside it</strong> and just can't feel the slope from within.</li>
+            <li>No single "day it happened."</li>
+          </ul>
+        </div>
+        <div class="box against">
+          <h4>Fast / hard takeoff</h4>
+          <ul>
+            <li>Once self-improvement clicks, it goes from human-level to far-beyond in <strong>weeks or months</strong>.</li>
+            <li>Little time to react or steer.</li>
+            <li>The scenario that worries safety researchers most.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2><span class="n">3</span>Why any exact date is slippery</h2>
+      <div class="quote">
+        Nobody woke up in 1760 and announced "the Industrial Revolution has begun." We named the starting point <strong>decades later</strong>, once the consequences were undeniable. Singularities, by their nature, are only clearly visible in the rear-view mirror.
+        <cite>— The historian's-hindsight problem</cite>
+      </div>
+      <p>So "late 2026 is the start" is best read as a <strong>falsifiable bet</strong>: that when future historians pick a start-line, they'll land in this window — the moment AI began materially accelerating its own progress. It's a claim you can be right or wrong about, which is what makes it worth writing down.</p>
+
+      <h2><span class="n">4</span>The honest counter-case</h2>
+      <div class="grid two">
+        <div class="card"><h3><span class="emoji">🧱</span>Walls may be near</h3><p>Skeptics point to limits on <strong>data, energy, chips, and cost</strong>. Exponentials in nature usually turn into <strong>S-curves</strong> — they flatten.</p></div>
+        <div class="card"><h3><span class="emoji">🙋</span>Humans still in the loop</h3><p>Today's "self-improvement" is <strong>heavily human-supervised</strong>. The truly autonomous loop isn't clearly running yet.</p></div>
+        <div class="card"><h3><span class="emoji">🎲</span>Reliability gap</h3><p>These systems still make confident mistakes. Powerful ≠ trustworthy-enough to hand the wheel.</p></div>
+        <div class="card"><h3><span class="emoji">🏷️</span>Hype incentive</h3><p>The people most sure it's here often have <strong>something to sell</strong>. Worth discounting for.</p></div>
+      </div>
+
+    </div>
+    <div class="foot"><b>Takeaway:</b> The signposts are real and unusual. Whether they add up to <em>the</em> inflection — and whether the curve keeps climbing or flattens into an S — is exactly the open question. Reasonable, informed people disagree.</div>
+  </section>
+
+  <!-- ============ PAGE 3 ============ -->
+  <section class="page">
+    <div class="page-head">
+      <div class="page-tag">Page 3 · What It Means For You</div>
+      <div class="page-title">How to hold this idea like an adult</div>
+      <div class="page-sub">You don't have to pick "utopia" or "doom." The useful move is to watch the right signals and keep your model honest.</div>
+    </div>
+    <div class="page-body">
+
+      <h2><span class="n">1</span>The range of outcomes (most experts sit in the messy middle)</h2>
+      <div class="scale">
+        <div class="s good"><h4>Transformative good</h4><p>Cures, clean energy, abundance; drudgery automated away.</p></div>
+        <div class="s mid"><h4>Disruptive &amp; messy</h4><p>Huge gains <em>and</em> job upheaval, misinformation, concentration of power. The likely near-term.</p></div>
+        <div class="s risk"><h4>Serious risk</h4><p>Systems too capable and autonomous to reliably control. Low-odds-per-expert, high stakes.</p></div>
+      </div>
+      <p>Notice: even the optimists and the worriers <strong>agree the change is big</strong>. The disagreement is about the <em>mix</em> and the <em>speed</em>, not about whether something historic is underway.</p>
+
+      <h2><span class="n">2</span>Four things worth knowing at a dinner party</h2>
+      <div class="flow">
+        <div class="step"><div class="dot">A</div><div><h4>It's an economic &amp; cognitive shift, not a movie</h4><p>Think "electricity" or "the internet," compressed — not Terminator.</p></div></div>
+        <div class="step"><div class="dot">B</div><div><h4>Watch capability + autonomy, not "consciousness"</h4><p>The question that matters is <em>what can it do without us</em>, not <em>does it feel</em>.</p></div></div>
+        <div class="step"><div class="dot">C</div><div><h4>Timelines are genuinely contested</h4><p>Serious estimates range from a few years to several decades. Anyone certain is selling something.</p></div></div>
+        <div class="step"><div class="dot">D</div><div><h4>"Aligning" it — steering what it wants — is the central unsolved problem</h4><p>Making it capable is going faster than making it controllable.</p></div></div>
+      </div>
+
+      <h2><span class="n">3</span>Your signpost checklist — what to actually watch</h2>
+      <ul class="check">
+        <li>AI systems doing <strong>full jobs end-to-end</strong>, not just tasks (an agent that ships a product, runs a study, closes a deal).</li>
+        <li>Credible reports of AI making a <strong>real scientific or engineering discovery</strong> largely on its own.</li>
+        <li>The gap between AI generations shrinking from <strong>years → months → weeks</strong>.</li>
+        <li>Labs saying AI now does a <strong>large share of their own R&amp;D</strong>.</li>
+        <li>Watch for the opposite too: <strong>plateaus</strong> — progress stalling on cost, energy, or reliability. That's the S-curve arriving.</li>
+      </ul>
+
+      <div class="quote">
+        A thoughtful position: <strong>"Something historic is clearly happening, it's probably accelerating, the timing and outcome are honestly uncertain — and that uncertainty is a reason to pay attention, not to look away."</strong>
+        <cite>— The defensible middle</cite>
+      </div>
+
+    </div>
+    <div class="foot">
+      <b>Bottom line:</b> "The singularity" = the point where AI improving AI outruns our ability to keep up. The claim that <b>late 2026</b> is its start-line is a bet about where historians will later draw the line — falsifiable, and worth writing down so it can be scored.
+      <br><br>
+      <span style="font-size:11px;opacity:.75">Field guide prepared 2026-08-09 · for a curious, non-technical reader · dates &amp; attributions (von Neumann, Vinge 1993, Kurzweil ~2045) are widely documented; the "late-2026 start" is a stated prediction, not an established fact.</span>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
