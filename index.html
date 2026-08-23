@@ -1,16 +1,84 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Games</title>
-<style>body{font-family:system-ui;max-width:34em;margin:3em auto;padding:0 1em;line-height:1.5}
-h1{margin-bottom:.2em}p.sub{color:#666;margin-top:0}
-a{display:block;padding:.85em 1em;margin:.5em 0;border:1px solid #ccc;border-radius:12px;text-decoration:none;color:#111}
-a:hover{background:#f4f4f4}small{color:#888}</style></head>
-<body><h1>Games 🎮</h1><p class="sub">Learning games — tap to play.</p>
-<a href="./back-to-school-runway/">Back-to-School Runway ✦ <small>— adaptive sixth-grade warm-ups, violin &amp; printable trackers</small></a>
-<a href="./math-jeopardy/">Math Jeopardy <small>— order of operations &amp; the road to algebra</small></a>
-<a href="./balance-lab/">Balance Lab <small>— solve equations by keeping it fair</small></a>
-<a href="./us-history-jeopardy/">US History Jeopardy <small>— westward, innovations &amp; reforms</small></a>
-<a href="./us-history-memory-match/">US History Memory Match <small>— paired-associate recall</small></a>
-<a href="./cer-dog-lab/">The CER Dog Lab 🐕 <small>— claim, evidence, reasoning writing</small></a>
-<a href="./threejs-playground/">Three.js Playground 🪐 <small>— spawn, spin &amp; bounce 3D shapes</small></a>
-</body></html>
+<title>Melby Sites</title>
+<style>
+  :root{--bg:#0e1116;--card:#161b24;--border:#242c3a;--txt:#e7edf6;--sub:#93a3ba;--acc:#5aa9ff}
+  @media (prefers-color-scheme: light){:root{--bg:#f4f6f9;--card:#fff;--border:#dde3ec;--txt:#17202b;--sub:#5a6a80;--acc:#1867c8}}
+  *{box-sizing:border-box}
+  body{margin:0 auto;background:var(--bg);color:var(--txt);font-family:-apple-system,system-ui,sans-serif;
+    padding:24px 16px calc(32px + env(safe-area-inset-bottom));max-width:640px}
+  h1{font-size:24px;font-weight:600;margin:0 0 4px}
+  .sub{color:var(--sub);font-size:14px;margin:0 0 16px}
+  #q{width:100%;padding:12px 14px;font-size:16px;border:1px solid var(--border);border-radius:12px;
+    background:var(--card);color:var(--txt);margin-bottom:20px;outline:none}
+  #q:focus{border-color:var(--acc)}
+  h2{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);margin:20px 0 8px}
+  a.site{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--txt);
+    background:var(--card);border:1px solid var(--border);border-radius:14px;padding:13px 14px;margin-bottom:8px;
+    transition:border-color .15s}
+  a.site:active{border-color:var(--acc)}
+  .em{font-size:20px;flex:none;width:28px;text-align:center}
+  .t{font-size:15px;font-weight:600;margin:0}
+  .d{font-size:13px;color:var(--sub);margin:1px 0 0}
+  .hide{display:none}
+  footer{color:var(--sub);font-size:12px;margin-top:28px;text-align:center}
+</style>
+</head>
+<body>
+<h1>Melby Sites</h1>
+<p class="sub">Everything we've shipped — tap to open.</p>
+<input id="q" type="search" placeholder="Filter sites…" autocomplete="off">
+
+<section data-g><h2>Games &amp; learning</h2>
+<a class="site" href="./math-jeopardy/"><span class="em">🧮</span><span><p class="t">Math Jeopardy</p><p class="d">order of operations &amp; the road to algebra</p></span></a>
+<a class="site" href="./balance-lab/"><span class="em">⚖️</span><span><p class="t">Balance Lab</p><p class="d">solve equations by keeping it fair</p></span></a>
+<a class="site" href="./us-history-jeopardy/"><span class="em">🇺🇸</span><span><p class="t">US History Jeopardy</p><p class="d">westward, innovations &amp; reforms</p></span></a>
+<a class="site" href="./us-history-memory-match/"><span class="em">🃏</span><span><p class="t">US History Memory Match</p><p class="d">paired-associate recall</p></span></a>
+<a class="site" href="./cer-dog-lab/"><span class="em">🐕</span><span><p class="t">The CER Dog Lab</p><p class="d">claim, evidence, reasoning writing</p></span></a>
+<a class="site" href="./back-to-school-runway/"><span class="em">🎒</span><span><p class="t">Back-to-School Runway</p><p class="d">adaptive warm-ups, violin &amp; trackers</p></span></a>
+<a class="site" href="./threejs-playground/"><span class="em">🪐</span><span><p class="t">Three.js Playground</p><p class="d">spawn, spin &amp; bounce 3D shapes</p></span></a>
+</section>
+
+<section data-g><h2>Trips</h2>
+<a class="site" href="./miami-family-trip/"><span class="em">🌴</span><span><p class="t">Miami Getaway</p><p class="d">family trip · Aug 13–17</p></span></a>
+<a class="site" href="./san-juan-island-2027/"><span class="em">🐋</span><span><p class="t">San Juan Island 2027</p><p class="d">orca trip — August 2027</p></span></a>
+<a class="site" href="./pender-island-2027/"><span class="em">🛶</span><span><p class="t">Pender Island 2027</p><p class="d">orca trip — August 2027</p></span></a>
+</section>
+
+<section data-g><h2>Guides &amp; research</h2>
+<a class="site" href="./singularity-field-guide/"><span class="em">🤖</span><span><p class="t">The Singularity</p><p class="d">a plain-language field guide</p></span></a>
+<a class="site" href="./ai-futurism/"><span class="em">🔮</span><span><p class="t">AI Futurism</p><p class="d">collapsing the superposition</p></span></a>
+<a class="site" href="./frontier-premium/"><span class="em">📈</span><span><p class="t">The Frontier Premium</p><p class="d">July 2026</p></span></a>
+<a class="site" href="./dalio-diary-of-a-ceo/"><span class="em">🎙️</span><span><p class="t">Dalio on Diary of a CEO</p><p class="d">episode summary</p></span></a>
+<a class="site" href="./kilauea-watch/"><span class="em">🌋</span><span><p class="t">Kīlauea Watch</p><p class="d">eruption tracker</p></span></a>
+<a class="site" href="./backpack-shortlist/"><span class="em">🎒</span><span><p class="t">The Backpack Shortlist</p><p class="d">picks compared</p></span></a>
+</section>
+
+<section data-g><h2>Vineyard</h2>
+<a class="site" href="./vineyard-plan/"><span class="em">🍇</span><span><p class="t">The Vineyard Plan</p><p class="d">where things actually stand</p></span></a>
+<a class="site" href="./seyval-pruning/"><span class="em">✂️</span><span><p class="t">Pruning Seyval Blanc</p><p class="d">a beginner's field guide</p></span></a>
+</section>
+
+<section data-g><h2>Work &amp; tools</h2>
+<a class="site" href="./midvale-walkthrough/"><span class="em">🏠</span><span><p class="t">Midvale Walkthrough</p><p class="d">property walkthrough</p></span></a>
+<a class="site" href="./barber-business-line/"><span class="em">💈</span><span><p class="t">Business Text Line</p><p class="d">setup guide</p></span></a>
+</section>
+
+<footer>maladroit1.github.io/melby-sites</footer>
+<script>
+const q = document.getElementById('q');
+q.addEventListener('input', () => {
+  const s = q.value.trim().toLowerCase();
+  document.querySelectorAll('a.site').forEach(a => {
+    a.classList.toggle('hide', s && !a.textContent.toLowerCase().includes(s));
+  });
+  document.querySelectorAll('section[data-g]').forEach(sec => {
+    sec.classList.toggle('hide', !sec.querySelector('a.site:not(.hide)'));
+  });
+});
+</script>
+</body>
+</html>
