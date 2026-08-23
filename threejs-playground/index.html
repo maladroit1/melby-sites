@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Three.js Playground</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#0b0e14;font-family:-apple-system,system-ui,sans-serif}
+  #c{display:block;width:100%;height:100%;touch-action:none}
+  #panel{position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(13,17,26,.82);backdrop-filter:blur(8px);color:#cdd6e4;font-size:13px;
+    display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+  #panel label{display:flex;align-items:center;gap:6px;white-space:nowrap}
+  input[type=range]{width:110px;accent-color:#5aa9ff}
+  button{background:#1d2635;color:#e6edf7;border:1px solid #33405a;border-radius:8px;
+    padding:8px 14px;font-size:13px;min-height:36px}
+  button:active{background:#2b3a52}
+  #hint{position:fixed;top:10px;left:0;right:0;text-align:center;color:#8fa3c0;font-size:12px;
+    pointer-events:none;text-shadow:0 1px 3px #000}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hint">drag to orbit · pinch/scroll to zoom · tap a shape to pop it · tap space to spawn</div>
+<div id="panel">
+  <label>spin <input id="spin" type="range" min="0" max="3" step="0.05" value="0.6"></label>
+  <label>gravity <input id="grav" type="range" min="-4" max="4" step="0.1" value="0"></label>
+  <label>bounce <input id="boun" type="range" min="0" max="1" step="0.05" value="0.85"></label>
+  <label><input id="wire" type="checkbox"> wireframe</label>
+  <button id="spawn">spawn 10</button>
+  <button id="clear">reset</button>
+</div>
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.min.js","three/addons/controls/OrbitControls.js":"./vendor/OrbitControls.js"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0b0e14);
+scene.fog = new THREE.Fog(0x0b0e14, 18, 42);
+
+const camera = new THREE.PerspectiveCamera(60, 2, 0.1, 100);
+camera.position.set(0, 5, 12);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+controls.maxDistance = 30;
+controls.target.set(0, 2, 0);
+
+scene.add(new THREE.HemisphereLight(0x8fb4ff, 0x1a1410, 0.7));
+const sun = new THREE.DirectionalLight(0xffe9c4, 2.2);
+sun.position.set(6, 10, 4);
+sun.castShadow = true;
+sun.shadow.mapSize.set(1024, 1024);
+sun.shadow.camera.left = sun.shadow.camera.bottom = -12;
+sun.shadow.camera.right = sun.shadow.camera.top = 12;
+scene.add(sun);
+
+const floor = new THREE.Mesh(
+  new THREE.CircleGeometry(14, 64).rotateX(-Math.PI / 2),
+  new THREE.MeshStandardMaterial({ color: 0x141b28, roughness: 0.9 })
+);
+floor.receiveShadow = true;
+scene.add(floor);
+scene.add(new THREE.GridHelper(28, 28, 0x2a3852, 0x1c2536));
+
+// starfield
+{
+  const n = 800, pos = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) {
+    const r = 30 + Math.random() * 30, t = Math.random() * Math.PI * 2, p = Math.acos(2 * Math.random() - 1);
+    pos.set([r * Math.sin(p) * Math.cos(t), Math.abs(r * Math.cos(p)) + 2, r * Math.sin(p) * Math.sin(t)], i * 3);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  scene.add(new THREE.Points(g, new THREE.PointsMaterial({ color: 0x6f87b8, size: 0.12 })));
+}
+
+const geoms = [
+  new THREE.IcosahedronGeometry(0.6, 0),
+  new THREE.BoxGeometry(0.9, 0.9, 0.9),
+  new THREE.TorusKnotGeometry(0.4, 0.14, 96, 12),
+  new THREE.ConeGeometry(0.55, 1, 5),
+  new THREE.SphereGeometry(0.55, 24, 16),
+];
+const shapes = [];
+
+function spawn(count = 1) {
+  for (let i = 0; i < count; i++) {
+    const m = new THREE.Mesh(
+      geoms[Math.floor(Math.random() * geoms.length)],
+      new THREE.MeshStandardMaterial({
+        color: new THREE.Color().setHSL(Math.random(), 0.7, 0.55),
+        roughness: 0.35, metalness: 0.25,
+        wireframe: ui.wire.checked,
+      })
+    );
+    m.castShadow = true;
+    m.position.set((Math.random() - 0.5) * 10, 2 + Math.random() * 6, (Math.random() - 0.5) * 10);
+    m.userData = {
+      vel: new THREE.Vector3((Math.random() - 0.5) * 2, Math.random() * 2, (Math.random() - 0.5) * 2),
+      rot: new THREE.Vector3(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).multiplyScalar(2),
+    };
+    scene.add(m);
+    shapes.push(m);
+  }
+}
+
+const ui = {
+  spin: document.getElementById('spin'),
+  grav: document.getElementById('grav'),
+  boun: document.getElementById('boun'),
+  wire: document.getElementById('wire'),
+};
+ui.wire.addEventListener('change', () => shapes.forEach(s => s.material.wireframe = ui.wire.checked));
+document.getElementById('spawn').onclick = () => spawn(10);
+document.getElementById('clear').onclick = () => {
+  shapes.forEach(s => { scene.remove(s); s.material.dispose(); });
+  shapes.length = 0;
+  spawn(8);
+};
+
+// tap: pop a shape, or spawn one where you tapped empty space
+const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
+let downAt = 0, downXY = [0, 0];
+canvas.addEventListener('pointerdown', e => { downAt = performance.now(); downXY = [e.clientX, e.clientY]; });
+canvas.addEventListener('pointerup', e => {
+  if (performance.now() - downAt > 250) return;                       // was a drag/orbit
+  if (Math.hypot(e.clientX - downXY[0], e.clientY - downXY[1]) > 8) return;
+  ptr.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
+  ray.setFromCamera(ptr, camera);
+  const hit = ray.intersectObjects(shapes)[0];
+  if (hit) {
+    hit.object.userData.vel.y += 6;                                    // pop it upward
+    hit.object.material.color.setHSL(Math.random(), 0.8, 0.6);
+  } else {
+    spawn(1);
+  }
+});
+
+spawn(8);
+
+const clock = new THREE.Clock();
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const spin = +ui.spin.value, g = +ui.grav.value, bounce = +ui.boun.value;
+  for (const s of shapes) {
+    s.rotation.x += s.userData.rot.x * spin * dt;
+    s.rotation.y += s.userData.rot.y * spin * dt;
+    s.userData.vel.y -= g * dt * 3;
+    s.position.addScaledVector(s.userData.vel, dt);
+    if (s.position.y < 0.6) { s.position.y = 0.6; s.userData.vel.y = Math.abs(s.userData.vel.y) * bounce; }
+    if (s.position.y > 12) { s.position.y = 12; s.userData.vel.y *= -0.5; }
+    const r = Math.hypot(s.position.x, s.position.z);
+    if (r > 12) { s.position.multiplyScalar(12 / r); s.userData.vel.x *= -bounce; s.userData.vel.z *= -bounce; }
+  }
+  // idle drift so gravity=0 still looks alive
+  if (g === 0) for (const s of shapes) s.position.y += Math.sin(clock.elapsedTime + s.id) * 0.002;
+
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (canvas.width !== w * renderer.getPixelRatio() | 0) {
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  controls.update();
+  renderer.render(scene, camera);
+});
+</script>
+</body>
+</html>
