@@ -1,0 +1,8328 @@
+{
+"(Accessory parotid gland).l": {
+"layer": "gland",
+"side": "l",
+"base": "(Accessory parotid gland)",
+"verts": 14,
+"center": [
+0.0571,
+1.556,
+0.0445
+],
+"bbox": [
+[
+0.0519,
+1.5507,
+0.0511
+],
+[
+0.0623,
+1.5612,
+0.0378
+]
+]
+},
+"(Accessory parotid gland).r": {
+"layer": "gland",
+"side": "r",
+"base": "(Accessory parotid gland)",
+"verts": 14,
+"center": [
+-0.0571,
+1.556,
+0.0445
+],
+"bbox": [
+[
+-0.0623,
+1.5507,
+0.0511
+],
+[
+-0.0519,
+1.5612,
+0.0378
+]
+]
+},
+"Angle of mouth.l": {
+"layer": "skin",
+"side": "l",
+"base": "Angle of mouth",
+"verts": 21,
+"center": [
+0.0274,
+1.531,
+0.0809
+],
+"bbox": [
+[
+0.0227,
+1.5262,
+0.0849
+],
+[
+0.0321,
+1.5358,
+0.077
+]
+]
+},
+"Angle of mouth.r": {
+"layer": "skin",
+"side": "r",
+"base": "Angle of mouth",
+"verts": 21,
+"center": [
+-0.0274,
+1.531,
+0.0809
+],
+"bbox": [
+[
+-0.0321,
+1.5262,
+0.0849
+],
+[
+-0.0227,
+1.5358,
+0.077
+]
+]
+},
+"Anterior belly of digastric muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Anterior belly of digastric muscle",
+"verts": 198,
+"center": [
+0.0093,
+1.5023,
+0.0517
+],
+"bbox": [
+[
+0.0033,
+1.4992,
+0.0696
+],
+[
+0.0153,
+1.5055,
+0.0338
+]
+]
+},
+"Anterior belly of digastric muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Anterior belly of digastric muscle",
+"verts": 198,
+"center": [
+-0.0093,
+1.5023,
+0.0517
+],
+"bbox": [
+[
+-0.0153,
+1.4992,
+0.0696
+],
+[
+-0.0033,
+1.5055,
+0.0338
+]
+]
+},
+"Anterior notch of auricle.l": {
+"layer": "skin",
+"side": "l",
+"base": "Anterior notch of auricle",
+"verts": 38,
+"center": [
+0.0706,
+1.5839,
+0.0005
+],
+"bbox": [
+[
+0.0674,
+1.5768,
+0.0074
+],
+[
+0.0739,
+1.5911,
+-0.0064
+]
+]
+},
+"Anterior notch of auricle.r": {
+"layer": "skin",
+"side": "r",
+"base": "Anterior notch of auricle",
+"verts": 38,
+"center": [
+-0.0706,
+1.5839,
+0.0005
+],
+"bbox": [
+[
+-0.0739,
+1.5768,
+0.0074
+],
+[
+-0.0674,
+1.5911,
+-0.0064
+]
+]
+},
+"Antihelix.l": {
+"layer": "skin",
+"side": "l",
+"base": "Antihelix",
+"verts": 64,
+"center": [
+0.0811,
+1.5788,
+-0.0091
+],
+"bbox": [
+[
+0.0771,
+1.5614,
+-0.0049
+],
+[
+0.0851,
+1.5962,
+-0.0134
+]
+]
+},
+"Antihelix.r": {
+"layer": "skin",
+"side": "r",
+"base": "Antihelix",
+"verts": 64,
+"center": [
+-0.0811,
+1.5788,
+-0.0091
+],
+"bbox": [
+[
+-0.0851,
+1.5614,
+-0.0049
+],
+[
+-0.0771,
+1.5962,
+-0.0134
+]
+]
+},
+"Antitragus.l": {
+"layer": "skin",
+"side": "l",
+"base": "Antitragus",
+"verts": 29,
+"center": [
+0.0735,
+1.5653,
+-0.0033
+],
+"bbox": [
+[
+0.0681,
+1.5597,
+0.0036
+],
+[
+0.0789,
+1.5708,
+-0.0103
+]
+]
+},
+"Antitragus.r": {
+"layer": "skin",
+"side": "r",
+"base": "Antitragus",
+"verts": 29,
+"center": [
+-0.0735,
+1.5653,
+-0.0033
+],
+"bbox": [
+[
+-0.0789,
+1.5597,
+0.0036
+],
+[
+-0.0681,
+1.5708,
+-0.0103
+]
+]
+},
+"Apex of auricle.l": {
+"layer": "skin",
+"side": "l",
+"base": "Apex of auricle",
+"verts": 27,
+"center": [
+0.0878,
+1.6047,
+-0.0074
+],
+"bbox": [
+[
+0.0853,
+1.6028,
+-0.0046
+],
+[
+0.0902,
+1.6066,
+-0.0101
+]
+]
+},
+"Apex of auricle.r": {
+"layer": "skin",
+"side": "r",
+"base": "Apex of auricle",
+"verts": 27,
+"center": [
+-0.0878,
+1.6047,
+-0.0074
+],
+"bbox": [
+[
+-0.0902,
+1.6028,
+-0.0046
+],
+[
+-0.0853,
+1.6066,
+-0.0101
+]
+]
+},
+"Ary-epiglottic part of oblique arytenoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Ary-epiglottic part of oblique arytenoid muscle",
+"verts": 513,
+"center": [
+0.0069,
+1.4931,
+0.0131
+],
+"bbox": [
+[
+0.0048,
+1.4814,
+0.0194
+],
+[
+0.009,
+1.5048,
+0.0068
+]
+]
+},
+"Ary-epiglottic part of oblique arytenoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Ary-epiglottic part of oblique arytenoid muscle",
+"verts": 513,
+"center": [
+-0.0069,
+1.4931,
+0.0131
+],
+"bbox": [
+[
+-0.009,
+1.4814,
+0.0194
+],
+[
+-0.0048,
+1.5048,
+0.0068
+]
+]
+},
+"Arytenoid cartilage.r": {
+"layer": "cartilage",
+"side": "r",
+"base": "Arytenoid cartilage",
+"verts": 322,
+"center": [
+-0.0053,
+1.4771,
+0.0073
+],
+"bbox": [
+[
+-0.008,
+1.4731,
+0.0109
+],
+[
+-0.0025,
+1.4812,
+0.0036
+]
+]
+},
+"Arytenoid cartilage.l": {
+"layer": "cartilage",
+"side": "l",
+"base": "Arytenoid cartilage",
+"verts": 322,
+"center": [
+0.0053,
+1.4771,
+0.0073
+],
+"bbox": [
+[
+0.0025,
+1.4731,
+0.0109
+],
+[
+0.008,
+1.4812,
+0.0036
+]
+]
+},
+"Ascending part of trapezius muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Ascending part of trapezius muscle",
+"verts": 2298,
+"center": [
+0.0636,
+1.4951,
+-0.0457
+],
+"bbox": [
+[
+-0.004,
+1.4155,
+0.0004
+],
+[
+0.1311,
+1.5747,
+-0.0917
+]
+]
+},
+"Ascending part of trapezius muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Ascending part of trapezius muscle",
+"verts": 2298,
+"center": [
+-0.0636,
+1.4951,
+-0.0457
+],
+"bbox": [
+[
+-0.1311,
+1.4155,
+0.0004
+],
+[
+0.004,
+1.5747,
+-0.0917
+]
+]
+},
+"Atlas (C1)": {
+"layer": "bone",
+"side": "m",
+"base": "Atlas (C1)",
+"verts": 1106,
+"center": [
+0.0,
+1.5429,
+-0.0214
+],
+"bbox": [
+[
+-0.043,
+1.5331,
+0.0031
+],
+[
+0.043,
+1.5528,
+-0.046
+]
+]
+},
+"Auricular region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Auricular region",
+"verts": 74,
+"center": [
+0.0665,
+1.5798,
+-0.0055
+],
+"bbox": [
+[
+0.0546,
+1.5479,
+0.0162
+],
+[
+0.0784,
+1.6117,
+-0.0272
+]
+]
+},
+"Auricular region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Auricular region",
+"verts": 74,
+"center": [
+-0.0665,
+1.5798,
+-0.0055
+],
+"bbox": [
+[
+-0.0784,
+1.5479,
+0.0162
+],
+[
+-0.0546,
+1.6117,
+-0.0272
+]
+]
+},
+"Auricular tubercle.l": {
+"layer": "skin",
+"side": "l",
+"base": "Auricular tubercle",
+"verts": 20,
+"center": [
+0.0921,
+1.59,
+-0.0172
+],
+"bbox": [
+[
+0.0909,
+1.587,
+-0.0161
+],
+[
+0.0933,
+1.5931,
+-0.0184
+]
+]
+},
+"Auricular tubercle.r": {
+"layer": "skin",
+"side": "r",
+"base": "Auricular tubercle",
+"verts": 20,
+"center": [
+-0.0921,
+1.59,
+-0.0172
+],
+"bbox": [
+[
+-0.0933,
+1.587,
+-0.0161
+],
+[
+-0.0909,
+1.5931,
+-0.0184
+]
+]
+},
+"Axis (C2)": {
+"layer": "bone",
+"side": "m",
+"base": "Axis (C2)",
+"verts": 1168,
+"center": [
+0.0,
+1.53,
+-0.026
+],
+"bbox": [
+[
+-0.0268,
+1.5085,
+0.0004
+],
+[
+0.0268,
+1.5514,
+-0.0524
+]
+]
+},
+"Buccal region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Buccal region",
+"verts": 108,
+"center": [
+0.0403,
+1.5288,
+0.0636
+],
+"bbox": [
+[
+0.0168,
+1.492,
+0.0879
+],
+[
+0.0638,
+1.5655,
+0.0393
+]
+]
+},
+"Buccal region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Buccal region",
+"verts": 108,
+"center": [
+-0.0403,
+1.5288,
+0.0636
+],
+"bbox": [
+[
+-0.0638,
+1.492,
+0.0879
+],
+[
+-0.0168,
+1.5655,
+0.0393
+]
+]
+},
+"Bucinator.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Bucinator",
+"verts": 444,
+"center": [
+0.0284,
+1.5329,
+0.0566
+],
+"bbox": [
+[
+0.0209,
+1.5147,
+0.071
+],
+[
+0.0359,
+1.551,
+0.0421
+]
+]
+},
+"Bucinator.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Bucinator",
+"verts": 444,
+"center": [
+-0.0284,
+1.5329,
+0.0566
+],
+"bbox": [
+[
+-0.0359,
+1.5147,
+0.071
+],
+[
+-0.0209,
+1.551,
+0.0421
+]
+]
+},
+"Carotid triangle.l": {
+"layer": "skin",
+"side": "l",
+"base": "Carotid triangle",
+"verts": 22,
+"center": [
+0.0324,
+1.4928,
+0.0333
+],
+"bbox": [
+[
+0.0195,
+1.4747,
+0.0473
+],
+[
+0.0453,
+1.511,
+0.0192
+]
+]
+},
+"Carotid triangle.r": {
+"layer": "skin",
+"side": "r",
+"base": "Carotid triangle",
+"verts": 22,
+"center": [
+-0.0324,
+1.4928,
+0.0333
+],
+"bbox": [
+[
+-0.0453,
+1.4747,
+0.0473
+],
+[
+-0.0195,
+1.511,
+0.0192
+]
+]
+},
+"Cavity of concha.l": {
+"layer": "skin",
+"side": "l",
+"base": "Cavity of concha",
+"verts": 122,
+"center": [
+0.071,
+1.5732,
+-0.0062
+],
+"bbox": [
+[
+0.0646,
+1.5673,
+0.0011
+],
+[
+0.0774,
+1.5791,
+-0.0135
+]
+]
+},
+"Cavity of concha.r": {
+"layer": "skin",
+"side": "r",
+"base": "Cavity of concha",
+"verts": 122,
+"center": [
+-0.071,
+1.5732,
+-0.0062
+],
+"bbox": [
+[
+-0.0774,
+1.5673,
+0.0011
+],
+[
+-0.0646,
+1.5791,
+-0.0135
+]
+]
+},
+"Clavicle.l": {
+"layer": "bone",
+"side": "l",
+"base": "Clavicle",
+"verts": 789,
+"center": [
+0.0828,
+1.4072,
+-0.0009
+],
+"bbox": [
+[
+0.0112,
+1.3891,
+0.0505
+],
+[
+0.1543,
+1.4252,
+-0.0523
+]
+]
+},
+"Clavicle.r": {
+"layer": "bone",
+"side": "r",
+"base": "Clavicle",
+"verts": 789,
+"center": [
+-0.0828,
+1.4072,
+-0.0009
+],
+"bbox": [
+[
+-0.1543,
+1.3891,
+0.0505
+],
+[
+-0.0112,
+1.4252,
+-0.0523
+]
+]
+},
+"Concha of auricle.l": {
+"layer": "skin",
+"side": "l",
+"base": "Concha of auricle",
+"verts": 51,
+"center": [
+0.0735,
+1.5781,
+-0.0083
+],
+"bbox": [
+[
+0.0674,
+1.5702,
+-0.0031
+],
+[
+0.0795,
+1.5861,
+-0.0135
+]
+]
+},
+"Concha of auricle.r": {
+"layer": "skin",
+"side": "r",
+"base": "Concha of auricle",
+"verts": 51,
+"center": [
+-0.0735,
+1.5781,
+-0.0083
+],
+"bbox": [
+[
+-0.0795,
+1.5702,
+-0.0031
+],
+[
+-0.0674,
+1.5861,
+-0.0135
+]
+]
+},
+"Cornea.l": {
+"layer": "eye",
+"side": "l",
+"base": "Cornea",
+"verts": 322,
+"center": [
+0.0312,
+1.5914,
+0.0757
+],
+"bbox": [
+[
+0.024,
+1.5843,
+0.0782
+],
+[
+0.0383,
+1.5985,
+0.0732
+]
+]
+},
+"Cornea.r": {
+"layer": "eye",
+"side": "r",
+"base": "Cornea",
+"verts": 322,
+"center": [
+-0.0312,
+1.5914,
+0.0757
+],
+"bbox": [
+[
+-0.0383,
+1.5843,
+0.0782
+],
+[
+-0.024,
+1.5985,
+0.0732
+]
+]
+},
+"Corniculate cartilage.r": {
+"layer": "cartilage",
+"side": "r",
+"base": "Corniculate cartilage",
+"verts": 70,
+"center": [
+-0.0036,
+1.4814,
+0.0041
+],
+"bbox": [
+[
+-0.0044,
+1.4806,
+0.0049
+],
+[
+-0.0029,
+1.4822,
+0.0033
+]
+]
+},
+"Corniculate cartilage.l": {
+"layer": "cartilage",
+"side": "l",
+"base": "Corniculate cartilage",
+"verts": 70,
+"center": [
+0.0036,
+1.4814,
+0.0041
+],
+"bbox": [
+[
+0.0029,
+1.4806,
+0.0049
+],
+[
+0.0044,
+1.4822,
+0.0033
+]
+]
+},
+"Corrugator supercilii.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Corrugator supercilii",
+"verts": 141,
+"center": [
+0.0202,
+1.6116,
+0.0805
+],
+"bbox": [
+[
+0.0089,
+1.6021,
+0.084
+],
+[
+0.0316,
+1.621,
+0.077
+]
+]
+},
+"Corrugator supercilii.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Corrugator supercilii",
+"verts": 141,
+"center": [
+-0.0202,
+1.6116,
+0.0805
+],
+"bbox": [
+[
+-0.0316,
+1.6021,
+0.084
+],
+[
+-0.0089,
+1.621,
+0.077
+]
+]
+},
+"Costal cartilage of first rib.l": {
+"layer": "cartilage",
+"side": "l",
+"base": "Costal cartilage of first rib",
+"verts": 233,
+"center": [
+0.0389,
+1.3881,
+0.0396
+],
+"bbox": [
+[
+0.0235,
+1.3786,
+0.0518
+],
+[
+0.0544,
+1.3976,
+0.0275
+]
+]
+},
+"Costal cartilage of first rib.r": {
+"layer": "cartilage",
+"side": "r",
+"base": "Costal cartilage of first rib",
+"verts": 233,
+"center": [
+-0.0389,
+1.3881,
+0.0396
+],
+"bbox": [
+[
+-0.0544,
+1.3786,
+0.0518
+],
+[
+-0.0235,
+1.3976,
+0.0275
+]
+]
+},
+"Cricoid cartilage": {
+"layer": "cartilage",
+"side": "m",
+"base": "Cricoid cartilage",
+"verts": 941,
+"center": [
+0.0,
+1.4656,
+0.0109
+],
+"bbox": [
+[
+-0.0122,
+1.4569,
+0.0203
+],
+[
+0.0122,
+1.4744,
+0.0014
+]
+]
+},
+"Crura of antihelix.l": {
+"layer": "skin",
+"side": "l",
+"base": "Crura of antihelix",
+"verts": 69,
+"center": [
+0.0788,
+1.5942,
+-0.006
+],
+"bbox": [
+[
+0.0717,
+1.5856,
+0.0003
+],
+[
+0.0859,
+1.6028,
+-0.0123
+]
+]
+},
+"Crura of antihelix.r": {
+"layer": "skin",
+"side": "r",
+"base": "Crura of antihelix",
+"verts": 69,
+"center": [
+-0.0788,
+1.5942,
+-0.006
+],
+"bbox": [
+[
+-0.0859,
+1.5856,
+0.0003
+],
+[
+-0.0717,
+1.6028,
+-0.0123
+]
+]
+},
+"Cymba conchae.l": {
+"layer": "skin",
+"side": "l",
+"base": "Cymba conchae",
+"verts": 59,
+"center": [
+0.0746,
+1.5829,
+-0.0084
+],
+"bbox": [
+[
+0.0698,
+1.577,
+-0.0033
+],
+[
+0.0793,
+1.5889,
+-0.0136
+]
+]
+},
+"Cymba conchae.r": {
+"layer": "skin",
+"side": "r",
+"base": "Cymba conchae",
+"verts": 59,
+"center": [
+-0.0746,
+1.5829,
+-0.0084
+],
+"bbox": [
+[
+-0.0793,
+1.577,
+-0.0033
+],
+[
+-0.0698,
+1.5889,
+-0.0136
+]
+]
+},
+"Deep part of masseter.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Deep part of masseter",
+"verts": 497,
+"center": [
+0.0483,
+1.5461,
+0.0268
+],
+"bbox": [
+[
+0.0348,
+1.5134,
+0.0441
+],
+[
+0.0618,
+1.5789,
+0.0095
+]
+]
+},
+"Deep part of masseter.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Deep part of masseter",
+"verts": 497,
+"center": [
+-0.0483,
+1.5461,
+0.0268
+],
+"bbox": [
+[
+-0.0618,
+1.5134,
+0.0441
+],
+[
+-0.0348,
+1.5789,
+0.0095
+]
+]
+},
+"Depressor anguli oris.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Depressor anguli oris",
+"verts": 299,
+"center": [
+0.0239,
+1.5188,
+0.0627
+],
+"bbox": [
+[
+0.0117,
+1.498,
+0.0747
+],
+[
+0.0361,
+1.5396,
+0.0507
+]
+]
+},
+"Depressor anguli oris.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Depressor anguli oris",
+"verts": 299,
+"center": [
+-0.0239,
+1.5188,
+0.0627
+],
+"bbox": [
+[
+-0.0361,
+1.498,
+0.0747
+],
+[
+-0.0117,
+1.5396,
+0.0507
+]
+]
+},
+"Depressor labii inferioris.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Depressor labii inferioris",
+"verts": 418,
+"center": [
+0.0159,
+1.5151,
+0.072
+],
+"bbox": [
+[
+0.0006,
+1.5003,
+0.0856
+],
+[
+0.0312,
+1.5298,
+0.0584
+]
+]
+},
+"Depressor labii inferioris.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Depressor labii inferioris",
+"verts": 418,
+"center": [
+-0.0159,
+1.5151,
+0.072
+],
+"bbox": [
+[
+-0.0312,
+1.5003,
+0.0856
+],
+[
+-0.0006,
+1.5298,
+0.0584
+]
+]
+},
+"Depressor septi nasi.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Depressor septi nasi",
+"verts": 140,
+"center": [
+0.0084,
+1.5498,
+0.0855
+],
+"bbox": [
+[
+0.0,
+1.5417,
+0.0892
+],
+[
+0.0167,
+1.5578,
+0.0817
+]
+]
+},
+"Depressor septi nasi.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Depressor septi nasi",
+"verts": 140,
+"center": [
+-0.0084,
+1.5498,
+0.0855
+],
+"bbox": [
+[
+-0.0167,
+1.5417,
+0.0892
+],
+[
+-0.0,
+1.5578,
+0.0817
+]
+]
+},
+"Descending part of trapezius muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Descending part of trapezius muscle",
+"verts": 3376,
+"center": [
+0.0679,
+1.2672,
+-0.0996
+],
+"bbox": [
+[
+-0.0015,
+1.1201,
+-0.0691
+],
+[
+0.1373,
+1.4143,
+-0.1301
+]
+]
+},
+"Descending part of trapezius muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Descending part of trapezius muscle",
+"verts": 3376,
+"center": [
+-0.0679,
+1.2672,
+-0.0996
+],
+"bbox": [
+[
+-0.1373,
+1.1201,
+-0.0691
+],
+[
+0.0015,
+1.4143,
+-0.1301
+]
+]
+},
+"Eminentia conchae.l": {
+"layer": "skin",
+"side": "l",
+"base": "Eminentia conchae",
+"verts": 45,
+"center": [
+0.07,
+1.576,
+-0.0114
+],
+"bbox": [
+[
+0.0606,
+1.5583,
+-0.0041
+],
+[
+0.0795,
+1.5937,
+-0.0188
+]
+]
+},
+"Eminentia conchae.r": {
+"layer": "skin",
+"side": "r",
+"base": "Eminentia conchae",
+"verts": 45,
+"center": [
+-0.07,
+1.576,
+-0.0114
+],
+"bbox": [
+[
+-0.0795,
+1.5583,
+-0.0041
+],
+[
+-0.0606,
+1.5937,
+-0.0188
+]
+]
+},
+"Eminentia fossae triangularis.l": {
+"layer": "skin",
+"side": "l",
+"base": "Eminentia fossae triangularis",
+"verts": 39,
+"center": [
+0.078,
+1.5993,
+-0.0036
+],
+"bbox": [
+[
+0.0721,
+1.5922,
+0.0049
+],
+[
+0.0838,
+1.6064,
+-0.0121
+]
+]
+},
+"Eminentia fossae triangularis.r": {
+"layer": "skin",
+"side": "r",
+"base": "Eminentia fossae triangularis",
+"verts": 39,
+"center": [
+-0.078,
+1.5993,
+-0.0036
+],
+"bbox": [
+[
+-0.0838,
+1.5922,
+0.0049
+],
+[
+-0.0721,
+1.6064,
+-0.0121
+]
+]
+},
+"Eminentia scaphae.l": {
+"layer": "skin",
+"side": "l",
+"base": "Eminentia scaphae",
+"verts": 72,
+"center": [
+0.0805,
+1.5876,
+-0.0143
+],
+"bbox": [
+[
+0.0737,
+1.5687,
+-0.0073
+],
+[
+0.0872,
+1.6064,
+-0.0214
+]
+]
+},
+"Eminentia scaphae.r": {
+"layer": "skin",
+"side": "r",
+"base": "Eminentia scaphae",
+"verts": 72,
+"center": [
+-0.0805,
+1.5876,
+-0.0143
+],
+"bbox": [
+[
+-0.0872,
+1.5687,
+-0.0073
+],
+[
+-0.0737,
+1.6064,
+-0.0214
+]
+]
+},
+"Ethmoid bone": {
+"layer": "bone",
+"side": "m",
+"base": "Ethmoid bone",
+"verts": 2108,
+"center": [
+-0.0,
+1.5856,
+0.0537
+],
+"bbox": [
+[
+-0.0187,
+1.5659,
+0.0759
+],
+[
+0.0187,
+1.6053,
+0.0314
+]
+]
+},
+"Eyebrow.l": {
+"layer": "skin",
+"side": "l",
+"base": "Eyebrow",
+"verts": 14,
+"center": [
+0.0298,
+1.6166,
+0.0854
+],
+"bbox": [
+[
+0.0109,
+1.6126,
+0.0945
+],
+[
+0.0487,
+1.6207,
+0.0764
+]
+]
+},
+"Eyebrow.r": {
+"layer": "skin",
+"side": "r",
+"base": "Eyebrow",
+"verts": 14,
+"center": [
+-0.0298,
+1.6166,
+0.0854
+],
+"bbox": [
+[
+-0.0487,
+1.6126,
+0.0945
+],
+[
+-0.0109,
+1.6207,
+0.0764
+]
+]
+},
+"First rib.l": {
+"layer": "bone",
+"side": "l",
+"base": "First rib",
+"verts": 1607,
+"center": [
+0.0437,
+1.4168,
+0.0018
+],
+"bbox": [
+[
+0.0163,
+1.3871,
+0.0371
+],
+[
+0.0712,
+1.4465,
+-0.0335
+]
+]
+},
+"First rib.r": {
+"layer": "bone",
+"side": "r",
+"base": "First rib",
+"verts": 1607,
+"center": [
+-0.0437,
+1.4168,
+0.0018
+],
+"bbox": [
+[
+-0.0712,
+1.3871,
+0.0371
+],
+[
+-0.0163,
+1.4465,
+-0.0335
+]
+]
+},
+"Fossa antihelica.l": {
+"layer": "skin",
+"side": "l",
+"base": "Fossa antihelica",
+"verts": 42,
+"center": [
+0.0782,
+1.5793,
+-0.0169
+],
+"bbox": [
+[
+0.0737,
+1.5638,
+-0.0145
+],
+[
+0.0826,
+1.5947,
+-0.0192
+]
+]
+},
+"Fossa antihelica.r": {
+"layer": "skin",
+"side": "r",
+"base": "Fossa antihelica",
+"verts": 42,
+"center": [
+-0.0782,
+1.5793,
+-0.0169
+],
+"bbox": [
+[
+-0.0826,
+1.5638,
+-0.0145
+],
+[
+-0.0737,
+1.5947,
+-0.0192
+]
+]
+},
+"Frontal bone": {
+"layer": "bone",
+"side": "m",
+"base": "Frontal bone",
+"verts": 3902,
+"center": [
+-0.0,
+1.6459,
+0.0526
+],
+"bbox": [
+[
+-0.0612,
+1.5926,
+0.0871
+],
+[
+0.0612,
+1.6992,
+0.018
+]
+]
+},
+"Frontal region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Frontal region",
+"verts": 139,
+"center": [
+0.0346,
+1.6457,
+0.0588
+],
+"bbox": [
+[
+-0.0002,
+1.5877,
+0.0945
+],
+[
+0.0694,
+1.7037,
+0.0231
+]
+]
+},
+"Frontal region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Frontal region",
+"verts": 139,
+"center": [
+-0.0346,
+1.6457,
+0.0588
+],
+"bbox": [
+[
+-0.0694,
+1.5877,
+0.0945
+],
+[
+0.0002,
+1.7037,
+0.0231
+]
+]
+},
+"Frontalis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Frontalis muscle",
+"verts": 2933,
+"center": [
+0.0293,
+1.6393,
+0.0661
+],
+"bbox": [
+[
+0.0,
+1.6042,
+0.0895
+],
+[
+0.0585,
+1.6743,
+0.0426
+]
+]
+},
+"Frontalis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Frontalis muscle",
+"verts": 2933,
+"center": [
+-0.0293,
+1.6393,
+0.0661
+],
+"bbox": [
+[
+-0.0585,
+1.6042,
+0.0895
+],
+[
+-0.0,
+1.6743,
+0.0426
+]
+]
+},
+"Genioglossus muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Genioglossus muscle",
+"verts": 1875,
+"center": [
+0.005,
+1.5176,
+0.0551
+],
+"bbox": [
+[
+0.0012,
+1.4995,
+0.0789
+],
+[
+0.0088,
+1.5357,
+0.0313
+]
+]
+},
+"Genioglossus muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Genioglossus muscle",
+"verts": 1875,
+"center": [
+-0.005,
+1.5176,
+0.0551
+],
+"bbox": [
+[
+-0.0088,
+1.4995,
+0.0789
+],
+[
+-0.0012,
+1.5357,
+0.0313
+]
+]
+},
+"Geniohyoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Geniohyoid muscle",
+"verts": 267,
+"center": [
+0.0057,
+1.5057,
+0.0498
+],
+"bbox": [
+[
+0.0001,
+1.5007,
+0.0698
+],
+[
+0.0113,
+1.5108,
+0.0298
+]
+]
+},
+"Geniohyoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Geniohyoid muscle",
+"verts": 267,
+"center": [
+-0.0057,
+1.5057,
+0.0498
+],
+"bbox": [
+[
+-0.0113,
+1.5007,
+0.0698
+],
+[
+-0.0001,
+1.5108,
+0.0298
+]
+]
+},
+"Greater supraclavicular fossa.l": {
+"layer": "skin",
+"side": "l",
+"base": "Greater supraclavicular fossa",
+"verts": 51,
+"center": [
+0.0784,
+1.4495,
+0.0061
+],
+"bbox": [
+[
+0.0557,
+1.4243,
+0.0357
+],
+[
+0.101,
+1.4748,
+-0.0234
+]
+]
+},
+"Greater supraclavicular fossa.r": {
+"layer": "skin",
+"side": "r",
+"base": "Greater supraclavicular fossa",
+"verts": 51,
+"center": [
+-0.0784,
+1.4495,
+0.0061
+],
+"bbox": [
+[
+-0.101,
+1.4243,
+0.0357
+],
+[
+-0.0557,
+1.4748,
+-0.0234
+]
+]
+},
+"Helix.l": {
+"layer": "skin",
+"side": "l",
+"base": "Helix",
+"verts": 289,
+"center": [
+0.0825,
+1.5825,
+-0.0082
+],
+"bbox": [
+[
+0.0717,
+1.5583,
+0.0052
+],
+[
+0.0934,
+1.6066,
+-0.0216
+]
+]
+},
+"Helix.r": {
+"layer": "skin",
+"side": "r",
+"base": "Helix",
+"verts": 289,
+"center": [
+-0.0825,
+1.5825,
+-0.0082
+],
+"bbox": [
+[
+-0.0934,
+1.5583,
+0.0052
+],
+[
+-0.0717,
+1.6066,
+-0.0216
+]
+]
+},
+"Hyoglossus muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Hyoglossus muscle",
+"verts": 714,
+"center": [
+0.0091,
+1.5112,
+0.0489
+],
+"bbox": [
+[
+0.0051,
+1.4985,
+0.0643
+],
+[
+0.013,
+1.5239,
+0.0335
+]
+]
+},
+"Hyoglossus muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Hyoglossus muscle",
+"verts": 714,
+"center": [
+-0.0091,
+1.5112,
+0.0489
+],
+"bbox": [
+[
+-0.013,
+1.4985,
+0.0643
+],
+[
+-0.0051,
+1.5239,
+0.0335
+]
+]
+},
+"Hyoid bone": {
+"layer": "bone",
+"side": "m",
+"base": "Hyoid bone",
+"verts": 664,
+"center": [
+0.0,
+1.5013,
+0.021
+],
+"bbox": [
+[
+-0.0227,
+1.4915,
+0.039
+],
+[
+0.0227,
+1.511,
+0.003
+]
+]
+},
+"Inferior head of lateral pterygoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Inferior head of lateral pterygoid muscle",
+"verts": 164,
+"center": [
+0.0343,
+1.5663,
+0.0192
+],
+"bbox": [
+[
+0.0254,
+1.5551,
+0.0306
+],
+[
+0.0431,
+1.5776,
+0.0078
+]
+]
+},
+"Inferior head of lateral pterygoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Inferior head of lateral pterygoid muscle",
+"verts": 164,
+"center": [
+-0.0343,
+1.5663,
+0.0192
+],
+"bbox": [
+[
+-0.0431,
+1.5551,
+0.0306
+],
+[
+-0.0254,
+1.5776,
+0.0078
+]
+]
+},
+"Inferior nasal concha bone.l": {
+"layer": "bone",
+"side": "l",
+"base": "Inferior nasal concha bone",
+"verts": 238,
+"center": [
+0.0097,
+1.5634,
+0.0581
+],
+"bbox": [
+[
+0.0044,
+1.5521,
+0.0754
+],
+[
+0.0149,
+1.5746,
+0.0408
+]
+]
+},
+"Inferior nasal concha bone.r": {
+"layer": "bone",
+"side": "r",
+"base": "Inferior nasal concha bone",
+"verts": 238,
+"center": [
+-0.0097,
+1.5634,
+0.0581
+],
+"bbox": [
+[
+-0.0149,
+1.5521,
+0.0754
+],
+[
+-0.0044,
+1.5746,
+0.0408
+]
+]
+},
+"Inferior oblique muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Inferior oblique muscle",
+"verts": 576,
+"center": [
+0.0286,
+1.5837,
+0.0657
+],
+"bbox": [
+[
+0.0139,
+1.5751,
+0.0788
+],
+[
+0.0433,
+1.5922,
+0.0525
+]
+]
+},
+"Inferior oblique muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Inferior oblique muscle",
+"verts": 576,
+"center": [
+-0.0286,
+1.5837,
+0.0657
+],
+"bbox": [
+[
+-0.0433,
+1.5751,
+0.0788
+],
+[
+-0.0139,
+1.5922,
+0.0525
+]
+]
+},
+"Inferior parathyroid gland.l": {
+"layer": "gland",
+"side": "l",
+"base": "Inferior parathyroid gland",
+"verts": 9,
+"center": [
+0.0109,
+1.4604,
+-0.0013
+],
+"bbox": [
+[
+0.0097,
+1.4584,
+0.0011
+],
+[
+0.012,
+1.4623,
+-0.0036
+]
+]
+},
+"Inferior parathyroid gland.r": {
+"layer": "gland",
+"side": "r",
+"base": "Inferior parathyroid gland",
+"verts": 9,
+"center": [
+-0.0109,
+1.4604,
+-0.0013
+],
+"bbox": [
+[
+-0.012,
+1.4584,
+0.0011
+],
+[
+-0.0097,
+1.4623,
+-0.0036
+]
+]
+},
+"Inferior pharyngeal constrictor.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Inferior pharyngeal constrictor",
+"verts": 1850,
+"center": [
+0.0116,
+1.4926,
+0.0035
+],
+"bbox": [
+[
+0.0006,
+1.4601,
+0.0106
+],
+[
+0.0226,
+1.5252,
+-0.0037
+]
+]
+},
+"Inferior pharyngeal constrictor.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Inferior pharyngeal constrictor",
+"verts": 1850,
+"center": [
+-0.0116,
+1.4926,
+0.0035
+],
+"bbox": [
+[
+-0.0226,
+1.4601,
+0.0106
+],
+[
+-0.0006,
+1.5252,
+-0.0037
+]
+]
+},
+"Inferior rectus muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Inferior rectus muscle",
+"verts": 870,
+"center": [
+0.0245,
+1.5875,
+0.0517
+],
+"bbox": [
+[
+0.0134,
+1.5756,
+0.0725
+],
+[
+0.0356,
+1.5995,
+0.0309
+]
+]
+},
+"Inferior rectus muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Inferior rectus muscle",
+"verts": 870,
+"center": [
+-0.0245,
+1.5875,
+0.0517
+],
+"bbox": [
+[
+-0.0356,
+1.5756,
+0.0725
+],
+[
+-0.0134,
+1.5995,
+0.0309
+]
+]
+},
+"Infra-orbital region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Infra-orbital region",
+"verts": 37,
+"center": [
+0.0433,
+1.6037,
+0.027
+],
+"bbox": [
+[
+0.0098,
+1.5565,
+0.0893
+],
+[
+0.0769,
+1.6509,
+-0.0354
+]
+]
+},
+"Infra-orbital region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Infra-orbital region",
+"verts": 37,
+"center": [
+-0.0433,
+1.6037,
+0.027
+],
+"bbox": [
+[
+-0.0769,
+1.5565,
+0.0893
+],
+[
+-0.0098,
+1.6509,
+-0.0354
+]
+]
+},
+"Intermediate tendon of digastric muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Intermediate tendon of digastric muscle",
+"verts": 116,
+"center": [
+0.0133,
+1.5028,
+0.0355
+],
+"bbox": [
+[
+0.0094,
+1.4991,
+0.0391
+],
+[
+0.0173,
+1.5066,
+0.0319
+]
+]
+},
+"Intermediate tendon of digastric muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Intermediate tendon of digastric muscle",
+"verts": 116,
+"center": [
+-0.0133,
+1.5028,
+0.0355
+],
+"bbox": [
+[
+-0.0173,
+1.4991,
+0.0391
+],
+[
+-0.0094,
+1.5066,
+0.0319
+]
+]
+},
+"Interspinales colli muscles.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Interspinales colli muscles",
+"verts": 234,
+"center": [
+0.0039,
+1.4935,
+-0.0566
+],
+"bbox": [
+[
+0.0005,
+1.4483,
+-0.0428
+],
+[
+0.0073,
+1.5387,
+-0.0703
+]
+]
+},
+"Interspinales colli muscles.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Interspinales colli muscles",
+"verts": 234,
+"center": [
+-0.0039,
+1.4935,
+-0.0566
+],
+"bbox": [
+[
+-0.0073,
+1.4483,
+-0.0428
+],
+[
+-0.0005,
+1.5387,
+-0.0703
+]
+]
+},
+"Intertragic incisure.l": {
+"layer": "skin",
+"side": "l",
+"base": "Intertragic incisure",
+"verts": 46,
+"center": [
+0.068,
+1.5666,
+0.0035
+],
+"bbox": [
+[
+0.0653,
+1.56,
+0.0088
+],
+[
+0.0707,
+1.5731,
+-0.0019
+]
+]
+},
+"Intertragic incisure.r": {
+"layer": "skin",
+"side": "r",
+"base": "Intertragic incisure",
+"verts": 46,
+"center": [
+-0.068,
+1.5666,
+0.0035
+],
+"bbox": [
+[
+-0.0707,
+1.56,
+0.0088
+],
+[
+-0.0653,
+1.5731,
+-0.0019
+]
+]
+},
+"Labial commissure.l": {
+"layer": "skin",
+"side": "l",
+"base": "Labial commissure",
+"verts": 36,
+"center": [
+0.012,
+1.5306,
+0.0874
+],
+"bbox": [
+[
+-0.0005,
+1.5261,
+0.0974
+],
+[
+0.0246,
+1.5351,
+0.0774
+]
+]
+},
+"Labial commissure.r": {
+"layer": "skin",
+"side": "r",
+"base": "Labial commissure",
+"verts": 36,
+"center": [
+-0.012,
+1.5306,
+0.0874
+],
+"bbox": [
+[
+-0.0246,
+1.5261,
+0.0974
+],
+[
+0.0005,
+1.5351,
+0.0774
+]
+]
+},
+"Lacrimal bone.l": {
+"layer": "bone",
+"side": "l",
+"base": "Lacrimal bone",
+"verts": 296,
+"center": [
+0.0118,
+1.5857,
+0.0689
+],
+"bbox": [
+[
+0.0065,
+1.5731,
+0.0762
+],
+[
+0.0171,
+1.5982,
+0.0615
+]
+]
+},
+"Lacrimal bone.r": {
+"layer": "bone",
+"side": "r",
+"base": "Lacrimal bone",
+"verts": 296,
+"center": [
+-0.0118,
+1.5857,
+0.0689
+],
+"bbox": [
+[
+-0.0171,
+1.5731,
+0.0762
+],
+[
+-0.0065,
+1.5982,
+0.0615
+]
+]
+},
+"Lateral crico-arytenoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Lateral crico-arytenoid muscle",
+"verts": 815,
+"center": [
+0.0095,
+1.4746,
+0.0041
+],
+"bbox": [
+[
+0.0073,
+1.4693,
+0.0091
+],
+[
+0.0117,
+1.48,
+-0.0008
+]
+]
+},
+"Lateral crico-arytenoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Lateral crico-arytenoid muscle",
+"verts": 815,
+"center": [
+-0.0095,
+1.4746,
+0.0041
+],
+"bbox": [
+[
+-0.0117,
+1.4693,
+0.0091
+],
+[
+-0.0073,
+1.48,
+-0.0008
+]
+]
+},
+"Lateral process of nasal septal cartilage.l": {
+"layer": "cartilage",
+"side": "l",
+"base": "Lateral process of nasal septal cartilage",
+"verts": 174,
+"center": [
+0.0066,
+1.5703,
+0.0989
+],
+"bbox": [
+[
+-0.0,
+1.5538,
+0.1157
+],
+[
+0.0132,
+1.5867,
+0.0821
+]
+]
+},
+"Lateral process of nasal septal cartilage.r": {
+"layer": "cartilage",
+"side": "r",
+"base": "Lateral process of nasal septal cartilage",
+"verts": 174,
+"center": [
+-0.0066,
+1.5703,
+0.0989
+],
+"bbox": [
+[
+-0.0132,
+1.5538,
+0.1157
+],
+[
+0.0,
+1.5867,
+0.0821
+]
+]
+},
+"Lateral rectus muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Lateral rectus muscle",
+"verts": 802,
+"center": [
+0.0309,
+1.5939,
+0.0509
+],
+"bbox": [
+[
+0.0177,
+1.5846,
+0.071
+],
+[
+0.0441,
+1.6032,
+0.0308
+]
+]
+},
+"Lateral rectus muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Lateral rectus muscle",
+"verts": 802,
+"center": [
+-0.0309,
+1.5939,
+0.0509
+],
+"bbox": [
+[
+-0.0441,
+1.5846,
+0.071
+],
+[
+-0.0177,
+1.6032,
+0.0308
+]
+]
+},
+"Lateral region of neck.l": {
+"layer": "skin",
+"side": "l",
+"base": "Lateral region of neck",
+"verts": 116,
+"center": [
+0.0757,
+1.4855,
+-0.0108
+],
+"bbox": [
+[
+0.034,
+1.4122,
+0.0425
+],
+[
+0.1173,
+1.5587,
+-0.0642
+]
+]
+},
+"Lateral region of neck.r": {
+"layer": "skin",
+"side": "r",
+"base": "Lateral region of neck",
+"verts": 116,
+"center": [
+-0.0757,
+1.4855,
+-0.0108
+],
+"bbox": [
+[
+-0.1173,
+1.4122,
+0.0425
+],
+[
+-0.034,
+1.5587,
+-0.0642
+]
+]
+},
+"Lesser supraclavicular fossa.l": {
+"layer": "skin",
+"side": "l",
+"base": "Lesser supraclavicular fossa",
+"verts": 13,
+"center": [
+0.0498,
+1.4292,
+0.0358
+],
+"bbox": [
+[
+0.0321,
+1.4224,
+0.0475
+],
+[
+0.0675,
+1.436,
+0.0241
+]
+]
+},
+"Lesser supraclavicular fossa.r": {
+"layer": "skin",
+"side": "r",
+"base": "Lesser supraclavicular fossa",
+"verts": 13,
+"center": [
+-0.0498,
+1.4292,
+0.0358
+],
+"bbox": [
+[
+-0.0675,
+1.4224,
+0.0475
+],
+[
+-0.0321,
+1.436,
+0.0241
+]
+]
+},
+"Levator anguli oris.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Levator anguli oris",
+"verts": 165,
+"center": [
+0.0205,
+1.5525,
+0.0756
+],
+"bbox": [
+[
+0.012,
+1.5424,
+0.0834
+],
+[
+0.0291,
+1.5625,
+0.0679
+]
+]
+},
+"Levator anguli oris.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Levator anguli oris",
+"verts": 165,
+"center": [
+-0.0205,
+1.5525,
+0.0756
+],
+"bbox": [
+[
+-0.0291,
+1.5424,
+0.0834
+],
+[
+-0.012,
+1.5625,
+0.0679
+]
+]
+},
+"Levator labii superioris.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Levator labii superioris",
+"verts": 272,
+"center": [
+0.0253,
+1.5618,
+0.0764
+],
+"bbox": [
+[
+0.0118,
+1.5473,
+0.0839
+],
+[
+0.0388,
+1.5762,
+0.069
+]
+]
+},
+"Levator labii superioris.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Levator labii superioris",
+"verts": 272,
+"center": [
+-0.0253,
+1.5618,
+0.0764
+],
+"bbox": [
+[
+-0.0388,
+1.5473,
+0.0839
+],
+[
+-0.0118,
+1.5762,
+0.069
+]
+]
+},
+"Levator nasolabialis.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Levator nasolabialis",
+"verts": 88,
+"center": [
+0.0134,
+1.5721,
+0.0808
+],
+"bbox": [
+[
+0.0106,
+1.5576,
+0.0844
+],
+[
+0.0161,
+1.5867,
+0.0772
+]
+]
+},
+"Levator nasolabialis.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Levator nasolabialis",
+"verts": 88,
+"center": [
+-0.0134,
+1.5721,
+0.0808
+],
+"bbox": [
+[
+-0.0161,
+1.5576,
+0.0844
+],
+[
+-0.0106,
+1.5867,
+0.0772
+]
+]
+},
+"Levator palpebrae superioris.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Levator palpebrae superioris",
+"verts": 1079,
+"center": [
+0.0282,
+1.601,
+0.0543
+],
+"bbox": [
+[
+0.0132,
+1.5923,
+0.0774
+],
+[
+0.0433,
+1.6097,
+0.0311
+]
+]
+},
+"Levator palpebrae superioris.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Levator palpebrae superioris",
+"verts": 1079,
+"center": [
+-0.0282,
+1.601,
+0.0543
+],
+"bbox": [
+[
+-0.0433,
+1.5923,
+0.0774
+],
+[
+-0.0132,
+1.6097,
+0.0311
+]
+]
+},
+"Levator scapulae.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Levator scapulae",
+"verts": 1543,
+"center": [
+0.056,
+1.463,
+-0.0524
+],
+"bbox": [
+[
+0.0252,
+1.3866,
+-0.0095
+],
+[
+0.0867,
+1.5394,
+-0.0953
+]
+]
+},
+"Levator scapulae.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Levator scapulae",
+"verts": 1543,
+"center": [
+-0.056,
+1.463,
+-0.0524
+],
+"bbox": [
+[
+-0.0867,
+1.3866,
+-0.0095
+],
+[
+-0.0252,
+1.5394,
+-0.0953
+]
+]
+},
+"Lobule of auricle.l": {
+"layer": "skin",
+"side": "l",
+"base": "Lobule of auricle",
+"verts": 128,
+"center": [
+0.0714,
+1.5589,
+-0.0008
+],
+"bbox": [
+[
+0.0597,
+1.5509,
+0.0097
+],
+[
+0.0831,
+1.5669,
+-0.0114
+]
+]
+},
+"Lobule of auricle.r": {
+"layer": "skin",
+"side": "r",
+"base": "Lobule of auricle",
+"verts": 128,
+"center": [
+-0.0714,
+1.5589,
+-0.0008
+],
+"bbox": [
+[
+-0.0831,
+1.5509,
+0.0097
+],
+[
+-0.0597,
+1.5669,
+-0.0114
+]
+]
+},
+"Longissimus capitis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Longissimus capitis muscle",
+"verts": 785,
+"center": [
+0.0428,
+1.4915,
+-0.0414
+],
+"bbox": [
+[
+0.0252,
+1.4129,
+-0.0153
+],
+[
+0.0604,
+1.5701,
+-0.0675
+]
+]
+},
+"Longissimus capitis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Longissimus capitis muscle",
+"verts": 785,
+"center": [
+-0.0428,
+1.4915,
+-0.0414
+],
+"bbox": [
+[
+-0.0604,
+1.4129,
+-0.0153
+],
+[
+-0.0252,
+1.5701,
+-0.0675
+]
+]
+},
+"Longissimus colli muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Longissimus colli muscle",
+"verts": 915,
+"center": [
+0.0327,
+1.4249,
+-0.0518
+],
+"bbox": [
+[
+0.0231,
+1.3301,
+-0.0112
+],
+[
+0.0422,
+1.5196,
+-0.0924
+]
+]
+},
+"Longissimus colli muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Longissimus colli muscle",
+"verts": 915,
+"center": [
+-0.0327,
+1.4249,
+-0.0518
+],
+"bbox": [
+[
+-0.0422,
+1.3301,
+-0.0112
+],
+[
+-0.0231,
+1.5196,
+-0.0924
+]
+]
+},
+"Longus capitis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Longus capitis muscle",
+"verts": 988,
+"center": [
+0.0144,
+1.514,
+-0.0022
+],
+"bbox": [
+[
+0.0023,
+1.459,
+0.0067
+],
+[
+0.0266,
+1.5691,
+-0.011
+]
+]
+},
+"Longus capitis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Longus capitis muscle",
+"verts": 988,
+"center": [
+-0.0144,
+1.514,
+-0.0022
+],
+"bbox": [
+[
+-0.0266,
+1.459,
+0.0067
+],
+[
+-0.0023,
+1.5691,
+-0.011
+]
+]
+},
+"Longus colli muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Longus colli muscle",
+"verts": 3154,
+"center": [
+0.0137,
+1.4662,
+-0.0123
+],
+"bbox": [
+[
+0.0013,
+1.3875,
+0.0047
+],
+[
+0.0261,
+1.5449,
+-0.0294
+]
+]
+},
+"Longus colli muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Longus colli muscle",
+"verts": 3154,
+"center": [
+-0.0137,
+1.4662,
+-0.0123
+],
+"bbox": [
+[
+-0.0261,
+1.3875,
+0.0047
+],
+[
+-0.0013,
+1.5449,
+-0.0294
+]
+]
+},
+"Lower canine.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Lower canine",
+"verts": 640,
+"center": [
+0.0128,
+1.5147,
+0.0763
+],
+"bbox": [
+[
+0.009,
+1.5017,
+0.0839
+],
+[
+0.0167,
+1.5278,
+0.0687
+]
+]
+},
+"Lower canine.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Lower canine",
+"verts": 640,
+"center": [
+-0.0128,
+1.5147,
+0.0763
+],
+"bbox": [
+[
+-0.0167,
+1.5017,
+0.0839
+],
+[
+-0.009,
+1.5278,
+0.0687
+]
+]
+},
+"Lower first molar tooth.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Lower first molar tooth",
+"verts": 2260,
+"center": [
+0.0228,
+1.5231,
+0.0573
+],
+"bbox": [
+[
+0.0168,
+1.5134,
+0.0647
+],
+[
+0.0288,
+1.5327,
+0.0499
+]
+]
+},
+"Lower first molar tooth.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Lower first molar tooth",
+"verts": 2260,
+"center": [
+-0.0228,
+1.5231,
+0.0573
+],
+"bbox": [
+[
+-0.0288,
+1.5134,
+0.0647
+],
+[
+-0.0168,
+1.5327,
+0.0499
+]
+]
+},
+"Lower first premolar.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Lower first premolar",
+"verts": 613,
+"center": [
+0.0169,
+1.5175,
+0.0709
+],
+"bbox": [
+[
+0.013,
+1.5065,
+0.0778
+],
+[
+0.0208,
+1.5285,
+0.064
+]
+]
+},
+"Lower first premolar.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Lower first premolar",
+"verts": 613,
+"center": [
+-0.0169,
+1.5175,
+0.0709
+],
+"bbox": [
+[
+-0.0208,
+1.5065,
+0.0778
+],
+[
+-0.013,
+1.5285,
+0.064
+]
+]
+},
+"Lower lateral incisor.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Lower lateral incisor",
+"verts": 522,
+"center": [
+0.0081,
+1.5152,
+0.0796
+],
+"bbox": [
+[
+0.0042,
+1.5029,
+0.0878
+],
+[
+0.0119,
+1.5274,
+0.0713
+]
+]
+},
+"Lower lateral incisor.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Lower lateral incisor",
+"verts": 522,
+"center": [
+-0.0081,
+1.5152,
+0.0796
+],
+"bbox": [
+[
+-0.0119,
+1.5029,
+0.0878
+],
+[
+-0.0042,
+1.5274,
+0.0713
+]
+]
+},
+"Lower medial incisor.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Lower medial incisor",
+"verts": 494,
+"center": [
+-0.0032,
+1.5151,
+0.0796
+],
+"bbox": [
+[
+-0.0063,
+1.5027,
+0.0886
+],
+[
+-0.0002,
+1.5274,
+0.0707
+]
+]
+},
+"Lower medial incisor.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Lower medial incisor",
+"verts": 494,
+"center": [
+0.0032,
+1.5151,
+0.0796
+],
+"bbox": [
+[
+0.0002,
+1.5027,
+0.0886
+],
+[
+0.0063,
+1.5274,
+0.0707
+]
+]
+},
+"Lower second molar tooth.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Lower second molar tooth",
+"verts": 840,
+"center": [
+0.0262,
+1.5277,
+0.0457
+],
+"bbox": [
+[
+0.0203,
+1.5186,
+0.0538
+],
+[
+0.0321,
+1.5368,
+0.0376
+]
+]
+},
+"Lower second molar tooth.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Lower second molar tooth",
+"verts": 840,
+"center": [
+-0.0262,
+1.5277,
+0.0457
+],
+"bbox": [
+[
+-0.0321,
+1.5186,
+0.0538
+],
+[
+-0.0203,
+1.5368,
+0.0376
+]
+]
+},
+"Lower second premolar.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Lower second premolar",
+"verts": 592,
+"center": [
+0.0199,
+1.5184,
+0.0646
+],
+"bbox": [
+[
+0.016,
+1.507,
+0.0711
+],
+[
+0.0239,
+1.5298,
+0.0581
+]
+]
+},
+"Lower second premolar.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Lower second premolar",
+"verts": 592,
+"center": [
+-0.0199,
+1.5184,
+0.0646
+],
+"bbox": [
+[
+-0.0239,
+1.507,
+0.0711
+],
+[
+-0.016,
+1.5298,
+0.0581
+]
+]
+},
+"Major alar cartilage.l": {
+"layer": "cartilage",
+"side": "l",
+"base": "Major alar cartilage",
+"verts": 174,
+"center": [
+0.0075,
+1.5552,
+0.1007
+],
+"bbox": [
+[
+0.0001,
+1.5481,
+0.1144
+],
+[
+0.0148,
+1.5623,
+0.087
+]
+]
+},
+"Major alar cartilage.r": {
+"layer": "cartilage",
+"side": "r",
+"base": "Major alar cartilage",
+"verts": 174,
+"center": [
+-0.0075,
+1.5552,
+0.1007
+],
+"bbox": [
+[
+-0.0148,
+1.5481,
+0.1144
+],
+[
+-0.0001,
+1.5623,
+0.087
+]
+]
+},
+"Mandible": {
+"layer": "bone",
+"side": "m",
+"base": "Mandible",
+"verts": 9388,
+"center": [
+0.0,
+1.5375,
+0.0428
+],
+"bbox": [
+[
+-0.0517,
+1.4963,
+0.0837
+],
+[
+0.0517,
+1.5786,
+0.0018
+]
+]
+},
+"Manubrium of sternum": {
+"layer": "bone",
+"side": "m",
+"base": "Manubrium of sternum",
+"verts": 1336,
+"center": [
+-0.0001,
+1.3769,
+0.0577
+],
+"bbox": [
+[
+-0.0287,
+1.3499,
+0.0838
+],
+[
+0.0284,
+1.4039,
+0.0316
+]
+]
+},
+"Mastoid region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Mastoid region",
+"verts": 30,
+"center": [
+0.0649,
+1.5859,
+-0.0373
+],
+"bbox": [
+[
+0.0571,
+1.557,
+-0.0187
+],
+[
+0.0727,
+1.6147,
+-0.056
+]
+]
+},
+"Mastoid region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Mastoid region",
+"verts": 30,
+"center": [
+-0.0649,
+1.5859,
+-0.0373
+],
+"bbox": [
+[
+-0.0727,
+1.557,
+-0.0187
+],
+[
+-0.0571,
+1.6147,
+-0.056
+]
+]
+},
+"Maxilla.l": {
+"layer": "bone",
+"side": "l",
+"base": "Maxilla",
+"verts": 2399,
+"center": [
+0.0229,
+1.5713,
+0.067
+],
+"bbox": [
+[
+-0.0002,
+1.5374,
+0.0939
+],
+[
+0.046,
+1.6052,
+0.0401
+]
+]
+},
+"Maxilla.r": {
+"layer": "bone",
+"side": "r",
+"base": "Maxilla",
+"verts": 2399,
+"center": [
+-0.0229,
+1.5713,
+0.067
+],
+"bbox": [
+[
+-0.046,
+1.5374,
+0.0939
+],
+[
+0.0002,
+1.6052,
+0.0401
+]
+]
+},
+"Medial pterygoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Medial pterygoid muscle",
+"verts": 249,
+"center": [
+0.0258,
+1.5515,
+0.0266
+],
+"bbox": [
+[
+0.0145,
+1.5269,
+0.0419
+],
+[
+0.037,
+1.5761,
+0.0113
+]
+]
+},
+"Medial pterygoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Medial pterygoid muscle",
+"verts": 249,
+"center": [
+-0.0258,
+1.5515,
+0.0266
+],
+"bbox": [
+[
+-0.037,
+1.5269,
+0.0419
+],
+[
+-0.0145,
+1.5761,
+0.0113
+]
+]
+},
+"Medial rectus muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Medial rectus muscle",
+"verts": 628,
+"center": [
+0.0175,
+1.5932,
+0.0531
+],
+"bbox": [
+[
+0.0125,
+1.5838,
+0.0734
+],
+[
+0.0225,
+1.6026,
+0.0327
+]
+]
+},
+"Medial rectus muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Medial rectus muscle",
+"verts": 628,
+"center": [
+-0.0175,
+1.5932,
+0.0531
+],
+"bbox": [
+[
+-0.0225,
+1.5838,
+0.0734
+],
+[
+-0.0125,
+1.6026,
+0.0327
+]
+]
+},
+"Mental region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Mental region",
+"verts": 53,
+"center": [
+0.0124,
+1.5021,
+0.0803
+],
+"bbox": [
+[
+-0.0003,
+1.4877,
+0.0892
+],
+[
+0.0251,
+1.5166,
+0.0714
+]
+]
+},
+"Mental region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Mental region",
+"verts": 53,
+"center": [
+-0.0124,
+1.5021,
+0.0803
+],
+"bbox": [
+[
+-0.0251,
+1.4877,
+0.0892
+],
+[
+0.0003,
+1.5166,
+0.0714
+]
+]
+},
+"Mentalis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Mentalis muscle",
+"verts": 85,
+"center": [
+0.0076,
+1.5055,
+0.0789
+],
+"bbox": [
+[
+0.0008,
+1.4981,
+0.0824
+],
+[
+0.0145,
+1.5129,
+0.0753
+]
+]
+},
+"Mentalis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Mentalis muscle",
+"verts": 85,
+"center": [
+-0.0076,
+1.5055,
+0.0789
+],
+"bbox": [
+[
+-0.0145,
+1.4981,
+0.0824
+],
+[
+-0.0008,
+1.5129,
+0.0753
+]
+]
+},
+"Middle pharyngeal constrictor.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Middle pharyngeal constrictor",
+"verts": 1476,
+"center": [
+0.0098,
+1.5224,
+0.0179
+],
+"bbox": [
+[
+0.0004,
+1.4995,
+0.0337
+],
+[
+0.0192,
+1.5452,
+0.0021
+]
+]
+},
+"Middle pharyngeal constrictor.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Middle pharyngeal constrictor",
+"verts": 1476,
+"center": [
+-0.0098,
+1.5224,
+0.0179
+],
+"bbox": [
+[
+-0.0192,
+1.4995,
+0.0337
+],
+[
+-0.0004,
+1.5452,
+0.0021
+]
+]
+},
+"Multifidus colli muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Multifidus colli muscle",
+"verts": 696,
+"center": [
+0.0141,
+1.4898,
+-0.0353
+],
+"bbox": [
+[
+0.0021,
+1.4407,
+-0.024
+],
+[
+0.0261,
+1.5388,
+-0.0466
+]
+]
+},
+"Multifidus colli muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Multifidus colli muscle",
+"verts": 696,
+"center": [
+-0.0141,
+1.4898,
+-0.0353
+],
+"bbox": [
+[
+-0.0261,
+1.4407,
+-0.024
+],
+[
+-0.0021,
+1.5388,
+-0.0466
+]
+]
+},
+"Muscular triangle.l": {
+"layer": "skin",
+"side": "l",
+"base": "Muscular triangle",
+"verts": 66,
+"center": [
+0.0123,
+1.4467,
+0.0451
+],
+"bbox": [
+[
+-0.0002,
+1.4011,
+0.0569
+],
+[
+0.0248,
+1.4922,
+0.0332
+]
+]
+},
+"Muscular triangle.r": {
+"layer": "skin",
+"side": "r",
+"base": "Muscular triangle",
+"verts": 66,
+"center": [
+-0.0123,
+1.4467,
+0.0451
+],
+"bbox": [
+[
+-0.0248,
+1.4011,
+0.0569
+],
+[
+0.0002,
+1.4922,
+0.0332
+]
+]
+},
+"Mylohyoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Mylohyoid muscle",
+"verts": 561,
+"center": [
+0.0135,
+1.5122,
+0.0535
+],
+"bbox": [
+[
+0.0,
+1.4982,
+0.0724
+],
+[
+0.027,
+1.5262,
+0.0346
+]
+]
+},
+"Mylohyoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Mylohyoid muscle",
+"verts": 561,
+"center": [
+-0.0135,
+1.5122,
+0.0535
+],
+"bbox": [
+[
+-0.027,
+1.4982,
+0.0724
+],
+[
+-0.0,
+1.5262,
+0.0346
+]
+]
+},
+"Nasal bone.l": {
+"layer": "bone",
+"side": "l",
+"base": "Nasal bone",
+"verts": 148,
+"center": [
+0.0042,
+1.5894,
+0.0898
+],
+"bbox": [
+[
+0.0,
+1.5737,
+0.1003
+],
+[
+0.0084,
+1.6051,
+0.0793
+]
+]
+},
+"Nasal bone.r": {
+"layer": "bone",
+"side": "r",
+"base": "Nasal bone",
+"verts": 148,
+"center": [
+-0.0042,
+1.5894,
+0.0898
+],
+"bbox": [
+[
+-0.0084,
+1.5737,
+0.1003
+],
+[
+-0.0,
+1.6051,
+0.0793
+]
+]
+},
+"Nasal region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Nasal region",
+"verts": 152,
+"center": [
+0.0085,
+1.5786,
+0.0995
+],
+"bbox": [
+[
+-0.0008,
+1.5473,
+0.1167
+],
+[
+0.0178,
+1.61,
+0.0823
+]
+]
+},
+"Nasal region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Nasal region",
+"verts": 152,
+"center": [
+-0.0085,
+1.5786,
+0.0995
+],
+"bbox": [
+[
+-0.0178,
+1.5473,
+0.1167
+],
+[
+0.0008,
+1.61,
+0.0823
+]
+]
+},
+"Nasal septal cartilage": {
+"layer": "cartilage",
+"side": "m",
+"base": "Nasal septal cartilage",
+"verts": 182,
+"center": [
+-0.0,
+1.5683,
+0.0946
+],
+"bbox": [
+[
+-0.0025,
+1.5511,
+0.1158
+],
+[
+0.0024,
+1.5855,
+0.0735
+]
+]
+},
+"Nasalis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Nasalis muscle",
+"verts": 352,
+"center": [
+0.0082,
+1.5833,
+0.0892
+],
+"bbox": [
+[
+0.0016,
+1.5632,
+0.1001
+],
+[
+0.0149,
+1.6035,
+0.0783
+]
+]
+},
+"Nasalis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Nasalis muscle",
+"verts": 352,
+"center": [
+-0.0082,
+1.5833,
+0.0892
+],
+"bbox": [
+[
+-0.0149,
+1.5632,
+0.1001
+],
+[
+-0.0016,
+1.6035,
+0.0783
+]
+]
+},
+"Obliquus inferior capitis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Obliquus inferior capitis muscle",
+"verts": 272,
+"center": [
+0.0223,
+1.5261,
+-0.0328
+],
+"bbox": [
+[
+0.0029,
+1.5103,
+-0.0139
+],
+[
+0.0416,
+1.5418,
+-0.0517
+]
+]
+},
+"Obliquus inferior capitis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Obliquus inferior capitis muscle",
+"verts": 272,
+"center": [
+-0.0223,
+1.5261,
+-0.0328
+],
+"bbox": [
+[
+-0.0416,
+1.5103,
+-0.0139
+],
+[
+-0.0029,
+1.5418,
+-0.0517
+]
+]
+},
+"Obliquus superior capitis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Obliquus superior capitis muscle",
+"verts": 325,
+"center": [
+0.0356,
+1.5526,
+-0.0406
+],
+"bbox": [
+[
+0.0284,
+1.5412,
+-0.0157
+],
+[
+0.0428,
+1.5641,
+-0.0655
+]
+]
+},
+"Obliquus superior capitis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Obliquus superior capitis muscle",
+"verts": 325,
+"center": [
+-0.0356,
+1.5526,
+-0.0406
+],
+"bbox": [
+[
+-0.0428,
+1.5412,
+-0.0157
+],
+[
+-0.0284,
+1.5641,
+-0.0655
+]
+]
+},
+"Occipital bone": {
+"layer": "bone",
+"side": "m",
+"base": "Occipital bone",
+"verts": 3757,
+"center": [
+-0.0,
+1.603,
+-0.0455
+],
+"bbox": [
+[
+-0.0596,
+1.5507,
+0.0125
+],
+[
+0.0596,
+1.6552,
+-0.1034
+]
+]
+},
+"Occipital region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Occipital region",
+"verts": 87,
+"center": [
+0.0352,
+1.6026,
+-0.0708
+],
+"bbox": [
+[
+-0.0,
+1.557,
+-0.0343
+],
+[
+0.0704,
+1.6482,
+-0.1074
+]
+]
+},
+"Occipital region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Occipital region",
+"verts": 87,
+"center": [
+-0.0352,
+1.6026,
+-0.0708
+],
+"bbox": [
+[
+-0.0704,
+1.557,
+-0.0343
+],
+[
+-0.0,
+1.6482,
+-0.1074
+]
+]
+},
+"Occipitalis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Occipitalis muscle",
+"verts": 1297,
+"center": [
+0.0381,
+1.6017,
+-0.0814
+],
+"bbox": [
+[
+0.0148,
+1.5852,
+-0.0581
+],
+[
+0.0614,
+1.6182,
+-0.1047
+]
+]
+},
+"Occipitalis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Occipitalis muscle",
+"verts": 1297,
+"center": [
+-0.0381,
+1.6017,
+-0.0814
+],
+"bbox": [
+[
+-0.0614,
+1.5852,
+-0.0581
+],
+[
+-0.0148,
+1.6182,
+-0.1047
+]
+]
+},
+"Omohyoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Omohyoid muscle",
+"verts": 1355,
+"center": [
+0.0578,
+1.4447,
+-0.013
+],
+"bbox": [
+[
+0.0124,
+1.3914,
+0.0337
+],
+[
+0.1032,
+1.498,
+-0.0598
+]
+]
+},
+"Omohyoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Omohyoid muscle",
+"verts": 1355,
+"center": [
+-0.0578,
+1.4447,
+-0.013
+],
+"bbox": [
+[
+-0.1032,
+1.3914,
+0.0337
+],
+[
+-0.0124,
+1.498,
+-0.0598
+]
+]
+},
+"Oral region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Oral region",
+"verts": 169,
+"center": [
+0.0167,
+1.5304,
+0.0887
+],
+"bbox": [
+[
+-0.0005,
+1.5095,
+0.1008
+],
+[
+0.0339,
+1.5512,
+0.0766
+]
+]
+},
+"Oral region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Oral region",
+"verts": 169,
+"center": [
+-0.0167,
+1.5304,
+0.0887
+],
+"bbox": [
+[
+-0.0339,
+1.5095,
+0.1008
+],
+[
+0.0005,
+1.5512,
+0.0766
+]
+]
+},
+"Orbicularis oris muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Orbicularis oris muscle",
+"verts": 940,
+"center": [
+0.0161,
+1.5314,
+0.0813
+],
+"bbox": [
+[
+0.0,
+1.5087,
+0.0951
+],
+[
+0.0321,
+1.5541,
+0.0675
+]
+]
+},
+"Orbicularis oris muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Orbicularis oris muscle",
+"verts": 940,
+"center": [
+-0.0161,
+1.5314,
+0.0813
+],
+"bbox": [
+[
+-0.0321,
+1.5087,
+0.0951
+],
+[
+-0.0,
+1.5541,
+0.0675
+]
+]
+},
+"Orbital region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Orbital region",
+"verts": 146,
+"center": [
+0.0299,
+1.5944,
+0.0772
+],
+"bbox": [
+[
+0.0054,
+1.5713,
+0.0929
+],
+[
+0.0545,
+1.6175,
+0.0616
+]
+]
+},
+"Orbital region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Orbital region",
+"verts": 146,
+"center": [
+-0.0299,
+1.5944,
+0.0772
+],
+"bbox": [
+[
+-0.0545,
+1.5713,
+0.0929
+],
+[
+-0.0054,
+1.6175,
+0.0616
+]
+]
+},
+"Palatine bone.l": {
+"layer": "bone",
+"side": "l",
+"base": "Palatine bone",
+"verts": 732,
+"center": [
+0.0139,
+1.5641,
+0.0424
+],
+"bbox": [
+[
+0.0008,
+1.544,
+0.06
+],
+[
+0.027,
+1.5841,
+0.0248
+]
+]
+},
+"Palatine bone.r": {
+"layer": "bone",
+"side": "r",
+"base": "Palatine bone",
+"verts": 732,
+"center": [
+-0.0139,
+1.5641,
+0.0424
+],
+"bbox": [
+[
+-0.027,
+1.544,
+0.06
+],
+[
+-0.0008,
+1.5841,
+0.0248
+]
+]
+},
+"Palatopharyngeus muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Palatopharyngeus muscle",
+"verts": 7642,
+"center": [
+0.0096,
+1.507,
+0.0075
+],
+"bbox": [
+[
+-0.0007,
+1.463,
+0.0151
+],
+[
+0.0198,
+1.5511,
+-0.0002
+]
+]
+},
+"Palatopharyngeus muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Palatopharyngeus muscle",
+"verts": 7642,
+"center": [
+-0.0096,
+1.507,
+0.0075
+],
+"bbox": [
+[
+-0.0198,
+1.463,
+0.0151
+],
+[
+0.0007,
+1.5511,
+-0.0002
+]
+]
+},
+"Parietal bone.l": {
+"layer": "bone",
+"side": "l",
+"base": "Parietal bone",
+"verts": 3443,
+"center": [
+0.0334,
+1.6475,
+-0.0289
+],
+"bbox": [
+[
+-0.0074,
+1.5897,
+0.0427
+],
+[
+0.0743,
+1.7054,
+-0.1006
+]
+]
+},
+"Parietal bone.r": {
+"layer": "bone",
+"side": "r",
+"base": "Parietal bone",
+"verts": 3386,
+"center": [
+-0.0344,
+1.6476,
+-0.0306
+],
+"bbox": [
+[
+-0.0744,
+1.5898,
+0.0391
+],
+[
+0.0056,
+1.7055,
+-0.1003
+]
+]
+},
+"Parietal region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Parietal region",
+"verts": 127,
+"center": [
+0.0389,
+1.6566,
+-0.036
+],
+"bbox": [
+[
+-0.0005,
+1.6039,
+0.0345
+],
+[
+0.0784,
+1.7092,
+-0.1065
+]
+]
+},
+"Parietal region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Parietal region",
+"verts": 127,
+"center": [
+-0.0389,
+1.6566,
+-0.036
+],
+"bbox": [
+[
+-0.0784,
+1.6039,
+0.0345
+],
+[
+0.0005,
+1.7092,
+-0.1065
+]
+]
+},
+"Parotideomasseteric region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Parotideomasseteric region",
+"verts": 59,
+"center": [
+0.0566,
+1.5435,
+0.0252
+],
+"bbox": [
+[
+0.0433,
+1.5089,
+0.0472
+],
+[
+0.07,
+1.5781,
+0.0031
+]
+]
+},
+"Parotideomasseteric region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Parotideomasseteric region",
+"verts": 59,
+"center": [
+-0.0566,
+1.5435,
+0.0252
+],
+"bbox": [
+[
+-0.07,
+1.5089,
+0.0472
+],
+[
+-0.0433,
+1.5781,
+0.0031
+]
+]
+},
+"Posterior crico-arytenoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Posterior crico-arytenoid muscle",
+"verts": 908,
+"center": [
+0.0068,
+1.4725,
+-0.0026
+],
+"bbox": [
+[
+0.0023,
+1.4653,
+0.0002
+],
+[
+0.0114,
+1.4797,
+-0.0055
+]
+]
+},
+"Posterior crico-arytenoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Posterior crico-arytenoid muscle",
+"verts": 908,
+"center": [
+-0.0068,
+1.4725,
+-0.0026
+],
+"bbox": [
+[
+-0.0114,
+1.4653,
+0.0002
+],
+[
+-0.0023,
+1.4797,
+-0.0055
+]
+]
+},
+"Posterior region of neck.l": {
+"layer": "skin",
+"side": "l",
+"base": "Posterior region of neck",
+"verts": 172,
+"center": [
+0.0726,
+1.4945,
+-0.0557
+],
+"bbox": [
+[
+-0.0006,
+1.4269,
+-0.008
+],
+[
+0.1457,
+1.562,
+-0.1033
+]
+]
+},
+"Posterior region of neck.r": {
+"layer": "skin",
+"side": "r",
+"base": "Posterior region of neck",
+"verts": 172,
+"center": [
+-0.0726,
+1.4945,
+-0.0557
+],
+"bbox": [
+[
+-0.1457,
+1.4269,
+-0.008
+],
+[
+0.0006,
+1.562,
+-0.1033
+]
+]
+},
+"Procerus muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Procerus muscle",
+"verts": 273,
+"center": [
+0.0116,
+1.612,
+0.0864
+],
+"bbox": [
+[
+0.0,
+1.5938,
+0.0895
+],
+[
+0.0233,
+1.6303,
+0.0834
+]
+]
+},
+"Procerus muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Procerus muscle",
+"verts": 273,
+"center": [
+-0.0116,
+1.612,
+0.0864
+],
+"bbox": [
+[
+-0.0233,
+1.5938,
+0.0895
+],
+[
+-0.0,
+1.6303,
+0.0834
+]
+]
+},
+"Rectus posterior major capitis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Rectus posterior major capitis muscle",
+"verts": 396,
+"center": [
+0.0179,
+1.5378,
+-0.0489
+],
+"bbox": [
+[
+0.0003,
+1.5145,
+-0.0362
+],
+[
+0.0356,
+1.5611,
+-0.0615
+]
+]
+},
+"Rectus posterior major capitis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Rectus posterior major capitis muscle",
+"verts": 396,
+"center": [
+-0.0179,
+1.5378,
+-0.0489
+],
+"bbox": [
+[
+-0.0356,
+1.5145,
+-0.0362
+],
+[
+-0.0003,
+1.5611,
+-0.0615
+]
+]
+},
+"Rectus posterior minor capitis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Rectus posterior minor capitis muscle",
+"verts": 214,
+"center": [
+0.0119,
+1.5515,
+-0.0559
+],
+"bbox": [
+[
+0.0,
+1.5385,
+-0.0433
+],
+[
+0.0237,
+1.5645,
+-0.0686
+]
+]
+},
+"Rectus posterior minor capitis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Rectus posterior minor capitis muscle",
+"verts": 214,
+"center": [
+-0.0119,
+1.5515,
+-0.0559
+],
+"bbox": [
+[
+-0.0237,
+1.5385,
+-0.0433
+],
+[
+-0.0,
+1.5645,
+-0.0686
+]
+]
+},
+"Risorius muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Risorius muscle",
+"verts": 296,
+"center": [
+0.0386,
+1.5286,
+0.0576
+],
+"bbox": [
+[
+0.0287,
+1.515,
+0.0714
+],
+[
+0.0484,
+1.5422,
+0.0438
+]
+]
+},
+"Risorius muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Risorius muscle",
+"verts": 296,
+"center": [
+-0.0386,
+1.5286,
+0.0576
+],
+"bbox": [
+[
+-0.0484,
+1.515,
+0.0714
+],
+[
+-0.0287,
+1.5422,
+0.0438
+]
+]
+},
+"Scalenus anterior muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Scalenus anterior muscle",
+"verts": 700,
+"center": [
+0.0378,
+1.4522,
+-0.001
+],
+"bbox": [
+[
+0.0206,
+1.4108,
+0.0084
+],
+[
+0.0549,
+1.4936,
+-0.0104
+]
+]
+},
+"Scalenus anterior muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Scalenus anterior muscle",
+"verts": 700,
+"center": [
+-0.0378,
+1.4522,
+-0.001
+],
+"bbox": [
+[
+-0.0549,
+1.4108,
+0.0084
+],
+[
+-0.0206,
+1.4936,
+-0.0104
+]
+]
+},
+"Scalenus medius muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Scalenus medius muscle",
+"verts": 1037,
+"center": [
+0.0391,
+1.4691,
+-0.0142
+],
+"bbox": [
+[
+0.024,
+1.4195,
+-0.0016
+],
+[
+0.0542,
+1.5187,
+-0.0267
+]
+]
+},
+"Scalenus medius muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Scalenus medius muscle",
+"verts": 1037,
+"center": [
+-0.0391,
+1.4691,
+-0.0142
+],
+"bbox": [
+[
+-0.0542,
+1.4195,
+-0.0016
+],
+[
+-0.024,
+1.5187,
+-0.0267
+]
+]
+},
+"Scalenus posterior muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Scalenus posterior muscle",
+"verts": 665,
+"center": [
+0.0477,
+1.4506,
+-0.026
+],
+"bbox": [
+[
+0.0256,
+1.4238,
+-0.0123
+],
+[
+0.0698,
+1.4774,
+-0.0398
+]
+]
+},
+"Scalenus posterior muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Scalenus posterior muscle",
+"verts": 665,
+"center": [
+-0.0477,
+1.4506,
+-0.026
+],
+"bbox": [
+[
+-0.0698,
+1.4238,
+-0.0123
+],
+[
+-0.0256,
+1.4774,
+-0.0398
+]
+]
+},
+"Semispinalis colli muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Semispinalis colli muscle",
+"verts": 1292,
+"center": [
+0.0171,
+1.4319,
+-0.0574
+],
+"bbox": [
+[
+0.0001,
+1.3606,
+-0.031
+],
+[
+0.0341,
+1.5031,
+-0.0837
+]
+]
+},
+"Semispinalis colli muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Semispinalis colli muscle",
+"verts": 1292,
+"center": [
+-0.0171,
+1.4319,
+-0.0574
+],
+"bbox": [
+[
+-0.0341,
+1.3606,
+-0.031
+],
+[
+-0.0001,
+1.5031,
+-0.0837
+]
+]
+},
+"Sphenoid bone": {
+"layer": "bone",
+"side": "m",
+"base": "Sphenoid bone",
+"verts": 3650,
+"center": [
+-0.0,
+1.5853,
+0.0289
+],
+"bbox": [
+[
+-0.0544,
+1.5503,
+0.0555
+],
+[
+0.0544,
+1.6202,
+0.0023
+]
+]
+},
+"External part of thyro-arytenoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "External part of thyro-arytenoid muscle",
+"verts": 1120,
+"center": [
+0.0054,
+1.4757,
+0.0152
+],
+"bbox": [
+[
+0.0024,
+1.4711,
+0.0256
+],
+[
+0.0084,
+1.4803,
+0.0048
+]
+]
+},
+"External part of thyro-arytenoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "External part of thyro-arytenoid muscle",
+"verts": 1120,
+"center": [
+-0.0054,
+1.4757,
+0.0152
+],
+"bbox": [
+[
+-0.0084,
+1.4711,
+0.0256
+],
+[
+-0.0024,
+1.4803,
+0.0048
+]
+]
+},
+"Mentolabial sulcus.l": {
+"layer": "skin",
+"side": "l",
+"base": "Mentolabial sulcus",
+"verts": 28,
+"center": [
+0.0062,
+1.516,
+0.0886
+],
+"bbox": [
+[
+-0.0002,
+1.5122,
+0.0935
+],
+[
+0.0127,
+1.5198,
+0.0838
+]
+]
+},
+"Mentolabial sulcus.r": {
+"layer": "skin",
+"side": "r",
+"base": "Mentolabial sulcus",
+"verts": 28,
+"center": [
+-0.0062,
+1.516,
+0.0886
+],
+"bbox": [
+[
+-0.0127,
+1.5122,
+0.0935
+],
+[
+0.0002,
+1.5198,
+0.0838
+]
+]
+},
+"Nasolabial sulcus.l": {
+"layer": "skin",
+"side": "l",
+"base": "Nasolabial sulcus",
+"verts": 25,
+"center": [
+0.0255,
+1.5414,
+0.0841
+],
+"bbox": [
+[
+0.0152,
+1.5262,
+0.0907
+],
+[
+0.0359,
+1.5566,
+0.0774
+]
+]
+},
+"Nasolabial sulcus.r": {
+"layer": "skin",
+"side": "r",
+"base": "Nasolabial sulcus",
+"verts": 25,
+"center": [
+-0.0255,
+1.5414,
+0.0841
+],
+"bbox": [
+[
+-0.0359,
+1.5262,
+0.0907
+],
+[
+-0.0152,
+1.5566,
+0.0774
+]
+]
+},
+"Oblique part of cricothyroid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Oblique part of cricothyroid muscle",
+"verts": 1032,
+"center": [
+0.0093,
+1.4635,
+0.0125
+],
+"bbox": [
+[
+0.0049,
+1.4589,
+0.0204
+],
+[
+0.0137,
+1.4682,
+0.0046
+]
+]
+},
+"Oblique part of cricothyroid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Oblique part of cricothyroid muscle",
+"verts": 1032,
+"center": [
+-0.0093,
+1.4635,
+0.0125
+],
+"bbox": [
+[
+-0.0137,
+1.4589,
+0.0204
+],
+[
+-0.0049,
+1.4682,
+0.0046
+]
+]
+},
+"Orbital part of orbicularis oculi.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Orbital part of orbicularis oculi",
+"verts": 1195,
+"center": [
+0.0312,
+1.5923,
+0.0712
+],
+"bbox": [
+[
+0.0091,
+1.5674,
+0.087
+],
+[
+0.0534,
+1.6171,
+0.0554
+]
+]
+},
+"Orbital part of orbicularis oculi.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Orbital part of orbicularis oculi",
+"verts": 1195,
+"center": [
+-0.0312,
+1.5923,
+0.0712
+],
+"bbox": [
+[
+-0.0534,
+1.5674,
+0.087
+],
+[
+-0.0091,
+1.6171,
+0.0554
+]
+]
+},
+"Palpebral part of orbicularis oculi.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Palpebral part of orbicularis oculi",
+"verts": 415,
+"center": [
+0.0296,
+1.5913,
+0.0723
+],
+"bbox": [
+[
+0.0128,
+1.579,
+0.0813
+],
+[
+0.0464,
+1.6035,
+0.0634
+]
+]
+},
+"Palpebral part of orbicularis oculi.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Palpebral part of orbicularis oculi",
+"verts": 415,
+"center": [
+-0.0296,
+1.5913,
+0.0723
+],
+"bbox": [
+[
+-0.0464,
+1.579,
+0.0813
+],
+[
+-0.0128,
+1.6035,
+0.0634
+]
+]
+},
+"Parotid gland.l": {
+"layer": "gland",
+"side": "l",
+"base": "Parotid gland",
+"verts": 103,
+"center": [
+0.0488,
+1.5523,
+0.0194
+],
+"bbox": [
+[
+0.0322,
+1.5277,
+0.0369
+],
+[
+0.0654,
+1.577,
+0.0018
+]
+]
+},
+"Parotid gland.r": {
+"layer": "gland",
+"side": "r",
+"base": "Parotid gland",
+"verts": 103,
+"center": [
+-0.0488,
+1.5523,
+0.0194
+],
+"bbox": [
+[
+-0.0654,
+1.5277,
+0.0369
+],
+[
+-0.0322,
+1.577,
+0.0018
+]
+]
+},
+"Philtrum.l": {
+"layer": "skin",
+"side": "l",
+"base": "Philtrum",
+"verts": 15,
+"center": [
+0.0026,
+1.5427,
+0.0979
+],
+"bbox": [
+[
+0.0,
+1.5361,
+0.1008
+],
+[
+0.0053,
+1.5494,
+0.095
+]
+]
+},
+"Philtrum.r": {
+"layer": "skin",
+"side": "r",
+"base": "Philtrum",
+"verts": 15,
+"center": [
+-0.0026,
+1.5427,
+0.0979
+],
+"bbox": [
+[
+-0.0053,
+1.5361,
+0.1008
+],
+[
+-0.0,
+1.5494,
+0.095
+]
+]
+},
+"Platysma.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Platysma",
+"verts": 3276,
+"center": [
+0.0693,
+1.4703,
+0.0214
+],
+"bbox": [
+[
+-0.0027,
+1.3993,
+0.0837
+],
+[
+0.1412,
+1.5414,
+-0.0408
+]
+]
+},
+"Platysma.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Platysma",
+"verts": 3276,
+"center": [
+-0.0693,
+1.4703,
+0.0214
+],
+"bbox": [
+[
+-0.1412,
+1.3993,
+0.0837
+],
+[
+0.0027,
+1.5414,
+-0.0408
+]
+]
+},
+"Posterior auricular groove.l": {
+"layer": "skin",
+"side": "l",
+"base": "Posterior auricular groove",
+"verts": 47,
+"center": [
+0.0661,
+1.5831,
+-0.0096
+],
+"bbox": [
+[
+0.0561,
+1.5618,
+0.0015
+],
+[
+0.0762,
+1.6044,
+-0.0207
+]
+]
+},
+"Posterior auricular groove.r": {
+"layer": "skin",
+"side": "r",
+"base": "Posterior auricular groove",
+"verts": 47,
+"center": [
+-0.0661,
+1.5831,
+-0.0096
+],
+"bbox": [
+[
+-0.0762,
+1.5618,
+0.0015
+],
+[
+-0.0561,
+1.6044,
+-0.0207
+]
+]
+},
+"Posterior belly of digastric muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Posterior belly of digastric muscle",
+"verts": 638,
+"center": [
+0.0354,
+1.5347,
+0.0056
+],
+"bbox": [
+[
+0.0119,
+1.5026,
+0.0371
+],
+[
+0.0589,
+1.5667,
+-0.0259
+]
+]
+},
+"Posterior belly of digastric muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Posterior belly of digastric muscle",
+"verts": 638,
+"center": [
+-0.0354,
+1.5347,
+0.0056
+],
+"bbox": [
+[
+-0.0589,
+1.5026,
+0.0371
+],
+[
+-0.0119,
+1.5667,
+-0.0259
+]
+]
+},
+"Rectus anterior capitis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Rectus anterior capitis muscle",
+"verts": 200,
+"center": [
+0.0157,
+1.5557,
+-0.0028
+],
+"bbox": [
+[
+0.0032,
+1.5455,
+0.0005
+],
+[
+0.0282,
+1.5659,
+-0.0062
+]
+]
+},
+"Rectus anterior capitis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Rectus anterior capitis muscle",
+"verts": 200,
+"center": [
+-0.0157,
+1.5557,
+-0.0028
+],
+"bbox": [
+[
+-0.0282,
+1.5455,
+0.0005
+],
+[
+-0.0032,
+1.5659,
+-0.0062
+]
+]
+},
+"Rectus lateralis capitis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Rectus lateralis capitis muscle",
+"verts": 182,
+"center": [
+0.0356,
+1.5516,
+-0.0167
+],
+"bbox": [
+[
+0.0295,
+1.5409,
+-0.008
+],
+[
+0.0418,
+1.5622,
+-0.0254
+]
+]
+},
+"Rectus lateralis capitis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Rectus lateralis capitis muscle",
+"verts": 182,
+"center": [
+-0.0356,
+1.5516,
+-0.0167
+],
+"bbox": [
+[
+-0.0418,
+1.5409,
+-0.008
+],
+[
+-0.0295,
+1.5622,
+-0.0254
+]
+]
+},
+"Scapha.l": {
+"layer": "skin",
+"side": "l",
+"base": "Scapha",
+"verts": 47,
+"center": [
+0.087,
+1.5884,
+-0.0135
+],
+"bbox": [
+[
+0.084,
+1.5739,
+-0.0087
+],
+[
+0.0899,
+1.6028,
+-0.0182
+]
+]
+},
+"Scapha.r": {
+"layer": "skin",
+"side": "r",
+"base": "Scapha",
+"verts": 47,
+"center": [
+-0.087,
+1.5884,
+-0.0135
+],
+"bbox": [
+[
+-0.0899,
+1.5739,
+-0.0087
+],
+[
+-0.084,
+1.6028,
+-0.0182
+]
+]
+},
+"Sclera.l": {
+"layer": "eye",
+"side": "l",
+"base": "Sclera",
+"verts": 577,
+"center": [
+0.0305,
+1.5907,
+0.0633
+],
+"bbox": [
+[
+0.0173,
+1.5774,
+0.0759
+],
+[
+0.0438,
+1.604,
+0.0508
+]
+]
+},
+"Sclera.r": {
+"layer": "eye",
+"side": "r",
+"base": "Sclera",
+"verts": 577,
+"center": [
+-0.0305,
+1.5907,
+0.0633
+],
+"bbox": [
+[
+-0.0438,
+1.5774,
+0.0759
+],
+[
+-0.0173,
+1.604,
+0.0508
+]
+]
+},
+"Spinalis capitis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Spinalis capitis muscle",
+"verts": 1275,
+"center": [
+0.0236,
+1.5111,
+-0.0521
+],
+"bbox": [
+[
+0.0028,
+1.4491,
+-0.0247
+],
+[
+0.0443,
+1.5732,
+-0.0794
+]
+]
+},
+"Spinalis capitis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Spinalis capitis muscle",
+"verts": 1275,
+"center": [
+-0.0236,
+1.5111,
+-0.0521
+],
+"bbox": [
+[
+-0.0443,
+1.4491,
+-0.0247
+],
+[
+-0.0028,
+1.5732,
+-0.0794
+]
+]
+},
+"Spinalis colli muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Spinalis colli muscle",
+"verts": 298,
+"center": [
+0.0053,
+1.4595,
+-0.0659
+],
+"bbox": [
+[
+0.0013,
+1.4067,
+-0.0439
+],
+[
+0.0092,
+1.5124,
+-0.0878
+]
+]
+},
+"Spinalis colli muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Spinalis colli muscle",
+"verts": 298,
+"center": [
+-0.0053,
+1.4595,
+-0.0659
+],
+"bbox": [
+[
+-0.0092,
+1.4067,
+-0.0439
+],
+[
+-0.0013,
+1.5124,
+-0.0878
+]
+]
+},
+"Splenius capitis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Splenius capitis muscle",
+"verts": 2629,
+"center": [
+0.0299,
+1.4656,
+-0.0611
+],
+"bbox": [
+[
+-0.0007,
+1.3578,
+-0.019
+],
+[
+0.0606,
+1.5734,
+-0.1033
+]
+]
+},
+"Splenius capitis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Splenius capitis muscle",
+"verts": 2629,
+"center": [
+-0.0299,
+1.4656,
+-0.0611
+],
+"bbox": [
+[
+-0.0606,
+1.3578,
+-0.019
+],
+[
+0.0007,
+1.5734,
+-0.1033
+]
+]
+},
+"Splenius colli muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Splenius colli muscle",
+"verts": 2158,
+"center": [
+0.0208,
+1.4142,
+-0.0583
+],
+"bbox": [
+[
+-0.0011,
+1.2854,
+-0.0121
+],
+[
+0.0426,
+1.543,
+-0.1044
+]
+]
+},
+"Splenius colli muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Splenius colli muscle",
+"verts": 2158,
+"center": [
+-0.0208,
+1.4142,
+-0.0583
+],
+"bbox": [
+[
+-0.0426,
+1.2854,
+-0.0121
+],
+[
+0.0011,
+1.543,
+-0.1044
+]
+]
+},
+"Sternocleidomastoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Sternocleidomastoid muscle",
+"verts": 2472,
+"center": [
+0.0326,
+1.4786,
+0.0075
+],
+"bbox": [
+[
+0.0037,
+1.3817,
+0.0644
+],
+[
+0.0614,
+1.5754,
+-0.0493
+]
+]
+},
+"Sternocleidomastoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Sternocleidomastoid muscle",
+"verts": 2472,
+"center": [
+-0.0326,
+1.4786,
+0.0075
+],
+"bbox": [
+[
+-0.0614,
+1.3817,
+0.0644
+],
+[
+-0.0037,
+1.5754,
+-0.0493
+]
+]
+},
+"Sternocleidomastoid region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Sternocleidomastoid region",
+"verts": 137,
+"center": [
+0.0391,
+1.4825,
+0.0112
+],
+"bbox": [
+[
+0.0041,
+1.401,
+0.0595
+],
+[
+0.0741,
+1.564,
+-0.0372
+]
+]
+},
+"Sternocleidomastoid region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Sternocleidomastoid region",
+"verts": 137,
+"center": [
+-0.0391,
+1.4825,
+0.0112
+],
+"bbox": [
+[
+-0.0741,
+1.401,
+0.0595
+],
+[
+-0.0041,
+1.564,
+-0.0372
+]
+]
+},
+"Sternohyoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Sternohyoid muscle",
+"verts": 697,
+"center": [
+0.0155,
+1.4435,
+0.0275
+],
+"bbox": [
+[
+0.0036,
+1.3894,
+0.0368
+],
+[
+0.0274,
+1.4975,
+0.0182
+]
+]
+},
+"Sternohyoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Sternohyoid muscle",
+"verts": 697,
+"center": [
+-0.0155,
+1.4435,
+0.0275
+],
+"bbox": [
+[
+-0.0274,
+1.3894,
+0.0368
+],
+[
+-0.0036,
+1.4975,
+0.0182
+]
+]
+},
+"Sternothyroid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Sternothyroid muscle",
+"verts": 546,
+"center": [
+0.0133,
+1.4307,
+0.0232
+],
+"bbox": [
+[
+0.0042,
+1.3813,
+0.0382
+],
+[
+0.0225,
+1.4801,
+0.0082
+]
+]
+},
+"Sternothyroid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Sternothyroid muscle",
+"verts": 546,
+"center": [
+-0.0133,
+1.4307,
+0.0232
+],
+"bbox": [
+[
+-0.0225,
+1.3813,
+0.0382
+],
+[
+-0.0042,
+1.4801,
+0.0082
+]
+]
+},
+"Straight part of cricothyroid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Straight part of cricothyroid muscle",
+"verts": 592,
+"center": [
+0.0072,
+1.4682,
+0.0099
+],
+"bbox": [
+[
+0.0023,
+1.463,
+0.0133
+],
+[
+0.012,
+1.4733,
+0.0065
+]
+]
+},
+"Straight part of cricothyroid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Straight part of cricothyroid muscle",
+"verts": 592,
+"center": [
+-0.0072,
+1.4682,
+0.0099
+],
+"bbox": [
+[
+-0.012,
+1.463,
+0.0133
+],
+[
+-0.0023,
+1.4733,
+0.0065
+]
+]
+},
+"Stylohyoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Stylohyoid muscle",
+"verts": 349,
+"center": [
+0.0256,
+1.5303,
+0.0138
+],
+"bbox": [
+[
+0.0098,
+1.499,
+0.0342
+],
+[
+0.0414,
+1.5617,
+-0.0066
+]
+]
+},
+"Stylohyoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Stylohyoid muscle",
+"verts": 349,
+"center": [
+-0.0256,
+1.5303,
+0.0138
+],
+"bbox": [
+[
+-0.0414,
+1.499,
+0.0342
+],
+[
+-0.0098,
+1.5617,
+-0.0066
+]
+]
+},
+"Stylopharyngeus muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Stylopharyngeus muscle",
+"verts": 4740,
+"center": [
+0.0265,
+1.524,
+0.007
+],
+"bbox": [
+[
+0.0126,
+1.4907,
+0.0191
+],
+[
+0.0404,
+1.5574,
+-0.0052
+]
+]
+},
+"Stylopharyngeus muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Stylopharyngeus muscle",
+"verts": 4740,
+"center": [
+-0.0265,
+1.524,
+0.007
+],
+"bbox": [
+[
+-0.0404,
+1.4907,
+0.0191
+],
+[
+-0.0126,
+1.5574,
+-0.0052
+]
+]
+},
+"Sublingual gland.l": {
+"layer": "gland",
+"side": "l",
+"base": "Sublingual gland",
+"verts": 164,
+"center": [
+0.0116,
+1.5123,
+0.0596
+],
+"bbox": [
+[
+0.0031,
+1.5052,
+0.0725
+],
+[
+0.02,
+1.5195,
+0.0467
+]
+]
+},
+"Sublingual gland.r": {
+"layer": "gland",
+"side": "r",
+"base": "Sublingual gland",
+"verts": 164,
+"center": [
+-0.0116,
+1.5123,
+0.0596
+],
+"bbox": [
+[
+-0.0199,
+1.5052,
+0.0725
+],
+[
+-0.0032,
+1.5194,
+0.0467
+]
+]
+},
+"Submandibular gland.l": {
+"layer": "gland",
+"side": "l",
+"base": "Submandibular gland",
+"verts": 198,
+"center": [
+0.0238,
+1.5154,
+0.0415
+],
+"bbox": [
+[
+0.016,
+1.5041,
+0.0523
+],
+[
+0.0317,
+1.5267,
+0.0306
+]
+]
+},
+"Submandibular gland.r": {
+"layer": "gland",
+"side": "r",
+"base": "Submandibular gland",
+"verts": 198,
+"center": [
+-0.0238,
+1.5154,
+0.0415
+],
+"bbox": [
+[
+-0.0317,
+1.5041,
+0.0523
+],
+[
+-0.016,
+1.5267,
+0.0306
+]
+]
+},
+"Submandibular triangle.l": {
+"layer": "skin",
+"side": "l",
+"base": "Submandibular triangle",
+"verts": 40,
+"center": [
+0.0362,
+1.5089,
+0.0417
+],
+"bbox": [
+[
+0.0183,
+1.4889,
+0.0694
+],
+[
+0.0542,
+1.5289,
+0.014
+]
+]
+},
+"Submandibular triangle.r": {
+"layer": "skin",
+"side": "r",
+"base": "Submandibular triangle",
+"verts": 40,
+"center": [
+-0.0362,
+1.5089,
+0.0417
+],
+"bbox": [
+[
+-0.0542,
+1.4889,
+0.0694
+],
+[
+-0.0183,
+1.5289,
+0.014
+]
+]
+},
+"Submental triangle.l": {
+"layer": "skin",
+"side": "l",
+"base": "Submental triangle",
+"verts": 32,
+"center": [
+0.0136,
+1.4904,
+0.0649
+],
+"bbox": [
+[
+-0.0002,
+1.4843,
+0.0802
+],
+[
+0.0274,
+1.4964,
+0.0496
+]
+]
+},
+"Submental triangle.r": {
+"layer": "skin",
+"side": "r",
+"base": "Submental triangle",
+"verts": 32,
+"center": [
+-0.0136,
+1.4904,
+0.0649
+],
+"bbox": [
+[
+-0.0274,
+1.4843,
+0.0802
+],
+[
+0.0002,
+1.4964,
+0.0496
+]
+]
+},
+"Superficial part of masseter.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Superficial part of masseter",
+"verts": 702,
+"center": [
+0.0494,
+1.5433,
+0.0369
+],
+"bbox": [
+[
+0.0361,
+1.5122,
+0.0567
+],
+[
+0.0627,
+1.5743,
+0.0172
+]
+]
+},
+"Superficial part of masseter.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Superficial part of masseter",
+"verts": 702,
+"center": [
+-0.0494,
+1.5433,
+0.0369
+],
+"bbox": [
+[
+-0.0627,
+1.5122,
+0.0567
+],
+[
+-0.0361,
+1.5743,
+0.0172
+]
+]
+},
+"Superior head of lateral pterygoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Superior head of lateral pterygoid muscle",
+"verts": 115,
+"center": [
+0.0323,
+1.5767,
+0.0212
+],
+"bbox": [
+[
+0.0217,
+1.5693,
+0.0324
+],
+[
+0.043,
+1.5841,
+0.0101
+]
+]
+},
+"Superior head of lateral pterygoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Superior head of lateral pterygoid muscle",
+"verts": 115,
+"center": [
+-0.0323,
+1.5767,
+0.0212
+],
+"bbox": [
+[
+-0.043,
+1.5693,
+0.0324
+],
+[
+-0.0217,
+1.5841,
+0.0101
+]
+]
+},
+"Superior oblique muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Superior oblique muscle",
+"verts": 877,
+"center": [
+0.0266,
+1.6011,
+0.0556
+],
+"bbox": [
+[
+0.0126,
+1.5948,
+0.0775
+],
+[
+0.0406,
+1.6074,
+0.0337
+]
+]
+},
+"Superior oblique muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Superior oblique muscle",
+"verts": 877,
+"center": [
+-0.0266,
+1.6011,
+0.0556
+],
+"bbox": [
+[
+-0.0406,
+1.5948,
+0.0775
+],
+[
+-0.0126,
+1.6074,
+0.0337
+]
+]
+},
+"Superior parathyroid gland.l": {
+"layer": "gland",
+"side": "l",
+"base": "Superior parathyroid gland",
+"verts": 9,
+"center": [
+0.0163,
+1.4801,
+-0.0032
+],
+"bbox": [
+[
+0.0138,
+1.478,
+-0.0016
+],
+[
+0.0188,
+1.4823,
+-0.0049
+]
+]
+},
+"Superior parathyroid gland.r": {
+"layer": "gland",
+"side": "r",
+"base": "Superior parathyroid gland",
+"verts": 9,
+"center": [
+-0.0163,
+1.4801,
+-0.0032
+],
+"bbox": [
+[
+-0.0188,
+1.478,
+-0.0016
+],
+[
+-0.0138,
+1.4823,
+-0.0049
+]
+]
+},
+"Superior pharyngeal constrictor.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Superior pharyngeal constrictor",
+"verts": 2669,
+"center": [
+0.0171,
+1.5478,
+0.0222
+],
+"bbox": [
+[
+0.0007,
+1.5209,
+0.0385
+],
+[
+0.0336,
+1.5746,
+0.0059
+]
+]
+},
+"Superior pharyngeal constrictor.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Superior pharyngeal constrictor",
+"verts": 2669,
+"center": [
+-0.0171,
+1.5478,
+0.0222
+],
+"bbox": [
+[
+-0.0336,
+1.5209,
+0.0385
+],
+[
+-0.0007,
+1.5746,
+0.0059
+]
+]
+},
+"Superior rectus muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Superior rectus muscle",
+"verts": 644,
+"center": [
+0.0254,
+1.6012,
+0.0531
+],
+"bbox": [
+[
+0.0139,
+1.5972,
+0.0735
+],
+[
+0.0368,
+1.6052,
+0.0328
+]
+]
+},
+"Superior rectus muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Superior rectus muscle",
+"verts": 644,
+"center": [
+-0.0254,
+1.6012,
+0.0531
+],
+"bbox": [
+[
+-0.0368,
+1.5972,
+0.0735
+],
+[
+-0.0139,
+1.6052,
+0.0328
+]
+]
+},
+"Temporal bone.l": {
+"layer": "bone",
+"side": "l",
+"base": "Temporal bone",
+"verts": 7051,
+"center": [
+0.041,
+1.5859,
+-0.0034
+],
+"bbox": [
+[
+0.0096,
+1.5487,
+0.0448
+],
+[
+0.0724,
+1.6231,
+-0.0516
+]
+]
+},
+"Temporal bone.r": {
+"layer": "bone",
+"side": "r",
+"base": "Temporal bone",
+"verts": 7051,
+"center": [
+-0.041,
+1.5859,
+-0.0034
+],
+"bbox": [
+[
+-0.0724,
+1.5487,
+0.0448
+],
+[
+-0.0096,
+1.6231,
+-0.0516
+]
+]
+},
+"Temporal region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Temporal region",
+"verts": 110,
+"center": [
+0.0706,
+1.6218,
+0.0007
+],
+"bbox": [
+[
+0.0593,
+1.5875,
+0.0517
+],
+[
+0.0819,
+1.6562,
+-0.0502
+]
+]
+},
+"Temporal region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Temporal region",
+"verts": 110,
+"center": [
+-0.0706,
+1.6218,
+0.0007
+],
+"bbox": [
+[
+-0.0819,
+1.5875,
+0.0517
+],
+[
+-0.0593,
+1.6562,
+-0.0502
+]
+]
+},
+"Temporalis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Temporalis muscle",
+"verts": 5126,
+"center": [
+0.0573,
+1.604,
+0.0064
+],
+"bbox": [
+[
+0.0378,
+1.546,
+0.0634
+],
+[
+0.0768,
+1.662,
+-0.0505
+]
+]
+},
+"Temporalis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Temporalis muscle",
+"verts": 5126,
+"center": [
+-0.0573,
+1.604,
+0.0064
+],
+"bbox": [
+[
+-0.0768,
+1.546,
+0.0634
+],
+[
+-0.0378,
+1.662,
+-0.0505
+]
+]
+},
+"Temporoparietalis muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Temporoparietalis muscle",
+"verts": 5974,
+"center": [
+0.0613,
+1.6263,
+-0.0135
+],
+"bbox": [
+[
+0.0422,
+1.5748,
+0.0449
+],
+[
+0.0804,
+1.6777,
+-0.0719
+]
+]
+},
+"Temporoparietalis muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Temporoparietalis muscle",
+"verts": 5974,
+"center": [
+-0.0613,
+1.6263,
+-0.0135
+],
+"bbox": [
+[
+-0.0804,
+1.5748,
+0.0449
+],
+[
+-0.0422,
+1.6777,
+-0.0719
+]
+]
+},
+"Thyro-epiglottic part of thyro-arytenoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Thyro-epiglottic part of thyro-arytenoid muscle",
+"verts": 1557,
+"center": [
+0.0045,
+1.4903,
+0.0189
+],
+"bbox": [
+[
+0.0003,
+1.4779,
+0.0283
+],
+[
+0.0088,
+1.5028,
+0.0095
+]
+]
+},
+"Thyro-epiglottic part of thyro-arytenoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Thyro-epiglottic part of thyro-arytenoid muscle",
+"verts": 1557,
+"center": [
+-0.0045,
+1.4903,
+0.0189
+],
+"bbox": [
+[
+-0.0088,
+1.4779,
+0.0283
+],
+[
+-0.0003,
+1.5028,
+0.0095
+]
+]
+},
+"Thyrohyoid muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Thyrohyoid muscle",
+"verts": 352,
+"center": [
+0.0137,
+1.482,
+0.0196
+],
+"bbox": [
+[
+0.0075,
+1.4665,
+0.0321
+],
+[
+0.0198,
+1.4974,
+0.0071
+]
+]
+},
+"Thyrohyoid muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Thyrohyoid muscle",
+"verts": 352,
+"center": [
+-0.0137,
+1.482,
+0.0196
+],
+"bbox": [
+[
+-0.0198,
+1.4665,
+0.0321
+],
+[
+-0.0075,
+1.4974,
+0.0071
+]
+]
+},
+"Thyroid cartilage": {
+"layer": "cartilage",
+"side": "m",
+"base": "Thyroid cartilage",
+"verts": 2247,
+"center": [
+0.0,
+1.4799,
+0.0162
+],
+"bbox": [
+[
+-0.0206,
+1.461,
+0.032
+],
+[
+0.0206,
+1.4988,
+0.0005
+]
+]
+},
+"Thyroid gland": {
+"layer": "gland",
+"side": "m",
+"base": "Thyroid gland",
+"verts": 84,
+"center": [
+0.0,
+1.4714,
+0.0164
+],
+"bbox": [
+[
+-0.0248,
+1.4535,
+0.0378
+],
+[
+0.0248,
+1.4894,
+-0.005
+]
+]
+},
+"Trachea": {
+"layer": "gland",
+"side": "m",
+"base": "Trachea",
+"verts": 2400,
+"center": [
+-0.0002,
+1.4079,
+-0.0018
+],
+"bbox": [
+[
+-0.0138,
+1.3552,
+0.0177
+],
+[
+0.0133,
+1.4606,
+-0.0213
+]
+]
+},
+"Tragus.l": {
+"layer": "skin",
+"side": "l",
+"base": "Tragus",
+"verts": 50,
+"center": [
+0.0691,
+1.5773,
+0.0043
+],
+"bbox": [
+[
+0.066,
+1.5669,
+0.0099
+],
+[
+0.0723,
+1.5876,
+-0.0013
+]
+]
+},
+"Tragus.r": {
+"layer": "skin",
+"side": "r",
+"base": "Tragus",
+"verts": 50,
+"center": [
+-0.0691,
+1.5773,
+0.0043
+],
+"bbox": [
+[
+-0.0723,
+1.5669,
+0.0099
+],
+[
+-0.066,
+1.5876,
+-0.0013
+]
+]
+},
+"Transverse arytenoid muscle": {
+"layer": "muscle",
+"side": "m",
+"base": "Transverse arytenoid muscle",
+"verts": 913,
+"center": [
+-0.0007,
+1.4763,
+0.0058
+],
+"bbox": [
+[
+-0.008,
+1.4732,
+0.0073
+],
+[
+0.0067,
+1.4794,
+0.0043
+]
+]
+},
+"Transverse part of trapezius muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Transverse part of trapezius muscle",
+"verts": 1494,
+"center": [
+0.0814,
+1.4102,
+-0.0722
+],
+"bbox": [
+[
+-0.0047,
+1.3696,
+-0.0321
+],
+[
+0.1675,
+1.4508,
+-0.1122
+]
+]
+},
+"Transverse part of trapezius muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Transverse part of trapezius muscle",
+"verts": 1494,
+"center": [
+-0.0814,
+1.4102,
+-0.0722
+],
+"bbox": [
+[
+-0.1675,
+1.3696,
+-0.0321
+],
+[
+0.0047,
+1.4508,
+-0.1122
+]
+]
+},
+"Triangular fossa.l": {
+"layer": "skin",
+"side": "l",
+"base": "Triangular fossa",
+"verts": 41,
+"center": [
+0.0777,
+1.5958,
+-0.0037
+],
+"bbox": [
+[
+0.0743,
+1.5914,
+0.0004
+],
+[
+0.081,
+1.6001,
+-0.0079
+]
+]
+},
+"Triangular fossa.r": {
+"layer": "skin",
+"side": "r",
+"base": "Triangular fossa",
+"verts": 41,
+"center": [
+-0.0777,
+1.5958,
+-0.0037
+],
+"bbox": [
+[
+-0.081,
+1.5914,
+0.0004
+],
+[
+-0.0743,
+1.6001,
+-0.0079
+]
+]
+},
+"Tubercle of upper lip.l": {
+"layer": "skin",
+"side": "l",
+"base": "Tubercle of upper lip",
+"verts": 6,
+"center": [
+0.0007,
+1.5348,
+0.0978
+],
+"bbox": [
+[
+-0.0007,
+1.5321,
+0.1004
+],
+[
+0.0022,
+1.5376,
+0.0952
+]
+]
+},
+"Tubercle of upper lip.r": {
+"layer": "skin",
+"side": "r",
+"base": "Tubercle of upper lip",
+"verts": 6,
+"center": [
+-0.0007,
+1.5348,
+0.0978
+],
+"bbox": [
+[
+-0.0022,
+1.5321,
+0.1004
+],
+[
+0.0007,
+1.5376,
+0.0952
+]
+]
+},
+"Upper canine.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Upper canine",
+"verts": 737,
+"center": [
+0.0171,
+1.5424,
+0.0814
+],
+"bbox": [
+[
+0.0125,
+1.5271,
+0.086
+],
+[
+0.0216,
+1.5577,
+0.0769
+]
+]
+},
+"Upper canine.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Upper canine",
+"verts": 737,
+"center": [
+-0.0171,
+1.5424,
+0.0814
+],
+"bbox": [
+[
+-0.0216,
+1.5271,
+0.086
+],
+[
+-0.0125,
+1.5577,
+0.0769
+]
+]
+},
+"Upper first molar tooth.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Upper first molar tooth",
+"verts": 1090,
+"center": [
+0.0242,
+1.5437,
+0.0591
+],
+"bbox": [
+[
+0.0185,
+1.5317,
+0.0648
+],
+[
+0.0298,
+1.5557,
+0.0535
+]
+]
+},
+"Upper first molar tooth.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Upper first molar tooth",
+"verts": 1090,
+"center": [
+-0.0242,
+1.5437,
+0.0591
+],
+"bbox": [
+[
+-0.0298,
+1.5317,
+0.0648
+],
+[
+-0.0185,
+1.5557,
+0.0535
+]
+]
+},
+"Upper first premolar.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Upper first premolar",
+"verts": 844,
+"center": [
+0.0201,
+1.5426,
+0.0738
+],
+"bbox": [
+[
+0.0154,
+1.5287,
+0.0778
+],
+[
+0.0247,
+1.5565,
+0.0699
+]
+]
+},
+"Upper first premolar.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Upper first premolar",
+"verts": 844,
+"center": [
+-0.0201,
+1.5426,
+0.0738
+],
+"bbox": [
+[
+-0.0247,
+1.5287,
+0.0778
+],
+[
+-0.0154,
+1.5565,
+0.0699
+]
+]
+},
+"Upper lateral incisor.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Upper lateral incisor",
+"verts": 729,
+"center": [
+0.0112,
+1.5397,
+0.0846
+],
+"bbox": [
+[
+0.0065,
+1.5256,
+0.0902
+],
+[
+0.0159,
+1.5538,
+0.0791
+]
+]
+},
+"Upper lateral incisor.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Upper lateral incisor",
+"verts": 729,
+"center": [
+-0.0112,
+1.5397,
+0.0846
+],
+"bbox": [
+[
+-0.0159,
+1.5256,
+0.0902
+],
+[
+-0.0065,
+1.5538,
+0.0791
+]
+]
+},
+"Upper medial incisor.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Upper medial incisor",
+"verts": 686,
+"center": [
+0.0045,
+1.5392,
+0.0869
+],
+"bbox": [
+[
+0.0001,
+1.5263,
+0.0932
+],
+[
+0.0088,
+1.552,
+0.0806
+]
+]
+},
+"Upper medial incisor.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Upper medial incisor",
+"verts": 686,
+"center": [
+-0.0045,
+1.5392,
+0.0869
+],
+"bbox": [
+[
+-0.0088,
+1.5263,
+0.0932
+],
+[
+-0.0001,
+1.552,
+0.0806
+]
+]
+},
+"Upper second molar tooth.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Upper second molar tooth",
+"verts": 924,
+"center": [
+0.0237,
+1.5463,
+0.0507
+],
+"bbox": [
+[
+0.0179,
+1.5352,
+0.0555
+],
+[
+0.0295,
+1.5573,
+0.0459
+]
+]
+},
+"Upper second molar tooth.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Upper second molar tooth",
+"verts": 924,
+"center": [
+-0.0237,
+1.5463,
+0.0507
+],
+"bbox": [
+[
+-0.0295,
+1.5352,
+0.0555
+],
+[
+-0.0179,
+1.5573,
+0.0459
+]
+]
+},
+"Upper second premolar.l": {
+"layer": "tooth",
+"side": "l",
+"base": "Upper second premolar",
+"verts": 779,
+"center": [
+0.0231,
+1.5423,
+0.0678
+],
+"bbox": [
+[
+0.0185,
+1.5297,
+0.0716
+],
+[
+0.0276,
+1.555,
+0.0641
+]
+]
+},
+"Upper second premolar.r": {
+"layer": "tooth",
+"side": "r",
+"base": "Upper second premolar",
+"verts": 779,
+"center": [
+-0.0231,
+1.5423,
+0.0678
+],
+"bbox": [
+[
+-0.0276,
+1.5297,
+0.0716
+],
+[
+-0.0185,
+1.555,
+0.0641
+]
+]
+},
+"Vertebra C3": {
+"layer": "bone",
+"side": "m",
+"base": "Vertebra C3",
+"verts": 1216,
+"center": [
+-0.0,
+1.5064,
+-0.0269
+],
+"bbox": [
+[
+-0.0283,
+1.4931,
+0.0002
+],
+[
+0.0283,
+1.5197,
+-0.054
+]
+]
+},
+"Vertebra C4": {
+"layer": "bone",
+"side": "m",
+"base": "Vertebra C4",
+"verts": 972,
+"center": [
+0.0001,
+1.4931,
+-0.0265
+],
+"bbox": [
+[
+-0.0289,
+1.4806,
+-0.0003
+],
+[
+0.0291,
+1.5056,
+-0.0526
+]
+]
+},
+"Vertebra C5": {
+"layer": "bone",
+"side": "m",
+"base": "Vertebra C5",
+"verts": 1164,
+"center": [
+-0.0,
+1.4801,
+-0.0298
+],
+"bbox": [
+[
+-0.0307,
+1.4689,
+-0.0016
+],
+[
+0.0307,
+1.4914,
+-0.058
+]
+]
+},
+"Vertebra C6": {
+"layer": "bone",
+"side": "m",
+"base": "Vertebra C6",
+"verts": 1148,
+"center": [
+0.0,
+1.466,
+-0.035
+],
+"bbox": [
+[
+-0.0306,
+1.4537,
+-0.0031
+],
+[
+0.0306,
+1.4783,
+-0.0668
+]
+]
+},
+"Vertebra C7": {
+"layer": "bone",
+"side": "m",
+"base": "Vertebra C7",
+"verts": 1078,
+"center": [
+-0.0,
+1.452,
+-0.0421
+],
+"bbox": [
+[
+-0.0356,
+1.4385,
+-0.0069
+],
+[
+0.0356,
+1.4655,
+-0.0772
+]
+]
+},
+"Vertebra T1": {
+"layer": "bone",
+"side": "m",
+"base": "Vertebra T1",
+"verts": 973,
+"center": [
+0.0,
+1.438,
+-0.0474
+],
+"bbox": [
+[
+-0.0388,
+1.4226,
+-0.0113
+],
+[
+0.0388,
+1.4534,
+-0.0834
+]
+]
+},
+"Vomer": {
+"layer": "bone",
+"side": "m",
+"base": "Vomer",
+"verts": 514,
+"center": [
+0.0,
+1.5689,
+0.0515
+],
+"bbox": [
+[
+-0.0051,
+1.5574,
+0.0821
+],
+[
+0.0051,
+1.5804,
+0.021
+]
+]
+},
+"Zygomatic bone.l": {
+"layer": "bone",
+"side": "l",
+"base": "Zygomatic bone",
+"verts": 666,
+"center": [
+0.047,
+1.5811,
+0.0522
+],
+"bbox": [
+[
+0.0316,
+1.5537,
+0.0717
+],
+[
+0.0623,
+1.6085,
+0.0327
+]
+]
+},
+"Zygomatic bone.r": {
+"layer": "bone",
+"side": "r",
+"base": "Zygomatic bone",
+"verts": 666,
+"center": [
+-0.047,
+1.5811,
+0.0522
+],
+"bbox": [
+[
+-0.0623,
+1.5537,
+0.0717
+],
+[
+-0.0316,
+1.6085,
+0.0327
+]
+]
+},
+"Zygomatic region.l": {
+"layer": "skin",
+"side": "l",
+"base": "Zygomatic region",
+"verts": 54,
+"center": [
+0.0577,
+1.5731,
+0.0437
+],
+"bbox": [
+[
+0.0444,
+1.5571,
+0.0761
+],
+[
+0.071,
+1.5891,
+0.0112
+]
+]
+},
+"Zygomatic region.r": {
+"layer": "skin",
+"side": "r",
+"base": "Zygomatic region",
+"verts": 54,
+"center": [
+-0.0577,
+1.5731,
+0.0437
+],
+"bbox": [
+[
+-0.071,
+1.5571,
+0.0761
+],
+[
+-0.0444,
+1.5891,
+0.0112
+]
+]
+},
+"Zygomaticus major muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Zygomaticus major muscle",
+"verts": 397,
+"center": [
+0.0408,
+1.5516,
+0.0632
+],
+"bbox": [
+[
+0.0261,
+1.5243,
+0.076
+],
+[
+0.0555,
+1.5789,
+0.0503
+]
+]
+},
+"Zygomaticus major muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Zygomaticus major muscle",
+"verts": 397,
+"center": [
+-0.0408,
+1.5516,
+0.0632
+],
+"bbox": [
+[
+-0.0555,
+1.5243,
+0.076
+],
+[
+-0.0261,
+1.5789,
+0.0503
+]
+]
+},
+"Zygomaticus minor muscle.l": {
+"layer": "muscle",
+"side": "l",
+"base": "Zygomaticus minor muscle",
+"verts": 218,
+"center": [
+0.0315,
+1.562,
+0.0724
+],
+"bbox": [
+[
+0.0127,
+1.5467,
+0.0847
+],
+[
+0.0503,
+1.5773,
+0.06
+]
+]
+},
+"Zygomaticus minor muscle.r": {
+"layer": "muscle",
+"side": "r",
+"base": "Zygomaticus minor muscle",
+"verts": 218,
+"center": [
+-0.0315,
+1.562,
+0.0724
+],
+"bbox": [
+[
+-0.0503,
+1.5467,
+0.0847
+],
+[
+-0.0127,
+1.5773,
+0.06
+]
+]
+}
+}

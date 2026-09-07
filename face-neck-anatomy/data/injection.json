@@ -1,0 +1,687 @@
+{
+ "zones": [
+  {
+   "id": "glabellar-complex",
+   "name": "Glabellar Complex (Frown Lines)",
+   "product": "neurotoxin",
+   "target_ids": [
+    "corrugator-supercilii",
+    "procerus-muscle",
+    "orbital-part-of-orbicularis-oculi"
+   ],
+   "danger_ids": [
+    "supratrochlear-artery",
+    "supraorbital-artery",
+    "supratrochlear-nerve",
+    "supraorbital-nerve"
+   ],
+   "anchor_landmarks": [
+    "glabella",
+    "supratrochlear_notch_l",
+    "supratrochlear_notch_r",
+    "brow_mid_l",
+    "brow_mid_r"
+   ],
+   "depth": "intramuscular",
+   "plane": "Deep intramuscular into corrugator belly (below the brow, posterolateral to supratrochlear notch) and superficial intramuscular into procerus at the midline",
+   "notes": "Treat the corrugator at its insertion over the medial brow and along its superolateral course toward brow_mid; treat procerus at the glabella midline. Stay at or above the orbital rim and lateral to the supratrochlear notch to avoid the supratrochlear and supraorbital neurovascular bundles. Keep the lateral corrugator point above mid-pupil and not too close to the levator palpebrae to reduce eyelid ptosis risk. Identify the supraorbital notch by palpation before injecting. No doses are given; dosing is per product label and instructor guidance.",
+   "common_complications": "Eyelid ptosis from toxin spread to levator palpebrae superioris; brow ptosis if frontalis is overtreated inferiorly; bruising at supratrochlear vessels; headache; asymmetric brow elevation (Mr Spock sign) if lateral frontalis is left unbalanced",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Cotofana S, Zdrazil M, Schenck TL, et al. The functional anatomy of the corrugator supercilii muscle revisited. J Cosmet Dermatol. 2020",
+    "Beleznay K, Carruthers JDA, Humphrey S, Jones D. Avoiding and treating blindness from fillers: a review of the world literature. Dermatol Surg. 2015;41(10):1097-1117",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108"
+   ]
+  },
+  {
+   "id": "frontalis-forehead-lines",
+   "name": "Frontalis / Forehead Horizontal Lines",
+   "product": "neurotoxin",
+   "target_ids": [
+    "frontalis-muscle"
+   ],
+   "danger_ids": [
+    "supraorbital-artery",
+    "supratrochlear-artery",
+    "supraorbital-nerve"
+   ],
+   "anchor_landmarks": [
+    "trichion",
+    "frontal_eminence_l",
+    "frontal_eminence_r",
+    "brow_mid_l",
+    "brow_mid_r"
+   ],
+   "depth": "intramuscular",
+   "plane": "Superficial intramuscular into frontalis, injected in a horizontal row pattern well above the brow",
+   "notes": "Frontalis is the only brow elevator, so treat the upper two-thirds of the forehead and preserve the lower 1-2 cm above the brow to retain lift and avoid brow ptosis and heaviness. Keep injection points at least 1.5-2 cm above the superior orbital rim; respect the supraorbital and supratrochlear notches medially. Balance lateral frontalis near the temporal fusion line to avoid quizzical brow. Frontalis is thin and closely applied to periosteum inferiorly, so injections are superficial intramuscular, not supraperiosteal. No doses given.",
+   "common_complications": "Brow ptosis and brow heaviness; forehead heaviness with masked appearance; asymmetric or quizzical (Mr Spock) brows; compensatory lateral brow elevation; bruising",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Cotofana S, Freytag DL, Frank K, et al. The bilateral anatomy of the frontalis muscle. J Drugs Dermatol. 2019",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "lateral-canthal-lines",
+   "name": "Lateral Canthal Lines (Crow's Feet)",
+   "product": "neurotoxin",
+   "target_ids": [
+    "orbital-part-of-orbicularis-oculi"
+   ],
+   "danger_ids": [
+    "frontal-branch-of-superficial-temporal-artery",
+    "superficial-temporal-vein",
+    "zygomaticotemporal-nerve",
+    "zygomaticofacial-nerve"
+   ],
+   "anchor_landmarks": [
+    "lateral_canthus_l",
+    "lateral_canthus_r",
+    "zygomatic_arch_mid_l",
+    "zygomatic_arch_mid_r"
+   ],
+   "depth": "subcutaneous",
+   "plane": "Subcutaneous, just deep to dermis within the thin lateral orbicularis oculi",
+   "notes": "Inject in a fan of two to four points lateral to the orbital rim, keeping all points at least 1 cm outside the bony rim to protect intraorbital structures. Injections are superficial because the orbicularis is thin here and skin is delicate; stay subcutaneous to avoid bruising of superficial temporal and periorbital vessels. Keep the lowest point above the zygomatic arch to avoid spread into zygomaticus major, which would drop the lip corner. No doses given.",
+   "common_complications": "Bruising (superficial temporal and periorbital vessels); lower lid droop or ectropion in patients with poor lid snap-back; lip asymmetry from spread to zygomaticus major if injected too low and medial; dry-eye sensation",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Sykes JM, Cotofana S, Trevidic P, et al. Upper face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):204S-218S",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Beleznay K, Humphrey S, Carruthers JDA, Carruthers A. Update on avoiding and treating blindness from fillers. Dermatol Surg. 2019;45(1):29-36"
+   ]
+  },
+  {
+   "id": "bunny-lines-nasalis",
+   "name": "Bunny Lines (Nasalis)",
+   "product": "neurotoxin",
+   "target_ids": [
+    "nasalis-muscle"
+   ],
+   "danger_ids": [
+    "angular-artery",
+    "lateral-nasal-artery",
+    "external-nasal-nerve"
+   ],
+   "anchor_landmarks": [
+    "rhinion",
+    "nasal_sidewall_mid_l",
+    "nasal_sidewall_mid_r",
+    "medial_canthus_l",
+    "medial_canthus_r"
+   ],
+   "depth": "intramuscular",
+   "plane": "Intramuscular into the transverse part of nasalis over the upper nasal sidewall",
+   "notes": "Treat the transverse nasalis with a small point on each upper nasal sidewall, roughly midway between rhinion and the medial canthus. Stay high on the nasal sidewall and lateral enough to avoid the angular artery ascending toward the medial canthus, and medial enough to avoid spread to levator labii superioris alaeque nasi, which would drop the upper lip. Compress the sidewall with the non-injecting hand to limit diffusion. No doses given.",
+   "common_complications": "Upper lip drop or elongation from spread to levator labii superioris alaeque nasi; smile asymmetry; bruising along angular artery territory; incomplete correction if levator contribution to the lines is not assessed",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Sykes JM, Cotofana S, Trevidic P, et al. Upper face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):204S-218S",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108"
+   ]
+  },
+  {
+   "id": "brow-lift-lateral-orbicularis",
+   "name": "Chemical Brow Lift (Lateral Orbicularis Oculi)",
+   "product": "neurotoxin",
+   "target_ids": [
+    "orbital-part-of-orbicularis-oculi"
+   ],
+   "danger_ids": [
+    "frontal-branch-of-superficial-temporal-artery",
+    "superficial-temporal-vein"
+   ],
+   "anchor_landmarks": [
+    "brow_tail_l",
+    "brow_tail_r",
+    "lateral_canthus_l",
+    "lateral_canthus_r"
+   ],
+   "depth": "subcutaneous",
+   "plane": "Subcutaneous into the lateral depressor portion of orbicularis oculi at and below the brow tail",
+   "notes": "Weaken the lateral orbicularis (the lateral brow depressor) with one or two superficial points at the brow tail just lateral to the lateral canthus, allowing unopposed lateral frontalis to elevate the brow. Combine logically with balanced frontalis treatment; weakening lower frontalis instead would drop the brow. Keep points superficial and lateral to the orbital rim, and avoid the superficial temporal vessels in the temporal hairline. No doses given.",
+   "common_complications": "Brow asymmetry if one side is undertreated; eyelid ptosis if injected too medial or deep near the levator; accentuated upper-lid hooding if frontalis support was already marginal; bruising",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Cotofana S, Freytag DL, Frank K, et al. The bilateral anatomy of the frontalis muscle. J Drugs Dermatol. 2019",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "masseter-hypertrophy",
+   "name": "Masseter Hypertrophy / Lower Face Slimming",
+   "product": "neurotoxin",
+   "target_ids": [
+    "superficial-part-of-masseter",
+    "deep-part-of-masseter"
+   ],
+   "danger_ids": [
+    "facial-artery",
+    "transverse-facial-artery",
+    "buccal-branch-of-facial-nerve",
+    "marginal-mandibular-branch-of-facial-nerve"
+   ],
+   "anchor_landmarks": [
+    "gonion_l",
+    "gonion_r",
+    "antegonial_notch_l",
+    "antegonial_notch_r",
+    "tragus_l",
+    "tragus_r"
+   ],
+   "depth": "intramuscular",
+   "plane": "Deep intramuscular into the lower posterior masseter, directed away from the anterior border",
+   "notes": "Ask the patient to clench and palpate the masseter borders; inject the bulky lower third of the muscle between gonion and the antegonial notch, keeping points posterior and inferior. Stay behind a vertical line from tragus to avoid the parotid duct and buccal branches of the facial nerve crossing the anterior muscle, and stay below the zygomatic arch to avoid the transverse facial artery. The facial artery crosses the mandible at the antegonial notch - inject away from the notch and keep the needle within muscle belly, not into submucosa. No doses given.",
+   "common_complications": "Smile asymmetry or weakness from spread to risorius or zygomaticus major; paradoxical bulging of untreated superficial fibers; masticatory fatigue; sunken appearance over the anterior cheek if overdone; bruising at facial artery crossing",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Cotofana S, Gotkin RH, Frank K, et al. The functional anatomy of the masseter muscle and its relevance to masseteric botulinum toxin injection. J Cosmet Dermatol. 2019",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S"
+   ]
+  },
+  {
+   "id": "depressor-anguli-oris",
+   "name": "Depressor Anguli Oris (Downturned Mouth Corners)",
+   "product": "neurotoxin",
+   "target_ids": [
+    "depressor-anguli-oris"
+   ],
+   "danger_ids": [
+    "marginal-mandibular-branch-of-facial-nerve",
+    "facial-artery",
+    "inferior-labial-artery"
+   ],
+   "anchor_landmarks": [
+    "marionette_mid_l",
+    "marionette_mid_r",
+    "jawline_mid_l",
+    "jawline_mid_r"
+   ],
+   "depth": "intramuscular",
+   "plane": "Intramuscular into the DAO belly, posterolateral to the mouth corner and above the mandibular border",
+   "notes": "Weakening DAO releases the downward pull on the mouth corner and allows zygomaticus major and levator anguli oris to lift it. Place one point per side in the DAO belly, roughly at the intersection of the marionette line and a point well lateral to the modiolus and above the mandibular border. Stay lateral to avoid the depressor labii inferioris (weakness causes asymmetric lower lip and speech or eating problems), stay above the mandibular border to avoid the marginal mandibular nerve, and respect the facial artery as it crosses toward the mouth corner. No doses given.",
+   "common_complications": "Lower lip asymmetry from spread to depressor labii inferioris; dysarthria or drooling with overtreatment; bruising along facial or inferior labial artery; paradoxical marionette deepening if placed too medial",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "mentalis-chin-dimpling",
+   "name": "Mentalis / Chin Dimpling (Peau d'Orange)",
+   "product": "neurotoxin",
+   "target_ids": [
+    "mentalis-muscle"
+   ],
+   "danger_ids": [
+    "mental-artery",
+    "mental-nerve",
+    "inferior-labial-artery"
+   ],
+   "anchor_landmarks": [
+    "menton",
+    "pogonion",
+    "mentolabial_sulcus",
+    "mental_foramen_l",
+    "mental_foramen_r"
+   ],
+   "depth": "intramuscular",
+   "plane": "Intramuscular into mentalis, paramedian points low on the chin pad",
+   "notes": "Treat chin dimpling with one or two paramedian points in the mentalis near its origin low on the anterior mandible, above menton. Keep points low and paramedian: points placed too high or too lateral can weaken depressor labii inferioris or orbicularis oris, causing lower lip asymmetry and incompetence. The mental nerve and vessels exit at the mental foramen, roughly below the second premolar on a line from the pupil - avoid injecting lateral and deep at that level. No doses given.",
+   "common_complications": "Lower lip asymmetry or weakness; mouth incompetence with drooling or speech change; chin descent (witch's chin appearance) if overtreated in a chin that needs projection; bruising",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108"
+   ]
+  },
+  {
+   "id": "platysmal-bands-nefertiti",
+   "name": "Platysmal Bands / Nefertiti Lift",
+   "product": "neurotoxin",
+   "target_ids": [
+    "platysma"
+   ],
+   "danger_ids": [
+    "external-jugular-vein",
+    "anterior-jugular-vein",
+    "cervical-branch-of-facial-nerve",
+    "great-auricular-nerve"
+   ],
+   "anchor_landmarks": [
+    "jawline_mid_l",
+    "jawline_mid_r",
+    "hyoid_body",
+    "thyroid_notch"
+   ],
+   "depth": "intramuscular",
+   "plane": "Intramuscular into the platysma band, grasped and lifted away from the neck before injection",
+   "notes": "For bands, have the patient grimace to activate platysma, pinch the band between thumb and finger, and inject a series of small points along it from the jawline toward the clavicle, lifting the band off deeper structures to avoid spread to laryngeal and strap muscles (dysphagia, dysphonia). For the Nefertiti lift, inject a row of points along the mandibular border to weaken platysmal downward pull on the jawline. Stay superficial: the external and anterior jugular veins lie just deep to platysma, and the marginal mandibular and cervical branches of the facial nerve run near the jawline. No doses given.",
+   "common_complications": "Dysphagia or dysphonia from deep spread to laryngeal or strap muscles; neck weakness and difficulty flexing the neck; bruising over jugular veins; asymmetric jawline",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S",
+    "Levy PM. The Nefertiti lift: a new technique for specific re-contouring of the jawline. J Cosmet Laser Ther. 2007;9(4):249-252",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108"
+   ]
+  },
+  {
+   "id": "lip-flip-orbicularis-oris",
+   "name": "Lip Flip (Upper Orbicularis Oris)",
+   "product": "neurotoxin",
+   "target_ids": [
+    "orbicularis-oris-muscle"
+   ],
+   "danger_ids": [
+    "superior-labial-artery",
+    "superior-labial-vein"
+   ],
+   "anchor_landmarks": [
+    "upper_lip_mid",
+    "stomion",
+    "philtral_column_l",
+    "philtral_column_r"
+   ],
+   "depth": "intramuscular",
+   "plane": "Superficial intramuscular into the upper orbicularis oris at the vermilion border",
+   "notes": "A small amount of toxin into the upper orbicularis oris at the vermilion border relaxes the purse-string action and everts the upper lip slightly, simulating more vermilion show without filler. Place one to two points per side at or just above the vermilion border, medial to the philtral columns, very superficially and in minimal quantity. The superior labial artery runs in the submucosa posterior to the muscle at about the level of the wet-dry border - stay anterior and superficial. Conservative placement is essential: orbicularis weakness impairs puckering, drinking through a straw, and speech. No doses given.",
+   "common_complications": "Difficulty puckering, whistling, or using a straw; mild speech change; lip asymmetry; perioral incompetence if overtreated",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S",
+    "Cotofana S, Alfertshofer M, Schenck TL, et al. Anatomy of the superior and inferior labial arteries revised. Plast Reconstr Surg. 2022"
+   ]
+  },
+  {
+   "id": "gummy-smile-llsan",
+   "name": "Gummy Smile (Levator Labii Superioris Alaeque Nasi)",
+   "product": "neurotoxin",
+   "target_ids": [
+    "levator-nasolabialis",
+    "levator-labii-superioris"
+   ],
+   "danger_ids": [
+    "angular-artery",
+    "facial-artery",
+    "lateral-nasal-artery",
+    "infraorbital-nerve"
+   ],
+   "anchor_landmarks": [
+    "alar_crease_l",
+    "alar_crease_r",
+    "ala_base_l",
+    "ala_base_r"
+   ],
+   "depth": "intramuscular",
+   "plane": "Intramuscular into LLSAN at the medial nasolabial region, lateral to the alar crease",
+   "notes": "Gummy smile from hyperactive lip elevators is treated with a point in LLSAN just lateral to the alar base at the medial nasolabial fold; the levator labii superioris and zygomaticus minor may also contribute, so assess the smile pattern first. Stay superficial and inferior to the infraorbital foramen region and respect the angular artery ascending in the nasolabial groove and the facial artery as it winds toward the nose. Overweakening elongates the upper lip and flattens the nasolabial fold. No doses given.",
+   "common_complications": "Upper lip elongation or drop; flattened nasolabial fold; smile asymmetry; difficulty elevating the lip on smiling or speaking",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "perioral-lines",
+   "name": "Perioral Lines (Smoker's Lines)",
+   "product": "neurotoxin",
+   "target_ids": [
+    "orbicularis-oris-muscle"
+   ],
+   "danger_ids": [
+    "superior-labial-artery",
+    "inferior-labial-artery",
+    "superior-labial-vein",
+    "inferior-labial-vein"
+   ],
+   "anchor_landmarks": [
+    "philtral_column_l",
+    "philtral_column_r",
+    "nasolabial_fold_mid_l",
+    "nasolabial_fold_mid_r",
+    "upper_lip_mid",
+    "lower_lip_mid"
+   ],
+   "depth": "intramuscular",
+   "plane": "Very superficial intramuscular into orbicularis oris at the vermilion border, small points per quadrant",
+   "notes": "Fine radial perioral rhytids respond to very small, superficial toxin points at the vermilion border, one to two per lip quadrant, combined as needed with light resurfacing or superficial filler. Doses must be minimal and symmetric because orbicularis oris controls speech, eating, and expression; test lip function afterward. The superior and inferior labial arteries run in the submucosa near the wet-dry junction - keep injections anterior and superficial to the muscle. No doses given.",
+   "common_complications": "Lip weakness affecting speech, whistling, or drinking through a straw; asymmetric smile; perioral flattening; bruising of labial vessels",
+   "refs": [
+    "Carruthers J, Carruthers A. Botulinum Toxin: Procedures in Cosmetic Dermatology Series, 4th ed. Elsevier; 2017",
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S",
+    "Cotofana S, Alfertshofer M, Schenck TL, et al. Anatomy of the superior and inferior labial arteries revised. Plast Reconstr Surg. 2022"
+   ]
+  },
+  {
+   "id": "temple",
+   "name": "Temple",
+   "product": "filler",
+   "target_ids": [],
+   "danger_ids": [
+    "middle-temporal-artery",
+    "superficial-temporal-artery",
+    "frontal-branch-of-superficial-temporal-artery",
+    "middle-temporal-vein-sentinel-vein",
+    "superficial-temporal-vein",
+    "temporal-branch-of-facial-nerve"
+   ],
+   "anchor_landmarks": [
+    "temporal_fossa_l",
+    "temporal_fossa_r",
+    "superior_temporal_line_l",
+    "superior_temporal_line_r"
+   ],
+   "depth": "supraperiosteal",
+   "plane": "Supraperiosteal deep bolus on temporal bone (one up, one over technique), or subcutaneous in the superficial temporal fat between the temporal fascia layers",
+   "notes": "Target is the temporal fossa: restore volume either as a deep supraperiosteal bolus high in the fossa near the superior temporal line (one finger up from the zygomatic arch, one over from the lateral orbital rim) or as superficial subcutaneous injection above the superficial temporal fascia. The superficial temporal artery and vein run in the superficial layer, the frontal branch of the facial nerve crosses the zygomatic arch at Pitanguy's line, and the middle temporal vein (sentinel vein) pierces the deep temporal fascia - inject slowly, low pressure, small aliquots, and consider aspiration at the deep supraperiosteal site. Avoid the temporal crest fusion zone where vessels concentrate.",
+   "common_complications": "Vascular occlusion (branches anastomose with orbital circulation - blindness risk); bruising of middle temporal or superficial temporal vessels; visible irregularity or Tyndall effect if placed too superficial in thin skin; temporal headache",
+   "refs": [
+    "Sykes JM, Cotofana S, Trevidic P, et al. Upper face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):204S-218S",
+    "Surek CC, Vargo J, Lamb J. Deep temporal anatomy and diagnostic ultrasonographic imaging for filler injections. Plast Reconstr Surg. 2021",
+    "Beleznay K, Humphrey S, Carruthers JDA, Carruthers A. Update on avoiding and treating blindness from fillers. Dermatol Surg. 2019;45(1):29-36",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "forehead-glabella",
+   "name": "Forehead / Glabella",
+   "product": "filler",
+   "target_ids": [],
+   "danger_ids": [
+    "supratrochlear-artery",
+    "supraorbital-artery",
+    "supratrochlear-vein",
+    "supraorbital-vein",
+    "superior-ophthalmic-vein"
+   ],
+   "anchor_landmarks": [
+    "glabella",
+    "trichion",
+    "frontal_eminence_l",
+    "frontal_eminence_r"
+   ],
+   "depth": "subcutaneous",
+   "plane": "Subcutaneous, above frontalis and its fascia, in the superficial forehead fat",
+   "notes": "Target is the superficial forehead and glabellar subcutaneous plane to smooth horizontal hollowing and glabellar furrows. This is one of the highest-risk zones for vascular occlusion with blindness: the supratrochlear and supraorbital arteries exit at the notches and anastomose freely with the ophthalmic system. Stay superficial in the subcutaneous plane, midline or paramedian, away from the notches; use small aliquots, low pressure, slow retrograde injection, and consider a cannula from a lateral entry point. Never bolus deeply against periosteum near the supraorbital rim. Know the occlusion reversal protocol before treating.",
+   "common_complications": "Vascular occlusion with skin necrosis and risk of blindness (supratrochlear and supraorbital to ophthalmic anastomoses); contour irregularity and visible lumps in thin forehead skin; bruising; persistent edema",
+   "refs": [
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Beleznay K, Carruthers JDA, Humphrey S, Jones D. Avoiding and treating blindness from fillers: a review of the world literature. Dermatol Surg. 2015;41(10):1097-1117",
+    "Sykes JM, Cotofana S, Trevidic P, et al. Upper face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):204S-218S",
+    "Cotofana S, Lachman N. Arteries of the face and their importance for minimally invasive facial procedures. Plast Reconstr Surg. 2019;143(2):416-426",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "nasal-dorsum-tip",
+   "name": "Nasal Dorsum and Tip (Non-Surgical Rhinoplasty)",
+   "product": "filler",
+   "target_ids": [],
+   "danger_ids": [
+    "dorsal-nasal-artery",
+    "columellar-artery",
+    "lateral-nasal-artery",
+    "angular-artery",
+    "external-nasal-nerve"
+   ],
+   "anchor_landmarks": [
+    "rhinion",
+    "pronasale",
+    "columella_base",
+    "subnasale"
+   ],
+   "depth": "supraperiosteal",
+   "plane": "Deep midline, supraperichondrial over the cartilaginous dorsum and supraperiosteal over the bony dorsum; columellar base subcutaneous",
+   "notes": "Target is the deep midline avascular plane of the nasal dorsum (radix to rhinion to tip) and the columellar base at subnasale for tip projection. The nose is a supreme danger zone: dorsal nasal, lateral nasal, columellar, and angular arteries anastomose with the ophthalmic system, and nasal skin is unforgiving of occlusion. Inject strictly midline, deep on cartilage or bone, with tiny aliquots, minimal volume, low pressure, and constant awareness of skin blanching or pain; many injectors aspirate and pinch the dorsum to compress lateral vessels. Avoid lateral nasal sidewall injections. Stop immediately and begin the occlusion protocol for any blanch, livedo, or visual symptom.",
+   "common_complications": "Vascular occlusion with skin necrosis of tip or ala; blindness via dorsal nasal to ophthalmic anastomosis; telangiectasia; overcorrection and dorsal widening; product visibility in thin skin",
+   "refs": [
+    "Beleznay K, Humphrey S, Carruthers JDA, Carruthers A. Update on avoiding and treating blindness from fillers. Dermatol Surg. 2019;45(1):29-36",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Cotofana S, Lachman N. Arteries of the face and their importance for minimally invasive facial procedures. Plast Reconstr Surg. 2019;143(2):416-426",
+    "Sykes JM, Cotofana S, Trevidic P, et al. Upper face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):204S-218S",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "tear-trough-infraorbital",
+   "name": "Tear Trough / Infraorbital Hollow",
+   "product": "filler",
+   "target_ids": [],
+   "danger_ids": [
+    "infraorbital-artery",
+    "infraorbital-nerve",
+    "angular-artery",
+    "facial-vein"
+   ],
+   "anchor_landmarks": [
+    "infraorbital_foramen_l",
+    "infraorbital_foramen_r",
+    "medial_canthus_l",
+    "medial_canthus_r"
+   ],
+   "depth": "supraperiosteal",
+   "plane": "Supraperiosteal, deep to orbicularis oculi, along the tear trough ligament and medial infraorbital rim",
+   "notes": "Target is the supraperiosteal plane along the tear trough ligament and orbital rim to blend the lid-cheek junction. Palpate the infraorbital foramen (about 1 cm below the rim on the mid-pupillary line) and stay lateral or well medial of it to avoid the infraorbital neurovascular bundle; the angular artery and vein pass medially near the medial canthus. Use a cannula from a lateral entry in many protocols, deposit small amounts deep to the muscle, and avoid any superficial placement, which causes Tyndall discoloration and prolonged malar edema from lymphatic compression. Undertreat rather than overfill.",
+   "common_complications": "Prolonged malar edema; Tyndall effect and blue discoloration; contour irregularity and lumps; vascular occlusion of infraorbital or angular vessels; bruising and swelling in a highly visible area",
+   "refs": [
+    "Cotofana S, Schenck TL, Trevidic P, et al. Midface: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):219S-234S",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Beleznay K, Carruthers JDA, Humphrey S, Jones D. Avoiding and treating blindness from fillers: a review of the world literature. Dermatol Surg. 2015;41(10):1097-1117",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "midface-malar-zygomatic",
+   "name": "Midface / Malar and Zygomatic",
+   "product": "filler",
+   "target_ids": [],
+   "danger_ids": [
+    "infraorbital-artery",
+    "infraorbital-nerve",
+    "zygomaticofacial-nerve",
+    "transverse-facial-artery",
+    "facial-artery"
+   ],
+   "anchor_landmarks": [
+    "malar_eminence_l",
+    "malar_eminence_r",
+    "zygomatic_arch_mid_l",
+    "zygomatic_arch_mid_r"
+   ],
+   "depth": "supraperiosteal",
+   "plane": "Supraperiosteal boluses on the zygoma and malar eminence, plus subcutaneous layering in the deep and superficial medial cheek fat compartments",
+   "notes": "Targets are the deep medial cheek fat and the supraperiosteal plane over the zygomatic eminence and arch to restore midface projection and support. Deep bolus injection over the malar eminence and along the zygomatic arch is generally safe if truly supraperiosteal and away from the infraorbital foramen (mid-pupillary line, about 1 cm below the rim) and the zygomaticofacial foramen. The transverse facial artery runs about 1 cm below the zygomatic arch, and the facial artery ascends medially - map these mentally, inject slowly with small aliquots, and aspirate where a needle is used. Lateral-to-medial sequencing avoids pushing the face wider than intended.",
+   "common_complications": "Vascular occlusion of infraorbital or transverse facial branches; widening or overprojection of the face from excessive lateral volume; infraorbital nerve irritation; lumps and irregularity from superficial placement; bruising",
+   "refs": [
+    "Cotofana S, Schenck TL, Trevidic P, et al. Midface: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):219S-234S",
+    "Tansatit T, Apinuntrum P, Phetudom T. An anatomical study of the transverse facial artery. Plast Reconstr Surg. 2014",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Cotofana S, Lachman N. Arteries of the face and their importance for minimally invasive facial procedures. Plast Reconstr Surg. 2019;143(2):416-426",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "nasolabial-fold",
+   "name": "Nasolabial Fold",
+   "product": "filler",
+   "target_ids": [],
+   "danger_ids": [
+    "facial-artery",
+    "angular-artery",
+    "superior-labial-artery"
+   ],
+   "anchor_landmarks": [
+    "nasolabial_fold_mid_l",
+    "nasolabial_fold_mid_r",
+    "alar_crease_l",
+    "alar_crease_r"
+   ],
+   "depth": "subcutaneous",
+   "plane": "Subcutaneous to subdermal, layered along the fold medial to its visible crease; deep supraperiosteal support at the piriform aperture when needed",
+   "notes": "Target is the subcutaneous plane along the nasolabial fold, usually placed medial to the fold so the cheek does not appear heavier, with optional deep support at the piriform fossa for a deep superior fold. The facial artery courses through the nasolabial region and continues as the angular artery toward the medial canthus - it can be superficial here, so favor small aliquots, slow retrograde technique, blunt cannula from an inferior entry, and aspiration if using a needle deep at the piriform rim. Treat the cause (midface volume loss) before the fold itself for natural results.",
+   "common_complications": "Vascular occlusion of facial or angular artery (risk of skin necrosis and, rarely, blindness via angular to ophthalmic anastomosis); heavy or simian appearance from medial overfill; bruising; visible product along the fold",
+   "refs": [
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Cotofana S, Lachman N. Arteries of the face and their importance for minimally invasive facial procedures. Plast Reconstr Surg. 2019;143(2):416-426",
+    "Beleznay K, Humphrey S, Carruthers JDA, Carruthers A. Update on avoiding and treating blindness from fillers. Dermatol Surg. 2019;45(1):29-36",
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "lips",
+   "name": "Lips",
+   "product": "filler",
+   "target_ids": [],
+   "danger_ids": [
+    "superior-labial-artery",
+    "inferior-labial-artery",
+    "superior-labial-vein",
+    "inferior-labial-vein"
+   ],
+   "anchor_landmarks": [
+    "upper_lip_mid",
+    "lower_lip_mid",
+    "philtral_column_l",
+    "philtral_column_r",
+    "modiolus_l",
+    "modiolus_r"
+   ],
+   "depth": "subdermal",
+   "plane": "Submucosal and intramuscular-submucosal plane of the vermilion and lip body; subdermal at the vermilion border",
+   "notes": "Targets are the vermilion body, vermilion border, and philtral columns. The superior and inferior labial arteries run between orbicularis oris and the mucosa near the wet-dry border, more superficial than often taught, so inject in the anterior two-thirds of the lip, keep depth superficial to the muscle toward the dry vermilion, use small aliquots with slow low-pressure delivery, and consider aspiration or a cannula from the modiolus entry for the body of the lip. Respect the philtral columns for definition and avoid overfilling the upper lip relative to the lower. Watch for blanching or disproportionate pain as occlusion warning signs.",
+   "common_complications": "Vascular occlusion of labial arteries with mucosal or skin necrosis; lumps, asymmetry, and product migration; prolonged swelling and bruising; overfilled, unnatural projection",
+   "refs": [
+    "Cotofana S, Alfertshofer M, Schenck TL, et al. Anatomy of the superior and inferior labial arteries revised. Plast Reconstr Surg. 2022",
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Beleznay K, Carruthers JDA, Humphrey S, Jones D. Avoiding and treating blindness from fillers: a review of the world literature. Dermatol Surg. 2015;41(10):1097-1117",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "marionette-lines",
+   "name": "Marionette Lines",
+   "product": "filler",
+   "target_ids": [],
+   "danger_ids": [
+    "inferior-labial-artery",
+    "facial-artery",
+    "marginal-mandibular-branch-of-facial-nerve"
+   ],
+   "anchor_landmarks": [
+    "marionette_mid_l",
+    "marionette_mid_r",
+    "modiolus_l",
+    "modiolus_r"
+   ],
+   "depth": "subcutaneous",
+   "plane": "Subcutaneous fanning from a point lateral to the fold, layered inferior to the mouth corner to support the oral commissure",
+   "notes": "Target is the subcutaneous plane along the marionette fold and the pre-jowl transition to lift the downturned corner. Inject lateral to the fold with a fanning technique from a single entry, supporting the commissure from below rather than filling the crease alone. The facial artery gives off the inferior labial artery in this region and the marginal mandibular branch of the facial nerve crosses the mandibular border nearby - keep injections superficial, slow, and in small aliquots, and avoid deep boluses at the mandibular border. Combine with DAO neuromodulator when depressor overactivity drives the downturn.",
+   "common_complications": "Bruising from facial or inferior labial vessels; asymmetry; product visibility or lumping in thin perioral skin; worsening of jowl appearance if volume is placed too lateral and inferior",
+   "refs": [
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Cotofana S, Lachman N. Arteries of the face and their importance for minimally invasive facial procedures. Plast Reconstr Surg. 2019;143(2):416-426",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "chin",
+   "name": "Chin",
+   "product": "filler",
+   "target_ids": [],
+   "danger_ids": [
+    "mental-artery",
+    "mental-nerve",
+    "inferior-labial-artery",
+    "submental-artery"
+   ],
+   "anchor_landmarks": [
+    "pogonion",
+    "menton",
+    "mentolabial_sulcus",
+    "mental_foramen_l",
+    "mental_foramen_r"
+   ],
+   "depth": "supraperiosteal",
+   "plane": "Supraperiosteal midline and paramedian boluses for projection, plus subcutaneous layering for shape and mentolabial blending",
+   "notes": "Targets are the supraperiosteal plane at pogonion for projection, paramedian points for width, and subcutaneous blending at the mentolabial sulcus and chin-jowl transition. Palpate the mental foramen (below the second premolar, mid-pupillary line) and keep deep injections midline and paramedian, staying medial and inferior to the foramen to avoid the mental neurovascular bundle. Aspirate for deep boluses, inject slowly in small aliquots, and respect the mentalis origin. Assess occlusion, profile, and lower facial height before deciding projection versus vertical lengthening.",
+   "common_complications": "Mental nerve irritation or transient numbness; bruising of mental or submental branches; asymmetry or lumpiness; vascular occlusion (less common than perioral but reported); overprojection and witch's chin deformity",
+   "refs": [
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Cotofana S, Lachman N. Arteries of the face and their importance for minimally invasive facial procedures. Plast Reconstr Surg. 2019;143(2):416-426",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "jawline-prejowl",
+   "name": "Jawline and Prejowl Sulcus",
+   "product": "filler",
+   "target_ids": [],
+   "danger_ids": [
+    "facial-artery",
+    "marginal-mandibular-branch-of-facial-nerve",
+    "mental-artery",
+    "submental-artery"
+   ],
+   "anchor_landmarks": [
+    "prejowl_sulcus_l",
+    "prejowl_sulcus_r",
+    "jawline_mid_l",
+    "jawline_mid_r",
+    "antegonial_notch_l",
+    "antegonial_notch_r"
+   ],
+   "depth": "subcutaneous",
+   "plane": "Subcutaneous along the mandibular border and prejowl sulcus, with optional supraperiosteal bolstering at gonion",
+   "notes": "Targets are the prejowl sulcus (the hollow between chin and jowl) and the mandibular border to straighten and define the jawline. The facial artery crosses the mandible at the antegonial notch, anterior to the masseter, and the marginal mandibular branch of the facial nerve runs at or just below the border - keep injections subcutaneous or truly supraperiosteal, avoid deep injection at the notch, use slow small-aliquot retrograde delivery, and aspirate before deep boluses. Fill the prejowl first to camouflage the jowl, then extend posteriorly toward the angle for continuity.",
+   "common_complications": "Vascular occlusion of facial artery branches; transient marginal mandibular nerve irritation with lip depressor weakness; bruising; visible ridging along the border if placed too superficially; widened heavy jawline from overfilling",
+   "refs": [
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Braz A, Humphrey S, Weinkle S, et al. Lower face: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):235S-257S",
+    "Cotofana S, Lachman N. Arteries of the face and their importance for minimally invasive facial procedures. Plast Reconstr Surg. 2019;143(2):416-426",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  },
+  {
+   "id": "preauricular-lateral-cheek",
+   "name": "Preauricular / Lateral Cheek",
+   "product": "filler",
+   "target_ids": [],
+   "danger_ids": [
+    "transverse-facial-artery",
+    "superficial-temporal-artery",
+    "superficial-temporal-vein",
+    "facial-nerve-trunk",
+    "buccal-branch-of-facial-nerve"
+   ],
+   "anchor_landmarks": [
+    "tragus_l",
+    "tragus_r",
+    "parotid_center_l",
+    "parotid_center_r"
+   ],
+   "depth": "subcutaneous",
+   "plane": "Subcutaneous, in the superficial lateral cheek fat anterior to the parotid, layered with a cannula from a lateral entry",
+   "notes": "Target is the superficial fat of the lateral cheek and preauricular hollow to smooth the concavity in front of the ear and blend the zygomatic and jawline contours. This zone overlies the parotid gland and the facial nerve trunk and its branches, which lie deep within and superficial to the parotid - so stay strictly subcutaneous, never inject into the parotid, and favor a blunt cannula. The transverse facial artery runs about 1 cm below the zygomatic arch and the superficial temporal vessels ascend anterior to the tragus; keep the superior and posterior extent conservative. Small aliquots, low pressure, slow delivery.",
+   "common_complications": "Parotid injury, swelling, or fistula from deep injection; facial nerve branch irritation; bruising of transverse facial or superficial temporal vessels; contour irregularity; vascular occlusion",
+   "refs": [
+    "Cotofana S, Schenck TL, Trevidic P, et al. Midface: clinical anatomy and regional approaches with injectable fillers. Plast Reconstr Surg. 2015;136(5 Suppl):219S-234S",
+    "Scheuer JF, Sieber DA, Pezeshk RA, et al. Facial danger zones: techniques to maximize safety during soft-tissue filler injections. Plast Reconstr Surg. 2017;139(5):1103-1108",
+    "Tansatit T, Apinuntrum P, Phetudom T. An anatomical study of the transverse facial artery. Plast Reconstr Surg. 2014",
+    "Beleznay K, Humphrey S, Carruthers JDA, Carruthers A. Update on avoiding and treating blindness from fillers. Dermatol Surg. 2019;45(1):29-36",
+    "de Maio M. MD Codes: a methodological approach to facial aesthetic treatment with injectable hyaluronic acid fillers. Aesthetic Plast Surg. 2021;45(2):690-709"
+   ]
+  }
+ ]
+}
