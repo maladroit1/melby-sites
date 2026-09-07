@@ -41,3 +41,18 @@ Model: Z-Anatomy and BodyParts3D, © The Database Center for Life Science, Japan
 - Browser visual check attempted: Interceptor CLI is absent; native Chrome access was denied by the computer-use tool. No rendered desktop/mobile verification is claimed.
 
 This app directory is a delegated scratch deliverable, not a Git checkout. The parent Claude conductor owns integration, cross-family review, and the durable vault project record. No deployment or merge was performed.
+
+## Learn mode
+
+- Learn opens **Learning pass** in place of desktop notes, or as a bottom sheet below 720px. Lessons include **Layers & danger map** and every injection zone, grouped by Neurotoxin, Filler, or Both.
+- Zone lessons use the supplied data for orientation, targets, danger structures, placement, and a check. Back/Next and the left/right arrow keys navigate steps. Arrow shortcuts ignore editable fields and open dialogs.
+- Checks offer four distinct shuffled choices. Questions without enough choices are skipped. Answers show the correct choice and highlight its structure on both sides where geometry exists. Missing geometry leaves the text available.
+- Completion ticks and best percentage scores persist in `atlas-learn-v1`. Lessons without questions store a best score of zero. Restart begins a new attempt without erasing the previous best.
+- Closing Learn or selecting another tool restores layer visibility and opacity, clears isolation, and stops any pending camera flight without resetting the camera. Reduced-motion preferences disable marker pulsing and animate camera moves instantly.
+- Lesson prose comes from the supplied JSON, except short framing labels and navigation. Existing clinical data is displayed unchanged; no new doses or treatment recommendations were authored. This remains a supplementary study aid.
+
+Implementation record, 2026-09-07 (%obs): `node --check app.js` passed. Temporary Node behavior checks passed for all 23 zone question sets, lesson counts, unanswered-question gating, completion, best-score retention, and layer-state restoration with no geometry loaded. Rendered desktop/mobile behavior has not been visually verified.
+
+Scope assumption (%obs): the brief explicitly requests this README section in addition to `index.html`, `app.js`, and `style.css`. Data and model files were not edited. This remains a delegated scratch deliverable; the parent Claude conductor owns integration, cross-family review, and the durable vault record.
+
+Composition record (%obs): README additions and session prose are unprocessed by Clean Pen. The configured SSH host could not resolve, and the same-machine fallback was blocked by the sandbox.

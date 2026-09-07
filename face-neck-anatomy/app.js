@@ -40,7 +40,8 @@ function refreshMaterials(){
   for(const [key,l] of Object.entries(layers)){
     l.group.visible=l.enabled;
     l.group.traverse(m=>{if(!m.isMesh)return;const chosen=m.userData.structure===selected;
-      const ghost=isolated&&!chosen;const opacity=ghost?.08:l.opacity;
+      const ghost=isolated&&!chosen;
+      const opacity=learn?.focus&&!learn.focus.has(m.userData.structure)?(key==='skin'?.15:.12):ghost?.08:l.opacity;
       m.material.opacity=opacity;m.material.transparent=opacity<1;m.material.depthWrite=opacity>=1;
       m.material.emissive.setHex(chosen?0x866137:0x000000);m.material.emissiveIntensity=chosen?.55:0;
       m.material.needsUpdate=true;
@@ -63,7 +64,7 @@ function showPanel(id){for(const panel of ['layers-panel','info-panel'])$(panel)
 function endQuiz(){quiz=null;$('quiz-panel').hidden=true;$('quiz-toggle').setAttribute('aria-pressed','false');if(selected)renderInfo(structures.get(selected));}
 function select(id,{fly=false,testing=false}={}){
   const s=structures.get(id);if(!s)return;
-  if(!testing)endQuiz();selected=id;
+  if(!testing){endLearn();endQuiz();}selected=id;
   const l=layers[s.layer];l.enabled=true;l.check.checked=true;
   if(l.opacity<=.08){l.opacity=s.layer==='skin'?.25:1;l.range.value=l.opacity;l.output.value=`${Math.round(l.opacity*100)}%`;}
   refreshMaterials();$('label').textContent=testing?'Identify this structure':s.name;$('label').hidden=false;
@@ -106,7 +107,7 @@ function search(){
   const q=$('search').value.trim(),root=$('results');root.replaceChildren();root.hidden=!q;if(!q)return;
   const catalog=[...structures.values(),...Object.entries(content).filter(([id])=>!structures.has(id)).map(([id,e])=>({id,name:e.name||id,layer:e.type||'note',meshes:[]}))];
   const matches=catalog.map(s=>({s,rank:Math.min(searchRank(s.name,q),searchRank(content[s.id]?.name||s.name,q))})).filter(x=>x.rank<99).sort((a,b)=>a.rank-b.rank||a.s.name.localeCompare(b.s.name)).slice(0,12);
-  for(const {s} of matches){const b=text('button',content[s.id]?.name||s.name,root);text('small',titles[s.layer]||s.layer,b);b.onclick=()=>{if(s.meshes.length)select(s.id,{fly:true});else{endQuiz();selected=null;isolated=false;refreshMaterials();$('label').hidden=true;renderInfo(s);text('p','No geometry is linked to this study entry.',$('info'),'muted');if(innerWidth<720)$('info-panel').classList.add('open');}root.hidden=true;$('search').value='';};}
+  for(const {s} of matches){const b=text('button',content[s.id]?.name||s.name,root);text('small',titles[s.layer]||s.layer,b);b.onclick=()=>{if(s.meshes.length)select(s.id,{fly:true});else{endLearn();endQuiz();selected=null;isolated=false;refreshMaterials();$('label').hidden=true;renderInfo(s);text('p','No geometry is linked to this study entry.',$('info'),'muted');if(innerWidth<720)$('info-panel').classList.add('open');}root.hidden=true;$('search').value='';};}
   if(!matches.length)text('p','No matching structures.',root,'muted');
 }
 function shuffled(array){return array.map(x=>({x,r:Math.random()})).sort((a,b)=>a.r-b.r).map(o=>o.x);}
@@ -172,11 +173,196 @@ let lastFrame=0;
 function animate(now=performance.now()){
   lastFrame=now;requestAnimationFrame(animate);
   if(flight){const t=flight.duration?Math.min(1,(now-flight.start)/flight.duration):1;const eased=t*t*(3-2*t);camera.position.lerpVectors(flight.from,flight.to,eased);controls.target.lerpVectors(flight.targetFrom,flight.targetTo,eased);if(t===1)flight=null;}
+  if(learn?.pulse&&!reducedMotion){const scale=1+.18*Math.sin(now/220);structures.get(learn.pulse)?.meshes.forEach(m=>m.scale.setScalar(scale));}
   controls.update();renderer.render(scene,camera);
   if(selected){const s=structures.get(selected);if(s?.meshes.some(canPick))projectLabel($('label'),center(s));else $('label').hidden=true;}
   for(const d of debugLabels)projectLabel(d.label,d.position);
   for(const p of pinObjects)projectLabel(p.label,p.mesh.position);
 }
+// Learn mode: lesson content comes from the loaded atlas data.
+let learn=null, learnZones=[], learnLessons=[];
+let learnProgress=readStorage('atlas-learn-v1',{});
+if(!learnProgress||typeof learnProgress!=='object'||Array.isArray(learnProgress))learnProgress={};
+const learnName=id=>content[id]?.name||structures.get(id)?.name||id;
+const learnType=id=>content[id]?.type||structures.get(id)?.layer;
+function syncLearnLayers(){
+  for(const l of Object.values(layers)){
+    l.check.checked=l.enabled;l.range.value=l.opacity;l.output.value=`${Math.round(l.opacity*100)}%`;
+  }
+  refreshMaterials();
+}
+function resetLearnPulse(){
+  if(learn?.pulse)structures.get(learn.pulse)?.meshes.forEach(m=>m.scale.setScalar(1));
+}
+function endLearn(){
+  if(!learn)return;
+  resetLearnPulse();
+  for(const [key,state] of Object.entries(learn.saved))Object.assign(layers[key],state);
+  learn=null;isolated=false;selected=null;flight=null;
+  $('label').hidden=true;$('learn-panel').hidden=true;$('info-panel').hidden=false;
+  $('learn-toggle').setAttribute('aria-pressed','false');syncLearnLayers();
+}
+function openLearn(){
+  endQuiz();setPinMode(false);
+  const saved=Object.fromEntries(Object.entries(layers).map(([key,l])=>[key,{enabled:l.enabled,opacity:l.opacity}]));
+  learn={saved,focus:null,pulse:null,lesson:null};isolated=false;selected=null;
+  $('label').hidden=true;$('hover').hidden=true;$('results').hidden=true;
+  $('info-panel').hidden=true;$('layers-panel').classList.remove('open');
+  $('learn-panel').hidden=false;$('learn-toggle').setAttribute('aria-pressed','true');
+  renderLearnList();
+}
+function learnButton(label,parent,action){const b=text('button',label,parent);b.type='button';b.onclick=action;return b;}
+function renderLearnList(){
+  resetLearnPulse();learn.pulse=null;learn.focus=null;learn.lesson=null;selected=null;
+  for(const [key,state] of Object.entries(learn.saved))Object.assign(layers[key],state);
+  syncLearnLayers();
+  const root=$('learn-content');root.replaceChildren();
+  text('p',`${learnLessons.filter(l=>learnProgress[l.id]?.completed===true).length} / ${learnLessons.length} lessons`,root,'learn-progress');
+  for(const group of ['Introduction','Neurotoxin','Filler','Both']){
+    const lessons=learnLessons.filter(l=>l.group===group);if(!lessons.length)continue;
+    text('h3',group,root);const list=text('div','',root,'learn-lessons');
+    for(const lesson of lessons){
+      const result=learnProgress[lesson.id];
+      learnButton(`${result?.completed===true?'✓ ':''}${lesson.name}${result?.completed===true&&lesson.zone?` · Best ${Number(result.best)||0}%`:''}`,list,()=>startLesson(lesson));
+    }
+  }
+  $('learn-panel').scrollTop=0;
+}
+function learnQuestions(zone){
+  const questions=[],catalog=[...new Set([...Object.keys(content),...structures.keys()])];
+  function add(prompt,correct,candidates){
+    if(!correct)return;
+    const unique=[...new Map(candidates.filter(c=>c.label!==correct.label).map(c=>[c.label,c])).values()];
+    if(unique.length<3)return;
+    questions.push({prompt,correct,options:shuffled([correct,...shuffled(unique).slice(0,3)]),answer:null});
+  }
+  const danger=shuffled(zone.danger_ids||[])[0];
+  add(`Which structure makes the ${zone.name} risky?`,danger?{id:danger,label:learnName(danger)}:null,
+    catalog.filter(id=>['artery','vein','nerve','vessel'].includes(learnType(id))&&!(zone.danger_ids||[]).includes(id)).map(id=>({id,label:learnName(id)})));
+  const target=shuffled((zone.target_ids||[]).filter(id=>learnType(id)==='muscle'))[0];
+  add(`Which muscle is the treatment target of ${zone.name}?`,target?{id:target,label:learnName(target)}:null,
+    catalog.filter(id=>learnType(id)==='muscle'&&!(zone.target_ids||[]).includes(id)).map(id=>({id,label:learnName(id)})));
+  add(`What depth is described for ${zone.name}?`,zone.depth?{label:zone.depth}:null,learnZones.filter(z=>z.depth).map(z=>({label:z.depth})));
+  return questions;
+}
+function startLesson(lesson){
+  learn.lesson=lesson;learn.index=0;learn.finished=false;
+  learn.questions=lesson.zone?learnQuestions(lesson.zone):[];
+  learn.steps=lesson.zone?[
+    {kind:'orientation'},...(lesson.zone.target_ids||[]).map(id=>({kind:'target',id})),
+    ...(lesson.zone.danger_ids||[]).map(id=>({kind:'danger',id})),{kind:'placement'},{kind:'check'}
+  ]:['skin','muscle','artery','vein','nerve','injection'].map(layer=>({kind:'layer',layer}));
+  renderLearnStep();
+}
+function fitLearnZone(zone){
+  const points=(zone.anchor_landmarks||[]).map(id=>landmarks[id]).filter(validPoint).map(vector);
+  const sphere=points.length?new THREE.Box3().setFromPoints(points).getBoundingSphere(new THREE.Sphere()):new THREE.Sphere(headCenter.clone(),headRadius);
+  const halfFov=Math.min(THREE.MathUtils.degToRad(camera.fov/2),Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*camera.aspect));
+  const distance=Math.max(.012,sphere.radius)*1.2/Math.sin(halfFov);
+  const direction=camera.position.clone().sub(controls.target).normalize();
+  cameraMove(sphere.center,sphere.center.clone().addScaledVector(direction,distance));
+}
+function applyLearnStep(step,zone){
+  resetLearnPulse();learn.pulse=null;learn.focus=null;selected=null;$('label').hidden=true;
+  for(const [key,l] of Object.entries(layers)){l.enabled=step.kind==='layer'?key===step.layer:true;l.opacity=key==='skin'?.15:1;}
+  if(step.kind==='layer')layers[step.layer].opacity=1;
+  else{
+    const ids=step.kind==='target'?[step.id]:step.kind==='danger'?[step.id,zone.id]:step.kind==='orientation'?[zone.id]:[...(zone.target_ids||[]),...(zone.danger_ids||[]),zone.id];
+    learn.focus=new Set(ids);learn.pulse=step.kind==='target'?null:zone.id;
+    if(step.kind==='orientation')fitLearnZone(zone);
+    if(step.id&&structures.has(step.id))flyTo(structures.get(step.id));
+  }
+  syncLearnLayers();
+}
+function renderLearnStep(){
+  const step=learn.steps[learn.index],zone=learn.lesson.zone,root=$('learn-content');root.replaceChildren();
+  applyLearnStep(step,zone);
+  text('p',`Step ${learn.index+1} / ${learn.steps.length}`,root,'learn-progress');
+  text('h2',learn.lesson.name,root);
+  const labels={orientation:'Orientation',target:'Target structure',danger:'Danger structure',placement:'Placement',check:'Check yourself',layer:titles[step.layer]};
+  text('h3',labels[step.kind],root,step.kind==='danger'?'learn-warning':'');
+  if(step.kind==='layer'){
+    const entry=Object.values(content).find(e=>e.type===step.layer&&e.summary);
+    text('p',entry?.summary?.match(/[^.!?]+[.!?]?(?:\s|$)/)?.[0]?.trim()||`${titles[step.layer]} shown for orientation.`,root);
+  }else if(step.kind==='orientation'){
+    section(root,'Product',zone.product);section(root,'Summary',zone.summary);
+  }else if(step.kind==='target'||step.kind==='danger'){
+    const entry=content[step.id]||{},notes=entry.injector_notes||{};
+    text('h2',learnName(step.id),root);
+    if(step.kind==='target'){
+      for(const key of ['origin','insertion','action','innervation'])section(root,key,entry[key]);
+      section(root,'Relevance',notes.relevance);section(root,'Toxin targets',notes.toxin_targets);
+    }else{
+      section(root,'Course',typeof entry.course==='string'?(entry.course.match(/[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g)||[entry.course]).slice(0,2).join(' ').trim():entry.course);
+      section(root,'Danger zones',notes.danger_zones);section(root,'Depth tips',notes.depth_tips);
+    }
+    if(!structures.has(step.id))text('p','No geometry is linked to this study entry.',root,'muted');
+  }else if(step.kind==='placement'){
+    for(const key of ['depth','plane','notes','common_complications'])section(root,key.replaceAll('_',' '),zone[key]);
+  }else renderLearnCheck(root);
+  const nav=text('div','',root,'button-grid learn-nav');
+  learnButton('Back',nav,()=>moveLearn(-1)).disabled=learn.index===0;
+  const next=learnButton(learn.index===learn.steps.length-1?'Finish lesson':'Next',nav,()=>moveLearn(1));
+  next.disabled=step.kind==='check'&&learn.questions.some(q=>q.answer===null);
+  next.id='learn-next';
+  learnButton('Restart lesson',root,()=>startLesson(learn.lesson));
+  learnButton('Back to lessons',root,renderLearnList);
+  $('learn-panel').scrollTop=0;
+}
+function highlightLearnAnswer(question){
+  const id=question.correct.id;if(!id)return;
+  selected=id;learn.focus=new Set([id,learn.lesson.zone.id]);
+  const s=structures.get(id);if(s){layers[s.layer].enabled=true;layers[s.layer].opacity=1;}
+  syncLearnLayers();
+  if(s){$('label').textContent=learnName(id);$('label').hidden=false;}
+}
+function renderLearnCheck(root){
+  const scoreText=text('p','',root,'learn-progress');scoreText.setAttribute('role','status');
+  const updateScore=()=>{scoreText.textContent=`${learn.questions.filter(q=>q.answer===q.correct).length} / ${learn.questions.length} correct · ${learn.questions.filter(q=>q.answer!==null).length} answered`;};
+  updateScore();
+  if(!learn.questions.length)text('p','The available data cannot supply four distinct choices for a check.',root,'muted');
+  learn.questions.forEach(q=>{
+    const block=text('fieldset','',root,'learn-question');text('legend',q.prompt,block);
+    const feedback=text('p','',block);feedback.setAttribute('role','status');
+    const buttons=q.options.map(option=>{
+      const b=learnButton(option.label,block,()=>{if(q.answer!==null)return;q.answer=option;paint();highlightLearnAnswer(q);updateScore();$('learn-next').disabled=learn.questions.some(item=>item.answer===null);});
+      return {b,option};
+    });
+    function paint(){
+      if(q.answer===null)return;
+      for(const {b,option} of buttons){b.disabled=true;b.classList.toggle('learn-correct',option===q.correct);b.classList.toggle('learn-wrong',option===q.answer&&option!==q.correct);}
+      feedback.textContent=q.answer===q.correct?'Correct.':`Correct answer: ${q.correct.label}`;
+    }
+    paint();
+  });
+}
+function moveLearn(delta){
+  if(!learn?.lesson||learn.finished)return;
+  if(delta<0){if(learn.index>0){learn.index--;renderLearnStep();}return;}
+  if(learn.steps[learn.index].kind==='check'&&learn.questions.some(q=>q.answer===null))return;
+  if(learn.index<learn.steps.length-1){learn.index++;renderLearnStep();return;}
+  const correct=learn.questions.filter(q=>q.answer===q.correct).length;
+  const best=learn.questions.length?Math.round(correct/learn.questions.length*100):0;
+  const id=learn.lesson.id,previous=Number(learnProgress[id]?.best)||0;
+  learnProgress[id]={completed:true,best:Math.max(previous,best)};saveStorage('atlas-learn-v1',learnProgress);
+  learn.finished=true;
+  const root=$('learn-content');root.replaceChildren();text('h2','Lesson completed',root);
+  if(learn.questions.length)text('p',`${correct} / ${learn.questions.length} correct · Best ${learnProgress[id].best}%`,root);
+  learnButton('Restart lesson',root,()=>startLesson(learn.lesson));learnButton('Back to lessons',root,renderLearnList);
+}
+function setupLearn(zones){
+  learnZones=zones.map(z=>({...content[z.id],...z}));
+  learnLessons=[{id:'layers-danger-map',name:'Layers & danger map',group:'Introduction'},...learnZones.map(zone=>({id:zone.id,name:zone.name,zone,group:({neurotoxin:'Neurotoxin',filler:'Filler',both:'Both'})[zone.product]||'Both'}))];
+  $('learn-toggle').disabled=false;
+  $('learn-toggle').onclick=()=>learn?endLearn():openLearn();$('learn-close').onclick=endLearn;
+  // End the pass before the destination tool reads or changes layer settings.
+  for(const id of ['layers-toggle','info-toggle','quiz-toggle','pin-toggle','pins-open','about','views','isolate','layers'])$(id).addEventListener('click',endLearn,true);
+  document.addEventListener('keydown',e=>{
+    if(!learn||e.altKey||e.ctrlKey||e.metaKey||e.target.closest('input,textarea,select,[contenteditable="true"]')||document.querySelector('dialog[open]'))return;
+    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();moveLearn(e.key==='ArrowRight'?1:-1);}
+  });
+}
+
 async function start(){
   [manifest,landmarks,content]=await Promise.all([readData('manifest.json',null),readData('landmarks.json',{}),readData('content.json',{})]);
   if(!manifest)throw Error('Cannot display anatomy without data/manifest.json.');
@@ -202,7 +388,7 @@ async function start(){
   }
   for(const zone of injection.zones||[]){for(const anchor of zone.anchor_landmarks||[]){const point=landmarks[anchor];if(!validPoint(point)){warn(`Missing landmark ${anchor} for ${zone.name}.`);continue;}const color=zone.product==='neurotoxin'?0xb694f4:0x55c5b0;const mesh=new THREE.Mesh(new THREE.SphereGeometry(.0025,16,12),material('injection',color));mesh.position.copy(vector(point));layers.injection.group.add(mesh);register(mesh,zone.id,zone.name,'injection',{zone});}}
   if(new URLSearchParams(location.search).get('debug')==='1')for(const [id,p] of Object.entries(landmarks)){if(!validPoint(p))continue;const position=vector(p),dot=new THREE.Mesh(new THREE.SphereGeometry(.0008,8,6),new THREE.MeshBasicMaterial({color:0xffc76f,depthTest:false}));dot.position.copy(position);dot.renderOrder=30;scene.add(dot);debugLabels.push({position,label:text('div',id,$('debug-labels'),'dot-label')});}
-  pins.forEach(placePin);refreshMaterials();$('progress').value=100;$('loading').hidden=true;
+  setupLearn(injection.zones||[]);pins.forEach(placePin);refreshMaterials();$('progress').value=100;$('loading').hidden=true;
 }
 start().catch(error=>{console.error(error);$('loading').hidden=true;warn(`Viewer could not finish loading: ${error.message}. Serve this directory with python3 -m http.server and check that the model and data files are present.`);});
 

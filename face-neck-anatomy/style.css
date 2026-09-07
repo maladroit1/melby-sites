@@ -3,3 +3,15 @@
 @media(max-width:1000px) and (min-width:720px){#layers-panel{width:210px;left:12px;padding:14px}#info-panel,#quiz-panel{width:240px;right:12px;padding:14px}}
 @media(max-width:719px){header{height:125px;padding:12px 14px;gap:12px;flex-wrap:wrap;align-content:start}h1{font-size:25px}.brand{flex:1}header>button{position:absolute;right:14px;top:14px}.search-wrap{width:100%;margin:0}.search-wrap input{height:44px}.eyebrow{font-size:9px}#stage{top:125px;bottom:28px}.panel,#layers-panel,#info-panel,#quiz-panel{display:none;top:auto;left:8px;right:8px;bottom:94px;width:auto;max-height:45dvh;padding:16px;border-radius:12px 12px 4px 4px}.panel.open,#quiz-panel:not([hidden]){display:block}.panel-close,#layers-toggle,#info-toggle{display:block}#toolbar{bottom:34px;width:calc(100% - 16px);gap:4px;justify-content:space-between;padding:5px}#toolbar button{padding:7px 6px;font-size:12px;flex:1;white-space:nowrap}footer{height:28px;font-size:6.9px}.orientation{top:12px}#hint{bottom:72px;font-size:9px}#errors{top:128px;width:95vw}#label{max-width:180px;font-size:11px}#layers{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.layer input[type=range]{height:44px}#views{grid-template-columns:repeat(3,1fr)}#info-panel h2{font-size:23px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* Learning pass */
+#learn-panel{right:22px;width:290px;z-index:6}
+#learn-content{overflow-wrap:anywhere}#learn-content p{white-space:pre-wrap}
+.learn-progress{color:var(--accent)}.learn-warning{color:#ffaaa0;border-left:3px solid #e6504e;padding-left:10px}
+.learn-lessons{display:grid;gap:8px}.learn-lessons button{text-align:left}
+.learn-nav{margin:20px 0 12px}#learn-content>button{width:100%;margin-top:8px}
+.learn-question{margin:18px 0;padding:10px;border:1px solid var(--line);min-width:0}
+.learn-question legend{padding:0 4px}.learn-question button{display:block;width:100%;text-align:left;margin:8px 0}
+.learn-question button:disabled{opacity:1}.learn-correct{background:#20483b!important;border-color:#62ce9b!important}.learn-wrong{background:#542f30!important;border-color:#f18e88!important}
+@media(max-width:1000px) and (min-width:720px){#learn-panel{width:240px;right:12px;padding:14px}}
+@media(max-width:719px){#learn-panel{top:auto;left:8px;right:8px;bottom:94px;width:auto;max-height:45dvh;padding:16px}#learn-panel:not([hidden]){display:block}#toolbar{overflow-x:auto}#toolbar button{flex:1 0 auto;min-width:44px}#learn-panel button{min-height:44px}}
